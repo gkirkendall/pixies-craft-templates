@@ -40,13 +40,13 @@ Photo segments get the next photo in order, so Photo_1 … Photo_8 are segments 
 | Seg | Seconds | Picture | Overlays (all also get Corner Logo) | Generic text |
 |---|---|---|---|---|
 | 0 | 4 | Photo_1 | Animated Title | "Your Trip Title" |
-| 1 | 5 | Map_1 (locator card) | – | the locator's own place text: "First Stop" |
+| 1 | 5 | Locator card (live) | – | the locator's own place text: "First Stop" |
 | 2 | 9 | Photo_2 | Basic lower third, Route Leg inset | "Place Name" / "Day 1" |
 | 3 | 4.5 | Photo_3 | Basic lower third | "Place Name" / "Day 2" |
-| 4 | 5 | Map_2 (route leg card) | – | stop names "Start" / "Next Stop" |
+| 4 | 5 | Route Leg card (live) | – | stop names "Start" / "Next Stop" |
 | 5 | 9 | Photo_4 | Basic lower third, Route Leg inset | "Place Name" / "Day 3" |
 | 6 | 4.5 | Photo_5 | Basic lower third | "Place Name" / "Day 4" |
-| 7 | 5 | Map_3 (route leg card) | – | "Start" / "Next Stop" |
+| 7 | 5 | Route Leg card (live) | – | "Start" / "Next Stop" |
 | 8 | 4.5 | Photo_6 | Basic lower third | "Place Name" / "Day 5" |
 | 9 | 9.5 | Photo_7 | Route Leg inset, Basic lower third | "Place Name" / "Day 6" |
 | 10 | 5 | Photo_8 | Sign-off | "Thanks for watching" |
@@ -55,10 +55,11 @@ Crossfade 0.5 s between shots (`demo.json` `crossfade`). Take each overlay's tim
 `tools/demo.py`, which renders the demo: the kit must look like the demo shot for shot. Where the demo's values files say a real
 place, use the generic text above.
 
-**Maps:** the kit ships `Maps/Map_1.png` … as example pictures to replace (PLAN.md RECIPE1 1). Ask Pixie before choosing how:
-(a) render the demo's own maps once with `tools/maps.py` (they show real Australian places, already public in the demo), or
-(b) use the map templates live in the project with generic stops. Recommend (b) if the map templates' controls can take any
-place; otherwise (a).
+**Maps: live map templates (Pixie chose (b), 2026-10-21).** The map cards (segments 1, 4, 7) and the Route Leg insets use the
+map templates in the project, with generic stops ("First Stop", "Start" / "Next Stop"), so people type their own places in
+Essential Graphics instead of making map pictures. No `Maps/` folder of pictures. First check that the map templates' controls
+can take any place in the app; if they can't (for example the map picture is baked in when built), stop and tell Pixie, and
+propose shipping the demo's maps as example pictures (`Maps/Map_1.png` …, rendered once with `tools/maps.py`) instead.
 
 **Logo:** `Logo/Logo.png`, a plain placeholder (text "Your Logo" in Inter on a transparent square, made by script).
 
@@ -69,10 +70,10 @@ place; otherwise (a).
 ```
 project_templates/trip_video/
   Trip Video 16x9.ecproj      (and Trip Video 9x16.ecproj, same shots; the photos are 16:9, Fill the Frame fills the tall frame)
-  Photos/  Maps/  Logo/  Music/  Template Media/   (Template Media: the templates' own pictures, copied in, as the prototype does)
+  Photos/  Logo/  Music/  Template Media/   (Template Media: the templates' own pictures, copied in, as the prototype does)
   README.txt
 ```
-Folders in the Project panel: "Photos – replace these", "Maps – replace these", "Templates (no need to edit)". Timeline layer
+Folders in the Project panel: "Photos – replace these", "Templates (no need to edit)". Timeline layer
 names say what each is ("Shot 3 · Photo_3", "Place Name (Lower Third)").
 
 ## README.txt (plain words, for people new to EffectCraft)
@@ -93,7 +94,7 @@ Credits line: photos from Pixabay (see CREDITS.md); templates by Pixie, https://
    project in the 0.14 app for Pixie (`~/projects/storytold/effectcraft/target/release/effectcraft "<path>.ecproj"`) and **wait
    for his OK**.
 2. `tools/tests/test_project.py` (PLAN.md RECIPE1 3): opens in the CLI with no missing footage (run `footage.check`: the CLI
-   doesn't run it on open), every Photo_N and Map_N is used, every title holds the generic text, a still at each shot shows that
+   doesn't run it on open), every Photo_N is used, every title holds the generic text, a still at each shot shows that
    shot's template in the demo's place, and the total length equals the demo's. Use the existing `tools/tests/` style.
 3. `CREDITS.md`: a "Trip video kit photos (Pixabay)" section: each Photo_N, its Pixabay page and photographer (PLAN.md table).
    Pixabay's licence needs no credit; this records the source.
