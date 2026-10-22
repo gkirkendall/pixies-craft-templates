@@ -151,10 +151,10 @@ class Demo:
                      base])
             else:
                 values = self.work / f"fill{i:02d}.values.json"
-                fill = dict(seg.get("fill", {}))
-                media = fill.pop("Media", None)
+                controls = dict(seg.get("fill", {}))
+                media = controls.pop("Media", None)
                 media = pathlib.Path(media.replace("{root}", str(ROOT))) if media else self.footage(seg["footage"], seg.get("folder"))
-                values.write_text(json.dumps({"Media": str(media.resolve()), "Duration": s, **fill}))
+                values.write_text(json.dumps({"Media": str(media.resolve()), "Duration": s, **controls}))
                 base = self.render(FILL, str(values), self.work / f"fill{i:02d}.mp4")
             inputs, chain, last = ["-i", base], [], "0:v"
             for k, o in enumerate(seg.get("overlays", [])):
@@ -177,7 +177,7 @@ class Demo:
             start = seg.get("start", 0)
             made_from = src.with_suffix(".json")   # a reel with a title page: "start" counts from after it
             if made_from.is_file() and json.loads(made_from.read_text()).get("title_page"):
-                start += TITLE_SECONDS - json.loads(made_from.read_text()).get("crossfade", 0.5)
+                start += TITLE_SECONDS   # the title page is still fading out until then
             run(["ffmpeg", "-v", "error", "-y", "-ss", str(start), "-i", src, "-vf",
                  f"scale={self.w}:{self.h}:flags=lanczos,fps={FPS}", *exact, out])
         elif "page" in seg:
