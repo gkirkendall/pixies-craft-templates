@@ -1140,6 +1140,7 @@ over Fill the Frame's blur. Findings, each with its fix (changes to step 1 of th
    `release.py` builds `pixies-trip-video-template.zip` (`test_release` 7/7). Deviations from KIT1.md: stop names "Stop 1" to "Stop 6"
    (one stops file drives five legs) instead of "Start / Next Stop"; example map pictures live in `Template Media/` (no `Maps/` folder).
    The preview reel and the Australia trip demo now have a title page and the end page like every reel (Pixie: "every demo clip and video should have title page and end page"); `tools/kit_preview.py` makes the preview (render, title and end page, the demo's music), `demo.py` takes a `title_page` object and `credit_photos`, and `test_pages` checks every reel and both videos (11/11). GEOCODE.md (stops from photo locations) is a separate plan awaiting Pixie's approval. The release waits for Pixie's "go ahead".
+   **Released 2026-10-22 as v0.6.36** (Pixie: "Publish KIT1", "Publish SLIDER1 as well"): one release holds the SLIDER1 templates and `pixies-trip-video-template.zip`. Checked live: the three download links answer 200, the live zip's Title template is the repo's v1.1.0 build, the page is up.
 5. **Report to EffectCraft's maintainers** (Pixie decides; outward-facing): (a) Replace Footage on a still brings a numbered
    run as a sequence without asking, unlike Import; (b) the Essential Graphics slider clamps values outside its slider
    range (dropped: see ECPATCH1's outcome); (c) Reload Footage keeps the old picture size. **Posted 2026-10-21** (Pixie: "post the bug reports"): (a) as
