@@ -1,0 +1,287 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 1.6,
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              330
+            ],
+            "Start": 0,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Glint Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              430
+            ],
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              388,
+              736
+            ],
+            "Start": 0.4,
+            "Size": 61,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              541,
+              789
+            ],
+            "Start": 0.9,
+            "Size": 46,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              682,
+              820
+            ],
+            "Start": 1.4,
+            "Size": 54,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              767,
+              866
+            ],
+            "Start": 1.9,
+            "Size": 46,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              360,
+              1039
+            ],
+            "Start": 2.4,
+            "Size": 39,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              619,
+              1084
+            ],
+            "Start": 2.9,
+            "Size": 50,
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Six glints \u00b7 Start and Size set for each \u00b7 9x16"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              330,
+              810
+            ],
+            "Start": 0.4,
+            "Size": 70,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              560,
+              785
+            ],
+            "Start": 1.0,
+            "Size": 80,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              800,
+              815
+            ],
+            "Start": 1.6,
+            "Size": 70,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              690,
+              830
+            ],
+            "Start": 2.2,
+            "Size": 55,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Colour and Glow 90 \u00b7 9x16"
+    },
+    {
+      "footage": "port_campbell",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              440,
+              940
+            ],
+            "Start": 0.4,
+            "Size": 55,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              470,
+              1025
+            ],
+            "Start": 0.8,
+            "Size": 48,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              520,
+              1060
+            ],
+            "Start": 1.2,
+            "Size": 55,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              555,
+              1105
+            ],
+            "Start": 1.6,
+            "Size": 44,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              485,
+              1085
+            ],
+            "Start": 2.0,
+            "Size": 50,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              430,
+              990
+            ],
+            "Start": 2.4,
+            "Size": 40,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Glow 45 \u00b7 Size 40 to 55 \u00b7 9x16"
+    }
+  ]
+}
