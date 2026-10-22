@@ -7,13 +7,13 @@ ship themselves (EffectCraft ships Inter: see its `ATTRIBUTION.md`).
 
 All under the SIL Open Font License 1.1: free to use, bundle and share with software, including software that is sold; a font may not
 be sold by itself, and a modified font may not use its Reserved Font Name. Each folder keeps its own licence file. Moved here on
-2026-10-21 from Pixie's font library (Pixie: "for any font that falls into group 1 - move it to craft-templates").
+2026-10-21 from Gregory Kirkendall's font library (Gregory Kirkendall: "for any font that falls into group 1 - move it to craft-templates").
 `c059_new_century_schoolbook` is URW's C059 (URW Core 35), offered under AGPL-3.0 with a font exception, LPPL-1.3c or OFL-1.1;
 this repository uses it under OFL-1.1.
 
 | Folder | Font files | Copyright | Licence |
 |---|---|---|---|
-| `fonts/inter/` | 2 | Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter); from `google/fonts` `ofl/inter` at `0b58fb37`. The same family EffectCraft ships; kept for completeness (Pixie, 2026-10-21) | OFL-1.1 (`OFL.txt`) |
+| `fonts/inter/` | 2 | Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter); from `google/fonts` `ofl/inter` at `0b58fb37`. The same family EffectCraft ships; kept for completeness (Gregory Kirkendall, 2026-10-21) | OFL-1.1 (`OFL.txt`) |
 | `fonts/be_vietnam/` | 14 | Copyright 2019, Gabriel Lam, TypeRant. | OFL-1.1 (`SIL Open Font License.txt`) |
 | `fonts/c059_new_century_schoolbook/` | 8 | Copyright (c) 2014,2015 by (URW)++ Design & Development | OFL-1.1 (`LICENSE.OFL`, `LICENSE.md`) |
 | `fonts/caveat/` | 5 | Copyright 2014 The Caveat Project Authors (https://github.com/googlefonts/caveat) | OFL-1.1 (`OFL.txt`) |
@@ -44,7 +44,7 @@ this repository uses it under OFL-1.1.
 ## Demo videos
 
 The demo reels (`previews/demo*.mp4` and `poster*.jpg` in each template's version folder, and everything in `demo/`) show the
-templates at work over Pixie's own travel photos. They are © Gregory Kirkendall, all rights reserved, and are **not** under the
+templates at work over Gregory Kirkendall's own travel photos. They are © Gregory Kirkendall, all rights reserved, and are **not** under the
 templates' MIT/Apache licence: watch them, link to them, but do not reuse the photos or the videos. The photos themselves are not
 in this repository.
 

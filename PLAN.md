@@ -1013,6 +1013,6 @@ release, GitHub's standard place for "the thing to download", with one zip holdi
 3b. README wording (Pixie, 2026-10-21): the paragraph "The catalogue page shows every template in a row: one picture of all
    its styles, and its demo reel with the feature on screen named in the corner." becomes **"Check out the [catalogue
    page](https://gkirkendall.github.io/pixies-craft-templates/)! It shows a demo reel and screen shots of every template."**
-4. Commit, tag (v0.6.4), push; then `gh release create v0.6.4` with the zip, the fonts zip and the 26 template files, and short notes (what's in
+4. Commit, tag (v0.6.5), push; then `gh release create v0.6.5` with the zip, the fonts zip and the 26 template files, and short notes (what's in
    it, how to install). Open the release page and the web page for Pixie, and check every page download link returns its file.
 5. From then on, a new release is made whenever a template changes (the release notes say which), using the same command.
