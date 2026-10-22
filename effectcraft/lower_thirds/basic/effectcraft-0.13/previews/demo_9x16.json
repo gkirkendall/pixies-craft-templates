@@ -1,0 +1,43 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 2.0,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "port_campbell",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/basic",
+          "values": {
+            "Title": "Port Campbell National Park",
+            "Subtitle": "Victoria, Australia"
+          },
+          "at": 0.2
+        }
+      ],
+      "caption": "Two lines · 9x16",
+      "caption_at": "top"
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/basic",
+          "values": {
+            "Title": "Sydney Cove",
+            "Subtitle": "New South Wales, Australia"
+          },
+          "at": 0.2
+        }
+      ],
+      "caption": "Two lines · 9x16",
+      "caption_at": "top"
+    }
+  ]
+}

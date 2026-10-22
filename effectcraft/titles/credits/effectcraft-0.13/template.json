@@ -1,0 +1,135 @@
+{
+  "id": "effectcraft/titles/credits",
+  "name": "Credits",
+  "version": "1.2.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "39/39"
+    }
+  ],
+  "kind": "motion",
+  "category": "titles",
+  "description": "A title in quotes in tall condensed capitals with up to five credit lines under it, centred; empty lines close up.",
+  "duration_seconds": 6,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/credits_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/credits_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Title",
+      "type": "text",
+      "default": "Our Road Trip",
+      "description": "Shown in capitals between curly quotes; a long title breaks onto two lines; leave it empty for none (the lines move up)."
+    },
+    {
+      "name": "Line 1",
+      "type": "text",
+      "default": "Filmed and edited by Your Name"
+    },
+    {
+      "name": "Line 2",
+      "type": "text",
+      "default": "Music: Track Name by Artist"
+    },
+    {
+      "name": "Line 3",
+      "type": "text",
+      "default": "Map data © OpenStreetMap contributors"
+    },
+    {
+      "name": "Line 4",
+      "type": "text",
+      "default": ""
+    },
+    {
+      "name": "Line 5",
+      "type": "text",
+      "default": "",
+      "description": "Credit lines left empty close up."
+    },
+    {
+      "name": "Title Font",
+      "type": "font",
+      "default": "League Gothic Regular"
+    },
+    {
+      "name": "Line Font",
+      "type": "font",
+      "default": "Montserrat Medium",
+      "description": "Font of all five credit lines."
+    },
+    {
+      "name": "Position",
+      "type": "point",
+      "default": [
+        960,
+        470
+      ],
+      "description": "Centre of the whole block, in frame pixels (9x16: [540, 800])."
+    },
+    {
+      "name": "Max Width",
+      "type": "number",
+      "default": 1651,
+      "description": "Widest any line may be, in pixels (9x16: 929); a wider line shrinks to fit."
+    },
+    {
+      "name": "Colour",
+      "type": "color",
+      "default": "#ffffff"
+    },
+    {
+      "name": "Shadow",
+      "type": "number",
+      "default": 50,
+      "description": "Strength of the soft shadow under the text, 0 to 100."
+    },
+    {
+      "name": "Start",
+      "type": "number",
+      "default": 0.3,
+      "description": "When it starts to fade and rise in, in seconds (0.6 s in)."
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 6,
+      "description": "Length of the rendered clip in seconds; it fades out over its last 0.5 s."
+    }
+  ],
+  "fonts": [
+    "League Gothic",
+    "Montserrat"
+  ],
+  "tags": [
+    "credits",
+    "end card",
+    "title",
+    "outro",
+    "thanks"
+  ]
+}

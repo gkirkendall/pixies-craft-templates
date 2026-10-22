@@ -1,0 +1,30 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 2.5,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/sign_off",
+          "values": {
+            "Position": [
+              960,
+              860
+            ],
+            "Duration": 5,
+            "Blink": true
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Blink on"
+    }
+  ]
+}

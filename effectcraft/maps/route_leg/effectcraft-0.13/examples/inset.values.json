@@ -1,0 +1,8 @@
+{
+  "Map": "../assets/default_map_16x9.png",
+  "From Name": "Point Ritchie",
+  "To Name": "Mushroom Rock",
+  "Corner Inset": true,
+  "Curve": -15,
+  "Line Colour": "#1f6f8b"
+}

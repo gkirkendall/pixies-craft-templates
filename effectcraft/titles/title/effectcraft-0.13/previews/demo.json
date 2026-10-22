@@ -1,0 +1,46 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 2.0,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "port_campbell",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+            "set": {
+              "Duration": 4.5
+            }
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Centre"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Point Ritchie",
+            "Label": "Day two",
+            "Place": "Bottom Centre",
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Bottom Centre",
+      "caption_at": "top"
+    }
+  ]
+}

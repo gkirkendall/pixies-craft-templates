@@ -1,0 +1,42 @@
+{
+  "footage": "australia",
+  "background": "port_campbell",
+  "columns": 2,
+  "prepare": [
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "0",
+      "--out",
+      "{work}/loc",
+      "--variant",
+      "16x9",
+      "--inset"
+    ]
+  ],
+  "cells": [
+    {
+      "label": "Full frame",
+      "values": {
+        "file": "{work}/loc/locator00_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "time": 4.5
+    },
+    {
+      "label": "Corner Inset (over footage)",
+      "values": {
+        "file": "{work}/loc/locator00_16x9.values.json",
+        "set": {
+          "Corner Inset": true
+        }
+      },
+      "time": 4.5
+    }
+  ]
+}

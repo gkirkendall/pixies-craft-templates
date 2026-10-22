@@ -1,0 +1,110 @@
+{
+  "id": "effectcraft/logos/corner_logo",
+  "name": "Corner Logo",
+  "version": "1.1.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "25/25"
+    }
+  ],
+  "kind": "motion",
+  "category": "logos",
+  "description": "A logo of any shape fitted in a square box in a chosen corner; it fades and rises in, and fades out by the end.",
+  "duration_seconds": 5,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/corner_logo_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/corner_logo_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Logo",
+      "type": "media",
+      "description": "The logo picture, any shape (a PNG with transparency works best), fitted inside the Size box and centred. Default: a sample mark."
+    },
+    {
+      "name": "Corner",
+      "type": "dropdown",
+      "options": [
+        "Top Left",
+        "Top Right",
+        "Bottom Right",
+        "Bottom Left"
+      ],
+      "default": "Bottom Right",
+      "description": "Which corner of the frame the logo sits in."
+    },
+    {
+      "name": "Size",
+      "type": "number",
+      "default": 180,
+      "description": "Side of the square box the logo fits inside, in pixels."
+    },
+    {
+      "name": "Margin",
+      "type": "number",
+      "default": 60,
+      "description": "Distance from the box to the frame's two edges, in pixels."
+    },
+    {
+      "name": "Opacity",
+      "type": "number",
+      "default": 90,
+      "description": "How solid the logo is once it has faded in, 0 to 100."
+    },
+    {
+      "name": "Fade",
+      "type": "dropdown",
+      "options": [
+        "Fade In and Out",
+        "Fade In",
+        "Steady",
+        "Fade Out"
+      ],
+      "default": "Fade In and Out",
+      "description": "Fade In and Out; Fade In (then full to the end: a video's first photo); Steady (full throughout: the photos between); Fade Out (full from the first frame: the last photo)."
+    },
+    {
+      "name": "Start",
+      "type": "number",
+      "default": 0.3,
+      "description": "When it starts to fade and rise in, in seconds (0.5 s in); not used by Steady and Fade Out."
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 5,
+      "description": "Length of the rendered clip in seconds; with Fade In and Out or Fade Out the logo fades out over its last 0.5 s."
+    }
+  ],
+  "tags": [
+    "logo",
+    "watermark",
+    "corner",
+    "bug",
+    "end card",
+    "branding"
+  ]
+}

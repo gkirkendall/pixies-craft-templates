@@ -1,0 +1,124 @@
+{
+  "id": "effectcraft/titles/typewriter",
+  "name": "Typewriter",
+  "version": "1.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "15/15"
+    }
+  ],
+  "kind": "motion",
+  "category": "titles",
+  "description": "Text that types itself letter by letter with a blinking cursor, and can erase itself again; the finished line is centred.",
+  "duration_seconds": 5,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/typewriter_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/typewriter_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Text",
+      "type": "text",
+      "default": "Less perfection, more travel."
+    },
+    {
+      "name": "Font",
+      "type": "font",
+      "default": "Inter SemiBold"
+    },
+    {
+      "name": "Speed",
+      "type": "number",
+      "default": 14,
+      "description": "Letters typed a second."
+    },
+    {
+      "name": "Cursor",
+      "type": "dropdown",
+      "options": [
+        "Bar",
+        "Underscore",
+        "None"
+      ],
+      "default": "Bar",
+      "description": "Solid while typing; blinks while it waits."
+    },
+    {
+      "name": "Erase",
+      "type": "checkbox",
+      "default": false,
+      "description": "Delete the text again (at twice Speed), done 0.3 s before Duration."
+    },
+    {
+      "name": "Position",
+      "type": "point",
+      "default": [
+        960,
+        540
+      ],
+      "description": "Centre of the finished line, in frame pixels (9x16: [540, 960])."
+    },
+    {
+      "name": "Max Width",
+      "type": "number",
+      "default": 1651,
+      "description": "Widest the line may be, in pixels (9x16: 929); a wider one shrinks to fit."
+    },
+    {
+      "name": "Colour",
+      "type": "color",
+      "default": "#ffffff"
+    },
+    {
+      "name": "Shadow",
+      "type": "number",
+      "default": 40,
+      "description": "Strength of the soft shadow under the text, 0 to 100."
+    },
+    {
+      "name": "Start",
+      "type": "number",
+      "default": 0.5,
+      "description": "When the first letter is typed, in seconds; the cursor blinks before it."
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 5,
+      "description": "Length of the rendered clip in seconds."
+    }
+  ],
+  "fonts": [
+    "Inter"
+  ],
+  "tags": [
+    "title",
+    "typewriter",
+    "typing",
+    "cursor",
+    "text"
+  ]
+}

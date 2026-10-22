@@ -1,0 +1,28 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 2.5,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "hildas_lookout",
+      "seconds": 6,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/credits",
+          "values": {
+            "file": "{root}/effectcraft/titles/credits/effectcraft-0.13/examples/australia.values.json",
+            "set": {
+              "Duration": 6
+            }
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Title and three lines"
+    }
+  ]
+}

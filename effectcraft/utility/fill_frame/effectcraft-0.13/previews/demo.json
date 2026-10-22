@@ -1,0 +1,21 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 1.5,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "tjoritja",
+      "seconds": 4,
+      "caption": "4:3 photo in 16x9"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 4,
+      "caption": "4:3 photo in 16x9"
+    }
+  ]
+}

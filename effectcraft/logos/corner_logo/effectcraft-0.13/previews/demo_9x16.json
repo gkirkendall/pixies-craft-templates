@@ -1,0 +1,26 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 2.0,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "tjoritja",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Corner: Bottom Right · 9x16",
+      "caption_at": "top"
+    }
+  ]
+}

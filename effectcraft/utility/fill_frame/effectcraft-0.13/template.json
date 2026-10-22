@@ -1,0 +1,80 @@
+{
+  "id": "effectcraft/utility/fill_frame",
+  "name": "Fill the Frame",
+  "version": "1.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "11/11"
+    }
+  ],
+  "kind": "motion",
+  "category": "utility",
+  "description": "Shows a picture or clip of any shape whole, over a blurred, darkened copy of itself that fills the frame, instead of black bars.",
+  "duration_seconds": 5,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/fill_frame_16x9.ectemplate",
+      "output": "h264"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/fill_frame_9x16.ectemplate",
+      "output": "h264"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Media",
+      "type": "media",
+      "description": "The picture or clip, any shape; shown whole, fitted inside the frame."
+    },
+    {
+      "name": "Blur",
+      "type": "number",
+      "default": 60,
+      "description": "Blurriness of the copy behind it."
+    },
+    {
+      "name": "Darken",
+      "type": "number",
+      "default": 30,
+      "description": "How much darker the copy is, from 0 (as it is) to 100 (near black)."
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 5,
+      "description": "Length of the rendered clip in seconds, up to 60. A shorter clip plays again from the start until then."
+    },
+    {
+      "name": "Clip Length",
+      "type": "number",
+      "default": 0,
+      "description": "The clip's exact length in seconds, so it loops without a held frame; tools/render.py fills it from ffprobe. 0: use the length EffectCraft reads (often one frame long)."
+    }
+  ],
+  "tags": [
+    "photo",
+    "background",
+    "blur",
+    "aspect ratio",
+    "pillarbox",
+    "letterbox"
+  ]
+}

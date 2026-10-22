@@ -1,0 +1,42 @@
+{
+  "footage": "australia",
+  "background": "point_ritchie",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Corner: Top Left",
+      "values": {
+        "Corner": "Top Left",
+        "Fade": "Steady"
+      }
+    },
+    {
+      "label": "Corner: Top Right",
+      "values": {
+        "Corner": "Top Right",
+        "Fade": "Steady"
+      }
+    },
+    {
+      "label": "Corner: Bottom Right",
+      "values": {
+        "Corner": "Bottom Right",
+        "Fade": "Steady"
+      }
+    },
+    {
+      "label": "Corner: Bottom Left",
+      "values": {
+        "Corner": "Bottom Left",
+        "Fade": "Steady"
+      }
+    },
+    {
+      "label": "9x16",
+      "values": {
+        "Fade": "Steady"
+      },
+      "variant": "9x16"
+    }
+  ]
+}

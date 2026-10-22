@@ -1,0 +1,50 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 2.6,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "file": "{root}/effectcraft/titles/typewriter/effectcraft-0.13/examples/travel.values.json",
+            "set": {
+              "Duration": 5,
+              "Position": [
+                960,
+                900
+              ]
+            }
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: Bar"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "Text": "See you on the next road.",
+            "Cursor": "Underscore",
+            "Erase": true,
+            "Start": 0.3,
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: Underscore · Erase"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "footage": "australia",
+  "background": "mushroom_rock",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Title and three lines",
+      "values": {}
+    },
+    {
+      "label": "Five lines",
+      "values": {
+        "file": "{root}/effectcraft/titles/credits/effectcraft-0.13/examples/australia.values.json",
+        "set": {
+          "Line 5": "Templates: github.com/gkirkendall/pixies-craft-templates"
+        }
+      }
+    },
+    {
+      "label": "No title",
+      "values": {
+        "Title": ""
+      }
+    }
+  ]
+}

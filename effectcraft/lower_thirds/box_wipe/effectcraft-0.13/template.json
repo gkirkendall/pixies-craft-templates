@@ -1,0 +1,120 @@
+{
+  "id": "effectcraft/lower_thirds/box_wipe",
+  "name": "Box Wipe Lower Third",
+  "version": "1.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "17/17"
+    }
+  ],
+  "kind": "motion",
+  "category": "lower_thirds",
+  "description": "A line sweeps in, a see-through box wipes open and an underlined script title and subtitle fade in; it wipes shut before Duration.",
+  "duration_seconds": 5,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/box_wipe_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/box_wipe_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Title",
+      "type": "text",
+      "default": "Port Campbell",
+      "description": "Wraps onto two lines when wider than Max Width."
+    },
+    {
+      "name": "Subtitle",
+      "type": "text",
+      "default": "Victoria, Australia",
+      "description": "Smaller second line; leave empty for none (the box closes up)."
+    },
+    {
+      "name": "Title Font",
+      "type": "font",
+      "default": "Caveat Brush Regular",
+      "description": "Any installed font."
+    },
+    {
+      "name": "Subtitle Font",
+      "type": "font",
+      "default": "Caveat Brush Regular",
+      "description": "Any installed font."
+    },
+    {
+      "name": "Position",
+      "type": "point",
+      "default": [
+        110,
+        960
+      ],
+      "description": "The box's bottom-left corner, in frame pixels (9x16: [70, 1640])."
+    },
+    {
+      "name": "Max Width",
+      "type": "number",
+      "default": 1100,
+      "description": "Widest the box may be before the title wraps, in pixels (9x16: 900)."
+    },
+    {
+      "name": "Box Colour",
+      "type": "color",
+      "default": "#123047"
+    },
+    {
+      "name": "Box Opacity",
+      "type": "number",
+      "default": 70,
+      "description": "How see-through the box is, 0 to 100."
+    },
+    {
+      "name": "Line Colour",
+      "type": "color",
+      "default": "#ffd166",
+      "description": "The line along the top and the underline."
+    },
+    {
+      "name": "Text Colour",
+      "type": "color",
+      "default": "#ffffff"
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 5,
+      "description": "Length of the rendered clip in seconds; it wipes shut over its last 0.7 s."
+    }
+  ],
+  "fonts": [
+    "Caveat Brush"
+  ],
+  "tags": [
+    "lower third",
+    "caption",
+    "place",
+    "script",
+    "name"
+  ]
+}

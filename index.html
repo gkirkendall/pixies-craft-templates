@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixie's Craft Templates</title>
+<style>
+:root { --bg: #f6f5f1; --card: #ffffff; --ink: #1d232b; --muted: #5c6670; --line: #dedbd3; --accent: #1f5f8b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15191e; --card: #1e242b; --ink: #e9edf1; --muted: #9aa6b2; --line: #2e3640; --accent: #7cb7e0; } }
+:root[data-theme="dark"] { --bg: #15191e; --card: #1e242b; --ink: #e9edf1; --muted: #9aa6b2; --line: #2e3640; --accent: #7cb7e0; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 1280px; margin: 0 auto; padding: 32px 16px 48px; }
+h1 { font-size: 2rem; margin: 0 0 4px; }
+.sponsor { font-size: 1.05rem; margin: 0 0 16px; }
+.brand { display: flex; gap: 28px; align-items: center; }
+.brand img { flex: none; width: 170px; height: auto; }
+@media (max-width: 760px) { .brand { flex-direction: column; align-items: flex-start; gap: 12px; } .brand img { width: 130px; } }
+h2 { font-size: 1.4rem; margin: 48px 0 16px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+h3 { font-size: 1.1rem; margin: 0 0 12px; }
+p { margin: 0 0 8px; }
+a { color: var(--accent); }
+.lead { color: var(--muted); margin-bottom: 24px; }
+.row { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 20px; }
+.media { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 16px; align-items: start; }
+.media.top { grid-template-columns: 1fr 1fr; }
+.reels { display: flex; flex-direction: column; gap: 16px; }
+@media (max-width: 760px) { .media, .media.top { grid-template-columns: 1fr; } }
+figure { margin: 0; }
+figure img, figure video { display: block; width: 100%; height: auto; border-radius: 6px; background: #000; }
+figure video.tall { max-height: 420px; width: auto; max-width: 100%; margin: 0 auto; }
+.install li { margin-bottom: 6px; }
+figcaption { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 6px; }
+.meta { color: var(--muted); font-size: 0.9rem; margin-top: 12px; }
+footer { color: var(--muted); font-size: 0.85rem; margin-top: 48px; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+<header class="brand">
+<img src="brand/pixie_web.png" width="340" height="486" alt="Pixie, the PixBack chihuahua, in a peach dinosaur costume">
+<div><h1>Pixie's Craft Templates</h1>
+<p class="sponsor"><a href="https://getpixback.com/">Sponsored By PixBack - Photo and Video Backup to Google Photos</a></p>
+<p class="lead">Free motion templates for EffectCraft: maps, lower thirds, titles, logos and overlays. Each row shows all of a template's styles in one picture and a demo reel that names the feature on screen.</p></div>
+</header>
+<h2>The templates together</h2>
+<div class="media top">
+<figure><video controls preload="none" poster="demo/showreel_poster.jpg" src="demo/showreel.mp4"></video><figcaption>Showreel: every template</figcaption></figure>
+<figure><video controls preload="none" poster="demo/australia_trip/poster.jpg" src="demo/australia_trip/demo.mp4"></video><figcaption>Australia trip: the templates in one travel video</figcaption></figure>
+</div>
+<h2 id="install">How to install</h2>
+<ol class="install">
+<li><strong>Get EffectCraft</strong> 0.13 or later: <a href="https://getartcraft.com/apps/effectcraft">getartcraft.com/apps/effectcraft</a>.</li>
+<li><strong>Download a template:</strong> each template below has a download link per size (16x9, 9x16); or get them all with <a href="https://github.com/gkirkendall/pixies-craft-templates/archive/refs/heads/main.zip">the whole collection as a ZIP</a>.</li>
+<li><strong>Install its fonts:</strong> each template names its fonts, linked to their files; double-click a font file to install it (on Linux, copy it to ~/.local/share/fonts). All are free (SIL Open Font License). EffectCraft swaps a missing font for its own.</li>
+<li><strong>Use it:</strong> in EffectCraft, <em>File ▸ Import ▸ Essential Graphics Template…</em>, then change its text, colours, fonts and timing in the Essential Graphics panel.</li>
+<li><strong>From a script</strong> (for tools that make videos): <code>tools/render.py</code>; see <a href="https://github.com/gkirkendall/pixies-craft-templates#using-a-template">Using a template</a> in the README.</li>
+</ol>
+<h2>Maps</h2>
+<section class="row" id="locator"><h3>Locator</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/maps/locator/effectcraft-0.13/previews/styles.jpg" alt="Locator: all styles"><figcaption>Locator: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/maps/locator/effectcraft-0.13/previews/poster.jpg" src="effectcraft/maps/locator/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Locator: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">Zooms from a whole country to one place, then a pin, the place name and a subtitle appear; full frame or a corner card.<br>Download: <a href="effectcraft/maps/locator/effectcraft-0.13/templates/locator_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/maps/locator/effectcraft-0.13/templates/locator_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/inter">Inter</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/maps/locator">Template folder</a></p></section>
+<section class="row" id="route_leg"><h3>Route Leg</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/maps/route_leg/effectcraft-0.13/previews/styles.jpg" alt="Route Leg: all styles"><figcaption>Route Leg: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/maps/route_leg/effectcraft-0.13/previews/poster.jpg" src="effectcraft/maps/route_leg/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Route Leg: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">A line draws itself between two places on a map, with a pin and name at each end; full frame or a corner card.<br>Download: <a href="effectcraft/maps/route_leg/effectcraft-0.13/templates/route_leg_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/maps/route_leg/effectcraft-0.13/templates/route_leg_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/inter">Inter</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/maps/route_leg">Template folder</a></p></section>
+<h2>Lower Thirds</h2>
+<section class="row" id="basic"><h3>Basic Lower Third</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/lower_thirds/basic/effectcraft-0.13/previews/styles.jpg" alt="Basic Lower Third: all styles"><figcaption>Basic Lower Third: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/lower_thirds/basic/effectcraft-0.13/previews/poster.jpg" src="effectcraft/lower_thirds/basic/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Basic Lower Third: demo reel</figcaption></figure>
+<figure><video class="tall" controls preload="none" poster="effectcraft/lower_thirds/basic/effectcraft-0.13/previews/poster_9x16.jpg" src="effectcraft/lower_thirds/basic/effectcraft-0.13/previews/demo_9x16.mp4"></video><figcaption>Basic Lower Third: demo reel (9x16)</figcaption></figure>
+</div>
+</div><p class="meta">A dark bar with a title and subtitle slides in from the left, holds, and fades out; the bar fits the text.<br>Download: <a href="effectcraft/lower_thirds/basic/effectcraft-0.13/templates/basic_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/lower_thirds/basic/effectcraft-0.13/templates/basic_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/inter">Inter</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/lower_thirds/basic">Template folder</a></p></section>
+<section class="row" id="box_wipe"><h3>Box Wipe Lower Third</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/lower_thirds/box_wipe/effectcraft-0.13/previews/styles.jpg" alt="Box Wipe Lower Third: all styles"><figcaption>Box Wipe Lower Third: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/lower_thirds/box_wipe/effectcraft-0.13/previews/poster.jpg" src="effectcraft/lower_thirds/box_wipe/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Box Wipe Lower Third: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">A line sweeps in, a see-through box wipes open and an underlined script title and subtitle fade in; it wipes shut before Duration.<br>Download: <a href="effectcraft/lower_thirds/box_wipe/effectcraft-0.13/templates/box_wipe_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/lower_thirds/box_wipe/effectcraft-0.13/templates/box_wipe_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/caveat_brush">Caveat Brush</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/lower_thirds/box_wipe">Template folder</a></p></section>
+<h2>Titles</h2>
+<section class="row" id="animated_title"><h3>Animated Title</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/titles/animated_title/effectcraft-0.13/previews/styles.jpg" alt="Animated Title: all styles"><figcaption>Animated Title: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/titles/animated_title/effectcraft-0.13/previews/poster.jpg" src="effectcraft/titles/animated_title/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Animated Title: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">A title that animates in and out letter by letter, word by word or line by line, in one of eight styles; *starred* words take a highlight colour.<br>Download: <a href="effectcraft/titles/animated_title/effectcraft-0.13/templates/animated_title_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/titles/animated_title/effectcraft-0.13/templates/animated_title_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/inter">Inter</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/titles/animated_title">Template folder</a></p></section>
+<section class="row" id="credits"><h3>Credits</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/titles/credits/effectcraft-0.13/previews/styles.jpg" alt="Credits: all styles"><figcaption>Credits: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/titles/credits/effectcraft-0.13/previews/poster.jpg" src="effectcraft/titles/credits/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Credits: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">A title in quotes in tall condensed capitals with up to five credit lines under it, centred; empty lines close up.<br>Download: <a href="effectcraft/titles/credits/effectcraft-0.13/templates/credits_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/titles/credits/effectcraft-0.13/templates/credits_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/league_gothic">League Gothic</a> · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/montserrat">Montserrat</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/titles/credits">Template folder</a></p></section>
+<section class="row" id="sign_off"><h3>Sign-off</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/titles/sign_off/effectcraft-0.13/previews/styles.jpg" alt="Sign-off: all styles"><figcaption>Sign-off: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/titles/sign_off/effectcraft-0.13/previews/poster.jpg" src="effectcraft/titles/sign_off/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Sign-off: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">One line such as “Thank you for watching” between two hearts that follow its width; fades in, hearts pop.<br>Download: <a href="effectcraft/titles/sign_off/effectcraft-0.13/templates/sign_off_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/titles/sign_off/effectcraft-0.13/templates/sign_off_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/montserrat">Montserrat</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/titles/sign_off">Template folder</a></p></section>
+<section class="row" id="title"><h3>Title</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/titles/title/effectcraft-0.13/previews/styles.jpg" alt="Title: all styles"><figcaption>Title: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/titles/title/effectcraft-0.13/previews/poster.jpg" src="effectcraft/titles/title/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Title: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">A title line with an optional small spaced-out label over it, in the centre, bottom centre or a corner; fades and rises in.<br>Download: <a href="effectcraft/titles/title/effectcraft-0.13/templates/title_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/titles/title/effectcraft-0.13/templates/title_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/inter">Inter</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/titles/title">Template folder</a></p></section>
+<section class="row" id="typewriter"><h3>Typewriter</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/titles/typewriter/effectcraft-0.13/previews/styles.jpg" alt="Typewriter: all styles"><figcaption>Typewriter: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/titles/typewriter/effectcraft-0.13/previews/poster.jpg" src="effectcraft/titles/typewriter/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Typewriter: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">Text that types itself letter by letter with a blinking cursor, and can erase itself again; the finished line is centred.<br>Download: <a href="effectcraft/titles/typewriter/effectcraft-0.13/templates/typewriter_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/titles/typewriter/effectcraft-0.13/templates/typewriter_9x16.ectemplate" download>9x16</a> · Fonts: <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/fonts/inter">Inter</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/titles/typewriter">Template folder</a></p></section>
+<h2>Logos</h2>
+<section class="row" id="corner_logo"><h3>Corner Logo</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/logos/corner_logo/effectcraft-0.13/previews/styles.jpg" alt="Corner Logo: all styles"><figcaption>Corner Logo: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/logos/corner_logo/effectcraft-0.13/previews/poster.jpg" src="effectcraft/logos/corner_logo/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Corner Logo: demo reel</figcaption></figure>
+<figure><video class="tall" controls preload="none" poster="effectcraft/logos/corner_logo/effectcraft-0.13/previews/poster_9x16.jpg" src="effectcraft/logos/corner_logo/effectcraft-0.13/previews/demo_9x16.mp4"></video><figcaption>Corner Logo: demo reel (9x16)</figcaption></figure>
+</div>
+</div><p class="meta">A logo of any shape fitted in a square box in a chosen corner; it fades and rises in, and fades out by the end.<br>Download: <a href="effectcraft/logos/corner_logo/effectcraft-0.13/templates/corner_logo_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/logos/corner_logo/effectcraft-0.13/templates/corner_logo_9x16.ectemplate" download>9x16</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/logos/corner_logo">Template folder</a></p></section>
+<h2>Overlays</h2>
+<section class="row" id="glint"><h3>Glint</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/overlays/glint/effectcraft-0.13/previews/styles.jpg" alt="Glint: all styles"><figcaption>Glint: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/overlays/glint/effectcraft-0.13/previews/poster.jpg" src="effectcraft/overlays/glint/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Glint: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">One four-point star glint that pops in, turns a little and fades over 1 s, with a soft glow; place as many as you like.<br>Download: <a href="effectcraft/overlays/glint/effectcraft-0.13/templates/glint_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/overlays/glint/effectcraft-0.13/templates/glint_9x16.ectemplate" download>9x16</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/overlays/glint">Template folder</a></p></section>
+<section class="row" id="glint_set"><h3>Glint Set</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/overlays/glint_set/effectcraft-0.13/previews/styles.jpg" alt="Glint Set: all styles"><figcaption>Glint Set: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/overlays/glint_set/effectcraft-0.13/previews/poster.jpg" src="effectcraft/overlays/glint_set/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Glint Set: demo reel</figcaption></figure>
+</div>
+</div><p class="meta">Six glints already placed and timed one after another across a title, ready to drop over a title picture.<br>Download: <a href="effectcraft/overlays/glint_set/effectcraft-0.13/templates/glint_set_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/overlays/glint_set/effectcraft-0.13/templates/glint_set_9x16.ectemplate" download>9x16</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/overlays/glint_set">Template folder</a></p></section>
+<h2>Utility</h2>
+<section class="row" id="fill_frame"><h3>Fill the Frame</h3><div class="media">
+<figure><img loading="lazy" src="effectcraft/utility/fill_frame/effectcraft-0.13/previews/styles.jpg" alt="Fill the Frame: all styles"><figcaption>Fill the Frame: all styles</figcaption></figure>
+<div class="reels">
+<figure><video controls preload="none" poster="effectcraft/utility/fill_frame/effectcraft-0.13/previews/poster.jpg" src="effectcraft/utility/fill_frame/effectcraft-0.13/previews/demo.mp4"></video><figcaption>Fill the Frame: demo reel</figcaption></figure>
+<figure><video class="tall" controls preload="none" poster="effectcraft/utility/fill_frame/effectcraft-0.13/previews/poster_9x16.jpg" src="effectcraft/utility/fill_frame/effectcraft-0.13/previews/demo_9x16.mp4"></video><figcaption>Fill the Frame: demo reel (9x16)</figcaption></figure>
+</div>
+</div><p class="meta">Shows a picture or clip of any shape whole, over a blurred, darkened copy of itself that fills the frame, instead of black bars.<br>Download: <a href="effectcraft/utility/fill_frame/effectcraft-0.13/templates/fill_frame_16x9.ectemplate" download>16x9</a> · <a href="effectcraft/utility/fill_frame/effectcraft-0.13/templates/fill_frame_9x16.ectemplate" download>9x16</a><br>Sizes: 16x9, 9x16 · Tested with EffectCraft 0.13.0 · <a href="https://github.com/gkirkendall/pixies-craft-templates/tree/main/effectcraft/utility/fill_frame">Template folder</a></p></section>
+<footer>
+<p>The templates are free (MIT or Apache 2.0); their fonts are under the SIL Open Font License.</p>
+<p>The videos and style sheets show the owner's own travel photos: © Gregory Kirkendall, all rights reserved, not under the templates' licence. Music: “Relaxing Flute Tune” by Kerri, Sound Effects Factory (Free License). Maps: Natural Earth; map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.</p>
+<p>Pixie is PixBack's mascot: © Gregory Kirkendall, all rights reserved, not under the templates' licence.</p>
+<p><a href="https://github.com/gkirkendall/pixies-craft-templates">Source and templates on GitHub</a></p>
+</footer>
+</main>
+</body>
+</html>

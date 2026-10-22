@@ -1,0 +1,132 @@
+{
+  "id": "effectcraft/maps/locator",
+  "name": "Locator",
+  "version": "2.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "10/10"
+    }
+  ],
+  "kind": "motion",
+  "category": "maps",
+  "description": "Zooms from a whole country to one place, then a pin, the place name and a subtitle appear; full frame or a corner card.",
+  "duration_seconds": 5,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/locator_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/locator_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Map",
+      "type": "media",
+      "description": "The map picture, drawn by tools/maps.py locator at three times the frame size."
+    },
+    {
+      "name": "Place Position",
+      "type": "point",
+      "default": [
+        3564.6,
+        2500.9
+      ],
+      "description": "The place, in the map picture's pixels."
+    },
+    {
+      "name": "Zoom",
+      "type": "number",
+      "default": 3,
+      "description": "How far to zoom in, from 1 (none) to 3 (the map picture's full detail)."
+    },
+    {
+      "name": "Place Name",
+      "type": "text",
+      "default": "Port Campbell National Park"
+    },
+    {
+      "name": "Subtitle",
+      "type": "text",
+      "default": "VIC"
+    },
+    {
+      "name": "Pin Colour",
+      "type": "color",
+      "default": "#d9482b"
+    },
+    {
+      "name": "Corner Inset",
+      "type": "checkbox",
+      "default": false,
+      "description": "Play it all in a card in the top-right corner over transparency."
+    },
+    {
+      "name": "Map Credit",
+      "type": "text",
+      "default": "",
+      "description": "Shown in the map's bottom-right corner (empty for Natural Earth maps)."
+    },
+    {
+      "name": "Texture",
+      "type": "media",
+      "description": "Optional paper or grain picture, multiplied over the map (white changes nothing)."
+    },
+    {
+      "name": "Badge",
+      "type": "media",
+      "description": "Optional logo or flag in the card's top-left corner, fitted inside a 180-pixel square (empty: transparent)."
+    },
+    {
+      "name": "Name Font",
+      "type": "font",
+      "default": "Inter Bold",
+      "description": "Any installed font, for the place name."
+    },
+    {
+      "name": "Subtitle Font",
+      "type": "font",
+      "default": "Inter Medium",
+      "description": "Any installed font."
+    },
+    {
+      "name": "Credit Font",
+      "type": "font",
+      "default": "Inter Regular",
+      "description": "Any installed font, for the map credit."
+    }
+  ],
+  "fonts": [
+    "Inter"
+  ],
+  "fill": "tools/maps.py locator",
+  "credits": [
+    "Natural Earth (public domain) for the maps"
+  ],
+  "tags": [
+    "map",
+    "travel",
+    "locator",
+    "zoom",
+    "pin"
+  ]
+}

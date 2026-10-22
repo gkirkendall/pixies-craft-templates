@@ -1,0 +1,8 @@
+{
+  "Map": "../assets/default_map_16x9.png",
+  "Place Name": "Port Campbell National Park",
+  "Subtitle": "Victoria, Australia",
+  "Corner Inset": true,
+  "Zoom": 2.5,
+  "Pin Colour": "#1f6f8b"
+}

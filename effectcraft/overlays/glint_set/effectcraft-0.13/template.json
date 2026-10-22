@@ -1,0 +1,79 @@
+{
+  "id": "effectcraft/overlays/glint_set",
+  "name": "Glint Set",
+  "version": "1.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "28/28"
+    }
+  ],
+  "kind": "motion",
+  "category": "overlays",
+  "description": "Six glints already placed and timed one after another across a title, ready to drop over a title picture.",
+  "duration_seconds": 3.5,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/glint_set_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/glint_set_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Spread",
+      "type": "number",
+      "default": 100,
+      "description": "How far apart the glints sit, in % about the frame's centre; fit it to the title."
+    },
+    {
+      "name": "Size",
+      "type": "number",
+      "default": 140,
+      "description": "Width of the biggest glint, in pixels; the others are smaller."
+    },
+    {
+      "name": "Colour",
+      "type": "color",
+      "default": "#fff6dc"
+    },
+    {
+      "name": "Glow",
+      "type": "number",
+      "default": 60,
+      "description": "Strength of the soft glow, 0 to 100."
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 3.5,
+      "description": "Length of the rendered clip in seconds."
+    }
+  ],
+  "tags": [
+    "glint",
+    "sparkle",
+    "title",
+    "shine",
+    "overlay"
+  ]
+}

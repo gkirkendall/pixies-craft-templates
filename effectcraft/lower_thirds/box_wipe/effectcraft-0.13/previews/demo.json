@@ -1,0 +1,51 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 2.0,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "point_ritchie",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/stops.values.json",
+            "set": {
+              "Duration": 4.8
+            }
+          },
+          "at": 0.2
+        }
+      ],
+      "caption": "Default: Caveat Brush",
+      "caption_at": "top"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/long.values.json",
+            "set": {
+              "Duration": 4.8,
+              "Title Font": "Montserrat Bold",
+              "Subtitle Font": "Montserrat Regular",
+              "Box Colour": "#6b2d1a",
+              "Line Colour": "#f4a259"
+            }
+          },
+          "at": 0.2
+        }
+      ],
+      "caption": "Long title wraps · Montserrat · Box and Line Colour",
+      "caption_at": "top"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "footage": "australia",
+  "background": "sydney_cove",
+  "columns": 2,
+  "cells": [
+    {
+      "label": "Cursor: Bar (typing)",
+      "values": {},
+      "time": 1.6
+    },
+    {
+      "label": "Cursor: Underscore",
+      "values": {
+        "Cursor": "Underscore"
+      },
+      "time": 3.25
+    },
+    {
+      "label": "Cursor: None",
+      "values": {
+        "Cursor": "None"
+      },
+      "time": 3.25
+    },
+    {
+      "label": "Erase (part-way)",
+      "values": {
+        "Erase": true,
+        "Cursor": "None"
+      },
+      "time": 4.0
+    }
+  ]
+}

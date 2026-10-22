@@ -1,0 +1,56 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 2.0,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "port_campbell",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Fade": "Fade In",
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Fade: Fade In"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Fade": "Steady",
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Fade: Steady"
+    },
+    {
+      "footage": "mushroom_rock",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Fade": "Fade Out",
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Fade: Fade Out"
+    }
+  ]
+}

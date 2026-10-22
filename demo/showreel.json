@@ -1,0 +1,83 @@
+{
+  "size": "16x9",
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "poster_at": 13.0,
+  "title_page": "collection",
+  "end_page": true,
+  "segments": [
+    {
+      "title": [
+        "Pixie's Craft Templates",
+        "Free motion-graphics templates for EffectCraft"
+      ],
+      "seconds": 3
+    },
+    {
+      "clip": "{root}/effectcraft/maps/locator/effectcraft-0.13/previews/demo.mp4",
+      "start": 0,
+      "seconds": 8
+    },
+    {
+      "clip": "{root}/effectcraft/maps/route_leg/effectcraft-0.13/previews/demo.mp4",
+      "start": 0,
+      "seconds": 8
+    },
+    {
+      "clip": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/previews/demo.mp4",
+      "start": 0,
+      "seconds": 4.5
+    },
+    {
+      "clip": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/previews/demo.mp4",
+      "start": 0,
+      "seconds": 4.8
+    },
+    {
+      "clip": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/previews/demo.mp4",
+      "start": 0,
+      "seconds": 4
+    },
+    {
+      "clip": "{root}/effectcraft/overlays/glint/effectcraft-0.13/previews/demo.mp4",
+      "start": 0.2,
+      "seconds": 3.5
+    },
+    {
+      "clip": "{root}/effectcraft/overlays/glint_set/effectcraft-0.13/previews/demo.mp4",
+      "start": 0.2,
+      "seconds": 3.5
+    },
+    {
+      "clip": "{root}/effectcraft/logos/corner_logo/effectcraft-0.13/previews/demo.mp4",
+      "start": 2,
+      "seconds": 6
+    },
+    {
+      "clip": "{root}/effectcraft/titles/title/effectcraft-0.13/previews/demo.mp4",
+      "start": 0,
+      "seconds": 3.5
+    },
+    {
+      "clip": "{root}/effectcraft/titles/animated_title/effectcraft-0.13/previews/demo.mp4",
+      "start": 0,
+      "seconds": 7
+    },
+    {
+      "clip": "{root}/effectcraft/titles/typewriter/effectcraft-0.13/previews/demo.mp4",
+      "start": 0.3,
+      "seconds": 3.5
+    },
+    {
+      "clip": "{root}/demo/australia_trip/demo.mp4",
+      "start": 25.0,
+      "seconds": 11
+    },
+    {
+      "clip": "{root}/demo/australia_trip/demo.mp4",
+      "start": 55.0,
+      "seconds": 7
+    }
+  ]
+}

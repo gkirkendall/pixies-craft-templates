@@ -1,0 +1,40 @@
+{
+  "footage": "australia",
+  "background": "sydney_cove",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Size: 80",
+      "values": {
+        "Position": [
+          1300,
+          300
+        ],
+        "Size": 80
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Size: 140",
+      "values": {
+        "Position": [
+          1300,
+          300
+        ],
+        "Size": 140
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Size: 220",
+      "values": {
+        "Position": [
+          1300,
+          300
+        ],
+        "Size": 220
+      },
+      "time": 0.75
+    }
+  ]
+}

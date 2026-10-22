@@ -1,0 +1,26 @@
+{
+  "footage": "australia",
+  "background": "port_campbell",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Two lines",
+      "values": {}
+    },
+    {
+      "label": "Title only",
+      "values": {
+        "Subtitle": ""
+      }
+    },
+    {
+      "label": "Long title",
+      "values": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/examples/long.values.json"
+    },
+    {
+      "label": "9x16",
+      "values": {},
+      "variant": "9x16"
+    }
+  ]
+}

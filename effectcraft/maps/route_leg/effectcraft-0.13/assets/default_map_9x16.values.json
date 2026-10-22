@@ -1,0 +1,15 @@
+{
+  "Map": "default_map_9x16.png",
+  "From Position": [
+    829.3,
+    1497.6
+  ],
+  "To Position": [
+    250.7,
+    422.4
+  ],
+  "From Name": "Point Ritchie",
+  "To Name": "Mushroom Rock",
+  "Map Credit": "",
+  "Corner Inset": false
+}

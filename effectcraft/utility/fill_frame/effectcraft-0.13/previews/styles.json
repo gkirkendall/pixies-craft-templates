@@ -1,0 +1,32 @@
+{
+  "footage": "australia",
+  "columns": 4,
+  "cells": [
+    {
+      "label": "4:3 photo in 16x9",
+      "values": {
+        "Media": "{footage}/tjoritja"
+      },
+      "time": 1
+    },
+    {
+      "label": "Portrait picture in 16x9",
+      "values": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.values.json",
+      "time": 1
+    },
+    {
+      "label": "4:3 photo in 9x16",
+      "values": {
+        "Media": "{footage}/tjoritja"
+      },
+      "time": 1,
+      "variant": "9x16"
+    },
+    {
+      "label": "Portrait picture in 9x16",
+      "values": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.values.json",
+      "time": 1,
+      "variant": "9x16"
+    }
+  ]
+}

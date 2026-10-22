@@ -1,0 +1,40 @@
+{
+  "footage": "australia",
+  "background": "point_ritchie",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Default (Caveat Brush)",
+      "values": {}
+    },
+    {
+      "label": "Long title wraps",
+      "values": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/long.values.json"
+    },
+    {
+      "label": "No subtitle",
+      "values": {
+        "Subtitle": ""
+      }
+    },
+    {
+      "label": "Wiping open",
+      "values": {},
+      "time": 0.35
+    },
+    {
+      "label": "Other font and colours",
+      "values": {
+        "Title Font": "Montserrat Bold",
+        "Subtitle Font": "Montserrat Regular",
+        "Box Colour": "#6b2d1a",
+        "Line Colour": "#f4a259"
+      }
+    },
+    {
+      "label": "9x16",
+      "values": {},
+      "variant": "9x16"
+    }
+  ]
+}

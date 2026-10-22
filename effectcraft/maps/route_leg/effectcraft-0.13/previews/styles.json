@@ -1,0 +1,40 @@
+{
+  "footage": "australia",
+  "background": "mushroom_rock",
+  "columns": 2,
+  "prepare": [
+    [
+      "maps.py",
+      "route-legs",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--out",
+      "{work}/legs",
+      "--variant",
+      "16x9",
+      "--inset"
+    ]
+  ],
+  "cells": [
+    {
+      "label": "Full frame",
+      "values": {
+        "file": "{work}/legs/leg02_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "time": 4.5
+    },
+    {
+      "label": "Corner Inset (over footage)",
+      "values": {
+        "file": "{work}/legs/leg02_16x9.values.json",
+        "set": {
+          "Corner Inset": true
+        }
+      },
+      "time": 4.5
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "id": "effectcraft/overlays/glint",
+  "name": "Glint",
+  "version": "1.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "13/13"
+    }
+  ],
+  "kind": "motion",
+  "category": "overlays",
+  "description": "One four-point star glint that pops in, turns a little and fades over 1 s, with a soft glow; place as many as you like.",
+  "duration_seconds": 2,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/glint_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/glint_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Position",
+      "type": "point",
+      "default": [
+        1190.4,
+        410.4
+      ],
+      "description": "Where the glint's centre is, in frame pixels."
+    },
+    {
+      "name": "Start",
+      "type": "number",
+      "default": 0.5,
+      "description": "When it appears, in seconds; it is gone 1 s later."
+    },
+    {
+      "name": "Size",
+      "type": "number",
+      "default": 140,
+      "description": "Width of the star at its biggest, in pixels."
+    },
+    {
+      "name": "Colour",
+      "type": "color",
+      "default": "#fff6dc"
+    },
+    {
+      "name": "Glow",
+      "type": "number",
+      "default": 60,
+      "description": "Strength of the soft glow behind it, 0 to 100."
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 2,
+      "description": "Length of the rendered clip in seconds."
+    }
+  ],
+  "tags": [
+    "glint",
+    "sparkle",
+    "star",
+    "shine",
+    "overlay"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 1.6,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              690,
+              142
+            ],
+            "Start": 0.4,
+            "Size": 170,
+            "Duration": 4.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              962,
+              236
+            ],
+            "Start": 0.9,
+            "Size": 130,
+            "Duration": 4.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1212,
+              292
+            ],
+            "Start": 1.4,
+            "Size": 150,
+            "Duration": 4.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1364,
+              372
+            ],
+            "Start": 1.9,
+            "Size": 130,
+            "Duration": 4.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              640,
+              680
+            ],
+            "Start": 2.4,
+            "Size": 110,
+            "Duration": 4.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1100,
+              760
+            ],
+            "Start": 2.9,
+            "Size": 140,
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Six glints · Start and Size set for each"
+    }
+  ]
+}

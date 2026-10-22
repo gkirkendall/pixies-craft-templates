@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Port Campbell National Park",
+    "subtitle": "VIC",
+    "lat": -38.618,
+    "lon": 142.915
+  },
+  {
+    "name": "Point Ritchie",
+    "subtitle": "VIC",
+    "lat": -38.402,
+    "lon": 142.509
+  },
+  {
+    "name": "Mushroom Rock",
+    "subtitle": "NT",
+    "lat": -24.164,
+    "lon": 133.503
+  },
+  {
+    "name": "Tjoritja / West MacDonnell National Park",
+    "subtitle": "NT",
+    "lat": -23.778,
+    "lon": 133.074
+  },
+  {
+    "name": "Sydney Cove",
+    "subtitle": "NSW",
+    "lat": -33.857,
+    "lon": 151.21
+  },
+  {
+    "name": "Hilda's Lookout",
+    "subtitle": "NSW",
+    "lat": -33.731,
+    "lon": 150.297
+  }
+]

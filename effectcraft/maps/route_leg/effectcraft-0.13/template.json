@@ -1,0 +1,136 @@
+{
+  "id": "effectcraft/maps/route_leg",
+  "name": "Route Leg",
+  "version": "2.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "20/20"
+    }
+  ],
+  "kind": "motion",
+  "category": "maps",
+  "description": "A line draws itself between two places on a map, with a pin and name at each end; full frame or a corner card.",
+  "duration_seconds": 5,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/route_leg_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/route_leg_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Map",
+      "type": "media",
+      "description": "The map picture, drawn by tools/maps.py route-legs at the frame size."
+    },
+    {
+      "name": "From Position",
+      "type": "point",
+      "default": [
+        1122.7,
+        842.4
+      ],
+      "description": "Start pin, in the map picture's pixels."
+    },
+    {
+      "name": "To Position",
+      "type": "point",
+      "default": [
+        797.3,
+        237.6
+      ],
+      "description": "End pin, in the map picture's pixels."
+    },
+    {
+      "name": "From Name",
+      "type": "text",
+      "default": "Point Ritchie"
+    },
+    {
+      "name": "To Name",
+      "type": "text",
+      "default": "Mushroom Rock"
+    },
+    {
+      "name": "Line Colour",
+      "type": "color",
+      "default": "#d9482b"
+    },
+    {
+      "name": "Pin Colour",
+      "type": "color",
+      "default": "#d9482b"
+    },
+    {
+      "name": "Curve",
+      "type": "number",
+      "default": 20,
+      "description": "How far the line bows from straight, as a percentage of its length (0 = straight; negative bows the other way)."
+    },
+    {
+      "name": "Corner Inset",
+      "type": "checkbox",
+      "default": false,
+      "description": "Show the map as a card in the top-right corner over transparency."
+    },
+    {
+      "name": "Map Credit",
+      "type": "text",
+      "default": "",
+      "description": "Shown in the map's bottom-right corner; maps.py fills \"© OpenStreetMap\" when the map uses OpenStreetMap data."
+    },
+    {
+      "name": "Texture",
+      "type": "media",
+      "description": "Optional paper or grain picture, multiplied over the map (white changes nothing)."
+    },
+    {
+      "name": "Name Font",
+      "type": "font",
+      "default": "Inter Bold",
+      "description": "Any installed font, for both names (they always match)."
+    },
+    {
+      "name": "Credit Font",
+      "type": "font",
+      "default": "Inter Regular",
+      "description": "Any installed font, for the map credit."
+    }
+  ],
+  "fonts": [
+    "Inter"
+  ],
+  "fill": "tools/maps.py route-legs",
+  "credits": [
+    "Natural Earth (public domain) for the default maps",
+    "© OpenStreetMap contributors, ODbL, when a map includes OpenStreetMap detail"
+  ],
+  "tags": [
+    "map",
+    "travel",
+    "route",
+    "line",
+    "pin"
+  ]
+}

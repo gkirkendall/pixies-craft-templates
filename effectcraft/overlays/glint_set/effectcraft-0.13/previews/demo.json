@@ -1,0 +1,26 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 1.6,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "hildas_lookout",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 80,
+            "Duration": 4.5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 80"
+    }
+  ]
+}

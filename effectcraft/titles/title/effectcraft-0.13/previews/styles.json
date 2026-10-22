@@ -1,0 +1,67 @@
+{
+  "footage": "australia",
+  "background": "hildas_lookout",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Place: Centre",
+      "values": {
+        "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+        "set": {
+          "Place": "Centre"
+        }
+      }
+    },
+    {
+      "label": "Place: Bottom Centre",
+      "values": {
+        "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+        "set": {
+          "Place": "Bottom Centre"
+        }
+      }
+    },
+    {
+      "label": "Place: Bottom Left",
+      "values": {
+        "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+        "set": {
+          "Place": "Bottom Left"
+        }
+      }
+    },
+    {
+      "label": "Place: Bottom Right",
+      "values": {
+        "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+        "set": {
+          "Place": "Bottom Right"
+        }
+      }
+    },
+    {
+      "label": "Place: Top Left",
+      "values": {
+        "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+        "set": {
+          "Place": "Top Left"
+        }
+      }
+    },
+    {
+      "label": "Place: Top Right",
+      "values": {
+        "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+        "set": {
+          "Place": "Top Right"
+        }
+      }
+    },
+    {
+      "label": "No label",
+      "values": {
+        "Label": ""
+      }
+    }
+  ]
+}

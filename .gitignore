@@ -1,0 +1,11 @@
+.DS_Store
+__pycache__/
+# downloaded map data (tools/maps.py --fetch)
+data/
+# test renders; each test's RESULT.md and script are kept
+**/tests/out/
+# media folders EffectCraft unpacks beside a .ectemplate when rendering it directly (the zip already carries them)
+**/templates/* Media/
+
+# Temporary values files tools/demo.py writes beside an example while it renders
+_demo*.values.json

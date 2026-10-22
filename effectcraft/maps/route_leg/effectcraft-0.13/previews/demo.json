@@ -1,0 +1,47 @@
+{
+  "size": "16x9",
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "poster_at": 3.5,
+  "prepare": [
+    [
+      "maps.py",
+      "route-legs",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--out",
+      "{work}/legs",
+      "--variant",
+      "16x9",
+      "--inset"
+    ]
+  ],
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "card": "effectcraft/maps/route_leg",
+      "values": {
+        "file": "{work}/legs/leg02_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame"
+    },
+    {
+      "footage": "mushroom_rock",
+      "seconds": 6,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg03_16x9.values.json",
+          "at": 0.3
+        }
+      ],
+      "caption": "Corner Inset"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 4.0,
+  "prepare": [
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "0",
+      "--out",
+      "{work}/loc",
+      "--variant",
+      "16x9",
+      "--inset"
+    ]
+  ],
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/loc/locator00_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame"
+    },
+    {
+      "footage": "port_campbell",
+      "seconds": 6.5,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/locator",
+          "values": "{work}/loc/locator00_16x9.values.json",
+          "at": 0.3
+        }
+      ],
+      "caption": "Corner Inset"
+    }
+  ]
+}

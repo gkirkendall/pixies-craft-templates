@@ -1,0 +1,21 @@
+{
+  "footage": "australia",
+  "background": "sydney_cove",
+  "columns": 2,
+  "cells": [
+    {
+      "label": "Spread: 100",
+      "values": {
+        "Spread": 100
+      },
+      "time": 1.6
+    },
+    {
+      "label": "Spread: 60",
+      "values": {
+        "Spread": 60
+      },
+      "time": 1.6
+    }
+  ]
+}

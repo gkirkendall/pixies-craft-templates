@@ -1,0 +1,87 @@
+{
+  "footage": "australia",
+  "background": "tjoritja",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Style: Fade Up",
+      "values": {
+        "Style": "Fade Up"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Style: Slide",
+      "values": {
+        "Style": "Slide"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Style: Scale Pop",
+      "values": {
+        "Style": "Scale Pop"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Style: Turn",
+      "values": {
+        "Style": "Turn"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Style: Blur",
+      "values": {
+        "Style": "Blur"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Style: Spread In",
+      "values": {
+        "Style": "Spread In"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Style: Wave",
+      "values": {
+        "Style": "Wave"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "Style: Bounce",
+      "values": {
+        "Style": "Bounce"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "By: Words",
+      "values": {
+        "Text": "Coast to *centre* by road",
+        "By": "Words",
+        "Style": "Fade Up"
+      },
+      "time": 0.75
+    },
+    {
+      "label": "By: Lines",
+      "values": {
+        "Text": "Coast to\r*centre*",
+        "By": "Lines",
+        "Style": "Slide",
+        "Stagger": 0.3
+      },
+      "time": 0.75
+    },
+    {
+      "label": "At rest (starred word highlighted)",
+      "values": {},
+      "time": 2.0
+    }
+  ]
+}

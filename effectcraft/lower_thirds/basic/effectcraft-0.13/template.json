@@ -1,0 +1,73 @@
+{
+  "id": "effectcraft/lower_thirds/basic",
+  "name": "Basic Lower Third",
+  "version": "2.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "14/14"
+    }
+  ],
+  "kind": "motion",
+  "category": "lower_thirds",
+  "description": "A dark bar with a title and subtitle slides in from the left, holds, and fades out; the bar fits the text.",
+  "duration_seconds": 4,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/basic_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/basic_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Title",
+      "type": "text",
+      "default": "Port Campbell National Park"
+    },
+    {
+      "name": "Subtitle",
+      "type": "text",
+      "default": "Victoria, Australia"
+    },
+    {
+      "name": "Title Font",
+      "type": "font",
+      "default": "Inter Bold",
+      "description": "Any installed font."
+    },
+    {
+      "name": "Subtitle Font",
+      "type": "font",
+      "default": "Inter Regular",
+      "description": "Any installed font."
+    }
+  ],
+  "fonts": [
+    "Inter"
+  ],
+  "tags": [
+    "lower third",
+    "caption",
+    "title"
+  ]
+}

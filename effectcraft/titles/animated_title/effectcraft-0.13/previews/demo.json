@@ -1,0 +1,77 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "16x9",
+  "poster_at": 1.8,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "port_campbell",
+      "seconds": 4,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Coast to *centre*",
+            "Style": "Fade Up",
+            "Duration": 4
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Fade Up · By: Letters"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 4,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Every *wave* counts",
+            "Style": "Bounce",
+            "By": "Words",
+            "Stagger": 0.15,
+            "Duration": 4
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Bounce · By: Words"
+    },
+    {
+      "footage": "mushroom_rock",
+      "seconds": 4,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Into the *red* centre",
+            "Style": "Blur",
+            "Duration": 4
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Blur · By: Letters"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 4,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "TJORITJA",
+            "Style": "Spread In",
+            "Duration": 4
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Spread In"
+    }
+  ]
+}

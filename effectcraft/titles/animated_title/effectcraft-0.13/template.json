@@ -1,0 +1,164 @@
+{
+  "id": "effectcraft/titles/animated_title",
+  "name": "Animated Title",
+  "version": "1.0.0",
+  "app": "effectcraft",
+  "app_min_version": "0.13.0",
+  "built_with": "0.13.0",
+  "tested": [
+    {
+      "version": "0.13.0",
+      "date": "2026-10-21",
+      "result": "pass",
+      "checks": "35/35"
+    }
+  ],
+  "kind": "motion",
+  "category": "titles",
+  "description": "A title that animates in and out letter by letter, word by word or line by line, in one of eight styles; *starred* words take a highlight colour.",
+  "duration_seconds": 4,
+  "fps": 24,
+  "variants": [
+    {
+      "key": "16x9",
+      "size": [
+        1920,
+        1080
+      ],
+      "file": "templates/animated_title_16x9.ectemplate",
+      "output": "prores4444"
+    },
+    {
+      "key": "9x16",
+      "size": [
+        1080,
+        1920
+      ],
+      "file": "templates/animated_title_9x16.ectemplate",
+      "output": "prores4444"
+    }
+  ],
+  "controls": [
+    {
+      "name": "Text",
+      "type": "text",
+      "default": "Coast to *centre*",
+      "description": "The title; words between stars (*like this*) take the Highlight Colour, and the stars are not shown."
+    },
+    {
+      "name": "Font",
+      "type": "font",
+      "default": "Inter Bold"
+    },
+    {
+      "name": "Style",
+      "type": "dropdown",
+      "options": [
+        "Fade Up",
+        "Slide",
+        "Scale Pop",
+        "Turn",
+        "Blur",
+        "Spread In",
+        "Wave",
+        "Bounce"
+      ],
+      "default": "Fade Up"
+    },
+    {
+      "name": "By",
+      "type": "dropdown",
+      "options": [
+        "Letters",
+        "Words",
+        "Lines"
+      ],
+      "default": "Letters",
+      "description": "What moves on its own, one after another."
+    },
+    {
+      "name": "Stagger",
+      "type": "number",
+      "default": 0.05,
+      "description": "Seconds between one letter, word or line starting and the next; shortened for a long text so the move in takes at most a third of Duration (not used by Spread In)."
+    },
+    {
+      "name": "Ease",
+      "type": "number",
+      "default": 50,
+      "description": "0 (even speed) to 100 (a fast start that settles slowly)."
+    },
+    {
+      "name": "Fade",
+      "type": "dropdown",
+      "options": [
+        "Fade In and Out",
+        "Fade In",
+        "Steady",
+        "Fade Out"
+      ],
+      "default": "Fade In and Out",
+      "description": "Animate in and out (default), in only, neither (Steady) or out only, to hold a title across several clips."
+    },
+    {
+      "name": "Position",
+      "type": "point",
+      "default": [
+        960,
+        540
+      ],
+      "description": "Centre of the title, in frame pixels (9x16: [540, 960])."
+    },
+    {
+      "name": "Size",
+      "type": "number",
+      "default": 120,
+      "description": "Font size in pixels (9x16: 96)."
+    },
+    {
+      "name": "Max Width",
+      "type": "number",
+      "default": 1651,
+      "description": "Widest the title may be, in pixels (9x16: 929); a wider one shrinks to fit."
+    },
+    {
+      "name": "Colour",
+      "type": "color",
+      "default": "#ffffff"
+    },
+    {
+      "name": "Highlight Colour",
+      "type": "color",
+      "default": "#ffd166"
+    },
+    {
+      "name": "Shadow",
+      "type": "number",
+      "default": 40,
+      "description": "Strength of the soft shadow under the text, 0 to 100."
+    },
+    {
+      "name": "Start",
+      "type": "number",
+      "default": 0.3,
+      "description": "When the first letter, word or line starts to move in, in seconds."
+    },
+    {
+      "name": "Duration",
+      "type": "number",
+      "default": 4,
+      "description": "Length of the rendered clip in seconds; the move out ends 0.1 s before it."
+    }
+  ],
+  "fonts": [
+    "Inter"
+  ],
+  "tags": [
+    "title",
+    "animated",
+    "kinetic",
+    "text animator",
+    "typography",
+    "opening"
+  ]
+}

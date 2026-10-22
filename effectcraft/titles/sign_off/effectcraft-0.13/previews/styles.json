@@ -1,0 +1,37 @@
+{
+  "footage": "australia",
+  "background": "port_campbell",
+  "columns": 3,
+  "cells": [
+    {
+      "label": "Default",
+      "values": {}
+    },
+    {
+      "label": "Short text",
+      "values": {
+        "Text": "See you soon"
+      }
+    },
+    {
+      "label": "Long text",
+      "values": {
+        "Text": "Thank you for watching our trip around Australia"
+      }
+    },
+    {
+      "label": "Blink: heart on",
+      "values": {
+        "Blink": true
+      },
+      "time": 2.2
+    },
+    {
+      "label": "Blink: heart off",
+      "values": {
+        "Blink": true
+      },
+      "time": 1.95
+    }
+  ]
+}

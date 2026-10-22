@@ -1,0 +1,21 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 1.5,
+  "title_page": "template",
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 4,
+      "caption": "4:3 photo in 9x16"
+    },
+    {
+      "footage": "mushroom_rock",
+      "seconds": 4,
+      "caption": "4:3 photo in 9x16"
+    }
+  ]
+}
