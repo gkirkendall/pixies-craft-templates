@@ -1,9 +1,11 @@
 {
-  "size": "16x9",
   "footage": "australia",
   "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
   "crossfade": 0.5,
+  "size": "16x9",
   "poster_at": 3.5,
+  "title_page": "template",
+  "end_page": true,
   "prepare": [
     [
       "maps.py",
@@ -15,15 +17,36 @@
       "--variant",
       "16x9",
       "--inset"
+    ],
+    [
+      "maps.py",
+      "route-legs",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--out",
+      "{work}/full",
+      "--variant",
+      "16x9"
     ]
   ],
-  "title_page": "template",
-  "end_page": true,
   "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg05_16x9.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Short leg \u00b7 roads and towns",
+      "caption_at": "top"
+    },
     {
       "card": "effectcraft/maps/route_leg",
       "values": {
-        "file": "{work}/legs/leg02_16x9.values.json",
+        "file": "{work}/full/leg02_16x9.values.json",
         "set": {
           "Corner Inset": false
         }
@@ -32,16 +55,17 @@
       "caption": "Full frame"
     },
     {
-      "footage": "mushroom_rock",
-      "seconds": 6,
+      "footage": "tjoritja",
+      "seconds": 6.1,
       "overlays": [
         {
           "template": "effectcraft/maps/route_leg",
-          "values": "{work}/legs/leg03_16x9.values.json",
-          "at": 0.3
+          "values": "{work}/legs/leg04_16x9.values.json",
+          "at": 0.9
         }
       ],
-      "caption": "Corner Inset"
+      "caption": "Long leg",
+      "caption_at": "top"
     }
   ]
 }

@@ -31,7 +31,7 @@
   "segments": [
     {
       "footage": "sydney_cove",
-      "seconds": 5.5,
+      "seconds": 6.1,
       "overlays": [
         {
           "template": "effectcraft/titles/animated_title",
@@ -46,7 +46,7 @@
               1450
             ],
             "Start": 0,
-            "Duration": 5.5
+            "Duration": 6.1
           },
           "at": 0
         },
@@ -63,14 +63,14 @@
               1550
             ],
             "Start": 0.2,
-            "Duration": 5.5
+            "Duration": 6.1
           },
           "at": 0
         },
         {
           "template": "effectcraft/maps/route_leg",
           "values": "{work}/legs/leg05_9x16.values.json",
-          "at": 0.3
+          "at": 0.9
         }
       ],
       "caption": "Short leg \u00b7 roads and towns \u00b7 9x16",
@@ -89,12 +89,12 @@
     },
     {
       "footage": "tjoritja",
-      "seconds": 5.5,
+      "seconds": 6.1,
       "overlays": [
         {
           "template": "effectcraft/maps/route_leg",
           "values": "{work}/legs/leg04_9x16.values.json",
-          "at": 0.3
+          "at": 0.9
         }
       ],
       "caption": "Long leg \u00b7 9x16",
