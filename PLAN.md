@@ -1097,7 +1097,7 @@ docs and CI only, so the engine is the one the templates were tested on).** The 
 plays; the templates' controls are editable per shot in **Window ▸ Essential Graphics** (select the layer first; the
 timeline lists text and font controls without a value box, and the Properties panel shows only Layer Transform); a photo
 dragged from Finder into the Project panel comes in as one Image, and picking it in a shot's **Media** dropdown shows it whole
-over Fill the Frame's blur. Findings, each with its fix, **proposed for approval** (changes to step 1 of this plan):
+over Fill the Frame's blur. Findings, each with its fix (changes to step 1 of this plan); **1–3 APPROVED 2026-10-21 (Pixie: "1-3 approved")**, 4–6 not yet:
 1. **Layer order:** the builder put the later shot under the earlier one, so its crossfade was hidden (a cut at 4.5 s).
    Fix: each later shot above the one before; layers named "Shot 1 · Photo_1", "Shot 2 · Photo_2", ….
 2. **Project panel:** photos sat loose among the template folders. Fix: folders "Photos – replace these", "Maps – replace
@@ -1123,3 +1123,24 @@ over Fill the Frame's blur. Findings, each with its fix, **proposed for approval
    one issue for Pixie to read before anything is posted.
 6. **README for the kit** also says: the title fades in from 0.3 s (scrub past it); Window ▸ Essential Graphics is where the
    text is edited.
+
+**RECIPE1 photos picked 2026-10-21.** Pixabay candidates (6 per shot, landscapes, searched through the API with MPT's key read at
+run time) shown to Pixie as contact sheets. Two-shot test: Pixie's picks, Photo_1 = 1b, Photo_2 = 1e ("for the Photo 1 and
+Photo 2, those were my picks"). Full kit: Claude's recommendations ("for the full video, use your recommendations"):
+   | Kit file | Pick | Pixabay page | Author |
+   |---|---|---|---|
+   | Photo_1 | 1b | https://pixabay.com/photos/road-coast-cliff-sunset-mountains-5904909/ | fietzfotos |
+   | Photo_2 | 2e | https://pixabay.com/photos/beach-cliff-rock-mist-fog-sea-6203278/ | Susan1111 |
+   | Photo_3 | 3a | https://pixabay.com/photos/sunset-peace-peaceful-sea-beach-3867720/ | manolofranco |
+   | Photo_4 | 4e | https://pixabay.com/photos/desert-wadi-rum-jordan-sand-stone-4940300/ | ChiemSeherin |
+   | Photo_5 | 5b | https://pixabay.com/photos/mountains-valley-landscape-139012/ | 12019 |
+   | Photo_6 | 6c | https://pixabay.com/photos/hong-kong-victoria-harbour-hongkong-4370342/ | steven_yu |
+   | Photo_7 | 7b | https://pixabay.com/photos/lake-mountains-forest-landscape-8305673/ | HoangToney |
+   | Photo_8 | 8d | https://pixabay.com/photos/sunset-dusk-mountains-clouds-8516639/ | ChiemSeherin |
+Downloaded at the standard API's largest size (1280 px wide), then (scratchpad `label.py`) scaled to 1920 wide with a small
+"Photo N" label in the top-left corner; in Photo_6 (Hong Kong harbour) four readable brand signs (an insurer's name, a bank's
+logo and two lit signs) are softly blurred. Avoided: candidates with people, a hotel logo, the Sydney Opera House. Pixie also
+has their own Twelve Apostles photos; the kit stays all-Pixabay (Pixie: "Lets keep rolling", on the recommendation to keep
+Pixie's photos out of the downloadable kit). The test kit was rebuilt with fixes 1–2 (later shot on top: the crossfade now
+shows; layers "Shot 1 · Photo_1", "Shot 2 · Photo_2"; Project panel folders "Photos – replace these" and "Templates (no need to
+edit)", by `layer.rename`, `project.newFolder`, `project.move`).
