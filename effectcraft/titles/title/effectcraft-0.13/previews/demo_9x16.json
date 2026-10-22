@@ -1,0 +1,132 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 2.0,
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              330
+            ],
+            "Start": 0,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Title Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              430
+            ],
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Centre \u00b7 9x16"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Point Ritchie",
+            "Label": "Day two",
+            "Place": "Bottom Centre",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Bottom Centre \u00b7 9x16",
+      "caption_at": "top"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Start",
+            "Label": "Day one",
+            "Place": "Top Left",
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Finish",
+            "Label": "Day four",
+            "Place": "Top Right",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Top Left and Top Right \u00b7 9x16"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Uluru",
+            "Label": "Sunrise",
+            "Place": "Bottom Left",
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Kata Tjuta",
+            "Label": "Sunset",
+            "Place": "Bottom Right",
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Bottom Left and Bottom Right \u00b7 9x16",
+      "caption_at": "top"
+    }
+  ]
+}
