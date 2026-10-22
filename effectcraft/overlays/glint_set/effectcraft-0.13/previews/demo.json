@@ -9,18 +9,90 @@
   "segments": [
     {
       "footage": "hildas_lookout",
-      "seconds": 4.5,
+      "seconds": 5,
       "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Coast to *centre*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 50,
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
         {
           "template": "effectcraft/overlays/glint_set",
           "values": {
-            "Spread": 80,
-            "Duration": 4.5
+            "Spread": 49,
+            "Duration": 5
           },
           "at": 0.3
         }
       ],
-      "caption": "Spread: 80"
+      "caption": "Spread: 49"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "TJORITJA",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 50,
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 32,
+            "Colour": "#ffd166",
+            "Glow": 80,
+            "Duration": 5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 32 \u00b7 Colour \u00b7 Glow 80"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Some places are *bigger* than any photo",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 40,
+            "Start": 0.2,
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 85,
+            "Size": 70,
+            "Duration": 5.5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 85 \u00b7 Size: 70"
     }
   ]
 }
