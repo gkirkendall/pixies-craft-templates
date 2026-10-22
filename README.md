@@ -4,6 +4,8 @@
 
 **[Sponsored By PixBack - Photo and Video Backup to Google Photos](https://getpixback.com/)**
 
+**[⬇ Download all templates (zip)](https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-craft-templates.zip)**: every template, its fonts and the install steps.
+
 Free motion-graphics templates for the Craft apps, starting with [EffectCraft](https://github.com/storytold/effectcraft): map cards,
 lower thirds and more, each with named controls you can edit in the app or fill from a script.
 
@@ -17,8 +19,7 @@ Every reel opens on a title page (the template, its version and the EffectCraft 
 credits and links. The demo videos show Gregory Kirkendall's own photos
 and are not under the templates' licence (see [CREDITS.md](CREDITS.md)).
 
-The [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/) shows every template in a row: one picture of all its styles, and its demo reel with the
-feature on screen named in the corner.
+Check out the [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/)! It shows a demo reel and screen shots of every template.
 
 ## Templates
 
@@ -43,9 +44,10 @@ feature on screen named in the corner.
 ## How to install
 
 1. **Get EffectCraft** 0.13 or later: [getartcraft.com/apps/effectcraft](https://getartcraft.com/apps/effectcraft).
-2. **Download a template:** the [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/) has a download link per template and size (16x9, 9x16); or get them
-   all with GitHub's **Code ▸ Download ZIP**. The files are in each template's `effectcraft-0.13/templates/` folder.
-3. **Install its fonts:** each template names its fonts (the catalogue page and the template's README), all in [`fonts/`](fonts);
+2. **Download:** [every template in one ZIP](https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-craft-templates.zip), with their fonts and a README; or one template at a time from
+   the [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/) (a link per size, 16x9 and 9x16), or from the
+   [latest release](https://github.com/gkirkendall/pixies-craft-templates/releases/latest).
+3. **Install the fonts:** from the ZIP's `fonts` folder (or [the fonts alone](https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-craft-templates-fonts.zip));
    double-click a font file to install it (on Linux, copy it to `~/.local/share/fonts`). All are free (SIL Open Font License).
    EffectCraft swaps a missing font for its own.
 4. **Use it:** in EffectCraft, **File ▸ Import ▸ Essential Graphics Template…**, then change its text, colours, fonts and timing

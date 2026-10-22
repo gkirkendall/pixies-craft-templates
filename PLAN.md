@@ -982,7 +982,7 @@ and click each link to confirm it plays.
 source) now go to the live site; no extra line was needed. `test_page.py` gained the check (14 of 14 pass; it fails on the old
 README, naming all 5 links).
 
-## RELEASE1: one download with every template, as a GitHub release. PROPOSED 2026-10-21, awaiting approval
+## RELEASE1: one download with every template, as a GitHub release. APPROVED 2026-10-21 ("both")
 
 Pixie, 2026-10-21: "i suggest a release folder (or equivalent). Many people wanting to use the tempates will not want to compile
 code". The 26 `.ectemplate` files are already built and committed (no one has to compile anything), but they sit six folders
@@ -1016,3 +1016,60 @@ release, GitHub's standard place for "the thing to download", with one zip holdi
 4. Commit, tag (v0.6.5), push; then `gh release create v0.6.5` with the zip, the fonts zip and the 26 template files, and short notes (what's in
    it, how to install). Open the release page and the web page for Pixie, and check every page download link returns its file.
 5. From then on, a new release is made whenever a template changes (the release notes say which), using the same command.
+
+**Built (RELEASE1):** `tools/release.py` (as planned; `--publish TAG` makes the release), `tools/tests/test_release.py` (6
+checks), `dist/` gitignored. The page's top has a "Download all templates (zip)" button; its rows' Download and Fonts links
+and the install steps point at the latest release; README: the download line under the sponsor, install steps 2–3, and the
+"Check out the catalogue page!" sentence (3b). `SKILL.md` step 8 says to release whenever a template changes. Zip: 4.3 MB, 42
+files.
+
+## RECIPE1: the trip demo as a project template (Photo_1.jpg …, generic text). APPROVED 2026-10-21 ("both")
+
+Pixie, 2026-10-21: "If the users wanted to recreate my demo reel with thier own photos, is it easy to see how to do that?" —
+today, no (the reel is assembled by `tools/demo.py` with ffmpeg from separate template renders, documented only in `SKILL.md`).
+Then: "Normally the demo reel is a template, with generic text and obvious file names (Photo_1.jpg, Photo_2.jpg, etc) that can
+be quickly updated with their own photos and text to get a quick result." **So:** ship the trip demo as an EffectCraft project
+that anyone opens in the app, swaps photos and text, and renders. No scripts, no command line.
+
+**What EffectCraft offers (checked in effectcraft-cli 0.13):** a scripted project can be built and saved as `.ecproj`
+(`script FILE.jsx`, After Effects-style `app.project`); `essential.importTemplate {path, comp, addToComp}` places a template in a
+comp and `essential.set` fills its controls, which stay editable in the app's Essential Graphics panel; footage is found again by
+file name (`file.relinkFootage`), and `file.replaceFootage` swaps a picture.
+
+1. **The kit**, `project_templates/trip_video/` (one per size, 16x9 and 9x16; built by a new `tools/project.py` from the trip
+   demo's `demo.json`, so it follows the demo's shots and timing):
+   - `Trip Video 16x9.ecproj` — one comp, "Trip Video", with the same shots as the trip demo: each photo filled to the frame,
+     the same titles, lower thirds, maps, glint, corner logo and sign-off, the same timing and crossfades.
+   - `Photos/Photo_1.jpg`, `Photo_2.jpg`, … — **Pixabay photos** in place of Pixie's (Pixie, 2026-10-21: "I assume you can get
+     pictures from Pixabay to replace mine"), one per shot, chosen to match the demo's shots (a coastal road, a lookout, a
+     harbour, a beach…), landscapes only: no recognisable people, logos or brand names. Replace each with your own photo of the
+     same name and reopen the project, or use File ▸ Replace Footage.
+     **Pixabay licence (checked 2026-10-21, pixabay.com/service/license-summary):** free, no attribution needed, may be modified
+     into new works; but Content may not be distributed "on a Standalone basis", meaning "where no creative effort has been
+     applied to the Content and it remains in substantially the same form". The kit's photo files would be downloadable on their
+     own, so they ship altered: scaled to the project's size (1920 wide) and marked "Photo 1" … in a small corner label, which
+     also shows what to replace. The rendered preview reel is a new work and needs nothing more. Each photo's Pixabay page and
+     author are listed in `CREDITS.md` (not required, but it records where they came from).
+     **Fetching:** a one-off script in the scratchpad calls the Pixabay image API with the key read at run time from
+     `~/projects/MoneyPrinterTurbo/config.toml` (the key never enters this repository or any file of the kit), shows Pixie a
+     contact sheet of a few candidates per shot, and downloads only the picked ones.
+   - `Maps/Map_1.png` … — the demo's maps as example pictures, to replace with your own (made with `tools/maps.py`, or any map
+     picture: Fill the Frame fits it).
+   - `Logo/Logo.png` — a placeholder logo for the Corner Logo.
+   - Generic text in every title: "Your Trip Title", "First Stop", "Place Name · Day 1", "Thanks for watching".
+   - No music file (the demo's track may not be shared); `Music/` is empty with a note: put your track there and drag it in.
+   - No Pixie title page or end page.
+   - `README.txt`: open the project, replace the photos, edit the text in Essential Graphics, add music, File ▸ Export / render.
+2. **Ships in the release** (RELEASE1) as `pixies-trip-video-template.zip`, and is linked from the web page beside the trip demo
+   ("Make your own: download the project template") and from the README.
+3. **Checks** (`tools/tests/test_project.py`): the project opens in effectcraft-cli, has no missing footage, every placeholder
+   is used, every title holds the generic text, and a still rendered at each shot matches the demo's shot (same template, same
+   place); and a render of the whole project lasts as long as the demo.
+3a. **A preview of the kit:** a reel rendered from the project itself with the Pixabay photos (so visitors see what they will get),
+   beside the trip demo on the web page; Pixie's own trip demo stays as it is.
+4. **First a test of the one unknown:** whether a project built this way opens in the EffectCraft app with every template's
+   controls editable and the photos found next to it. I build a two-shot project, and Pixie opens it in the app; the rest is
+   built only if that works.
+5. Commit, tag, push; open the project folder and the page for Pixie.
+
+RELEASE1 is separate; the two can be approved together or apart.

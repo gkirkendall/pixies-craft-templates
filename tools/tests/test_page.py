@@ -7,7 +7,8 @@ Checks: the page is what tools/page.py writes now; every template has a row with
 file the page links to exists; it makes no outside requests (no outside src, poster, script or stylesheet; outside links are
 fine); every video loads nothing until played (preload="none") and has a poster; the showreel and the trip demo are at the top;
 the PixBack sponsor line sits under the title, linking to getpixback.com, with Pixie beside them;
-the how-to-install steps; a download link per template size; every font a template lists has its folder in fonts/; the README's
+the how-to-install steps; a download link per template size, to the file the latest release attaches, and the
+download-all and fonts zips (PLAN.md, RELEASE1); every font a template lists has its folder in fonts/; the README's
 video and page links go to the live site (github.com doesn't play a repository video); .nojekyll is present and the page sits at
 the root.
 """
@@ -21,6 +22,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 SITE = "https://gkirkendall.github.io/pixies-craft-templates/"
 sys.path.insert(0, str(ROOT / "tools"))
 import page  # noqa: E402
+import release  # noqa: E402
 
 
 class Links(HTMLParser):
@@ -89,9 +91,13 @@ def main():
     check("how to install", steps.count("<li>") == 5 and "File ▸ Import ▸ Essential Graphics Template…" in steps,
           f"{steps.count('<li>')} steps")
     want = sorted(f.manifest["id"] + "|" + v["key"] for f in map(page.current, sorted({i for i in ids})) for v in f.manifest["variants"])
-    got = [a for t, a in p.tags if t == "a" and "download" in a and a.get("href", "").endswith(".ectemplate")]
-    check("a download link per template size", len(got) == len(want) and all((page.ROOT / a["href"]).is_file() for a in got),
-          f"{len(got)} links for {len(want)} template sizes")
+    got = sorted(a["href"] for t, a in p.tags if t == "a" and a.get("href", "").endswith(".ectemplate"))
+    attached = sorted(page.ASSETS + n for n, _ in release.templates())
+    check("a release download link per template size", len(got) == len(want) and got == attached,
+          f"{len(got)} links for {len(want)} template sizes" + ("" if got == attached else f"; not release files: {sorted(set(got) - set(attached))}"))
+    zips = [a["href"] for t, a in p.tags if t == "a" and a.get("href", "").endswith(".zip")]
+    check("download-all and fonts zips from the release", page.ASSETS + page.ZIP in zips and page.ASSETS + page.FONTS_ZIP in zips
+          and '<p class="download"><a href="' + page.ASSETS + page.ZIP + '">Download all templates (zip)</a></p>' in top, f"{len(zips)} zip links")
     fonts = sorted({n for i in ids for n in page.current(i).manifest.get("fonts", [])})
     gone = [n for n in fonts if not page.font_folder(n).is_dir()]
     check("every listed font has its folder", not gone, f"{len(fonts)} fonts" + (f"; no folder: {gone}" if gone else ""))

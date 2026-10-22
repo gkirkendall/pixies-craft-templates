@@ -9,3 +9,6 @@ data/
 
 # Temporary values files tools/demo.py writes beside an example while it renders
 _demo*.values.json
+
+# release files tools/release.py builds
+dist/

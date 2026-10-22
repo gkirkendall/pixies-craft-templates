@@ -59,6 +59,9 @@ EffectCraft's command-line tool. Paths below are relative to the repository root
    photo); `tools/sheet.py previews/styles.json --footage DIR` writes `previews/styles.jpg`. `tools/catalog.py` (or
    `tools/page.py`) then rewrites the page `index.html` (repository root, served by GitHub Pages); `tools/catalog.py --check` fails on a missing or stale sheet or
    page, and `tools/tests/test_page.py` checks the page's rows and links. A new template needs both before it is committed.
+8. **Release:** the page's download links fetch the latest GitHub release, so whenever a template changes, push the tagged commit,
+   then `python3 tools/release.py --publish <tag>`: it builds `dist/` (the all-templates zip, the fonts zip and each
+   `.ectemplate`) and creates the release; `tools/tests/test_release.py` checks the files.
 
 ### Map templates
 

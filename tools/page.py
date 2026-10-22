@@ -7,9 +7,10 @@
 
 One plain HTML file with its CSS inline: no scripts, no outside fonts or requests; it uses the committed sheets and reels in place
 (GitHub Pages serves the repository root, .nojekyll making it serve every file as it is). At the top, the title and the PixBack
-sponsor line linking to getpixback.com, beside Pixie (brand/pixie.png; PLAN.md, BRAND1); then the showreel and the Australia trip demo; then a
+sponsor line linking to getpixback.com and the "Download all templates (zip)" link to the latest release (PLAN.md, RELEASE1),
+beside Pixie (brand/pixie.png; PLAN.md, BRAND1); then the showreel and the Australia trip demo; then a
 heading per category and a row per template: its style sheet (previews/styles.jpg) and its demo reel(s), each labelled
-underneath, then its description, sizes, tested versions and a link to its folder. Videos load nothing until played.
+underneath, then its description, its download links and fonts (from the release), sizes, tested versions and a link to its folder. Videos load nothing until played.
 tools/catalog.py --check also fails when the page is out of date.
 """
 import argparse
@@ -28,12 +29,15 @@ PAGE = ROOT / "index.html"
 NAME = "Pixie's Craft Templates"
 REPO = "https://github.com/gkirkendall/pixies-craft-templates"
 PIXIE = ROOT / "brand" / "pixie_web.png"
+# The release files tools/release.py builds (PLAN.md, RELEASE1); "latest" always fetches the newest release
+ASSETS = f"{REPO}/releases/latest/download/"
+ZIP, FONTS_ZIP = "pixies-craft-templates.zip", "pixies-craft-templates-fonts.zip"
 # How to install (PLAN.md, INSTALL1); the README's "How to install" says the same
 INSTALL = [
     '<strong>Get EffectCraft</strong> 0.13 or later: <a href="https://getartcraft.com/apps/effectcraft">getartcraft.com/apps/effectcraft</a>.',
-    "<strong>Download a template:</strong> each template below has a download link per size (16x9, 9x16); or get them all with "
-    f'<a href="{REPO}/archive/refs/heads/main.zip">the whole collection as a ZIP</a>.',
-    "<strong>Install its fonts:</strong> each template names its fonts, linked to their files; double-click a font file to install it "
+    f'<strong>Download:</strong> <a href="{ASSETS}{ZIP}">every template in one ZIP</a>, with their fonts and a README; or one '
+    "template at a time with its download link below (16x9, 9x16).",
+    "<strong>Install the fonts:</strong> in the ZIP's fonts folder, or each template's Fonts link below; double-click a font file to install it "
     "(on Linux, copy it to ~/.local/share/fonts). All are free (SIL Open Font License). EffectCraft swaps a missing font for its own.",
     "<strong>Use it:</strong> in EffectCraft, <em>File ▸ Import ▸ Essential Graphics Template…</em>, then change its text, colours, "
     "fonts and timing in the Essential Graphics panel.",
@@ -57,7 +61,9 @@ CSS = """
 body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
 main { max-width: 1280px; margin: 0 auto; padding: 32px 16px 48px; }
 h1 { font-size: 2rem; margin: 0 0 4px; }
-.sponsor { font-size: 1.05rem; margin: 0 0 16px; }
+.sponsor { font-size: 1.05rem; margin: 0 0 12px; }
+.download a { display: inline-block; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 600;
+  padding: 8px 16px; border-radius: 8px; margin-bottom: 16px; }
 .brand { display: flex; gap: 28px; align-items: center; }
 .brand img { flex: none; width: 170px; height: auto; }
 @media (max-width: 760px) { .brand { flex-direction: column; align-items: flex-start; gap: 12px; } .brand img { width: 130px; } }
@@ -98,12 +104,18 @@ def current(template):
     return ([f for f in fs if not f.frozen] or fs)[-1]
 
 
-def build():
+def templates():
+    """Every template's id ("effectcraft/maps/route_leg"), in the order found."""
     manifests = {}
     for app in catalog.APPS:
         for path in sorted((ROOT / app).rglob("template.json")) if (ROOT / app).is_dir() else ():
             if "/tests/out/" not in path.as_posix():
                 manifests.setdefault(path.parent.parent.relative_to(ROOT).as_posix(), None)
+    return list(manifests)
+
+
+def build():
+    manifests = templates()
     pixie_w, pixie_h = Image.open(PIXIE).size
     out = ["<!doctype html>", '<html lang="en">', "<head>", '<meta charset="utf-8">',
            '<meta name="viewport" content="width=device-width, initial-scale=1">', f"<title>{html.escape(NAME, quote=False)}</title>",
@@ -111,6 +123,7 @@ def build():
            f'<img src="{rel(PIXIE)}" width="{pixie_w}" height="{pixie_h}" alt="Pixie, the PixBack chihuahua, in a peach dinosaur costume">',
            f"<div><h1>{html.escape(NAME, quote=False)}</h1>",
            f'<p class="sponsor"><a href="{SPONSOR[1]}">{html.escape(SPONSOR[0])}</a></p>',
+           f'<p class="download"><a href="{ASSETS}{ZIP}">Download all templates (zip)</a></p>',
            '<p class="lead">Free motion templates for EffectCraft: maps, lower thirds, titles, logos and overlays. Each row shows all '
            "of a template's styles in one picture and a demo reel that names the feature on screen.</p></div>", "</header>",
            "<h2>The templates together</h2>", '<div class="media top">',
@@ -136,9 +149,8 @@ def build():
                 out.append(video(demo, f"{m['name']}: demo reel" + (" (9x16)" if demo.stem.endswith("9x16") else "")))
             out.append("</div>")
             sizes = ", ".join(v["key"] for v in m["variants"])
-            downloads = " · ".join(f'<a href="{rel(f.path / v["file"])}" download>{v["key"]}</a>' for v in m["variants"])
-            fonts = " · ".join(f'<a href="{REPO}/tree/main/{font_folder(n).relative_to(ROOT).as_posix()}">{html.escape(n)}</a>'
-                               for n in m.get("fonts", []))
+            downloads = " · ".join(f'<a href="{ASSETS}{pathlib.Path(v["file"]).name}">{v["key"]}</a>' for v in m["variants"])
+            fonts = " · ".join(f'<a href="{ASSETS}{FONTS_ZIP}">{html.escape(n)}</a>' for n in m.get("fonts", []))
             out.append(f'</div><p class="meta">{html.escape(m["description"])}<br>Download: {downloads}' + (f' · Fonts: {fonts}' if fonts else '') + f'<br>Sizes: {sizes} · Tested with EffectCraft '
                        f'{html.escape(catalog.tested_text(m["id"]))} · <a href="{REPO}/tree/main/{m["id"]}">Template folder</a></p></section>')
     out += ["<footer>",
