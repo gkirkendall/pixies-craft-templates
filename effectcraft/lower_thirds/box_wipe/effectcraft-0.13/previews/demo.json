@@ -9,7 +9,7 @@
   "segments": [
     {
       "footage": "point_ritchie",
-      "seconds": 5,
+      "seconds": 5.7,
       "overlays": [
         {
           "template": "effectcraft/lower_thirds/box_wipe",
@@ -19,7 +19,7 @@
               "Duration": 4.8
             }
           },
-          "at": 0.2
+          "at": 0.9
         }
       ],
       "caption": "Default: Caveat Brush",
@@ -27,24 +27,42 @@
     },
     {
       "footage": "tjoritja",
-      "seconds": 5,
+      "seconds": 6.2,
       "overlays": [
         {
           "template": "effectcraft/lower_thirds/box_wipe",
           "values": {
             "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/long.values.json",
             "set": {
-              "Duration": 4.8,
+              "Duration": 5.3,
               "Title Font": "Montserrat Bold",
               "Subtitle Font": "Montserrat Regular",
               "Box Colour": "#6b2d1a",
-              "Line Colour": "#f4a259"
+              "Line Colour": "#f4a259",
+              "Subtitle": "Northern Territory, Australia"
             }
           },
-          "at": 0.2
+          "at": 0.9
         }
       ],
-      "caption": "Long title wraps · Montserrat · Box and Line Colour",
+      "caption": "Long title wraps \u00b7 Montserrat \u00b7 Box and Line Colour",
+      "caption_at": "top"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.7,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "Title": "Uluru, Northern Territory, Australia",
+            "Subtitle": "",
+            "Duration": 4.8
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "No subtitle: the box closes up",
       "caption_at": "top"
     }
   ]
