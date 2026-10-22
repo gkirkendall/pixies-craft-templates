@@ -58,7 +58,7 @@ def main():
     m = folder.manifest
     with tempfile.TemporaryDirectory() as tmp:
         title = read(BOX_WIPE / "previews" / "demo.mp4", 1.5, tmp)
-        want = [m["name"], f"Template version {m['version']}", f"For EffectCraft {folder.range_text()} (tested)",
+        want = [m["name"], f"Template version {m['version']}", f"For EffectCraft {folder.range_text().replace(chr(0x2013), '-')} (tested)",   # tesseract reads the range's en-dash as a hyphen
                 "getartcraft.com/apps/effectcraft", "github.com/storytold/effectcraft"]
         check("Box Wipe title page", all(w in title for w in want), f"read {title!r}; missing {[w for w in want if w not in title]}")
         end = read(BOX_WIPE / "previews" / "demo.mp4", -1.5, tmp)

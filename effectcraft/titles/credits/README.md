@@ -7,6 +7,6 @@ chooses it for you (`--which` shows the choice). The details, controls and examp
 
 | Folder | Tested with EffectCraft | Template version | Status |
 |---|---|---|---|
-| [effectcraft-0.13](effectcraft-0.13/README.md) | 0.13.0 | 1.2.0 | current |
+| [effectcraft-0.13](effectcraft-0.13/README.md) | 0.13.0–0.14.0 | 1.3.0 | current |
 
 Written by `tools/catalog.py` from the test records `tools/verify.py` keeps; do not edit by hand.

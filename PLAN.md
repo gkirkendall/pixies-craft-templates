@@ -1121,6 +1121,12 @@ over Fill the Frame's blur. Findings, each with its fix (changes to step 1 of th
    checks every default and example value sits inside its control's slider range. This changes the templates' controls, so
    each affected template gets a new version (1.1.0) with its examples, demo specs, style sheets, reels and MPT's callers
    updated, verified on 0.13.0 and 0.14.0, and a new release. A separate plan entry (SLIDER1) before the full kit.
+   **SLIDER1 done 2026-10-22 (v0.6.27 to v0.6.30; details and deviations in SLIDER1.md).** Max Width is a percent of the frame width
+   (86; Box Wipe 57.3 and 83.3), Size is 50 = normal and 100 = double (Animated Title, Corner Logo, Glint, Glint Set), Route Leg's
+   Curve is 50 = straight. Ten templates bumped (Route Leg 2.1.0, Credits 1.3.0, the rest 1.1.0). `catalog.py --check` now fails any
+   number control or example/preview value outside 0-100 (`tools/tests/test_sliders.py`, 6/6). Verified on EffectCraft 0.13.0 and
+   0.14.0 (every template passes); style sheets and the ten reels remade from footage; reels match the committed demos;
+   `test_pages` 8/8, `test_page` 15/15, `test_release` 6/6. Pixie approved step 1 in the 0.14 app. Release waits for Pixie's "go ahead".
 5. **Report to EffectCraft's maintainers** (Pixie decides; outward-facing): (a) Replace Footage on a still brings a numbered
    run as a sequence without asking, unlike Import; (b) the Essential Graphics slider clamps values outside its slider
    range (dropped: see ECPATCH1's outcome); (c) Reload Footage keeps the old picture size. **Posted 2026-10-21** (Pixie: "post the bug reports"): (a) as

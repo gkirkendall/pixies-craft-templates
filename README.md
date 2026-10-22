@@ -26,19 +26,19 @@ Check out the [catalogue page](https://gkirkendall.github.io/pixies-craft-templa
 <!-- catalog:start -->
 | Template | App | Kind | Sizes | Tested with | Description |
 |---|---|---|---|---|---|
-| [Corner Logo](effectcraft/logos/corner_logo/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | A logo of any shape fitted in a square box in a chosen corner; it fades and rises in, and fades out by the end. |
-| [Basic Lower Third](effectcraft/lower_thirds/basic/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | A dark bar with a title and subtitle slides in from the left, holds, and fades out; the bar fits the text. |
-| [Box Wipe Lower Third](effectcraft/lower_thirds/box_wipe/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | A line sweeps in, a see-through box wipes open and an underlined script title and subtitle fade in; it wipes shut before Duration. |
-| [Locator](effectcraft/maps/locator/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | Zooms from a whole country to one place, then a pin, the place name and a subtitle appear; full frame or a corner card. |
-| [Route Leg](effectcraft/maps/route_leg/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | A line draws itself between two places on a map, with a pin and name at each end; full frame or a corner card. |
-| [Glint](effectcraft/overlays/glint/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | One four-point star glint that pops in, turns a little and fades over 1 s, with a soft glow; place as many as you like. |
-| [Glint Set](effectcraft/overlays/glint_set/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | Six glints already placed and timed one after another across a title, ready to drop over a title picture. |
-| [Animated Title](effectcraft/titles/animated_title/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | A title that animates in and out letter by letter, word by word or line by line, in one of eight styles; *starred* words take a highlight colour. |
-| [Credits](effectcraft/titles/credits/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | A title in quotes in tall condensed capitals with up to five credit lines under it, centred; empty lines close up. |
-| [Sign-off](effectcraft/titles/sign_off/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | One line such as “Thank you for watching” between two hearts that follow its width; fades in, hearts pop. |
-| [Title](effectcraft/titles/title/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | A title line with an optional small spaced-out label over it, in the centre, bottom centre or a corner; fades and rises in. |
-| [Typewriter](effectcraft/titles/typewriter/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | Text that types itself letter by letter with a blinking cursor, and can erase itself again; the finished line is centred. |
-| [Fill the Frame](effectcraft/utility/fill_frame/) | effectcraft | motion | 16x9, 9x16 | 0.13.0 | Shows a picture or clip of any shape whole, over a blurred, darkened copy of itself that fills the frame, instead of black bars. |
+| [Corner Logo](effectcraft/logos/corner_logo/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | A logo of any shape fitted in a square box in a chosen corner; it fades and rises in, and fades out by the end. |
+| [Basic Lower Third](effectcraft/lower_thirds/basic/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | A dark bar with a title and subtitle slides in from the left, holds, and fades out; the bar fits the text. |
+| [Box Wipe Lower Third](effectcraft/lower_thirds/box_wipe/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | A line sweeps in, a see-through box wipes open and an underlined script title and subtitle fade in; it wipes shut before Duration. |
+| [Locator](effectcraft/maps/locator/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | Zooms from a whole country to one place, then a pin, the place name and a subtitle appear; full frame or a corner card. |
+| [Route Leg](effectcraft/maps/route_leg/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | A line draws itself between two places on a map, with a pin and name at each end; full frame or a corner card. |
+| [Glint](effectcraft/overlays/glint/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | One four-point star glint that pops in, turns a little and fades over 1 s, with a soft glow; place as many as you like. |
+| [Glint Set](effectcraft/overlays/glint_set/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | Six glints already placed and timed one after another across a title, ready to drop over a title picture. |
+| [Animated Title](effectcraft/titles/animated_title/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | A title that animates in and out letter by letter, word by word or line by line, in one of eight styles; *starred* words take a highlight colour. |
+| [Credits](effectcraft/titles/credits/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | A title in quotes in tall condensed capitals with up to five credit lines under it, centred; empty lines close up. |
+| [Sign-off](effectcraft/titles/sign_off/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | One line such as “Thank you for watching” between two hearts that follow its width; fades in, hearts pop. |
+| [Title](effectcraft/titles/title/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | A title line with an optional small spaced-out label over it, in the centre, bottom centre or a corner; fades and rises in. |
+| [Typewriter](effectcraft/titles/typewriter/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | Text that types itself letter by letter with a blinking cursor, and can erase itself again; the finished line is centred. |
+| [Fill the Frame](effectcraft/utility/fill_frame/) | effectcraft | motion | 16x9, 9x16 | 0.13.0–0.14.0 | Shows a picture or clip of any shape whole, over a blurred, darkened copy of itself that fills the frame, instead of black bars. |
 <!-- catalog:end -->
 
 ## How to install
