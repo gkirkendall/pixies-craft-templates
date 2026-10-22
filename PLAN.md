@@ -834,7 +834,7 @@ on the same end page (64 s) and the showreel opens on a collection title page (7
 themselves). The reel check's limit is 25 s. `tools/tests/test_pages.py`: 6 of 6 (OCR of Box Wipe's, the showreel's and the trip
 demo's pages). The owner reviewed the Box Wipe reel: "looks good".
 
-## WEB2: GitHub hosts the page, its pictures and its videos; PixBack under the title. APPROVED 2026-10-21 ("Approved"); items 1, 2, 4 built, publishing (3) next
+## WEB2: GitHub hosts the page, its pictures and its videos; PixBack under the title. APPROVED 2026-10-21 ("Approved"); DONE 2026-10-21, published as v0.6.0
 
 Owner, 2026-10-21: "I like the web page as a starting point, will need to point to artifacts committed on github. I want github
 to host the page and the images/videos. At the Top - Craft Templates, New Line, Then the "Sponsered By PixBack" information from
@@ -876,6 +876,15 @@ after a squash, and GitHub can keep serving old commits by their ID. **Proposed 
 2. Make one new commit holding today's tree, with the no-reply address; tag it `v0.6.0` (first public version).
 3. Create a new public `gkirkendall/craft-templates` and push only that commit and tag (no old tags, no old commit IDs).
 4. Switch Pages on (`main`, `/`), then open https://gkirkendall.github.io/craft-templates/ and play a reel to check.
+
+**Published 2026-10-21 (each step confirmed by the owner).** Steps 3 and 4 used the BRAND1 name. (1) The private repository is
+now `gkirkendall/craft-templates-history`; the verified 199 MB bundle is `~/projects/craft-templates-history.bundle`; the old
+folder `~/projects/craft-templates` points at it and is history only. (2) The working folder is now
+`~/projects/pixies-craft-templates`: today's 578 tracked files in one commit by the no-reply address, tagged `v0.6.0`; every
+test passed there (fonts 6/6, page 13/13, reels 8/8, versions 9/9, catalog 13 templates, 0 problems). (3) Public
+`gkirkendall/pixies-craft-templates` created, holding only that commit and tag. (4) Pages on (`main`, `/`); the first build
+finished, and https://gkirkendall.github.io/pixies-craft-templates/ serves the page, the showreel, Pixie and the template
+downloads (all HTTP 200).
 
 ## BRAND1: Pixie's Craft Templates. APPROVED 2026-10-21 ("approved")
 
