@@ -946,6 +946,10 @@ after Pixie's test shows a template listed there. Gallery folder: `~/Library/App
 (macOS), `%APPDATA%\EffectCraft\Templates` (Windows), `~/.config/effectcraft/Templates` (Linux), as EffectCraft's `app_dirs.rs` sets it.
 **Built 2026-10-21 (v0.5.41):** the five steps on the page (under the showreel) and in the README; a download link per template
 size (26) and font links per row; `test_page.py` 13/13. Waiting: Pixie's gallery test.
+**Gallery test passed 2026-10-21 (EffectCraft 0.14.0 app):** `title_16x9.ectemplate` copied into
+`~/Library/Application Support/EffectCraft/Templates` shows on the Home screen under Templates ▸ New from Template as "Title
+16x9", marked "My Templates · Mine", 12 Essential Graphics controls. Pixie: "this should go on the GitHub README", so step 4
+on the README and the page now gives the Templates folder for macOS, Windows and Linux (`test_page.py` 15/15).
 **Test:** Pixie imports one template through the menu and, if wanted, the gallery copy, by eye (EffectCraft's window cannot be
 driven from here); `test_page.py` checks every download and font link resolves; the README and the page say the same steps.
 

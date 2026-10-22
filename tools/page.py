@@ -40,7 +40,10 @@ INSTALL = [
     "<strong>Install the fonts:</strong> in the ZIP's fonts folder, or each template's Fonts link below; double-click a font file to install it "
     "(on Linux, copy it to ~/.local/share/fonts). All are free (SIL Open Font License). EffectCraft swaps a missing font for its own.",
     "<strong>Use it:</strong> in EffectCraft, <em>File ▸ Import ▸ Essential Graphics Template…</em>, then change its text, colours, "
-    "fonts and timing in the Essential Graphics panel.",
+    "fonts and timing in the Essential Graphics panel. <strong>Or start a new project from it:</strong> copy the .ectemplate file into "
+    "EffectCraft's Templates folder (create it if it isn't there): <code>~/Library/Application Support/EffectCraft/Templates</code> on macOS, "
+    "<code>%APPDATA%\\EffectCraft\\Templates</code> on Windows, <code>~/.config/effectcraft/Templates</code> on Linux. It then shows on "
+    "the Home screen under <em>Templates ▸ New from Template</em>, marked \"My Templates\".",
     f'<strong>From a script</strong> (for tools that make videos): <code>tools/render.py</code>; see <a href="{REPO}#using-a-template">'
     "Using a template</a> in the README.",
 ]

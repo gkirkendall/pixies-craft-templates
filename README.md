@@ -51,7 +51,10 @@ Check out the [catalogue page](https://gkirkendall.github.io/pixies-craft-templa
    double-click a font file to install it (on Linux, copy it to `~/.local/share/fonts`). All are free (SIL Open Font License).
    EffectCraft swaps a missing font for its own.
 4. **Use it:** in EffectCraft, **File ▸ Import ▸ Essential Graphics Template…**, then change its text, colours, fonts and timing
-   in the Essential Graphics panel.
+   in the Essential Graphics panel. **Or start a new project from it:** copy the `.ectemplate` file into EffectCraft's
+   `Templates` folder (create it if it isn't there): `~/Library/Application Support/EffectCraft/Templates` on macOS,
+   `%APPDATA%\EffectCraft\Templates` on Windows, `~/.config/effectcraft/Templates` on Linux. It then shows on the Home screen
+   under **Templates ▸ New from Template**, marked "My Templates", and opening it makes an untitled copy.
 5. **From a script** (for tools that make videos): `tools/render.py`, below.
 
 ## Using a template
