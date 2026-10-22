@@ -9,18 +9,18 @@
   "segments": [
     {
       "footage": "sydney_cove",
-      "seconds": 4.5,
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/overlays/glint",
           "values": {
             "Position": [
-              690,
-              142
+              757,
+              241
             ],
             "Start": 0.4,
-            "Size": 61,
-            "Duration": 4.5
+            "Size": 81,
+            "Duration": 5
           },
           "at": 0
         },
@@ -28,12 +28,12 @@
           "template": "effectcraft/overlays/glint",
           "values": {
             "Position": [
-              962,
-              236
+              961,
+              312
             ],
             "Start": 0.9,
-            "Size": 46,
-            "Duration": 4.5
+            "Size": 61,
+            "Duration": 5
           },
           "at": 0
         },
@@ -41,12 +41,12 @@
           "template": "effectcraft/overlays/glint",
           "values": {
             "Position": [
-              1212,
-              292
+              1149,
+              353
             ],
             "Start": 1.4,
-            "Size": 54,
-            "Duration": 4.5
+            "Size": 72,
+            "Duration": 5
           },
           "at": 0
         },
@@ -54,12 +54,12 @@
           "template": "effectcraft/overlays/glint",
           "values": {
             "Position": [
-              1364,
-              372
+              1263,
+              415
             ],
             "Start": 1.9,
-            "Size": 46,
-            "Duration": 4.5
+            "Size": 61,
+            "Duration": 5
           },
           "at": 0
         },
@@ -67,12 +67,12 @@
           "template": "effectcraft/overlays/glint",
           "values": {
             "Position": [
-              640,
-              680
+              720,
+              645
             ],
             "Start": 2.4,
-            "Size": 39,
-            "Duration": 4.5
+            "Size": 52,
+            "Duration": 5
           },
           "at": 0
         },
@@ -80,17 +80,175 @@
           "template": "effectcraft/overlays/glint",
           "values": {
             "Position": [
-              1100,
-              760
+              1065,
+              705
             ],
             "Start": 2.9,
-            "Size": 50,
-            "Duration": 4.5
+            "Size": 67,
+            "Duration": 5
           },
           "at": 0
         }
       ],
-      "caption": "Six glints · Start and Size set for each"
+      "caption": "Six glints \u00b7 Start and Size set for each"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              680,
+              340
+            ],
+            "Start": 0.4,
+            "Size": 93,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              987,
+              307
+            ],
+            "Start": 1.0,
+            "Size": 107,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1307,
+              347
+            ],
+            "Start": 1.6,
+            "Size": 93,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1160,
+              367
+            ],
+            "Start": 2.2,
+            "Size": 73,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Colour and Glow 90"
+    },
+    {
+      "footage": "port_campbell",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              827,
+              513
+            ],
+            "Start": 0.4,
+            "Size": 73,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              867,
+              627
+            ],
+            "Start": 0.8,
+            "Size": 64,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              933,
+              673
+            ],
+            "Start": 1.2,
+            "Size": 73,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              980,
+              733
+            ],
+            "Start": 1.6,
+            "Size": 59,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              887,
+              707
+            ],
+            "Start": 2.0,
+            "Size": 67,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              813,
+              580
+            ],
+            "Start": 2.4,
+            "Size": 53,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Glow 45 \u00b7 Size 40 to 55"
     }
   ]
 }
