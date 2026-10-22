@@ -1112,7 +1112,7 @@ over Fill the Frame's blur. Findings, each with its fix (changes to step 1 of th
    Control's slider range (0–100 by default), and egui's slider clamps the shown value (`SliderClamping::Always`,
    `crates/ui-egui/src/panels/essential.rs:470`): Max Width 1651 shows as 100.0, and if the panel ever writes it back the
    title shrinks to 100 px. **Confirmed in the app 2026-10-21:** Pixie moved Title's Max Width slider, it wrote 80, and the title shrank to a speck; Box Wipe's Max Width wrote 31 the same way. Controls affected (default above 100): Max Width in title, animated_title, credits, sign_off, typewriter (1651) and box_wipe (1100); Size in corner_logo (180), glint and glint_set (140), animated_title (120). Fix, templates side (Pixie, 2026-10-21: "i assume
-   the 100 represents a percent"): Max Width becomes a percent of the frame width (86 for both sizes), and every other
+   the 100 represents a percent"; "photoshop uses percentanges, FYI", so users expect a 0–100 control to be a percent): Max Width becomes a percent of the frame width (86 for both sizes), and every other
    control whose values pass 100 either becomes a percent of the frame or gets a slider range that covers its values; a test
    checks every default and example value sits inside its control's slider range. This changes the templates' controls, so
    each affected template gets a new version (1.1.0) with its examples, demo specs, style sheets, reels and MPT's callers
