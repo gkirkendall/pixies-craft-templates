@@ -1,0 +1,131 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 2.0,
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              330
+            ],
+            "Start": 0,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Glint Set Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              430
+            ],
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Coast to *centre*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 50,
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 70,
+            "Duration": 5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 70 \u00b7 9x16"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "TJORITJA",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 50,
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 45,
+            "Colour": "#ffd166",
+            "Glow": 80,
+            "Duration": 5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 45 \u00b7 Colour \u00b7 Glow 80 \u00b7 9x16"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Some places are *bigger* than any photo",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 40,
+            "Start": 0.2,
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 100,
+            "Size": 70,
+            "Duration": 5.5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 100 \u00b7 Size: 70 \u00b7 9x16"
+    }
+  ]
+}
