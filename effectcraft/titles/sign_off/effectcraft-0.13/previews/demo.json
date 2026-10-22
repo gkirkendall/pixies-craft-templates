@@ -9,22 +9,64 @@
   "segments": [
     {
       "footage": "sydney_cove",
-      "seconds": 5,
+      "seconds": 5.5,
       "overlays": [
         {
           "template": "effectcraft/titles/sign_off",
           "values": {
+            "Blink": true,
             "Position": [
               960,
-              860
+              880
             ],
-            "Duration": 5,
-            "Blink": true
+            "Duration": 5.5
           },
           "at": 0
         }
       ],
       "caption": "Blink on"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/sign_off",
+          "values": {
+            "Text": "See you on the road",
+            "Heart Colour": "#f2b134",
+            "Position": [
+              960,
+              860
+            ],
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Your own line \u00b7 Heart Colour"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/sign_off",
+          "values": {
+            "Text": "Thanks for watching, see you next week",
+            "Heart Size": 100,
+            "Blink": true,
+            "Beats per Minute": 100,
+            "Position": [
+              960,
+              900
+            ],
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Long line shrinks \u00b7 Heart Size 100 \u00b7 100 beats a minute"
     }
   ]
 }
