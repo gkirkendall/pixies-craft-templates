@@ -13,13 +13,13 @@ This is an independent project; it is not made or endorsed by the EffectCraft or
 
 [![Showreel: the templates at work](demo/showreel_poster.jpg)](https://gkirkendall.github.io/pixies-craft-templates/demo/showreel.mp4)
 
-**[Watch the showreel](https://gkirkendall.github.io/pixies-craft-templates/demo/showreel.mp4)** (77 s), or the [Australia trip demo](https://gkirkendall.github.io/pixies-craft-templates/demo/australia_trip/demo.mp4) (64 s), which uses
+**[Watch the showreel](https://gkirkendall.github.io/pixies-craft-templates/demo/showreel.mp4)** (77 s), or the [Australia trip demo](https://gkirkendall.github.io/pixies-craft-templates/demo/australia_trip/demo.mp4) (66 s), which uses
 the templates together, from the opening title and map to a Sign-off. Each template's folder has its own short demo in `previews/`.
 Every reel opens on a title page (the template, its version and the EffectCraft versions it was tested with) and ends on the
 credits and links. The demo videos show Gregory Kirkendall's own photos
 and are not under the templates' licence (see [CREDITS.md](CREDITS.md)).
 
-**Make your own trip video:** download [the trip video project](https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-trip-video-template.zip) (a ready-made EffectCraft project, 16x9 and 9x16, with placeholder photos), open it, swap in your own photos and text, add music and export; its `README.txt` has the steps, and `Make Maps/` makes map pictures for your own places. [Preview](project_templates/trip_video/preview.mp4).
+**Make your own trip video:** download [the trip video project](https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-trip-video-template.zip) (a ready-made EffectCraft project, 16x9 and 9x16, with placeholder photos), open it, swap in your own photos and text, add music and export; its `README.txt` has the steps, and `Make Maps/` makes map pictures for your own places. [Preview](https://gkirkendall.github.io/pixies-craft-templates/project_templates/trip_video/preview.mp4).
 
 Check out the [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/)! It shows a demo reel and screen shots of every template.
 

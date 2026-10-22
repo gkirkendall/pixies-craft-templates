@@ -297,5 +297,17 @@
       ],
       "caption": "Sign-off · Corner Logo"
     }
-  ]
+  ],
+  "title_page": {
+    "name": "Australia Trip",
+    "line": "The templates together in one travel video",
+    "templates": [
+      "effectcraft/logos/corner_logo",
+      "effectcraft/lower_thirds/basic",
+      "effectcraft/maps/locator",
+      "effectcraft/maps/route_leg",
+      "effectcraft/titles/animated_title",
+      "effectcraft/titles/sign_off"
+    ]
+  }
 }

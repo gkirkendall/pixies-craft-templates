@@ -25,7 +25,10 @@ demo.json:
                     template's demo, for the showreel
   V is a values dict, a values-file path, or {"file": path, "set": {...}} (a file with some values changed).
   title_page  "template" (a template's own reel: its name, version, the EffectCraft versions it was tested with and links, from
-              template.json) or "collection" (the showreel: all the templates); 3 s before the first segment
+              template.json) or "collection" (the showreel: all the templates); 3 s before the first segment. Or an object for a
+              reel of something else (the trip video kit's preview): {"name": "Trip Video", "line": "A ready-made EffectCraft project",
+              "templates": ["effectcraft/maps/route_leg", ...]}, the templates it uses (for the tested versions and the credits)
+  credit_photos  the end page's photo credit line (default: Pixie's own photos); e.g. "Photos: Pixabay (see CREDITS.md)"
   end_page    true: the credits (photos, music, maps, fonts), the links (templates, ArtCraft, EffectCraft), the sponsor and the
               independent-project line, 4 s after the last segment (PLAN.md, DEMO2). A clip of a reel with a title page starts after it.
   A card or footage segment may also have "caption": "Style: Bounce · By: Words", saying which feature is on screen: a small label
@@ -226,7 +229,9 @@ class Demo:
 
     def templates(self):
         """The current version folders of the templates this reel shows (every template for the collection)."""
-        if self.spec.get("title_page") == "collection":
+        if isinstance(self.spec.get("title_page"), dict):
+            ids = set(self.spec["title_page"]["templates"])
+        elif self.spec.get("title_page") == "collection":
             ids = {m.parent.parent.relative_to(ROOT).as_posix() for m in ROOT.glob("effectcraft/*/*/*/template.json")}
         elif self.spec.get("title_page") == "template":
             ids = {self.spec_path.parent.parent.parent.relative_to(ROOT).as_posix()}
@@ -244,7 +249,10 @@ class Demo:
         ranges = [f.tested_range() for f in fs if f.tested_range()]
         low, high = min((r[0] for r in ranges), key=versions.parse), max((r[1] for r in ranges), key=versions.parse)
         tested = f"For EffectCraft {low if low == high else f'{low}–{high}'} (tested)"
-        if self.spec["title_page"] == "collection":
+        if isinstance(self.spec["title_page"], dict):
+            tp = self.spec["title_page"]
+            head = [(NAME, 34, "SemiBold", LIGHT, 0), (tp["name"], 76, "Bold", WHITE, 18), (tp["line"], 36, "Medium", LIGHT, 30)]
+        elif self.spec["title_page"] == "collection":
             head = [(NAME, 76, "Bold", WHITE, 0), (f"{len(fs)} free motion templates", 36, "Medium", LIGHT, 30)]
         else:
             m = fs[0].manifest
@@ -270,7 +278,7 @@ class Demo:
     def end_page(self):
         """The credits, the links, the sponsor and the independent-project line (PLAN.md, DEMO2)."""
         fs = self.templates()
-        lines = [("Credits", 60, "Bold", WHITE, 0), ("Photos and Pixie \u00a9 Gregory Kirkendall", 30, "Regular", LIGHT, 26)]
+        lines = [("Credits", 60, "Bold", WHITE, 0), (self.spec.get("credit_photos", "Photos and Pixie \u00a9 Gregory Kirkendall"), 30, "Regular", LIGHT, 26)]
         track = self.spec.get("music")
         if track and self.a.music:
             if track not in MUSIC_CREDITS:

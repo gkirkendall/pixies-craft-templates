@@ -4,7 +4,8 @@ tesseract (brew install tesseract).
 
   python3 tools/tests/test_pages.py
 
-Checks, on Box Wipe's reel and the showreel: the title page (1.5 s in) names the template (or "Craft Templates"), the template
+Every reel and video has both pages: the template reels, the showreel, the trip demo and the trip video kit's preview. Checks, on
+Box Wipe's reel and the showreel: the title page (1.5 s in) names the template (or "Craft Templates"), the template
 version from template.json and the EffectCraft versions it was tested with, and EffectCraft's links; the end page (1.5 s before
 the end) has the credits, the links to the templates, ArtCraft and EffectCraft, the PixBack sponsor line and getpixback.com, and
 the independent-project line. Every reel with a title page has one, and every reel ends on an end page.
@@ -71,9 +72,14 @@ def main():
         check("showreel title page", "Pixie" in title and "Craft Templates" in title and "free motion templates" in title and "(tested)" in title, f"read {title!r}")
         end = read(ROOT / "demo" / "showreel.mp4", -1.5, tmp)
         check("showreel end page", all(w in end for w in END + ["Natural Earth"]), f"missing {[w for w in END if w not in end]}")
-        end = read(ROOT / "demo" / "australia_trip" / "demo.mp4", -1.5, tmp)
-        check("trip demo ends on the same end page", all(w in end for w in END), f"missing {[w for w in END if w not in end]}")
-    specs = sorted(ROOT.glob("effectcraft/*/*/*/previews/demo*.json")) + [ROOT / "demo" / "showreel.json"]
+        for name, video, head in (("trip demo", ROOT / "demo" / "australia_trip" / "demo.mp4", "Australia Trip"),
+                                  ("trip video kit preview", ROOT / "project_templates" / "trip_video" / "preview.mp4", "Trip Video")):
+            title = read(video, 1.5, tmp)
+            want = [head, "(tested)", "getartcraft.com/apps/effectcraft", "github.com/storytold/effectcraft"]
+            check(f"{name} title page", all(w in title for w in want), f"read {title!r}; missing {[w for w in want if w not in title]}")
+            end = read(video, -1.5, tmp)
+            check(f"{name} ends on the same end page", all(w in end for w in END), f"missing {[w for w in END if w not in end]}")
+    specs = sorted(ROOT.glob("effectcraft/*/*/*/previews/demo*.json")) + [ROOT / "demo" / "showreel.json", ROOT / "demo" / "australia_trip" / "demo.json"]
     off = [s.relative_to(ROOT).as_posix() for s in specs if not (json.loads(s.read_text()).get("title_page")
                                                                  and json.loads(s.read_text()).get("end_page"))]
     check("every reel has both pages", not off, f"{len(specs)} reels" + (f"; without: {off}" if off else ""))
