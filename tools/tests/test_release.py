@@ -4,7 +4,7 @@
   python3 tools/tests/test_release.py
 
 Checks: the zip holds every current template file and nothing else in templates/; every font a template lists, each with its
-licence text; the README, licences and credits; and nothing outside that list (no reels, photos, music or Pixie picture). The
+licence text; Make Maps/ (the map script, README and example stops); the README, licences and credits; and nothing outside that list (no reels, photos, music or Pixie picture). The
 fonts zip holds the same fonts; the trip video zip holds the kit (no preview files); each template file is also on its own; building twice gives the same zips.
 """
 import hashlib
@@ -34,7 +34,9 @@ def main():
     folders = [page.font_folder(n).relative_to(ROOT).as_posix() + "/" for n in families]
     unlicensed = [d for d in folders if not any(n.startswith(d) and n.endswith(".ttf") for n in names) or d + "OFL.txt" not in names]
     check("every listed font with its licence", not unlicensed, f"{len(families)} fonts" + (f"; missing: {unlicensed}" if unlicensed else ""))
-    top = {"README.txt", "LICENSE-MIT", "LICENSE-APACHE", "CREDITS.md"}
+    maps = ["Make Maps/README.txt", "Make Maps/maps.py", "Make Maps/my.stops.json"]
+    check("Make Maps is in the zip", all(n in names for n in maps), ", ".join(n for n in maps if n in names))
+    top = {"README.txt", "LICENSE-MIT", "LICENSE-APACHE", "CREDITS.md", *maps}
     extra = [n for n in names if n not in top and not n.startswith("templates/") and not any(n.startswith(d) for d in folders)]
     check("nothing else in the zip", top <= set(names) and not extra, f"{len(names)} files" + (f"; extra: {extra}" if extra else ""))
     fz = sorted(zipfile.ZipFile(release.DIST / page.FONTS_ZIP).namelist())

@@ -5,7 +5,7 @@
   python3 tools/release.py --publish v0.6.5    also create the GitHub release with those files (needs gh, signed in)
 
 dist/ then holds:
-  pixies-craft-templates.zip         templates/ (every current .ectemplate, flat), fonts/ (only the fonts the templates list, each
+  pixies-craft-templates.zip         templates/ (every current .ectemplate, flat), Make Maps/ (maps.py, README.txt, my.stops.json), fonts/ (only the fonts the templates list, each
                                      folder with its licence text), README.txt, LICENSE-MIT, LICENSE-APACHE, CREDITS.md
   pixies-craft-templates-fonts.zip   the same fonts/ alone (the web page's "Fonts:" links)
   pixies-trip-video-template.zip     the trip-video project: project_templates/trip_video/ as "Trip Video/" (both .ecproj, Photos,
@@ -61,6 +61,8 @@ def readme():
              "   text, colours, fonts and timing in the Essential Graphics panel.", "",
              f"Tested with EffectCraft {', '.join(tested)}.", "", "WHAT IS INSIDE", ""]
     lines += [f"  templates/{n}  {m['name']}" for m, n in rows]
+    lines += ["  Make Maps/  maps.py and its README.txt: draws the pictures and pin positions the two map templates (Route Leg, Locator)",
+              "              need, from a list of places or from the locations in your own photos (see Make Maps/README.txt)"]
     lines += ["", "LICENCE", "", "The templates are free: MIT or Apache 2.0, at your option (LICENSE-MIT, LICENSE-APACHE). The fonts are",
               "under the SIL Open Font License (the licence text is in each font's folder). Credits: CREDITS.md.", ""]
     return "\n".join(lines)
@@ -76,9 +78,14 @@ def write_zip(path, entries):
             z.writestr(info, src if isinstance(src, bytes) else src.read_bytes())
 
 
+def maps_folder():
+    """Make Maps/ (the kit's copy of tools/maps.py, set to run from that folder alone, with its README and example stops)."""
+    return [(f"Make Maps/{n}", TRIP / "Make Maps" / n) for n in ("README.txt", "maps.py", "my.stops.json")]
+
+
 def zip_entries():
     """What pixies-craft-templates.zip holds, in order."""
-    return ([("README.txt", readme().encode())] + [(f"templates/{n}", p) for n, p in templates()] + fonts()
+    return ([("README.txt", readme().encode())] + [(f"templates/{n}", p) for n, p in templates()] + maps_folder() + fonts()
             + [(n, ROOT / n) for n in ("LICENSE-MIT", "LICENSE-APACHE", "CREDITS.md")])
 
 

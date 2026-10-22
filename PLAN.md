@@ -1202,3 +1202,5 @@ one-stop file (the locator needs one) with a note that a route needs two; only a
 and `README.txt` (a new "take the places from your own photos" section) are rebuilt from `tools/maps.py`; SKILL.md "Map templates" has a
 line. `tools/tests/test_geocode.py` 9/9 (generated photos with made-up locations), `test_project.py` 17/17 (the kit's own copy runs the
 command). Pixie asked that it support photos with and without a location: a mixed folder skips the unlocated ones (listed, with a note to add their places by hand); a folder with none stops and points to writing the stops file by hand (README "Your places", which works for any photo); the two ways mix freely. Not released yet: the released kit (v0.6.36) lacks the command until the next release.
+
+**Make Maps in the all-templates zip (Pixie: "yes", 2026-10-22).** v0.6.39 released the trip video kit with the photo command. `release.py` now also puts `Make Maps/` (`maps.py`, `README.txt`, `my.stops.json`, the kit's copy that runs from that folder alone) into `pixies-craft-templates.zip`, and the zip's README lists it, so anyone using the two map templates gets the tool. `test_release` 8/8. Not released yet.
