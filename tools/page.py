@@ -135,7 +135,7 @@ def build():
            "<h2>The templates together</h2>", '<div class="media top">',
            video(ROOT / "demo" / "showreel.mp4", "Showreel: every template"),
            video(ROOT / "demo" / "australia_trip" / "demo.mp4", "Australia trip: the templates in one travel video"),
-           video(TRIP_PREVIEW, "Make your own: the trip video project, with placeholder photos"), "</div>",
+           video(TRIP_PREVIEW, "Make your own: the trip video project, with placeholder photos (the preview has music; the project does not)"), "</div>",
            f'<p class="download"><a href="{ASSETS}{TRIP_ZIP}">Make your own: download the trip video project (zip)</a></p>',
            '<h2 id="install">How to install</h2>', '<ol class="install">'] + [f"<li>{step}</li>" for step in INSTALL] + ["</ol>"]
     by_category = {}

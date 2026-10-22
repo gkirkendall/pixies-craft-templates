@@ -50,7 +50,7 @@ in this repository.
 
 - **Music:** "Relaxing Flute Tune" by SoundEffectsFactory/kerri, Sound Effects Factory,
   https://soundeffectsfactory.com/sounds/sound_1758316318737_78tamezjs, under the Sound Effects Factory Free License
-  (https://soundeffectsfactory.com/license, checked 2026-10-21), mixed into the finished videos only (see `demo/LICENSES.md`).
+  (https://soundeffectsfactory.com/license, checked 2026-10-21), mixed into the finished videos only (see `demo/LICENSES.md`), including the trip video kit's preview reel (`project_templates/trip_video/preview.mp4`); the kit project itself has no music.
 - **Pixie** (`brand/pixie.png`, `brand/pixie_web.png`, and on the reels' title and end pages): PixBack's mascot, © Gregory
   Kirkendall, all rights reserved, **not** under the templates' licence. Made from a picture generated for the PixBack ad,
   recoloured and cut out by `tools/brand/make_pixie.py`; never inside a template file.
