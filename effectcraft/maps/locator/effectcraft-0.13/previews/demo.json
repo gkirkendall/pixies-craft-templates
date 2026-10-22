@@ -49,12 +49,12 @@
   "segments": [
     {
       "footage": "port_campbell",
-      "seconds": 5.5,
+      "seconds": 6.1,
       "overlays": [
         {
           "template": "effectcraft/maps/locator",
           "values": "{work}/a/locator00_16x9.values.json",
-          "at": 0.3
+          "at": 0.9
         }
       ],
       "caption": "Corner Inset",
@@ -73,12 +73,12 @@
     },
     {
       "footage": "mushroom_rock",
-      "seconds": 5.5,
+      "seconds": 6.1,
       "overlays": [
         {
           "template": "effectcraft/maps/locator",
           "values": "{work}/c/locator02_16x9.values.json",
-          "at": 0.3
+          "at": 0.9
         }
       ],
       "caption": "Another place",

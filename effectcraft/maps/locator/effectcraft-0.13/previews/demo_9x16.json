@@ -48,7 +48,7 @@
   "segments": [
     {
       "footage": "port_campbell",
-      "seconds": 5.5,
+      "seconds": 6.1,
       "overlays": [
         {
           "template": "effectcraft/titles/animated_title",
@@ -63,7 +63,7 @@
               1450
             ],
             "Start": 0,
-            "Duration": 5.5
+            "Duration": 6.1
           },
           "at": 0
         },
@@ -80,14 +80,14 @@
               1550
             ],
             "Start": 0.2,
-            "Duration": 5.5
+            "Duration": 6.1
           },
           "at": 0
         },
         {
           "template": "effectcraft/maps/locator",
           "values": "{work}/a/locator00_9x16.values.json",
-          "at": 0.3
+          "at": 0.9
         }
       ],
       "caption": "Corner Inset \u00b7 9x16",
@@ -106,12 +106,12 @@
     },
     {
       "footage": "mushroom_rock",
-      "seconds": 5.5,
+      "seconds": 6.1,
       "overlays": [
         {
           "template": "effectcraft/maps/locator",
           "values": "{work}/c/locator02_9x16.values.json",
-          "at": 0.3
+          "at": 0.9
         }
       ],
       "caption": "Another place \u00b7 9x16",
