@@ -20,6 +20,9 @@ demo.json:
     {"card": TEMPLATE, "values": V, "seconds": S, "overlays": [...]}  a full-frame template on black (overlays as below)
     {"footage": KEY, "seconds": S, "overlays": [{"template": TEMPLATE, "values": V, "at": T}, ...]}
                     the footage shown whole through Fill the Frame, with transparent templates laid over it from T seconds
+                    ("fill": {"Blur": 10, "Darken": 0} sets Fill the Frame's own controls, to show them; "fill": {"Media": "{root}/..."}
+                    shows that picture instead of the footage one, e.g. the template's portrait example; "folder": "stock" looks the footage up in that
+                    folder of --footage instead of the spec's own, e.g. for a video clip)
     {"title": ["line", ...], "seconds": S}                         a plain card drawn by script (Inter)
     {"clip": PATH, "start": T, "seconds": S}                         an excerpt of a finished video (its sound is dropped), e.g. a
                     template's demo, for the showreel
@@ -126,8 +129,8 @@ class Demo:
         if missing:
             sys.exit("Fonts missing, so nothing was rendered:\n" + "\n".join(missing))
 
-    def footage(self, key):
-        folder = self.a.footage / self.spec["footage"]
+    def footage(self, key, folder=None):
+        folder = self.a.footage / (folder or self.spec["footage"])
         found = sorted(p for p in folder.glob(f"{key}.*"))
         if not found:
             sys.exit(f"no footage {key!r} in {folder}")
@@ -148,7 +151,10 @@ class Demo:
                      base])
             else:
                 values = self.work / f"fill{i:02d}.values.json"
-                values.write_text(json.dumps({"Media": str(self.footage(seg["footage"]).resolve()), "Duration": s}))
+                fill = dict(seg.get("fill", {}))
+                media = fill.pop("Media", None)
+                media = pathlib.Path(media.replace("{root}", str(ROOT))) if media else self.footage(seg["footage"], seg.get("folder"))
+                values.write_text(json.dumps({"Media": str(media.resolve()), "Duration": s, **fill}))
                 base = self.render(FILL, str(values), self.work / f"fill{i:02d}.mp4")
             inputs, chain, last = ["-i", base], [], "0:v"
             for k, o in enumerate(seg.get("overlays", [])):
