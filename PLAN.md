@@ -1119,7 +1119,7 @@ over Fill the Frame's blur. Findings, each with its fix (changes to step 1 of th
    updated, verified on 0.13.0 and 0.14.0, and a new release. A separate plan entry (SLIDER1) before the full kit.
 5. **Report to EffectCraft's maintainers** (Pixie decides; outward-facing): (a) Replace Footage on a still brings a numbered
    run as a sequence without asking, unlike Import; (b) the Essential Graphics slider clamps values outside its slider
-   range (`.clamping(egui::SliderClamping::Never)` would fix it); (c) Reload Footage keeps the old picture size. Drafted as
+   range (dropped: see ECPATCH1's outcome); (c) Reload Footage keeps the old picture size. Drafted as
    one issue for Pixie to read before anything is posted.
 6. **README for the kit** also says: the title fades in from 0.3 s (scrub past it); Window ▸ Essential Graphics is where the
    text is edited.
@@ -1161,3 +1161,9 @@ fix only reaches users in a later EffectCraft release.
 5. **Pixie reads the diff and the PR text first**; the PR opens from Pixie's account only after that approval. The two footage
    bugs (Replace Footage brings in a numbered run; Reload Footage keeps the old size) go in a separate issue, also read first.
 6. **A local build** of the app with the fix, for Pixie to test as before.
+
+**Outcome 2026-10-21: dropped, no PR.** Done through step 6 (branch `essential-slider-keeps-value` on Pixie's fork, commit
+75eb7e22; CI green apart from two font tests that fail without the change on any Mac with Google Fonts' variable Noto Serif,
+left alone as not a small fix). In the build, moving the slider still writes 0–100, as expected. Pixie: "fix the template and
+it will work as designed. That is not a bug": the 0–100 slider is meant as a percent, and the pixels are our templates'
+choice. So the fix is SLIDER1 alone, next.
