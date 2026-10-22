@@ -1144,3 +1144,20 @@ has his own Twelve Apostles photos; the kit stays all-Pixabay (Pixie: "Lets keep
 Pixie's photos out of the downloadable kit). The test kit was rebuilt with fixes 1–2 (later shot on top: the crossfade now
 shows; layers "Shot 1 · Photo_1", "Shot 2 · Photo_2"; Project panel folders "Photos – replace these" and "Templates (no need to
 edit)", by `layer.rename`, `project.newFolder`, `project.move`).
+
+## ECPATCH1: fix the Essential Graphics slider in EffectCraft and offer the fix upstream. APPROVED 2026-10-21 ("approved")
+
+Order (Pixie approved): ECPATCH1, then SLIDER1 (RECIPE1 item 4), then the full RECIPE1 kit. SLIDER1 is still needed: a merged
+fix only reaches users in a later EffectCraft release.
+
+1. **The change**: `.clamping(egui::SliderClamping::Never)` on the Slider Control's slider in
+   `crates/ui-egui/src/panels/essential.rs` (~470). The slider still drags over its slider range but shows and keeps the real
+   value (1651 stays 1651; typing 1400 stores 1400), as After Effects' Slider Control does (its slider range is only the drag
+   range). Matches documented behaviour, so it fits EffectCraft's clean-room rule.
+2. **A regression test**: a value outside the slider range survives drawing the panel.
+3. **`cargo xtask ci`** passes (their rule for every commit).
+4. **Pixie's fork** of `storytold/effectcraft`, cloned under `~/projects`, committed with the no-reply address; one task per
+   commit.
+5. **Pixie reads the diff and the PR text first**; the PR opens from Pixie's account only after that approval. The two footage
+   bugs (Replace Footage brings in a numbered run; Reload Footage keeps the old size) go in a separate issue, also read first.
+6. **A local build** of the app with the fix, for Pixie to test as before.
