@@ -135,5 +135,36 @@ Findings and deviations from the steps above. Where this section and the section
   default or example/preview value is outside 0–100 (`tools/tests/test_sliders.py`, 6/6). Steps 3 and 4 as above.
 - Step 6 sheets remade for Animated Title, Title, Typewriter, Box Wipe, Glint, Glint Set, Route Leg and Credits; `catalog.py`
   rewrote the README table and page; `catalog.py --check` passes.
-- **Left:** remake and check the reels (`verify.py --all --footage … --music …`, running), commit the sheets, README and page, PLAN.md
-  entry (step 7), and the release only after the user's go-ahead (step 8).
+
+### Status at the end of the session: SLIDER1 is finished and released
+
+Nothing is left in SLIDER1. Steps 5 to 8 are done:
+- **Step 5 (callers):** none. MoneyPrinterTurbo, `tools/` and `demo/` pass none of Size, Max Width or Curve.
+- **Step 6:** the style sheets (8) and the reels (10, with the new version on their title pages) are remade from the footage in
+  `~/projects/craft-templates-footage` and the music in `~/projects/mpt-local-motion/tests/m0/music`; every reel matches its committed demo
+  in `verify.py --all`; `catalog.py` rewrote the README table and the page.
+- **Step 7:** PLAN.md has the "SLIDER1 done" and release entries (under RECIPE1 item 4).
+- **Step 8:** released with the user's go-ahead as **v0.6.36**; later releases v0.6.39 and **v0.6.41** (current) carry everything below.
+  Checked live: the download links answer 200 and the Title template in the live zip is the repo's v1.1.0 build.
+- `test_pages.py` needed one fix: tesseract reads the en-dash in "0.13.0–0.14.0" as a hyphen, so the test normalises it.
+
+### After SLIDER1, the same session (all released in v0.6.41; details in PLAN.md and each file named)
+
+- **KIT1** (`KIT1.md`, "Status" at its end): the trip video project kit, 16x9 and 9x16, built by `tools/project.py`, tested by
+  `tools/tests/test_project.py`, with a preview reel (`tools/kit_preview.py`) and `pixies-trip-video-template.zip`.
+- **GEOCODE** (`GEOCODE.md`, approved by the user): `python3 tools/maps.py stops-from-photos --photos DIR --out my.stops.json` makes the
+  stops file from photo locations; photos without one are skipped and the places added by hand (`tools/tests/test_geocode.py`).
+  `Make Maps/` (the script, README, example stops) is in both the kit and the all-templates zip.
+- **Every reel and video has a title page and an end page**, including the Australia trip demo (now 66 s) and the kit's preview, which
+  also has the demo's music (the kit project itself has none). `tools/demo.py` takes a `title_page` object and `credit_photos`.
+- **SKILL.md** now explains the percent controls, the kit and Make Maps.
+
+### Things Opus should know
+
+- The deviations above (Size 50 = normal, Curve 50 = straight, Box Wipe 57.3 / 83.3) were made without asking, because the new check
+  forced a choice; each is one constant. The user has seen the summary and not objected.
+- Untested here: the percent controls in the app's slider for templates other than Title (only Title was moved by hand; the others pass
+  the CLI tests on 0.13.0 and 0.14.0).
+- Not done, user decisions: delete the test copy `title_16x9.ectemplate` in the user's EffectCraft Templates folder; delete the fork
+  branch `essential-slider-keeps-value` on the user's fork.
+- The lab's FL1c, R16 and R17 results were not touched by this session (see the mpt-local-motion and wan2gp-mac-lab repos).

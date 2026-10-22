@@ -116,3 +116,17 @@ Credits line: photos from Pixabay (see CREDITS.md); templates by Pixie, https://
    preview files; fixed dates like the other zips), with a test in `tools/tests/test_release.py`. `python3 tools/catalog.py
    --check` must pass. Publish only after the user says go ahead: `python3 tools/release.py --publish <tag>`.
 6. PLAN.md: "RECIPE1 done 2026-…" with what shipped. Commit, tag, push.
+
+## Status (2026-10-22): KIT1 is finished and released (v0.6.36; current v0.6.41)
+
+Built, tested and published; the user approved the project in the app and the preview. Deviations from this file (the user knows):
+- Map stop names are "Stop 1" to "Stop 6" (one stops file drives five legs), not "Start / Next Stop" and "First Stop".
+- The example map pictures are in `Template Media/` (no `Maps/` folder); `Make Maps/` holds `maps.py` (set to run from that folder alone,
+  built from `tools/maps.py` by `tools/project.py`), `README.txt` (`tools/kit_make_maps_README.txt`) and `my.stops.json`.
+- One Corner Logo layer covers the whole video instead of one per shot (same look; one logo to replace). Each overlay fades out with its
+  shot, as in the demo's crossfade. Shot starts follow the demo: each starts 0.5 s before the previous ends (60 s in all).
+- The preview reel has a title page, the end page and the demo's music (every reel has both pages, the user's rule); the project has no music.
+- `Make Maps/` also ships in `pixies-craft-templates.zip`, and `maps.py` gained `stops-from-photos` (GEOCODE.md).
+Files: `tools/project.py`, `tools/kit_preview.py`, `tools/tests/test_project.py` (17 checks), `tools/tests/test_geocode.py`,
+`tools/tests/test_release.py`, `CREDITS.md` ("Trip video kit photos"), SKILL.md ("Trip video kit"), PLAN.md.
+
