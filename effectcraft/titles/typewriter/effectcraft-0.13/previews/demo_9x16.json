@@ -78,6 +78,28 @@
         }
       ],
       "caption": "Cursor: Underscore · Erase · 9x16"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 6.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "Text": "Some places are bigger than any photo.",
+            "Cursor": "None",
+            "Speed": 9,
+            "Start": 0.3,
+            "Duration": 6.5,
+            "Position": [
+              540,
+              1500
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: None · Speed 9 · 9x16"
     }
   ]
 }
