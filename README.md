@@ -50,15 +50,27 @@ Check out the [catalogue page](https://gkirkendall.github.io/pixies-craft-templa
 3. **Install the fonts:** from the ZIP's `fonts` folder (or [the fonts alone](https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-craft-templates-fonts.zip));
    double-click a font file to install it (on Linux, copy it to `~/.local/share/fonts`). All are free (SIL Open Font License).
    EffectCraft swaps a missing font for its own.
-4. **Use it:** in EffectCraft, **File ▸ Import ▸ Essential Graphics Template…**, then change its text, colours, fonts and timing
-   in the Essential Graphics panel. **Or start a new project from it:** copy the `.ectemplate` file into EffectCraft's
-   `Templates` folder (create it if it isn't there): `~/Library/Application Support/EffectCraft/Templates` on macOS,
-   `%APPDATA%\EffectCraft\Templates` on Windows, `~/.config/effectcraft/Templates` on Linux. It then shows on the Home screen
-   under **Templates ▸ New from Template**, marked "My Templates", and opening it makes an untitled copy. To reach the folder:
-   on macOS, Finder ▸ Go ▸ Go to Folder… (Shift-Command-G) and paste the path; on Windows, paste the path into File
-   Explorer's address bar.
+4. **Use it**, in either of two ways:
 
-   ![EffectCraft's Home screen, Templates ▸ New from Template: the Title template listed as "Title 16x9" under My Templates](docs/effectcraft-gallery.jpg)
+   - **Add it to a project:** in EffectCraft, **File ▸ Import ▸ Essential Graphics Template…**. Then change its text, colours,
+     fonts and timing in the Essential Graphics panel.
+
+   - **Start a new project from it:** copy the `.ectemplate` file into EffectCraft's `Templates` folder (create the folder if
+     it isn't there):
+
+     | System | Templates folder |
+     |---|---|
+     | macOS | `~/Library/Application Support/EffectCraft/Templates` |
+     | Windows | `%APPDATA%\EffectCraft\Templates` |
+     | Linux | `~/.config/effectcraft/Templates` |
+
+     To reach the folder on macOS, use Finder ▸ Go ▸ Go to Folder… (Shift-Command-G) and paste the path. On Windows, paste
+     the path into File Explorer's address bar.
+
+     The template then shows on EffectCraft's Home screen under **Templates ▸ New from Template**, marked "My Templates".
+     Opening it makes an untitled copy.
+
+     ![EffectCraft's Home screen, Templates ▸ New from Template: the Title template listed as Title 16x9 under My Templates](docs/effectcraft-gallery.jpg)
 
 5. **From a script** (for tools that make videos): `tools/render.py`, below.
 
