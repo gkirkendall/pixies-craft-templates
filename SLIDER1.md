@@ -1,25 +1,25 @@
 # SLIDER1: instructions for doing it (written for a Sonnet session)
 
-Approved by Pixie 2026-10-21 (PLAN.md, RECIPE1 item 4 and ECPATCH1's outcome). This file says exactly what to do. Do the steps
-in order. If something doesn't match what this file says, stop and tell Pixie what you found and what you propose; don't guess.
+Approved by the user 2026-10-21 (PLAN.md, RECIPE1 item 4 and ECPATCH1's outcome). This file says exactly what to do. Do the steps
+in order. If something doesn't match what this file says, stop and tell the user what you found and what you propose; don't guess.
 
 ## Why
 
-In EffectCraft's Essential Graphics panel, a Slider Control's slider covers 0–100. Pixie (and anyone who uses Photoshop) reads
+In EffectCraft's Essential Graphics panel, a Slider Control's slider covers 0–100. The user (and anyone who uses Photoshop) reads
 0–100 as a percent. Our templates use the number as pixels instead (Max Width 1651 px), so moving the slider sets 0–100 px and
 the title shrinks to a speck. Fix: every such control becomes a percent, so its value sits inside 0–100 and the slider works.
 
-## Rules for this session (from Pixie's standing rules)
+## Rules for this session (from the user's standing rules)
 
 - Commit with the no-reply address only: `61368993+gkirkendall@users.noreply.github.com` (already the repo's config; check
   `git config user.email`). End each commit message with `Co-Authored-By: Claude Sonnet <noreply@anthropic.com>` (or the line
   your session gives).
 - After each commit: tag the next `v0.6.N` (`git tag -l | sort -V | tail -1`), push the commit and the tag.
-- Before editing PLAN.md, README.md or any doc: `lsof 2>/dev/null | grep <file>`; if it's open, tell Pixie and wait.
-- `git status` shows `??` files: ask Pixie about each. Never delete without asking.
+- Before editing PLAN.md, README.md or any doc: `lsof 2>/dev/null | grep <file>`; if it's open, tell the user and wait.
+- `git status` shows `??` files: ask the user about each. Never delete without asking.
 - Wrap long runs (verify, demo renders) in `caffeinate -i -s …`.
-- Open every result for Pixie with `open <file>` (frames, reels, sheets).
-- Public text says "Pixie" (he/his), never "owner". No footage file names, no travel dates, no emails in the repo.
+- Open every result for the user with `open <file>` (frames, reels, sheets).
+- **Pixie is the user's dog** (he/his), the name and face of these templates, not the person you work with: call that person "the user". (PLAN.md's records often say "Pixie approved"; read that as the user.) Public text (README, page, template docs) says "Pixie", never "owner". No footage file names, no travel dates, no emails in the repo.
 - Never report a problem without a proposed fix. Don't spawn agents.
 
 ## The change, per control
@@ -68,12 +68,12 @@ example value is outside 0–100, it gets the same treatment. The new check (ste
    - `examples/*.values.json` and `tests/run.py`: any Max Width value becomes its percent.
    Rebuild (`python3 effectcraft/titles/title/effectcraft-0.13/build/build.py`; read its docstring for arguments), then
    run the test: `python3 tools/verify.py effectcraft/titles/title --effectcraft-cli ~/projects/storytold/effectcraft/target/release/effectcraft-cli`.
-   Then **show Pixie**: build a project with the 2-shot kit script
+   Then **show the user**: build a project with the 2-shot kit script
    (`/private/tmp/claude-501/-Users-gkirkendall-projects-Wan2GP/d46a0846-9d97-4d4a-ac5f-6a57494af72c/scratchpad/proj1/build2.py`,
    usage in its docstring; photos in `…/scratchpad/pixabay/kit_photos/`) and open it in the 0.14 app
-   (`~/projects/storytold/effectcraft/target/release/effectcraft "<kit>/Trip Video Test.ecproj"`). Pixie moves Max Width:
-   it should show 86 and resize the title by percent. **Wait for Pixie's OK before step 2.**
-   (If the scratchpad is gone, ask Pixie; the kit can be rebuilt from PLAN.md's RECIPE1 notes.)
+   (`~/projects/storytold/effectcraft/target/release/effectcraft "<kit>/Trip Video Test.ecproj"`). The user moves Max Width:
+   it should show 86 and resize the title by percent. **Wait for the user's OK before step 2.**
+   (If the scratchpad is gone, ask the user; the kit can be rebuilt from PLAN.md's RECIPE1 notes.)
 2. **The check that stops this coming back.** In `tools/catalog.py --check`, add: for each template, every control whose
    `type` is the slider type (look at a template.json for its exact name) must have its default, and every value for it in
    `examples/*.json` and `previews/*.json`, within 0–100. Add a test for the check in `tools/tests/` like the existing ones
@@ -87,9 +87,9 @@ example value is outside 0–100, it gets the same treatment. The new check (ste
 5. **Callers.** `grep -rn "Max Width\|\"Size\"" ~/projects/MoneyPrinterTurbo demo` (and `tools/`): any values passed to these
    controls become percents. MoneyPrinterTurbo is a separate repo: commit there too (tag and push per its own scheme).
 6. **Previews and page.** Glint and glint_set reels and sheets: `tools/demo.py` / `tools/sheet.py` need `--footage DIR`;
-   ask Pixie for the folder (never write its file names into the repo). Then `python3 tools/catalog.py --check` must pass,
-   and `python3 tools/catalog.py` rewrites the README table and page. Open the new reels and sheets for Pixie.
+   ask the user for the folder (never write its file names into the repo). Then `python3 tools/catalog.py --check` must pass,
+   and `python3 tools/catalog.py` rewrites the README table and page. Open the new reels and sheets for the user.
 7. **PLAN.md**: under RECIPE1 item 4, add "Done 2026-…" with what changed and the test results.
-8. **Release**, after Pixie says go ahead: `python3 tools/release.py --publish <the new tag>`.
+8. **Release**, after the user says go ahead: `python3 tools/release.py --publish <the new tag>`.
 
 Then the full RECIPE1 8-shot kit (PLAN.md), which uses these 1.1.0 templates.
