@@ -1,0 +1,121 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 4.0,
+  "prepare": [
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "0",
+      "--out",
+      "{work}/a",
+      "--variant",
+      "9x16",
+      "--inset"
+    ],
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "4",
+      "--out",
+      "{work}/b",
+      "--variant",
+      "9x16"
+    ],
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "2",
+      "--out",
+      "{work}/c",
+      "--variant",
+      "9x16",
+      "--inset"
+    ]
+  ],
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "port_campbell",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              1450
+            ],
+            "Start": 0,
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Locator Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              1550
+            ],
+            "Start": 0.2,
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/maps/locator",
+          "values": "{work}/a/locator00_9x16.values.json",
+          "at": 0.3
+        }
+      ],
+      "caption": "Corner Inset \u00b7 9x16",
+      "caption_at": "top"
+    },
+    {
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/b/locator04_9x16.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame \u00b7 9x16"
+    },
+    {
+      "footage": "mushroom_rock",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/locator",
+          "values": "{work}/c/locator02_9x16.values.json",
+          "at": 0.3
+        }
+      ],
+      "caption": "Another place \u00b7 9x16",
+      "caption_at": "top"
+    }
+  ]
+}
