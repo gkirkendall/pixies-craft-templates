@@ -1,0 +1,101 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 2.0,
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "point_ritchie",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              330
+            ],
+            "Start": 0,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Box Wipe Lower Third Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              430
+            ],
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/stops.values.json",
+            "set": {
+              "Duration": 4.8
+            }
+          },
+          "at": 0.2
+        }
+      ],
+      "caption": "Default: Caveat Brush \u00b7 9x16",
+      "caption_at": "top"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/long.values.json",
+            "set": {
+              "Duration": 5.3,
+              "Title Font": "Montserrat Bold",
+              "Subtitle Font": "Montserrat Regular",
+              "Box Colour": "#6b2d1a",
+              "Line Colour": "#f4a259"
+            }
+          },
+          "at": 0.2
+        }
+      ],
+      "caption": "Long title wraps \u00b7 Montserrat \u00b7 Box and Line Colour \u00b7 9x16",
+      "caption_at": "top"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "Title": "Uluru",
+            "Subtitle": "",
+            "Duration": 4.8
+          },
+          "at": 0.2
+        }
+      ],
+      "caption": "No subtitle: the box closes up \u00b7 9x16",
+      "caption_at": "top"
+    }
+  ]
+}
