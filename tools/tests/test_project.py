@@ -8,7 +8,8 @@ as long as the demo's shots (demo/australia_trip/demo.json); in a copy of the ki
 Footage finds every file (none missing) and every footage path then lies inside the copy; every Photo_1 ... Photo_8 is used by exactly
 one shot layer, in order; every title holds the generic text (and no demo text is left); every overlay of the demo is a layer of the
 same template starting where the demo's overlay does; one Corner Logo layer covers the whole video; a still at each shot renders a
-picture (not black, not flat).
+picture (not black, not flat). Then, in a copy of the kit, Make Maps/maps.py runs alone on the example stops (needs the repository's
+Natural Earth download, `python3 tools/maps.py fetch`, copied in; no network).
 """
 import argparse
 import json
@@ -138,6 +139,35 @@ def test_variant(cli, variant, check):
         check(f"{tag}: a still at each shot is a picture", not flat, f"{flat}")
 
 
+def test_make_maps(check):
+    """The kit's Make Maps folder runs on its own (a copy of the kit, this repository's tools/ out of reach): on the example stops it
+    writes a map picture and a values file per leg and for the locator, the same size as the pictures the project uses."""
+    data = ROOT / "data" / "naturalearth"
+    if not data.is_dir():
+        check("Make Maps: runs from the kit folder alone", False, "run `python3 tools/maps.py fetch` once first (Natural Earth data)")
+        return
+    with tempfile.TemporaryDirectory() as tmp:
+        folder = pathlib.Path(tmp) / "kit" / "Make Maps"
+        shutil.copytree(KIT / "Make Maps", folder, ignore=shutil.ignore_patterns("data", "maps"))
+        (folder / "data").mkdir()
+        shutil.copytree(data, folder / "data" / "naturalearth")   # the download the README has people run once
+        said = []
+        for args in (["route-legs", "--out", "maps", "--inset", "--osm-km", "0"], ["locator", "--stop", "0", "--out", "maps"]):
+            r = subprocess.run([sys.executable, "-I", "maps.py", args[0], "--stops", "my.stops.json", "--variant", "16x9", *args[1:]],
+                               cwd=folder, capture_output=True, text=True)
+            said.append(r.returncode)
+        pictures = sorted((folder / "maps").glob("map_*.png"))
+        values = sorted((folder / "maps").glob("*.values.json"))
+        sizes = {Image.open(p).size for p in pictures}
+        kit_sizes = {Image.open(p).size for p in (KIT / "Template Media").glob("map_*_16x9.png")}
+        check("Make Maps: runs from the kit folder alone, drawing the legs and the locator",
+              said == [0, 0] and len(pictures) == 6 and len(values) == 6 and sizes == kit_sizes,
+              f"exit codes {said}, {len(pictures)} pictures, {len(values)} values files, sizes {sizes} (kit: {kit_sizes})")
+        check("Make Maps: README.txt and my.stops.json are in the kit",
+              (KIT / "Make Maps" / "README.txt").is_file() and len(json.loads((KIT / "Make Maps" / "my.stops.json").read_text())) == 6,
+              "present")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--effectcraft-cli", required=True)
@@ -150,6 +180,7 @@ def main():
 
     for variant in ("16x9", "9x16"):
         test_variant(a.effectcraft_cli, variant, check)
+    test_make_maps(check)
     print(f"\n{sum(results)} of {len(results)} checks pass")
     sys.exit(0 if all(results) else 1)
 

@@ -77,6 +77,19 @@ def manifest(key):
     return json.loads((EFFECTCRAFT / TEMPLATES[key] / "effectcraft-0.13" / "template.json").read_text())
 
 
+def make_maps_folder(out):
+    """OUT/Make Maps/: maps.py (this repository's, set to run from that folder alone), an example stops file and a README. Only
+    Pillow is needed; the Natural Earth data it downloads goes into Make Maps/data/."""
+    folder = out / "Make Maps"
+    folder.mkdir(exist_ok=True)
+    code = (ROOT / "tools" / "maps.py").read_text()
+    here = "ROOT = pathlib.Path(__file__).resolve().parents[1]"
+    assert here in code
+    code = code.replace(here, "ROOT = pathlib.Path(__file__).resolve().parent   # the Make Maps folder itself (kit copy of tools/maps.py)")
+    (folder / "maps.py").write_text(code)
+    shutil.copyfile(ROOT / "tools" / "kit_make_maps_README.txt", folder / "README.txt")
+
+
 def template_file(key, variant):
     name = TEMPLATES[key].split("/")[-1]
     return str(EFFECTCRAFT / TEMPLATES[key] / "effectcraft-0.13" / "templates" / f"{name}_{variant}.ectemplate")
@@ -225,6 +238,7 @@ def main():
     out = a.out.resolve()
     (out / "Music").mkdir(parents=True, exist_ok=True)
     (out / "Music" / "README.txt").write_text("Put your music file here, then drag it into the timeline.\n")
+    make_maps_folder(out)
     for v in SIZES if a.variant == "both" else [a.variant]:
         build(a.effectcraft_cli, out, v)
 

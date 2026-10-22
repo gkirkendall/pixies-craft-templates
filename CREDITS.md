@@ -56,3 +56,26 @@ in this repository.
   recoloured and cut out by `tools/brand/make_pixie.py`; never inside a template file.
 - **Maps:** Natural Earth (public domain); map data © OpenStreetMap contributors, https://www.openstreetmap.org/copyright, on
   the short legs.
+
+## Trip video kit photos (Pixabay)
+
+`project_templates/trip_video/Photos/Photo_1.jpg` to `Photo_8.jpg` are photos from Pixabay (https://pixabay.com), used under the
+Pixabay Content License (https://pixabay.com/service/license-summary/, checked 2026-10-21): free to use and modify, no credit
+needed. They are shipped scaled to 1920 wide and marked "Photo N" in a corner, as that licence asks (content may not be
+distributed on its own in substantially the same form). In Photo_6 four readable brand signs are softly blurred. The list records
+where each one came from.
+
+| Kit file | Pixabay page | Photographer |
+|---|---|---|
+| Photo_1 | https://pixabay.com/photos/road-coast-cliff-sunset-mountains-5904909/ | fietzfotos |
+| Photo_2 | https://pixabay.com/photos/beach-cliff-rock-mist-fog-sea-6203278/ | Susan1111 |
+| Photo_3 | https://pixabay.com/photos/sunset-peace-peaceful-sea-beach-3867720/ | manolofranco |
+| Photo_4 | https://pixabay.com/photos/desert-wadi-rum-jordan-sand-stone-4940300/ | ChiemSeherin |
+| Photo_5 | https://pixabay.com/photos/mountains-valley-landscape-139012/ | 12019 |
+| Photo_6 | https://pixabay.com/photos/hong-kong-victoria-harbour-hongkong-4370342/ | steven_yu |
+| Photo_7 | https://pixabay.com/photos/lake-mountains-forest-landscape-8305673/ | HoangToney |
+| Photo_8 | https://pixabay.com/photos/sunset-dusk-mountains-clouds-8516639/ | ChiemSeherin |
+
+The kit's map pictures are drawn by `tools/maps.py` from Natural Earth (public domain) and, on short legs, OpenStreetMap
+(© OpenStreetMap contributors, https://www.openstreetmap.org/copyright, ODbL), which the map's credit line names. The placeholder
+logo (`Logo/Logo.png`) is made by script (Inter, SIL OFL).
