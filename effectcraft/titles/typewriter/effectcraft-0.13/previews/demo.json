@@ -44,7 +44,29 @@
           "at": 0
         }
       ],
-      "caption": "Cursor: Underscore · Erase"
+      "caption": "Cursor: Underscore \u00b7 Erase"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 6.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "Text": "Some places are bigger than any photo.",
+            "Cursor": "None",
+            "Speed": 9,
+            "Start": 0.3,
+            "Duration": 6.5,
+            "Position": [
+              960,
+              900
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: None \u00b7 Speed 9"
     }
   ]
 }
