@@ -8,16 +8,14 @@
   "end_page": true,
   "segments": [
     {
-      "footage": "port_campbell",
-      "seconds": 4.5,
+      "footage": "hildas_lookout",
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/titles/title",
           "values": {
             "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
-            "set": {
-              "Duration": 4.5
-            }
+            "Duration": 5
           },
           "at": 0
         }
@@ -26,7 +24,7 @@
     },
     {
       "footage": "point_ritchie",
-      "seconds": 4.5,
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/titles/title",
@@ -34,12 +32,67 @@
             "Title": "Point Ritchie",
             "Label": "Day two",
             "Place": "Bottom Centre",
-            "Duration": 4.5
+            "Duration": 5
           },
           "at": 0
         }
       ],
       "caption": "Place: Bottom Centre",
+      "caption_at": "top"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Start",
+            "Label": "Day one",
+            "Place": "Top Left",
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Finish",
+            "Label": "Day four",
+            "Place": "Top Right",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Top Left and Top Right"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Uluru",
+            "Label": "Sunrise",
+            "Place": "Bottom Left",
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Kata Tjuta",
+            "Label": "Sunset",
+            "Place": "Bottom Right",
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Bottom Left and Bottom Right",
       "caption_at": "top"
     }
   ]
