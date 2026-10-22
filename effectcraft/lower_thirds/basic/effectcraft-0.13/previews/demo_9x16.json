@@ -4,39 +4,113 @@
   "crossfade": 0.5,
   "size": "9x16",
   "poster_at": 2.0,
-  "title_page": "template",
+  "prepare": [
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "4",
+      "--out",
+      "{work}/loc",
+      "--variant",
+      "9x16"
+    ]
+  ],
   "end_page": true,
   "segments": [
     {
-      "footage": "port_campbell",
-      "seconds": 4.5,
+      "footage": "uluru",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              330
+            ],
+            "Start": 0,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Basic Lower Third Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              430
+            ],
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/lower_thirds/basic",
+          "values": {
+            "Title": "Uluru",
+            "Subtitle": "Northern Territory"
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "Slides in from the left, holds, fades out \u00b7 9x16",
+      "caption_at": "top"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/lower_thirds/basic",
           "values": {
-            "Title": "Port Campbell National Park",
-            "Subtitle": "Victoria, Australia"
+            "file": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/examples/long.values.json",
+            "set": {
+              "Title Font": "Montserrat Bold",
+              "Subtitle Font": "Montserrat Regular"
+            }
           },
-          "at": 0.2
+          "at": 0.9
         }
       ],
-      "caption": "Two lines · 9x16",
+      "caption": "Bar fits the text \u00b7 Montserrat \u00b7 9x16",
       "caption_at": "top"
     },
     {
-      "footage": "sydney_cove",
-      "seconds": 4.5,
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/loc/locator04_9x16.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/lower_thirds/basic",
           "values": {
             "Title": "Sydney Cove",
-            "Subtitle": "New South Wales, Australia"
+            "Subtitle": "New South Wales, Australia",
+            "Title Font": "League Gothic Regular",
+            "Subtitle Font": "Caveat Brush"
           },
-          "at": 0.2
+          "at": 0.9
         }
       ],
-      "caption": "Two lines · 9x16",
+      "caption": "See-through bar \u00b7 League Gothic and Caveat Brush \u00b7 9x16",
       "caption_at": "top"
     }
   ]
