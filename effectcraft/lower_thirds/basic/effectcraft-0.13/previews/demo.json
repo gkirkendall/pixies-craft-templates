@@ -6,37 +6,79 @@
   "poster_at": 2.0,
   "title_page": "template",
   "end_page": true,
+  "prepare": [
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "4",
+      "--out",
+      "{work}/loc",
+      "--variant",
+      "16x9"
+    ]
+  ],
   "segments": [
     {
-      "footage": "port_campbell",
-      "seconds": 4.5,
+      "footage": "uluru",
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/lower_thirds/basic",
           "values": {
-            "Title": "Port Campbell National Park",
-            "Subtitle": "Victoria, Australia"
+            "Title": "Uluru",
+            "Subtitle": "Northern Territory, Australia"
           },
-          "at": 0.2
+          "at": 0.9
         }
       ],
-      "caption": "Title and subtitle",
+      "caption": "Slides in from the left, holds, fades out",
       "caption_at": "top"
     },
     {
-      "footage": "sydney_cove",
-      "seconds": 4.5,
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/basic",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/examples/long.values.json",
+            "set": {
+              "Title Font": "Montserrat Bold",
+              "Subtitle Font": "Montserrat Regular",
+              "Subtitle": "Northern Territory, Australia"
+            }
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "Bar fits the text \u00b7 Montserrat",
+      "caption_at": "top"
+    },
+    {
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/loc/locator04_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/lower_thirds/basic",
           "values": {
             "Title": "Sydney Cove",
-            "Subtitle": "New South Wales, Australia"
+            "Subtitle": "New South Wales, Australia",
+            "Title Font": "League Gothic Regular",
+            "Subtitle Font": "Caveat Brush"
           },
-          "at": 0.2
+          "at": 0.9
         }
       ],
-      "caption": "Title and subtitle",
+      "caption": "See-through bar \u00b7 League Gothic and Caveat Brush",
       "caption_at": "top"
     }
   ]
