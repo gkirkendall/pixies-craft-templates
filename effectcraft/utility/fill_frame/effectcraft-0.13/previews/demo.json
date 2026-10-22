@@ -8,14 +8,36 @@
   "end_page": true,
   "segments": [
     {
-      "footage": "tjoritja",
+      "footage": "sydney_cove",
       "seconds": 4,
-      "caption": "4:3 photo in 16x9"
+      "caption": "4:3 photo in 16x9 \u00b7 Blur 60 \u00b7 Darken 30 (the defaults)"
     },
     {
-      "footage": "hildas_lookout",
+      "footage": "mushroom_rock",
+      "seconds": 3,
+      "fill": {
+        "Blur": 10,
+        "Darken": 0
+      },
+      "caption": "Blur 10 \u00b7 Darken 0"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 3,
+      "fill": {
+        "Blur": 100,
+        "Darken": 70
+      },
+      "caption": "Blur 100 \u00b7 Darken 70"
+    },
+    {
+      "footage": "australia",
       "seconds": 4,
-      "caption": "4:3 photo in 16x9"
+      "fill": {
+        "Media": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.png",
+        "Darken": 40
+      },
+      "caption": "A portrait photo in 16x9 \u00b7 nothing cut off"
     }
   ]
 }
