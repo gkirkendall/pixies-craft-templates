@@ -125,7 +125,7 @@ Templates are tied to the app versions they were **tested** on, not to versions 
   from paid stock or bought templates — copy a bought template's style and ideas, never its files or content. Fonts go in
   `fonts/<family>/` with their licence file; Inter ships with EffectCraft.
 - One element per template (a glint, a logo, a lower third); people stack several on the timeline.
-- **Every text takes any font** (owner, 2026-10-21): each text gets its own font control (`"as": "font"`), named for its
+- **Every text takes any font** (Pixie, 2026-10-21): each text gets its own font control (`"as": "font"`), named for its
   role (Title Font, Subtitle Font, Credit Font); texts that must always match share one (Route Leg's Name Font); nothing is fixed
   to a font, map credits included. Each test calls `tools/fontcheck.py`'s `font_checks`: another font changes the frame, and with
   the control's own texts emptied it changes nothing.

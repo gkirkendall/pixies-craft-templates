@@ -10,5 +10,5 @@ separate sound-effects directory, library, YouTube channel or app. So the track 
 the audio file is never in this repository, and `tools/demo.py` reads it from a folder given with `--music`. Free content comes
 with no warranty.
 
-The photos in the demos are the owner's own (© Gregory Kirkendall, all rights reserved; see `CREDITS.md`), also kept outside the
+The photos in the demos are Pixie's own (© Gregory Kirkendall, all rights reserved; see `CREDITS.md`), also kept outside the
 repository; `tools/demo.py` reads them from `--footage`.

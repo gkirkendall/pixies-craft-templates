@@ -43,7 +43,7 @@ def build(cli, variant, workdir):
           ("layer.newNull", {"name": "Controls"}))
     path = p.add_controls("Controls", [("Blur", "Slider Control", BLUR), ("Darken", "Slider Control", DARKEN),
                                        ("Duration", "Slider Control", 5), ("Clip Length", "Slider Control", 0)])
-    # A clip shorter than Duration plays again from the start (owner, 2026-10-21: "loop for longer videos"); a still is unaffected.
+    # A clip shorter than Duration plays again from the start (Pixie, 2026-10-21: "loop for longer videos"); a still is unaffected.
     # Clip Length (filled by tools/render.py from ffprobe) wins over source.duration, which EffectCraft 0.13 reads from the MP4
     # track header without its edit list: one frame too long for most H.264 clips, so each loop would hold the last frame.
     p.run(("layer.enableTimeRemap", {"layers": ["Media"]}))

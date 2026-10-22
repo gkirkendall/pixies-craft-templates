@@ -143,7 +143,7 @@ def build():
                        f'{html.escape(catalog.tested_text(m["id"]))} · <a href="{REPO}/tree/main/{m["id"]}">Template folder</a></p></section>')
     out += ["<footer>",
             "<p>The templates are free (MIT or Apache 2.0); their fonts are under the SIL Open Font License.</p>",
-            "<p>The videos and style sheets show the owner's own travel photos: © Gregory Kirkendall, all rights reserved, not under "
+            "<p>The videos and style sheets show Pixie's own travel photos: © Gregory Kirkendall, all rights reserved, not under "
             "the templates' licence. Music: “Relaxing Flute Tune” by Kerri, Sound Effects Factory (Free License). Maps: "
             'Natural Earth; map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.</p>',
             "<p>Pixie is PixBack's mascot: © Gregory Kirkendall, all rights reserved, not under the templates' licence.</p>",

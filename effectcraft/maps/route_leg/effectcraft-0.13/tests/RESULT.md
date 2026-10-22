@@ -25,7 +25,7 @@ Fixed on the way: names sat on the line where it leaves a pin (now on the side a
 (now shrink to fit); the public Overpass server cut long answers short (now five tries, 60 s apart); the test's first credit
 comparison read only the alpha channel, so it now compares RGB.
 
-Still for the owner: open `templates/route_leg_16x9.ectemplate` in the EffectCraft app and check its named controls.
+Still for Pixie: open `templates/route_leg_16x9.ectemplate` in the EffectCraft app and check its named controls.
 
 **Fonts** (`tools/fontcheck.py`): Name Font (both names) and Credit Font each take any font: Montserrat Bold changes the frame, and with that control's own text emptied it changes nothing, so it reaches no other text.
 

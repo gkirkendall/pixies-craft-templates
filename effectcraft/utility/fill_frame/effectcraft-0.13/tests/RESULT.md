@@ -17,7 +17,7 @@ Media into 9x16 shows its frame at 1 s whole (difference 1.1, pass); a 2 s movin
 clip frames 12, 36, 12, 12 at 0.5, 1.5, 2.5 and 4.5 s: it loops, frame-exact (pass); a numbered picture (IMG_0002.png beside
 IMG_0001 and IMG_0003) renders whole (pass).
 
-Checked by eye outside the test: the owner's 4:3 `.JPG` and `.HEIC` trip photos (Opera House into 9x16, Hilda's Lookout into
+Checked by eye outside the test: Pixie's 4:3 `.JPG` and `.HEIC` trip photos (Opera House into 9x16, Hilda's Lookout into
 16x9) render whole after the `tools/render.py` fixes for upper-case extensions and HEIC.
 
 Fixed on the way: two Media layers (sharp and blurred) cannot work, because a media control swaps only its own layer; a nested

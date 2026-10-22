@@ -4,7 +4,7 @@
   python3 effectcraft/overlays/glint/effectcraft-0.13/build/build.py [--variant 16x9] [--effectcraft-cli PATH]
 
 One four-point star that pops in at its Start time, turns a little and shrinks away over 1 s, with a soft glow behind it, over
-transparency. Meant to be used many times in one video, each instance with its own Position, Start and Size (owner, 2026-10-21).
+transparency. Meant to be used many times in one video, each instance with its own Position, Start and Size (Pixie, 2026-10-21).
 """
 import argparse
 import pathlib

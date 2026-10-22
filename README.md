@@ -14,7 +14,7 @@ This is an independent project; it is not made or endorsed by the EffectCraft or
 **[Watch the showreel](https://gkirkendall.github.io/pixies-craft-templates/demo/showreel.mp4)** (77 s), or the [Australia trip demo](https://gkirkendall.github.io/pixies-craft-templates/demo/australia_trip/demo.mp4) (64 s), which uses
 the templates together, from the opening title and map to a Sign-off. Each template's folder has its own short demo in `previews/`.
 Every reel opens on a title page (the template, its version and the EffectCraft versions it was tested with) and ends on the
-credits and links. The demo videos show the owner's own photos
+credits and links. The demo videos show Pixie's own photos
 and are not under the templates' licence (see [CREDITS.md](CREDITS.md)).
 
 The [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/) shows every template in a row: one picture of all its styles, and its demo reel with the

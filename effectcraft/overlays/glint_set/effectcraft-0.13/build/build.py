@@ -4,7 +4,7 @@
   python3 effectcraft/overlays/glint_set/effectcraft-0.13/build/build.py [--variant 16x9] [--effectcraft-cli PATH]
 
 Six glints already placed and timed one after another across a title-sized band about the frame's centre, ready to drop over a
-title picture (owner, 2026-10-21: a "pre-filled" glint like the video's title). Spread scales the placement about the centre so the
+title picture (Pixie, 2026-10-21: a "pre-filled" glint like the video's title). Spread scales the placement about the centre so the
 set fits the title; Size, Colour and Glow apply to all six. Each glint is the Glint template's star and glow.
 """
 import argparse

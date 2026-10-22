@@ -1,20 +1,20 @@
 # craft-templates: plan
 
-Free, reusable motion-graphics templates for the Craft apps, starting with EffectCraft. Owner, 2026-10-21: "templates probably
+Free, reusable motion-graphics templates for the Craft apps, starting with EffectCraft. Pixie, 2026-10-21: "templates probably
 deserve their own project … i will probably publish this as a free resource, so craft-templates should be used".
 
-Nothing here is built until the owner approves this plan ("approved", "go ahead").
+Nothing here is built until Pixie approves this plan ("approved", "go ahead").
 
-## Decisions (owner, 2026-10-21)
+## Decisions (Pixie, 2026-10-21)
 
 - **Name and place:** `craft-templates`, at `~/projects/craft-templates`; a private GitHub repo `gkirkendall/craft-templates` until
-  the owner says to publish it. Not "artcraft-…": ArtCraft is Storytold's brand, and a published repo under that name would look
+  Pixie says to publish it. Not "artcraft-…": ArtCraft is Storytold's brand, and a published repo under that name would look
   official. The README calls these "templates for EffectCraft" and uses no ArtCraft logos or brand art.
 - **Licence:** MIT OR Apache-2.0, the Craft apps' own dual licence. Anyone may use, change and sell work made with the templates;
   MPT (`~/projects/mpt-local-motion`) stays sellable.
 - **Layout by app:** `effectcraft/` now; `figcraft/` (still cards), `vectorcraft/` (charts, logos) and `filmcraft/` later.
 - **Templates and their fill scripts** live here, so anyone can make a map card from a list of GPS stops with one command.
-- **Only freely redistributable assets** (owner: "I want to keep non-free to distribute assets out of the templates"). Everything in
+- **Only freely redistributable assets** (Pixie: "I want to keep non-free to distribute assets out of the templates"). Everything in
   the repo (fonts, pictures, video, data inside `.ectemplate` files, previews and posters) must be public domain or under a licence that
   allows redistribution: OFL, CC0, CC BY (credited in CREDITS.md), MIT or Apache. Stock assets bought under a licence (Vecteezy bundles:
   "Re-selling or distributing this file in its original form is strictly prohibited"), personal-use or demo fonts never go in, not even as
@@ -25,7 +25,7 @@ Nothing here is built until the owner approves this plan ("approved", "go ahead"
 
 ## Layout (APPROVED 2026-10-21 with MAP1)
 
-Owner, 2026-10-21: "a structure that will be reusable and will work on a variety of template types … not all templates will use all
+Pixie, 2026-10-21: "a structure that will be reusable and will work on a variety of template types … not all templates will use all
 folders". One shape for every template, whichever Craft app opens it and whatever it is (motion title, map, still card, chart, logo,
 transition). Only `template.json` and `README.md` are required; every folder is optional.
 
@@ -116,10 +116,10 @@ Checked against `schema/template.schema.json` by `tools/catalog.py`. Example for
   a new control or a look change is minor; a fix is a patch. The repo tag marks a release of the whole set. MPT records both the repo
   tag and the template version in each video's provenance.
 
-## MAP1: map templates (route leg and locator). APPROVED 2026-10-21 (owner: "yes", with the layout above)
+## MAP1: map templates (route leg and locator). APPROVED 2026-10-21 (Pixie: "yes", with the layout above)
 
-Moved here from MPT's PLAN.md (owner, 2026-10-21). The owner's earlier answers: route leg + locator; a clean drawn map; full-screen card
-or corner inset, chosen per video; tidy controls, since the owner will open and tweak the templates in the EffectCraft app; OSM detail on
+Moved here from MPT's PLAN.md (Pixie, 2026-10-21). Pixie's earlier answers: route leg + locator; a clean drawn map; full-screen card
+or corner inset, chosen per video; tidy controls, since Pixie will open and tweak the templates in the EffectCraft app; OSM detail on
 short legs with its credit.
 
 *The two templates* (each made by script, in 16:9 1920×1080 and 9:16 1080×1920, 24 fps, so four `.ectemplate` files):
@@ -132,10 +132,10 @@ short legs with its credit.
   Controls: **Map**, **Place Position**, **Zoom**, **Place Name**, **Subtitle**, **Pin Colour**, **Corner Inset**, **Map Credit**.
 - **Card or inset:** Corner Inset off = a full-screen card (H.264); on = a framed map at about a third of the width in the lower corner,
   everything outside it transparent (ProRes 4444 with alpha), to lay over the start of a clip.
-- **Picture slots** (owner, 2026-10-21: "yes, keep it generic"): **Texture** on both templates (a picture laid over the drawn land and
+- **Picture slots** (Pixie, 2026-10-21: "yes, keep it generic"): **Texture** on both templates (a picture laid over the drawn land and
   sea, empty by default) and **Badge** on the locator (a picture beside the place name: a flag, park emblem, stamp or logo; empty and
   hidden by default). Users fill them with their own files at render time; nothing non-free ships (see Decisions).
-- **Font** (owner, 2026-10-21: "yes"): every text layer's font is a template control (EffectCraft's `font` control type), Inter by
+- **Font** (Pixie, 2026-10-21: "yes"): every text layer's font is a template control (EffectCraft's `font` control type), Inter by
   default (shipped with EffectCraft). A user can pick any installed font per video in the app or from a values file; a published default
   or preview only ever names Inter or a font in `fonts/`.
 - **Map Credit:** small text in the map's bottom-right corner, readable on the card and on the inset, empty by default. `tools/maps.py`
@@ -202,14 +202,14 @@ EffectCraft lacks.
 5. Move T-E1's lower third here as `effectcraft/lower_thirds/basic/` in the same layout (its build script in Python, switched to Inter); MPT's `tests/e1/RESULT.md` gets a
    line pointing to it.
 
-*Test* (each template's `tests/`, free, no GPU, opened for the owner), from the S1 trip in MPT (`tests/s1/1/stops.json`):
+*Test* (each template's `tests/`, free, no GPU, opened for Pixie), from the S1 trip in MPT (`tests/s1/1/stops.json`):
 - Locator: Port Campbell National Park (16:9 card).
 - Route legs: Point Ritchie → Mushroom Rock (1,797 km, VIC → NT; 16:9 card and 9:16 card), Sydney Cove → Hilda's Lookout (86 km; 16:9
   card, with OSM detail and the credit), and Port Campbell → Point Ritchie (43 km) to try the short-leg rule.
 - One inset: the Mushroom Rock leg in a corner over the start of an existing lab clip (ffmpeg overlay for the test).
 - **Pass:** pins sit on the right places (checked against the GPS by re-projecting the pixel positions, within 1 % of the frame); the line
   starts and ends on the pins; names exactly as supplied; "© OpenStreetMap" appears on exactly the maps that use OSM data and nowhere
-  else; the inset is transparent outside its frame; and each template opens in the EffectCraft app with its named controls (owner checks
+  else; the inset is transparent outside its frame; and each template opens in the EffectCraft app with its named controls (Pixie checks
   by eye).
 
 *Later, separate approval:* MPT's side (the `--templates` flag, placing cards and insets in its assembly and OTIO timeline by preset, and
@@ -217,9 +217,9 @@ the OSM line in end credits or description); publishing the repo. **Before publi
 (early commits carry an example subtitle with a travel date, removed in `v0.4.1`), then grep the whole tree once more for dates,
 emails and licence numbers.
 
-## SKILL1: a SKILL.md for agents. APPROVED 2026-10-21 (owner: "yes, at root level")
+## SKILL1: a SKILL.md for agents. APPROVED 2026-10-21 (Pixie: "yes, at root level")
 
-The owner asked whether a SKILL.md would be useful. Recommendation: yes, one `SKILL.md` at the repo root (Claude Code's skill format:
+Pixie asked whether a SKILL.md would be useful. Recommendation: yes, one `SKILL.md` at the repo root (Claude Code's skill format:
 `name`/`description` front matter, then instructions), so it ships with the public repo. Users install it by linking it into
 `~/.claude/skills/craft-templates/`; MPT's agent can read the same file. Written after MAP1 step 4 passes, so it describes working
 templates.
@@ -239,20 +239,20 @@ templates.
   `text.sourceText.style.setFont(...)` expressions; text layers centre on their position unless `"justify":"left"`; a ProRes
   render has alpha only with `--prores 4444 --channels rgba`; an exported `.ectemplate` is a zip that carries its media.
 - **Test:** a fresh Claude Code session given only the skill renders the route-leg example and a locator for a new stop without
-  further help; the result is opened for the owner.
+  further help; the result is opened for Pixie.
 
-## TPL2: templates from a published travel video. APPROVED 2026-10-21 (owner: "approved new templates")
+## TPL2: templates from a published travel video. APPROVED 2026-10-21 (Pixie: "approved new templates")
 
 **Status 2026-10-21:** built, tested and verified on EffectCraft 0.13.0, each with its demo: Fill the Frame (11/11), Glint
 (13/13), Glint Set (28/28), Corner Logo (19/19), Credits (29/29), Sign-off (30/30), and the Box Wipe Lower Third (17/17;
-Caveat Brush by default, Title Font and Subtitle Font take any font, as the owner asked; its demo is in the showreel, now 71 s).
+Caveat Brush by default, Title Font and Subtitle Font take any font, as Pixie asked; its demo is in the showreel, now 71 s).
 The optional `tools/captions.py` was left out: one values file per stop, copied from `examples/stops.values.json`, does the job.
 
-The owner shared one of their published travel videos (made in Premiere Pro with bought Motion Graphics templates) for more
-template ideas. **Owner's rule: copy the style and ideas, not the content.** Each template below is an original build by
-`build/build.py` (our own shapes, timing and free fonts); nothing is taken from the bought templates' files, and the owner's video,
+Pixie shared one of his published travel videos (made in Premiere Pro with bought Motion Graphics templates) for more
+template ideas. **Pixie's rule: copy the style and ideas, not the content.** Each template below is an original build by
+`build/build.py` (our own shapes, timing and free fonts); nothing is taken from the bought templates' files, and Pixie's video,
 logo and footage never enter this repo. All are EffectCraft motion templates in 16x9 and 9x16, rendering as ProRes 4444 with alpha,
-in the layout above, with `tests/` that are free (no GPU) and opened for the owner.
+in the layout above, with `tests/` that are free (no GPU) and opened for Pixie.
 
 1. **Box Wipe Lower Third** (`effectcraft/lower_thirds/box_wipe/`). Its own template: a general lower third (a place, a fact,
    a name), not tied to maps. The video's signature element, on almost every shot.
@@ -265,14 +265,14 @@ in the layout above, with `tests/` that are free (no GPU) and opened for the own
      Max Width control.
    - Optional fill from a stops file (name, subtitle), the same list the maps use: `tools/captions.py` writes one values file per
      stop. Any other text is filled by hand or by its own values file.
-   - **Font:** one test frame in Caveat Brush, Pacifico and one more free script font from `fonts/`; the owner picks the default.
+   - **Font:** one test frame in Caveat Brush, Pacifico and one more free script font from `fonts/`; Pixie picks the default.
    - Test: the example stops (one line, two lines, a long wrapped title), Position near each corner, 16x9 and 9x16; pass: text
      exactly as supplied, box always contains the text, transparent outside it, the exit finishes by Duration.
-2. **End card: three separate templates** (owner, 2026-10-21: "each element should be a separate template"; three, stacked
+2. **End card: three separate templates** (Pixie, 2026-10-21: "each element should be a separate template"; three, stacked
    on the timeline over the last clip). Each fades and rises in; transparent elsewhere.
    - **Corner Logo** (`effectcraft/logos/corner_logo/`): a Logo picture slot fitted inside a square box (like the Locator's
      Badge) in a chosen corner (Corner: a dropdown of the four, or a Position point), with Size, Opacity and a fade in and out.
-     Also the logo the owner puts in a corner of commercial videos.
+     Also the logo Pixie puts in a corner of commercial videos.
    - **Credits** (`effectcraft/titles/credits/`): a title in quotes in tall condensed capitals (League Gothic) and two to four
      credit lines under it (empty lines close up), centred; Font controls for the title and the lines.
    - **Sign-off** (`effectcraft/titles/sign_off/`): one line ("Thank you for watching", Montserrat) between two heart shapes in
@@ -280,7 +280,7 @@ in the layout above, with `tests/` that are free (no GPU) and opened for the own
    - Test (each): with and without the optional parts (no logo, three and four credit lines, a long title, a long sign-off);
      pass: no overlaps, text exactly as supplied, transparent outside the graphic.
 3. **Fill the frame** (`effectcraft/utility/fill_frame/`). **Done 2026-10-21: 9 of 9 checks pass (`tests/RESULT.md`).**
-   - **FF2, loop clips (owner, 2026-10-21: "loop for longer videos"). APPROVED and DONE (see the finding below).** When Media is a clip
+   - **FF2, loop clips (Pixie, 2026-10-21: "loop for longer videos"). APPROVED and DONE (see the finding below).** When Media is a clip
      shorter than Duration, it plays again from the start until Duration ends, instead of stopping. How: `build.py` turns on
      Time Remapping for the Media layer (`layer.enableTimeRemap`) with the expression
      `var d = source.duration; d > 0 ? time % d : 0`, and keeps the layer's out point at the comp's end, so a swapped-in clip of
@@ -289,8 +289,8 @@ in the layout above, with `tests/` that are free (no GPU) and opened for the own
      README: replace "A clip shorter than this ends early" (written without a test) with the loop behaviour.
      Test (added to `tests/run.py`): a 2 s clip with Duration 5 renders 5.0 s, and its frame at 2.5 s matches the clip's frame
      at 0.5 s (mean difference under 8 of 255), and at 4.5 s matches 0.5 s again; the 9 existing checks still pass.
-     Commit, tag and push; open the looped clip for the owner.
-   - **FF2 finding (2026-10-21); Clip Length fix APPROVED (owner: "clip loop fix 1 approved") and DONE: 10 of 10 checks.** FF2 is approved and built as above, and the clip does repeat,
+     Commit, tag and push; open the looped clip for Pixie.
+   - **FF2 finding (2026-10-21); Clip Length fix APPROVED (Pixie: "clip loop fix 1 approved") and DONE: 10 of 10 checks.** FF2 is approved and built as above, and the clip does repeat,
      but `source.duration` is one frame too long for ordinary H.264 clips: EffectCraft 0.13 reads the MP4's track header
      (`mdhd`: 2.042 s for a 48-frame, 2.000 s test clip) and ignores the edit list that trims the encoder's B-frame delay (ffprobe
      honours it: 2.000 s). So each loop holds the last frame for one extra frame (test: clip frame 11 at 2.5 s instead of 12;
@@ -306,11 +306,11 @@ in the layout above, with `tests/` that are free (no GPU) and opened for the own
    - Controls: Media, Blur, Darken, Duration. Output H.264 (it fills the frame).
    - Test: a 4:3 picture and a portrait picture into 16x9, and a 16:9 picture into 9x16; pass: the whole picture is visible
      (its edges match the source), no black bars.
-4. **Glints: two separate templates** (owner, 2026-10-21: a single-element glint, and a "pre-filled" one like the video).
+4. **Glints: two separate templates** (Pixie, 2026-10-21: a single-element glint, and a "pre-filled" one like the video).
    Both are transparent overlays, separate from any title card, over a title picture or any shot.
    - **Glint** (`effectcraft/overlays/glint/`): one four-point star (a star shape) that pops in, turns a little and fades.
      Controls: Position, Start, Size, Colour, Glow (a soft blur copy). Meant to be used many times in one video: each
-     instance is placed separately with its own Position, Start and Size (owner, 2026-10-21), as separate layers or clips.
+     instance is placed separately with its own Position, Start and Size (Pixie, 2026-10-21), as separate layers or clips.
    - **Glint Set** (`effectcraft/overlays/glint_set/`): several glints already placed and timed in a pleasing order, as in the
      video's title, ready to drop over a title picture; controls: Size, Colour, Glow, and a Spread (scales the placement about the
      centre) so the set fits the title.
@@ -320,13 +320,13 @@ in the layout above, with `tests/` that are free (no GPU) and opened for the own
 Order: after MAP1 step 5 (the plain lower third moves as approved; the Box Wipe Lower Third joins it in `effectcraft/lower_thirds/`),
 and after SKILL1, whose "authoring" section these builds then follow.
 
-## DEMO1: demo reels, as the commercial vendors do. APPROVED 2026-10-21 (music: owner picks the tracks)
+## DEMO1: demo reels, as the commercial vendors do. APPROVED 2026-10-21 (music: Pixie picks the tracks)
 
-Owner, 2026-10-21: use the Australia map video as an example of how to use the templates, kept in this project as a "demo
+Pixie, 2026-10-21: use the Australia map video as an example of how to use the templates, kept in this project as a "demo
 reel"; "We should have a demo reel for each feature, that is how the commercial vendors do it."
 
-**Decisions (owner, 2026-10-21):**
-- **Footage:** the owner's own, from their original trip photos and videos (not the H3 clips). It is the owner's, shown only to
+**Decisions (Pixie, 2026-10-21):**
+- **Footage:** Pixie's own, from his original trip photos and videos (not the H3 clips). It is Pixie's, shown only to
   demonstrate the templates: `CREDITS.md` and each `previews/README.md` say the demo videos are © Gregory Kirkendall, all rights
   reserved, and not under the templates' MIT/Apache licence. The footage itself stays outside the repo; only the finished demo
   videos are committed.
@@ -342,18 +342,18 @@ creation time, no GPS); no shot shows a date on screen; footage file names are n
 named relative to `--footage DIR`, its in and out points, and the template values laid over it, or a full-frame card on its
 own). It renders the templates through `tools/render.py`, lays them over the footage with ffmpeg, adds short crossfades and
 encodes the result. Photos are shown whole, never cropped: a photo that is not the frame's shape goes through the Fill the frame
-template (blurred copy behind it), and photos are held still or eased in with the whole picture visible. **Music** (owner, 2026-10-21: from Sound Effects Factory, soundeffectsfactory.com, already used under its Free License for
+template (blurred copy behind it), and photos are held still or eased in with the whole picture visible. **Music** (Pixie, 2026-10-21: from Sound Effects Factory, soundeffectsfactory.com, already used under its Free License for
 the PixBack films; record and saved licence page in `pixback_launch/video/launch_film/music/` and
 `video/dinosaur_ad/sound/LICENSES.md`). The Free License allows "Use in commercial projects (YouTube videos, podcasts, games,
 films)" and editing, with no attribution required; it forbids redistributing "the original files" and distributing through "a
 separate sound effects directory, library, YouTube channel, or mobile application" (terms §2.2). So the music is only ever mixed
 into the finished demo videos: the audio files never enter this repo, `tools/demo.py` reads them from `--music DIR`, fades them
 in and out under the cut, and `demo/LICENSES.md` names each track, its source page, the licence and the date the licence page
-was checked (credit given though not required). Free content carries no warranty (Premium adds legal protection); the owner picks
+was checked (credit given though not required). Free content carries no warranty (Premium adds legal protection); Pixie picks
 the tracks.
-**Track picked (owner, 2026-10-21):** "Relaxing Flute Tune" by SoundEffectsFactory/kerri,
+**Track picked (Pixie, 2026-10-21):** "Relaxing Flute Tune" by SoundEffectsFactory/kerri,
 https://soundeffectsfactory.com/sounds/sound_1758316318737_78tamezjs (Music SFX; MP3, 24.6 s). Licence page
-https://soundeffectsfactory.com/license checked 2026-10-21: the Free License terms quoted above are unchanged. The owner's copy is
+https://soundeffectsfactory.com/license checked 2026-10-21: the Free License terms quoted above are unchanged. Pixie's copy is
 in `mpt-local-motion/tests/m0/music/`, which `tools/demo.py` reads with `--music`. Demos longer than 24.6 s (the trip demo,
 the showreel) loop it with a 2 s crossfade at each join (editing is allowed), fading in at the start and out over the last 2 s.
 
@@ -375,25 +375,25 @@ Basic Lower Third (two places, 16:9 and 9:16). Each TPL2 template gets its demo 
 same places, Fill the frame with a portrait photo, Glint and Glint Set over a title picture, Corner Logo, Credits and Sign-off at
 the end of the trip demo).
 
-**Footage (owner, 2026-10-21):** the original trip photos the owner downloaded for MPT's clip work, `mpt-local-motion/tests/m0/photos/`:
+**Footage (Pixie, 2026-10-21):** the original trip photos Pixie downloaded for MPT's clip work, `mpt-local-motion/tests/m0/photos/`:
 one photo per stop (Port Campbell, Point Ritchie, Mushroom Rock, Tjoritja / West MacDonnell, Sydney Cove, Hilda's Lookout), all
 4:3 landscape, so each goes through the Fill the frame template: **Fill the frame is built before the Australia demo.** The
 portrait frame grab in that folder belongs to no stop and is left out. Still photos: the motion comes from the templates and the
 crossfades; each photo is shown whole.
 **Sydney Cove photo (settled 2026-10-21):** the first Sydney photo was taken during Vivid Sydney, with projected artwork on the
-sails, so it stays out of the public demo. The owner supplied a daytime replacement, `IMG_0600.JPG` (Opera House from the water,
+sails, so it stays out of the public demo. Pixie supplied a daytime replacement, `IMG_0600.JPG` (Opera House from the water,
 4:3, 3264×2448, GPS at the Opera House), with nothing projected. Like every demo input, its metadata is stripped and no date is
 shown.
 
 **Test:** each demo plays to the end; size and length within the limits above; `ffprobe` shows no creation time or location;
-`tools/catalog.py` checks that every template with `previews/demo.mp4` also has its poster; each demo opened for the owner.
+`tools/catalog.py` checks that every template with `previews/demo.mp4` also has its poster; each demo opened for Pixie.
 
 **Order:** the Australia trip demo and the map and lower-third demos first (those templates exist); TPL2 demos as each TPL2
 template is built; the showreel last.
 
 **DEMO1 built (2026-10-21) for the four existing templates.**
 - **The tool:** `tools/demo.py`, with segment types card, footage, title and clip; music is looped with 2 s crossfades.
-- **Footage:** named by place. The owner's footage folder `~/projects/craft-templates-footage/australia/` links each name to its
+- **Footage:** named by place. Pixie's footage folder `~/projects/craft-templates-footage/australia/` links each name to its
   trip photo, so no photo file names enter the repo.
 - **Demos:**
   - Route Leg 10.5 s;
@@ -413,8 +413,8 @@ template is built; the showreel last.
   colours), added to the showreel.
 
 **END-CREDITS1: sponsor, music artist and project link on the trip demo's end card; blinking hearts. PROPOSED 2026-10-21
-(revised the same day). APPROVED (owner: "approved") and DONE 2026-10-21.**
-Owner, 2026-10-21: add "sponsored by PixBack", "https://getpixback.com/" and the music's artist, "Kerri", to the end credits;
+(revised the same day). APPROVED (Pixie: "approved") and DONE 2026-10-21.**
+Pixie, 2026-10-21: add "sponsored by PixBack", "https://getpixback.com/" and the music's artist, "Kerri", to the end credits;
 go to five lines "so they can find the github project"; and the Sign-off hearts "actually beat (blink on and off)", as an option.
 
 1. **Credits: five lines** (`effectcraft/titles/credits/`). `LINES = 5` in `build/build.py` (a Line 5 text control, which
@@ -434,12 +434,12 @@ go to five lines "so they can find the github project"; and the Sign-off hearts 
    - Line 4: `Sponsored by PixBack · https://getpixback.com/`
    - Line 5: `Made with craft-templates · github.com/gkirkendall/craft-templates`
    - Sign-off: Blink on.
-   - Corner Logo throughout (owner, 2026-10-21: "show logo throughout video, fade in, stay steady fade out at the end of end
+   - Corner Logo throughout (Pixie, 2026-10-21: "show logo throughout video, fade in, stay steady fade out at the end of end
      card"): on every segment, bottom right; Fade In on the first segment, Steady on every segment between, and Fade Out on
      the end card (which today has Fade In and Out), so it fades out with the end card.
    The repo is private until it is published, so the link works only from then; if the name changes (see "For discussion
    later"), the line changes with it and the demo is remade at publishing anyway.
-4. **Corner Logo: fade chosen per photo** (`effectcraft/logos/corner_logo/`). Owner, 2026-10-21: "Fade in and fade out for
+4. **Corner Logo: fade chosen per photo** (`effectcraft/logos/corner_logo/`). Pixie, 2026-10-21: "Fade in and fade out for
    first/last photo, steady for the rest, should be configurable for each photo", and then: "fade out" means start at full
    strength and fade out; "fade in" means fade in and then stay at full strength; a third option fades in and out in the same
    picture. One dropdown, **Fade**, with four items:
@@ -464,8 +464,8 @@ moved up to Position [960, 420] to leave a clear gap above the Sign-off. Remade:
 last now three photos: Fade In, Steady, Fade Out), the trip demo (58.5 s) and the showreel (54 s; its Corner Logo excerpt now
 spans a cut). The preview READMEs credit the music "by Kerri". OCR reads "·" as "-", so the Credits test treats them alike.
 
-**END-CREDITS2: an ArtCraft lower third on the end card. APPROVED (owner: "approved from end credits") and DONE 2026-10-21.**
-Owner, 2026-10-21: "the end card should also have a lower thirds 'Made with Artcraft Tools - https://getartcraft.com/'", and
+**END-CREDITS2: an ArtCraft lower third on the end card. APPROVED (Pixie: "approved from end credits") and DONE 2026-10-21.**
+Pixie, 2026-10-21: "the end card should also have a lower thirds 'Made with Artcraft Tools - https://getartcraft.com/'", and
 "the end credits will vary by project" (each project fills its own Credits, Sign-off, logo and lower third; the trip demo is one
 example, and nothing about its text is built into a template).
 - Add the Basic Lower Third to the end card (`demo/australia_trip/demo.json`, last segment), bottom left, from about 1 s:
@@ -479,7 +479,7 @@ example, and nothing about its text is built into a template).
 craft-templates`; to keep everything apart, the Sign-off moved up to [960, 740] and the Credits to [960, 395] in the demo's
 values. Trip demo and showreel remade (58.5 s, 54 s).
 
-## TITLE1: title templates. APPROVED 2026-10-21 (owner: "approved"; trip demo opening title: "Yes")
+## TITLE1: title templates. APPROVED 2026-10-21 (Pixie: "approved"; trip demo opening title: "Yes")
 
 **DONE 2026-10-21:** Title (39/39), Animated Title (35/35) and Typewriter (14/14) built, tested and verified on EffectCraft
 0.13.0, each with a demo; Credits 1.2.0 takes an empty title (37/37). The trip demo opens with the Animated Title over the Port
@@ -487,9 +487,9 @@ Campbell photo (62 s; the logo fades in there), and the showreel shows the three
 On and a layer's Anchor Point Grouping ignore expressions (one title layer per By item); a long text's Stagger is now shortened to
 fit a third of Duration. Lessons in SKILL.md.
 
-Owner, 2026-10-21: "Normally titles are their own category/template"; examples: four title demo reels in
+Pixie, 2026-10-21: "Normally titles are their own category/template"; examples: four title demo reels in
 `~/projects/mpt-local-motion/template-examples/` (bought/commercial demos: studied only, never copied; they stay out of this
-repo). **Owner's rule: copy the style and ideas, not the content.** What they show:
+repo). **Pixie's rule: copy the style and ideas, not the content.** What they show:
 - `basic-titles.mov`: plain titles. A small label ("TITLE") over a name, in a corner or bottom centre; a centred title; a scroll.
 - `58843029.mp4`: a text animator. Letters, words or lines come in and go out one after another (slide, turn, scale, blur, or
   "decode", random characters settling into the text), with an easing slider: "all in one simple control".
@@ -523,26 +523,26 @@ plus per template: Title, each Place within 1 % of where it belongs and the labe
 Style and By, mid-animation the first letters/words are further on than the last ones (measured on the drawn alpha), and Out
 plays it back; Typewriter, at a given time OCR reads exactly the letters typed so far, and the cursor is on and off in turn.
 
-**Demos:** one per template over the owner's trip photos, then the showreel. The trip demo opens with an Animated Title
-"Australia, coast to centre" over the first photo (owner: "Yes").
+**Demos:** one per template over Pixie's trip photos, then the showreel. The trip demo opens with an Animated Title
+"Australia, coast to centre" over the first photo (Pixie: "Yes").
 
 **Contact sheets** of the example reels (one frame a second) are committed in mpt-local-motion
-`template-examples/contact-sheets/` (v0.0.108); the reels are gitignored (owner, 2026-10-21).
+`template-examples/contact-sheets/` (v0.0.108); the reels are gitignored (Pixie, 2026-10-21).
 
 **Later, if wanted:** Decode (random characters settling into the text), Glitch, Kinetic Words (several big words one at a time),
 and a Scroll (rolling credits).
 
-## WEB1: a web page of the templates and their demo reels. APPROVED 2026-10-21 (owner: "WEB1 approved")
+## WEB1: a web page of the templates and their demo reels. APPROVED 2026-10-21 (Pixie: "WEB1 approved")
 
-Owner, 2026-10-21: "I actually want to have a github-based webpage to show the different types of effects with the demo reels";
+Pixie, 2026-10-21: "I actually want to have a github-based webpage to show the different types of effects with the demo reels";
 then, from a screenshot of a vendor's catalogue: each template's contact sheet and demo reel in a grid, separated by template,
 the name under each picture or video; no search; one image showing all the styles of a template, and a separate demo reel that
-says which feature is on screen. Answers (2026-10-21): a row per template; captions burned into the reels; the owner's example
+says which feature is on screen. Answers (2026-10-21): a row per template; captions burned into the reels; Pixie's example
 reels stay off the page; category headings.
 
 1. **Style sheets** (`previews/styles.jpg` per template, made by a new `tools/sheet.py` from a `previews/styles.json` that lists
    each cell: its label, values, size and the moment to show). One image per template, cells in a grid, each labelled underneath
-   by script (Inter). Overlay templates are shown over one of the owner's photos, dimmed, so every cell reads alike; full-frame
+   by script (Inter). Overlay templates are shown over one of Pixie's photos, dimmed, so every cell reads alike; full-frame
    templates show their own frame. What each sheet shows:
    - Animated Title: the 8 Styles, each caught mid-move, plus By Words and By Lines; Title: the 6 Places and "no label";
      Typewriter: Bar, Underscore, None, and part-way through Erase.
@@ -568,10 +568,10 @@ reels stay off the page; category headings.
    - `tools/catalog.py --check` fails if the page is older than any manifest, sheet or reel.
 4. **Hosting:** GitHub Pages serving the repository root, so the page at `docs/index.html` uses the committed reels and sheets
    in place (no copies). Until the repo is published the page is opened locally; switching Pages on is part of publishing.
-5. **Not on the page:** the owner's example reels and their contact sheets. Credits for the photos, music (Kerri, Sound Effects
+5. **Not on the page:** Pixie's example reels and their contact sheets. Credits for the photos, music (Kerri, Sound Effects
    Factory) and maps in a footer.
 6. **Test:** every template has a row, a sheet and a reel; every link resolves; no outside requests. Open the page and the
-   sheets for the owner. Commit, tag and push.
+   sheets for Pixie. Commit, tag and push.
 
 **Done 2026-10-21 (v0.5.34).** `tools/sheet.py` makes `previews/styles.jpg` for all 13 templates from their `styles.json` (each
 JPEG records the template version and a hash of its styles.json; `tools/catalog.py --check` fails on a missing or stale sheet).
@@ -582,14 +582,14 @@ sheet and reel per template; 49 linked files exist; no outside requests; videos 
 above: Corner Logo shows the 4 corners and 9x16 (no tall logo: the template's own logo is the one shown), and Fill the Frame shows
 4:3 and portrait pictures in both sizes (the footage has no 16:9 photo).
 
-## VER1: templates tied to the app versions they were tested on. APPROVED 2026-10-21 (owner: "version plan approved")
+## VER1: templates tied to the app versions they were tested on. APPROVED 2026-10-21 (Pixie: "version plan approved")
 
-**Why (owner, 2026-10-21):** bought templates rarely say which After Effects/Premiere version they work with, or claim one
+**Why (Pixie, 2026-10-21):** bought templates rarely say which After Effects/Premiere version they work with, or claim one
 wrongly; about a third fail because they were made for an older version and never updated. Here every template is tied to the
 range of app versions it was *tested* on, each has a test that also makes its demo reel, and older builds stay usable in their
 own folder "because sometimes people cannot upgrade". It has to suit people and AI agents alike.
 
-**Decisions (owner, 2026-10-21):** a separate, self-contained folder for an older version, inside each template; on an untested
+**Decisions (Pixie, 2026-10-21):** a separate, self-contained folder for an older version, inside each template; on an untested
 version `render.py` warns and renders; demo reels are judged by the measured checks, with a side-by-side review sheet for a
 person; the tested record lives in each folder's `template.json` (written by the tool) and its `tests/RESULT.md` (history).
 
@@ -647,7 +647,7 @@ python3 tools/verify.py [TEMPLATE ...] --effectcraft-cli PATH
 - **The report:** prints a table (template, folder, pass/fail/review) and exits non-zero on any failure.
 - **On a new EffectCraft release:** run it with `--all`. A failure is fixed by copying the folder to the new version's
   folder, adjusting `build.py`, rebuilding, and verifying.
-- **Older EffectCraft versions:** they can be kept installed anywhere, one `--effectcraft-cli` path per version. On the owner's
+- **Older EffectCraft versions:** they can be kept installed anywhere, one `--effectcraft-cli` path per version. On Pixie's
   Mac that's `~/projects/effectcraft-versions/<version>/`.
 
 **`tools/render.py`** chooses the folder for the installed version, so the command stays
@@ -686,7 +686,7 @@ layout. Then `verify.py --all` on 0.13.0 writes their first `tested` records. Th
   that verify and render pick the right one.
 
 **Order:**
-1. FF2: the loop fix, once the owner picks option 1 or 2.
+1. FF2: the loop fix, once Pixie picks option 1 or 2.
 2. VER1, before the demo reels, so the previews land in their version folders.
 3. DEMO1.
 4. The rest of TPL2.
@@ -707,9 +707,9 @@ layout. Then `verify.py --all` on 0.13.0 writes their first `tested` records. Th
 - **Still to come, in DEMO1:** the demo half of each test (render `previews/demo.mp4`, then the review sheet against the last
   passing demo). It is wired in as each demo is made.
 
-## FONT1: every piece of text can take any font. APPROVED 2026-10-21 (owner: "approved")
+## FONT1: every piece of text can take any font. APPROVED 2026-10-21 (Pixie: "approved")
 
-Owner, 2026-10-21: "All templates using letters should support any font."
+Pixie, 2026-10-21: "All templates using letters should support any font."
 
 **Where things stand.** Every template with text already has a font control that takes any installed font. Three templates
 share one control across several texts, and two leave a text out entirely:
@@ -745,9 +745,9 @@ checks); the rule is in SKILL.md and the README. `tools/verify.py --all`: 13 of 
 first run said the maps' fonts never changed, but the check was wrong (Pillow's `getbbox()` on RGBA sees only alpha, and a map is
 opaque); it now compares every channel. A font name that isn't installed falls back to the template's own font without an error.
 
-## FONT2: say so when a font is missing, before rendering. APPROVED 2026-10-21 (owner: "FONT2 approved")
+## FONT2: say so when a font is missing, before rendering. APPROVED 2026-10-21 (Pixie: "FONT2 approved")
 
-Owner, 2026-10-21: "if a needed font is missing, it should notify before running the template."
+Pixie, 2026-10-21: "if a needed font is missing, it should notify before running the template."
 
 **The problem.** EffectCraft draws a font it doesn't have in the template's own font and reports nothing (found in FONT1). So a
 misspelt font in a values file, or a template whose default font isn't installed (Box Wipe's Caveat Brush on a fresh machine),
@@ -777,9 +777,9 @@ renders without warning in the wrong font.
 front (a bad demo stops in 0.2 s). `tools/tests/test_fonts.py`: 6 of 6; `test_versions.py` 9 of 9; every template's defaults are
 installed here; Box Wipe and Locator re-verified with their demos unchanged.
 
-## DEMO2: a title page and an end page on every demo reel. APPROVED 2026-10-21 (owner: "proceed with DEMO2")
+## DEMO2: a title page and an end page on every demo reel. APPROVED 2026-10-21 (Pixie: "proceed with DEMO2")
 
-Owner, 2026-10-21: "For the demo reel, they need a title page and an end page." "The demo reel identifies the template name, the
+Pixie, 2026-10-21: "For the demo reel, they need a title page and an end page." "The demo reel identifies the template name, the
 product and product versions it works with and their web links and version of the template. End page is for credits and web
 links. Include a link to Artcraft in the end credits."
 
@@ -808,8 +808,8 @@ links. Include a link to Artcraft in the end credits."
    Sponsored By PixBack - Photo and Video Backup to Google Photos
    getpixback.com
    ```
-   The sponsor lines are the owner's wording (2026-10-21), on every end page, the showreel's included.
-   **All end cards the same** (owner, 2026-10-21: "change all end cards to be the same"): the Australia trip demo also ends on this
+   The sponsor lines are Pixie's wording (2026-10-21), on every end page, the showreel's included.
+   **All end cards the same** (Pixie, 2026-10-21: "change all end cards to be the same"): the Australia trip demo also ends on this
    end page. Its old end card (Credits, the ArtCraft lower third and the sponsor line in the Credits template) is dropped; its last
    shot keeps Sign-off ("Thank you for watching", blinking) and the logo fading out, then the standard end page follows.
 3. **How they are made:** `tools/demo.py` adds both to any demo whose `demo.json` says `"title_page": true, "end_page": true`,
@@ -819,7 +819,7 @@ links. Include a link to Artcraft in the end credits."
 5. Remake all template reels and the showreel, rebuild the page; `verify.py` checks the page text against `template.json`
    (version, tested range) by OCR on one reel. Commit, tag and push.
 
-**Owner's answers (2026-10-21):**
+**Pixie's answers (2026-10-21):**
 - **Which reels:** every template reel (16x9 and 9x16) gets both pages; the showreel gets one title page for the whole collection
   ("Craft Templates", the EffectCraft versions they are tested with, the links) and one end page. The Australia trip demo keeps its
   own opening title and end card.
@@ -832,11 +832,11 @@ links. Include a link to Artcraft in the end credits."
 fonts the values pick are credited too; long lines break after " - " on 9x16). All 17 reels have both pages, the trip demo ends
 on the same end page (64 s) and the showreel opens on a collection title page (77 s; its excerpts skip the reels' title pages by
 themselves). The reel check's limit is 25 s. `tools/tests/test_pages.py`: 6 of 6 (OCR of Box Wipe's, the showreel's and the trip
-demo's pages). The owner reviewed the Box Wipe reel: "looks good".
+demo's pages). Pixie reviewed the Box Wipe reel: "looks good".
 
 ## WEB2: GitHub hosts the page, its pictures and its videos; PixBack under the title. APPROVED 2026-10-21 ("Approved"); DONE 2026-10-21, published as v0.6.0
 
-Owner, 2026-10-21: "I like the web page as a starting point, will need to point to artifacts committed on github. I want github
+Pixie, 2026-10-21: "I like the web page as a starting point, will need to point to artifacts committed on github. I want github
 to host the page and the images/videos. At the Top - Craft Templates, New Line, Then the "Sponsered By PixBack" information from
 the end card with a clickable link to the website."
 
@@ -855,18 +855,18 @@ repository is private and GitHub Pages is off, so nothing is hosted yet.
    pre-publication checks already agreed (history squashed; no travel dates, footage file names or photo metadata; no non-free
    assets), then Pages on, then the page and a reel opened from github.io to check.
 4. `tools/tests/test_page.py` gains: the sponsor line and its link; `.nojekyll` present; every link resolves from the root.
-5. **YouTube: later, not part of WEB2** (owner, 2026-10-21: "I already have a YouTube page for PixBack, I will add it as a
+5. **YouTube: later, not part of WEB2** (Pixie, 2026-10-21: "I already have a YouTube page for PixBack, I will add it as a
    collection there. Something to look at after Github is working."). The reels go up as a collection on PixBack's channel once
    the GitHub page works; then the page may gain "Watch on YouTube" links, as a plan of its own. Check before that upload: the
    Sound Effects Factory licence allows YouTube, and what to do about a Content ID claim.
 
-**Decided (owner, 2026-10-21):** publishing is "squash, then public": run the pre-publication checks, squash the history to one
-commit, make the repository public and switch Pages on (free). Each of those GitHub steps is confirmed with the owner as it comes.
+**Decided (Pixie, 2026-10-21):** publishing is "squash, then public": run the pre-publication checks, squash the history to one
+commit, make the repository public and switch Pages on (free). Each of those GitHub steps is confirmed with Pixie as it comes.
 
 **Pre-publication check, run 2026-10-21 (v0.5.36): clean, with one finding.** No travel dates (the only date in the tree is
 today's work date; the footage dates appear nowhere), no footage file names except generic examples (`IMG_5322.jpg` in a
 note, test files `IMG_000n`), no EXIF dates or GPS in any tracked picture or video, coordinates at 3 decimals, no Vecteezy
-licence number, no third-party reels or music files, 108 MB of files. **Finding:** every commit's author email is the owner's
+licence number, no third-party reels or music files, 108 MB of files. **Finding:** every commit's author email is Pixie's
 personal address, which the squashed public commit would show. **Fix:** the public commit and all later ones use GitHub's
 no-reply address (`61368993+gkirkendall@users.noreply.github.com`, set as this repository's `user.email`).
 **Second finding:** the 61 tags (v0.1.x … v0.5.36) point at the old commits, so the old history stays reachable through them
@@ -877,7 +877,7 @@ after a squash, and GitHub can keep serving old commits by their ID. **Proposed 
 3. Create a new public `gkirkendall/craft-templates` and push only that commit and tag (no old tags, no old commit IDs).
 4. Switch Pages on (`main`, `/`), then open https://gkirkendall.github.io/craft-templates/ and play a reel to check.
 
-**Published 2026-10-21 (each step confirmed by the owner).** Steps 3 and 4 used the BRAND1 name. (1) The private repository is
+**Published 2026-10-21 (each step confirmed by Pixie).** Steps 3 and 4 used the BRAND1 name. (1) The private repository is
 now `gkirkendall/craft-templates-history`; the verified 199 MB bundle is `~/projects/craft-templates-history.bundle`; the old
 folder `~/projects/craft-templates` points at it and is history only. (2) The working folder is now
 `~/projects/pixies-craft-templates`: today's 578 tracked files in one commit by the no-reply address, tagged `v0.6.0`; every
@@ -888,7 +888,7 @@ downloads (all HTTP 200).
 
 ## BRAND1: Pixie's Craft Templates. APPROVED 2026-10-21 ("approved")
 
-Owner, 2026-10-21: "i had mentioned at tie-in with Pixie. Perhaps this is the time to decide on that since the new repo could be
+Pixie, 2026-10-21: "i had mentioned at tie-in with Pixie. Perhaps this is the time to decide on that since the new repo could be
 called "pixies-craft-templates and there could be a graphic based on Pixie". Settles the "For discussion later" item below, and
 comes before WEB2's publishing, because the name is in the repository address that every reel's end page shows.
 
@@ -905,23 +905,23 @@ comes before WEB2's publishing, because the name is in the repository address th
    listed in CREDITS.md and the page footer like the photos; never inside a template file.
 5. **Then WEB2's publishing** under the new name: the current repository renamed `craft-templates-history` (private), a new
    public `pixies-craft-templates` with one commit `v0.6.0` by the no-reply address, Pages on.
-**Decided (owner, 2026-10-21):** the name is written "Pixie's Craft Templates"; the graphic is the existing peach still, cut out
+**Decided (Pixie, 2026-10-21):** the name is written "Pixie's Craft Templates"; the graphic is the existing peach still, cut out
 by script; Pixie appears on the page, the README and every reel's title and end page.
 **Built 2026-10-21 (v0.5.41):** `tools/brand/make_pixie.py` → `brand/pixie.png` (reels, README) and `brand/pixie_web.png` (page);
 page header, README top, every reel's title and end page (`demo.py` `page_card`: Pixie left of the text on 16x9, above it on 9x16);
 new address on the end page, the Credits sheet, `maps.py` and the schema id; CREDITS.md and the footer credit Pixie. All 17 reels,
 the Credits sheet and the page remade; every test passes (fonts 6/6, page 13/13, pages 6/6, versions 9/9, catalog 13/13).
-**Graphic changed (owner, 2026-10-21: "pixie_C approved, converted to peach and purple"):** the friendliest Pixie is the ad's
+**Graphic changed (Pixie, 2026-10-21: "pixie_C approved, converted to peach and purple"):** the friendliest Pixie is the ad's
 turquoise candidate `pixback_launch/video/dinosaur_ad/review/pixie_candidates/pixie_C.png` (tongue out, slight smile); its
 turquoise fur is recoloured by script to the final costume's peach, purple spots and spikes kept. One test image first, opened
-for the owner; if the fur looks wrong, the fallback is a paid Higgsfield edit (render list first) or the peach neutral still.
-**Recolour accepted (owner, 2026-10-21: "fixed pixie will work"):** the second pass (blue fringes at the spot edges moved to
+for Pixie; if the fur looks wrong, the fallback is a paid Higgsfield edit (render list first) or the peach neutral still.
+**Recolour accepted (Pixie, 2026-10-21: "fixed pixie will work"):** the second pass (blue fringes at the spot edges moved to
 purple, purple deepened to the costume's) by `recolour_pixie.py`; it goes in `tools/brand/` with the cut-out so the picture can be
-remade. `rembg` 2.0.85 installed by the owner (Anaconda Python; it also moved Pillow to 12.3.0, all checks still pass).
+remade. `rembg` 2.0.85 installed by Pixie (Anaconda Python; it also moved Pillow to 12.3.0, all checks still pass).
 
 ## INSTALL1: "How to install" on the page and in the README. APPROVED 2026-10-21 ("approve INSTALL1")
 
-Owner, 2026-10-21: "we might want ot have a "how to install" section on the web page and the README", after asking "will these
+Pixie, 2026-10-21: "we might want ot have a "how to install" section on the web page and the README", after asking "will these
 templates show up in the GUI?".
 
 **How the templates reach EffectCraft's window (read from EffectCraft 0.13's source, 2026-10-21).** Each template is an
@@ -941,36 +941,36 @@ too (named by file, under "My Templates"), but that is untested.
    Graphics panel. (To find it under New Project from Template instead: copy the file into EffectCraft's `Templates` folder; only
    if the test below passes.)
 5. **From a script** (for tools like MPT): `tools/render.py`, one line and a link to the README's existing section.
-**Decided (owner, 2026-10-21):** per-template download links (plus GitHub's ZIP for everything); the gallery step goes in only
-after the owner's test shows a template listed there. Gallery folder: `~/Library/Application Support/EffectCraft/Templates`
+**Decided (Pixie, 2026-10-21):** per-template download links (plus GitHub's ZIP for everything); the gallery step goes in only
+after Pixie's test shows a template listed there. Gallery folder: `~/Library/Application Support/EffectCraft/Templates`
 (macOS), `%APPDATA%\EffectCraft\Templates` (Windows), `~/.config/effectcraft/Templates` (Linux), as EffectCraft's `app_dirs.rs` sets it.
 **Built 2026-10-21 (v0.5.41):** the five steps on the page (under the showreel) and in the README; a download link per template
-size (26) and font links per row; `test_page.py` 13/13. Waiting: the owner's gallery test.
-**Test:** the owner imports one template through the menu and, if wanted, the gallery copy, by eye (EffectCraft's window cannot be
+size (26) and font links per row; `test_page.py` 13/13. Waiting: Pixie's gallery test.
+**Test:** Pixie imports one template through the menu and, if wanted, the gallery copy, by eye (EffectCraft's window cannot be
 driven from here); `test_page.py` checks every download and font link resolves; the README and the page say the same steps.
 
-## END2: "See Pixie on YouTube" under Pixie on the end page. DONE 2026-10-21, owner: "i like the new end card, approved" (v0.5.42; all 17 reels remade, every test passes; the YouTube lines are read from Pixie's column, since OCR of both columns at once misreads "YouTube")
+## END2: "See Pixie on YouTube" under Pixie on the end page. DONE 2026-10-21, Pixie: "i like the new end card, approved" (v0.5.42; all 17 reels remade, every test passes; the YouTube lines are read from Pixie's column, since OCR of both columns at once misreads "YouTube")
 
-Owner, 2026-10-21: "to the end credit card. Under (?) Pixie - "See Pixie on YouTube - youtube.com/@PixBack" format as needed".
+Pixie, 2026-10-21: "to the end credit card. Under (?) Pixie - "See Pixie on YouTube - youtube.com/@PixBack" format as needed".
 The handle matches `pixback_launch/LINKS.md`.
 1. **End page only** (title pages unchanged). Directly under Pixie, centred on him, two lines: "See Pixie on YouTube" (Inter
    SemiBold, white) and "youtube.com/@PixBack" (Inter Medium, the link blue), split at the " - " like the sponsor line.
    16x9: Pixie's column on the left, Pixie made a little smaller (0.66 → 0.56 of the frame height) so the lines fit beneath him.
    9x16: between Pixie and "Credits".
 2. `test_pages.py` also reads "See Pixie on YouTube" and "youtube.com/@PixBack" on the end pages.
-3. All 17 reels remade (local, free, about 8 min, after FL1b frees the GPU); every test run; a reel opened for the owner; commit,
+3. All 17 reels remade (local, free, about 8 min, after FL1b frees the GPU); every test run; a reel opened for Pixie; commit,
    tag, push.
 
 
-## For discussion later (owner, 2026-10-21; not actioned)
+## For discussion later (Pixie, 2026-10-21; not actioned)
 
-- **Name and brand: "Pixies Craft Templates"**, using Pixie from the PixBack ad. The owner means to tie media creation (these
+- **Name and brand: "Pixies Craft Templates"**, using Pixie from the PixBack ad. Pixie means to tie media creation (these
   templates) in with media backup (PixBack). The templates stay free. Nothing is renamed or rebranded until this is discussed.
   Points to settle then: the repo and README name, whether Pixie appears in demos or the showreel, and how PixBack is linked.
 
 ## README1: the README's video links play. APPROVED 2026-10-21 ("approved"); DONE (v0.6.2)
 
-Owner, 2026-10-21: "The links in the README are not playing the video". **Cause:** the README links to the videos by relative
+Pixie, 2026-10-21: "The links in the README are not playing the video". **Cause:** the README links to the videos by relative
 paths (`demo/showreel.mp4`). On github.com a relative link opens the file's repository page, which shows "View raw" and no
 player, because GitHub doesn't play videos stored in a repository. **Fix:** point the README's three video links (the poster
 picture, "Watch the showreel" and the Australia trip demo, `README.md` lines 12 and 14, the only video links in any Markdown
@@ -981,3 +981,38 @@ and click each link to confirm it plays.
 **Built:** the three video links and both "catalogue page" links (which pointed at `index.html`, shown on github.com as HTML
 source) now go to the live site; no extra line was needed. `test_page.py` gained the check (14 of 14 pass; it fails on the old
 README, naming all 5 links).
+
+## RELEASE1: one download with every template, as a GitHub release. PROPOSED 2026-10-21, awaiting approval
+
+Pixie, 2026-10-21: "i suggest a release folder (or equivalent). Many people wanting to use the tempates will not want to compile
+code". The 26 `.ectemplate` files are already built and committed (no one has to compile anything), but they sit six folders
+deep, one per template and size, and the fonts are in a separate folder; a visitor has to know where to look. **Fix:** a GitHub
+release, GitHub's standard place for "the thing to download", with one zip holding everything needed.
+
+1. `tools/release.py` builds `dist/pixies-craft-templates.zip` (`dist/` gitignored), laid out as:
+   - `templates/` — the 26 files, flat, named as now (`box_wipe_16x9.ectemplate`, …), from each template's current version.
+   - `fonts/` — only the fonts the templates list (now Caveat Brush, Inter, League Gothic, Montserrat; 9.4 MB), each with its
+     SIL Open Font License text, which the OFL requires to travel with the fonts.
+   - `README.txt` — what is inside, the install steps (install the fonts, then File ▸ Import ▸ Essential Graphics Template… in
+     EffectCraft), the EffectCraft versions they were tested with, and the web page address.
+   - `LICENSE-MIT`, `LICENSE-APACHE`, `CREDITS.md`.
+   No reels, photos, footage, music or Pixie picture go in the zip. The asset name has no version number, so the link
+   `https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-craft-templates.zip` always fetches
+   the newest release.
+2. A check in `tools/tests/test_release.py`: the zip holds every current template file (26) and every listed font with its
+   licence, and nothing else outside the list above.
+3. The web page and the README get a **"Download all templates (zip)"** link at the top, under the sponsor line, pointing at
+   that link. The install steps' "Download a template" step names the zip first.
+3a. **The template grid downloads from the release too** (Pixie, 2026-10-21: "The templates grid should point to the released
+   template, techies are going to pull the whole project"). Each of the 26 template files is also attached to the release on
+   its own, so every row's "Download: 16x9 · 9x16" links go to
+   `…/releases/latest/download/<template>_<size>.ectemplate` instead of the file in the repository; each row's "Fonts:" links go to
+   a second release file, `pixies-craft-templates-fonts.zip` (the 4 fonts with their licences). Nothing on the page points
+   into the repository for downloading; people who want the source clone the repository. `test_page.py`'s download check
+   changes to: one release link per template size, each naming a file that `tools/release.py` attaches.
+3b. README wording (Pixie, 2026-10-21): the paragraph "The catalogue page shows every template in a row: one picture of all
+   its styles, and its demo reel with the feature on screen named in the corner." becomes **"Check out the [catalogue
+   page](https://gkirkendall.github.io/pixies-craft-templates/)! It shows a demo reel and screen shots of every template."**
+4. Commit, tag (v0.6.4), push; then `gh release create v0.6.4` with the zip, the fonts zip and the 26 template files, and short notes (what's in
+   it, how to install). Open the release page and the web page for Pixie, and check every page download link returns its file.
+5. From then on, a new release is made whenever a template changes (the release notes say which), using the same command.

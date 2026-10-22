@@ -20,7 +20,7 @@ Fixed on the way: the zoomed map spilled past the corner card (now clipped by a 
 (now shrink to fit); and the test's first credit comparison read only the alpha channel (Pillow's `getbbox` on RGBA), so it now
 compares RGB.
 
-Still for the owner: open `templates/locator_16x9.ectemplate` in the EffectCraft app and check its named controls.
+Still for Pixie: open `templates/locator_16x9.ectemplate` in the EffectCraft app and check its named controls.
 
 **Fonts** (`tools/fontcheck.py`): Name Font, Subtitle Font and Credit Font each take any font: Montserrat Bold changes the frame, and with that control's own text emptied it changes nothing, so it reaches no other text.
 

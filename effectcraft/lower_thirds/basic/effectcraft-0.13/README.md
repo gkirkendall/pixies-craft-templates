@@ -29,5 +29,5 @@ No credits are needed: Inter is under the SIL Open Font License and ships with E
 - `examples/`: a values file with a long title.
 - `tests/`: the test script and its result.
 
-First made as the T-E1 test of the owner's motion-picture tool, then rebuilt here in Python with Inter and a font control for each line
+First made as the T-E1 test of Pixie's motion-picture tool, then rebuilt here in Python with Inter and a font control for each line
 (version 2.0.0: the single Font control, which the subtitle followed, became Title Font and Subtitle Font).
