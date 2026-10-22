@@ -1,0 +1,106 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 2.0,
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "port_campbell",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              330
+            ],
+            "Start": 0,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Animated Title Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              430
+            ],
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Coast to *centre*",
+            "Style": "Fade Up",
+            "Duration": 5,
+            "Position": [
+              540,
+              1500
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Fade Up \u00b7 By: Letters \u00b7 9x16"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Every *wave* counts",
+            "Style": "Bounce",
+            "By": "Words",
+            "Stagger": 0.15,
+            "Duration": 5,
+            "Position": [
+              540,
+              1500
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Bounce \u00b7 By: Words \u00b7 9x16"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "TJORITJA",
+            "Style": "Spread In",
+            "Duration": 5.5,
+            "Position": [
+              540,
+              1500
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Spread In \u00b7 9x16"
+    }
+  ]
+}
