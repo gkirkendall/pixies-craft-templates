@@ -61,6 +61,7 @@ def main():
         check("in the order taken; two close photos are one stop", code == 0 and [(s["lat"], s["lon"]) for s in stops] == [(12.345, 67.89), (20.0, 70.0)]
               and [s["name"] for s in stops] == ["Stop 1", "Stop 2"], f"{stops}")
         check("a photo without a location is reported and skipped", "plain.jpg: no location, skipped" in said and "3 of 4 photos" in said, said)
+        check("it tells you to add the skipped photos' places by hand", "1 photo without a location got no stop" in said, said)
         code, said = run("--photos", d, "--out", out, "--merge-km", "0.01")
         check("--merge-km splits close photos", code == 0 and len(json.loads(out.read_text())) == 3, f"{len(json.loads(out.read_text()))} stops")
         far = tmp / "days"
@@ -80,7 +81,7 @@ def main():
         photo(none / "n.jpg")
         gone = tmp / "gone.json"
         code, said = run("--photos", none, "--out", gone)
-        check("no located photo: stops with a message, writes nothing", code != 0 and not gone.exists() and "none of the 1 photos has a location" in said, said)
+        check("no located photo: stops with a message, writes nothing", code != 0 and not gone.exists() and "none of the 1 photos has a location" in said and "write the places yourself" in said, said)
         code, said = run("--photos", south, "--out", out)
         check("one located photo writes a one-stop file", code == 0 and len(json.loads(out.read_text())) == 1 and "a route needs two stops" in said, said)
         try:

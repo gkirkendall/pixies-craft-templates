@@ -338,7 +338,8 @@ def stops_from_photos(a):
             continue
         located.append((taken or datetime.datetime.max, photo.name, {"lat": lat, "lon": lon}))
     if not located:
-        sys.exit(f"none of the {len(photos)} photos has a location: use the original files from the camera or phone")
+        sys.exit(f"none of the {len(photos)} photos has a location: use the original files from the camera or phone, or write the places "
+                 "yourself in a stops file (a name, lat and lon for each, in travel order: see Make Maps/README.txt, \"Your places\")")
     stops, last_taken = [], None
     for taken, _name, pos in sorted(located, key=lambda x: x[:2]):
         near = stops and haversine_km(stops[-1], pos) <= a.merge_km and (taken == datetime.datetime.max or last_taken is None
@@ -348,6 +349,9 @@ def stops_from_photos(a):
         last_taken = taken
     out = pathlib.Path(a.out)
     out.write_text(json.dumps(stops, indent=2, ensure_ascii=False) + "\n")
+    skipped = len(photos) - len(located)
+    if skipped:
+        print(f"{skipped} photo{'s' if skipped != 1 else ''} without a location got no stop: add those places by hand in {a.out} (a name, lat and lon each)")
     print(f"{len(located)} of {len(photos)} photos have a location: {len(stops)} stop{'s' if len(stops) != 1 else ''} written to {out}")
     for st in stops:
         print(f"  {st['name']}: {st['lat']}, {st['lon']}")

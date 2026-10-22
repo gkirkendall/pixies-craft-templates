@@ -19,16 +19,16 @@ One-time set-up
 
        python3 maps.py fetch
 
-Your places
------------
+Your places (by hand: works for any photos, with or without a location)
+-----------------------------------------------------------------------
 Open my.stops.json in a text editor and replace the six example places with yours, in travel order. Each place is a name, a short
 subtitle (may be empty), and its latitude and longitude (right-click a place in Google Maps or Apple Maps to copy them; south and
 west are negative numbers):
 
        {"name": "Stop 1", "subtitle": "", "lat": -38.618, "lon": 142.915}
 
-Or: take the places from your own photos
-----------------------------------------
+Or: take the places from your own photos (the ones that have a location)
+----------------------------------------------------------------------
 Phone and camera photos usually remember where they were taken. Put copies of your original photos in a folder (messaging apps
 and social sites often strip the location, so use the files straight from the camera or phone), then:
 
@@ -37,7 +37,7 @@ and social sites often strip the location, so use the files straight from the ca
 (use the path of your own folder; on Mac it looks like /Users/you/Pictures/Trip). It reads each photo's location and the time it was
 taken, puts the places in the order you went, counts photos taken within 1 km and a day of each other as one stop, and writes
 my.stops.json with the places named "Stop 1", "Stop 2", ... (you type the real names in the app). A photo with no location is
-listed and skipped. HEIC photos from an iPhone need one more package:  python3 -m pip install exifread
+listed and skipped, and gets no stop: add its place by hand in my.stops.json (see "Your places" above), so the two ways mix freely. HEIC photos from an iPhone need one more package:  python3 -m pip install exifread
 The locations are read on your computer only; nothing is sent anywhere. Then make the map pictures as below.
 
 Make the map pictures
