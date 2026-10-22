@@ -1091,3 +1091,35 @@ opacity keys for the crossfade. Findings:
   Footage), so the photo is cropped; dropping in a same-named file is only right for the same shape. The kit's README says
   Replace Footage. (EffectCraft could re-read the size on reload; worth reporting to its maintainers.)
 - Still for Pixie (the one unknown): open the kit in the EffectCraft app.
+
+**RECIPE1 step 4, app test done 2026-10-21 (Pixie, EffectCraft 0.14.0 desktop app built from the checkout; 0.13.0 → 0.14.0 is
+docs and CI only, so the engine is the one the templates were tested on).** The two-shot kit opens on the Trip Video comp and
+plays; the templates' controls are editable per shot in **Window ▸ Essential Graphics** (select the layer first; the
+timeline lists text and font controls without a value box, and the Properties panel shows only Layer Transform); a photo
+dragged from Finder into the Project panel comes in as one Image, and picking it in a shot's **Media** dropdown shows it whole
+over Fill the Frame's blur. Findings, each with its fix, **proposed for approval** (changes to step 1 of this plan):
+1. **Layer order:** the builder put the later shot under the earlier one, so its crossfade was hidden (a cut at 4.5 s).
+   Fix: each later shot above the one before; layers named "Shot 1 · Photo_1", "Shot 2 · Photo_2", ….
+2. **Project panel:** photos sat loose among the template folders. Fix: folders "Photos – replace these", "Maps – replace
+   these", "Logo – replace this", "Templates (no need to edit)" (`project.newFolder`, `project.move`), the Trip Video comp at
+   the top.
+3. **Swapping a photo: not File ▸ Replace Footage.** With a numbered photo (IMG_2331.JPG, as most cameras name them; also our
+   own Photo_1 … Photo_8) it imports the whole numbered run as an image sequence without asking (seen: 100 photos as one
+   3-second sequence), and its dialog has no Sequence option. File ▸ Import ▸ File… asks (its "JPG Sequence" tick starts
+   off) and dragging from Finder imports single photos. Fix: the kit's README says: drag your photos into the Project panel,
+   select a shot layer, Window ▸ Essential Graphics, pick the photo in **Media**; and warns against Replace Footage.
+4. **Slider controls clamp in the Essential Graphics panel.** A number control is drawn as a slider over the Slider
+   Control's slider range (0–100 by default), and egui's slider clamps the shown value (`SliderClamping::Always`,
+   `crates/ui-egui/src/panels/essential.rs:470`): Max Width 1651 shows as 100.0, and if the panel ever writes it back the
+   title shrinks to 100 px (not seen in this test: the value stayed 1651). Fix, templates side (Pixie, 2026-10-21: "i assume
+   the 100 represents a percent"): Max Width becomes a percent of the frame width (86 for both sizes), and every other
+   control whose values pass 100 either becomes a percent of the frame or gets a slider range that covers its values; a test
+   checks every default and example value sits inside its control's slider range. This changes the templates' controls, so
+   each affected template gets a new version (1.1.0) with its examples, demo specs, style sheets, reels and MPT's callers
+   updated, verified on 0.13.0 and 0.14.0, and a new release. A separate plan entry (SLIDER1) before the full kit.
+5. **Report to EffectCraft's maintainers** (Pixie decides; outward-facing): (a) Replace Footage on a still brings a numbered
+   run as a sequence without asking, unlike Import; (b) the Essential Graphics slider clamps values outside its slider
+   range (`.clamping(egui::SliderClamping::Never)` would fix it); (c) Reload Footage keeps the old picture size. Drafted as
+   one issue for Pixie to read before anything is posted.
+6. **README for the kit** also says: the title fades in from 0.3 s (scrub past it); Window ▸ Essential Graphics is where the
+   text is edited.
