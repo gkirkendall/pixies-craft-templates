@@ -1,5 +1,3 @@
-**Two footage bugs: Replace Footage turns a numbered photo into an image sequence; Reload Footage keeps the old picture size**
-
 Found while building a trip-video project in EffectCraft 0.14.0 (macOS, Apple Silicon): photos filled to the frame, which people swap for their own.
 
 **1. File ▸ Replace Footage on a numbered photo imports the whole numbered run as one image sequence, without asking**
