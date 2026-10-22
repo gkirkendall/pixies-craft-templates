@@ -9,20 +9,72 @@
   "segments": [
     {
       "footage": "hildas_lookout",
-      "seconds": 6,
+      "seconds": 5.5,
       "overlays": [
         {
           "template": "effectcraft/titles/credits",
           "values": {
             "file": "{root}/effectcraft/titles/credits/effectcraft-0.13/examples/australia.values.json",
             "set": {
-              "Duration": 6
-            }
+              "Duration": 5.5
+            },
+            "Duration": 5.5
           },
           "at": 0
         }
       ],
-      "caption": "Title and three lines"
+      "caption": "Title and four lines"
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/credits",
+          "values": {
+            "Title": "Opera House at the end of a long summer day",
+            "Line 1": "Photos by Gregory Kirkendall",
+            "Line 2": "Music: Relaxing Flute Tune, Sound Effects Factory",
+            "Duration": 5.5,
+            "Line 3": "",
+            "Line 4": "",
+            "Line 5": "",
+            "Position": [
+              960,
+              790
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "A long title breaks onto two lines",
+      "caption_at": "top"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/credits",
+          "values": {
+            "Title": "",
+            "Line 1": "Filmed in the Northern Territory, Australia",
+            "Line 2": "Photos by Gregory Kirkendall",
+            "Colour": "#ffd166",
+            "Duration": 5.5,
+            "Line 3": "",
+            "Line 4": "",
+            "Line 5": "",
+            "Position": [
+              960,
+              900
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "No title \u00b7 Colour",
+      "caption_at": "top"
     }
   ]
 }
