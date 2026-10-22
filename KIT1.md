@@ -57,9 +57,20 @@ place, use the generic text above.
 
 **Maps: live map templates (Pixie chose (b), 2026-10-21).** The map cards (segments 1, 4, 7) and the Route Leg insets use the
 map templates in the project, with generic stops ("First Stop", "Start" / "Next Stop"), so people type their own places in
-Essential Graphics instead of making map pictures. No `Maps/` folder of pictures. First check that the map templates' controls
-can take any place in the app; if they can't (for example the map picture is baked in when built), stop and tell Pixie, and
-propose shipping the demo's maps as example pictures (`Maps/Map_1.png` …, rendered once with `tools/maps.py`) instead.
+Essential Graphics instead of making map pictures. No `Maps/` folder of pictures. First check, in the app, what can change there:
+place names should be typeable in Essential Graphics; the map picture itself is made by `tools/maps.py` from a stops file.
+**If a new map needs the script, the kit supplies it (Pixie, 2026-10-21: "so supply the script, if it is needed"):**
+- `Make Maps/` in the kit: `maps.py` and whatever of `tools/` it imports (copy only what it needs; it must run from the kit
+  folder alone, without this repo), an example `my.stops.json` with generic places, and `README.txt`.
+- That README: install Python 3 (python.org; Windows, Mac and Linux), `pip install` the exact packages it needs, run
+  `python3 maps.py fetch` once (Natural Earth data, about 52 MB), write your stops in `my.stops.json`, then the two commands
+  (route legs, locator) that write the map pictures, and how to pick them in the map layers' Essential Graphics **Media** (or
+  whichever control takes the map). Spell out every command in full.
+- The kit's main README.txt points to it in one line ("New places on the maps: see Make Maps/README.txt").
+- A test: copy the kit to a temporary folder, run `Make Maps/` there on the example stops, and check it writes the map
+  pictures and the project shows them.
+- Natural Earth is public domain; check `maps.py`'s other dependencies' licences before shipping them (only free licences:
+  PLAN.md and SKILL.md list which).
 
 **Logo:** `Logo/Logo.png`, a plain placeholder (text "Your Logo" in Inter on a transparent square, made by script).
 
@@ -70,7 +81,7 @@ propose shipping the demo's maps as example pictures (`Maps/Map_1.png` …, rend
 ```
 project_templates/trip_video/
   Trip Video 16x9.ecproj      (and Trip Video 9x16.ecproj, same shots; the photos are 16:9, Fill the Frame fills the tall frame)
-  Photos/  Logo/  Music/  Template Media/   (Template Media: the templates' own pictures, copied in, as the prototype does)
+  Photos/  Logo/  Music/  Make Maps/  Template Media/   (Template Media: the templates' own pictures, copied in, as the prototype does)
   README.txt
 ```
 Folders in the Project panel: "Photos – replace these", "Templates (no need to edit)". Timeline layer
