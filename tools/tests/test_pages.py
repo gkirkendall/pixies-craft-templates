@@ -4,7 +4,8 @@ tesseract (brew install tesseract).
 
   python3 tools/tests/test_pages.py
 
-Every reel and video has both pages: the template reels, the showreel, the trip demo and the trip video kit's preview. Checks, on
+Every reel and video has both pages: the template reels, the showreel, the trip demo and the trip video kit's preview; a
+9x16 reel (a Short) opens straight on the effect, with no title page, and still ends on the end page. Checks, on
 Box Wipe's reel and the showreel: the title page (1.5 s in) names the template (or "Craft Templates"), the template
 version from template.json and the EffectCraft versions it was tested with, and EffectCraft's links; the end page (1.5 s before
 the end) has the credits, the links to the templates, ArtCraft and EffectCraft, the PixBack sponsor line and getpixback.com, and
@@ -80,9 +81,11 @@ def main():
             end = read(video, -1.5, tmp)
             check(f"{name} ends on the same end page", all(w in end for w in END), f"missing {[w for w in END if w not in end]}")
     specs = sorted(ROOT.glob("effectcraft/*/*/*/previews/demo*.json")) + [ROOT / "demo" / "showreel.json", ROOT / "demo" / "australia_trip" / "demo.json"]
-    off = [s.relative_to(ROOT).as_posix() for s in specs if not (json.loads(s.read_text()).get("title_page")
-                                                                 and json.loads(s.read_text()).get("end_page"))]
-    check("every reel has both pages", not off, f"{len(specs)} reels" + (f"; without: {off}" if off else ""))
+    def pages_ok(spec):
+        d = json.loads(spec.read_text())
+        return d.get("end_page") and (d.get("title_page") or d.get("size") == "9x16")
+    off = [s.relative_to(ROOT).as_posix() for s in specs if not pages_ok(s)]
+    check("every reel has both pages (9x16: the end page)", not off, f"{len(specs)} reels" + (f"; without: {off}" if off else ""))
     print(f"\n{sum(results)} of {len(results)} checks pass")
     sys.exit(0 if all(results) else 1)
 

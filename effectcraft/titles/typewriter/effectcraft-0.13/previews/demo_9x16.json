@@ -1,0 +1,83 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 2.6,
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              330
+            ],
+            "Start": 0,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Typewriter Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              430
+            ],
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "file": "{root}/effectcraft/titles/typewriter/effectcraft-0.13/examples/travel.values.json",
+            "set": {
+              "Duration": 5,
+              "Position": [
+                540,
+                1150
+              ]
+            }
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: Bar · 9x16"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "Text": "See you on the next road.",
+            "Cursor": "Underscore",
+            "Erase": true,
+            "Start": 0.3,
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: Underscore · Erase · 9x16"
+    }
+  ]
+}
