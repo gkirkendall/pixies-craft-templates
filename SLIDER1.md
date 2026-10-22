@@ -93,3 +93,47 @@ example value is outside 0–100, it gets the same treatment. The new check (ste
 8. **Release**, after the user says go ahead: `python3 tools/release.py --publish <the new tag>`.
 
 Then the full RECIPE1 8-shot kit (PLAN.md), which uses these 1.1.0 templates.
+
+## What happened (2026-10-22, steps 1–4 done, v0.6.27 and v0.6.28)
+
+Findings and deviations from the steps above. Where this section and the sections above disagree, this one is what was built.
+
+### Deviations from the plan (each a one-constant change, so easy to reverse)
+
+1. **Size: 50 is the normal size and 100 is double, not "100 = today's size".** With 100 as normal, the Glint previews (Size 170
+   and 220, with a 140 px default) came out above 100 and the new check rejected them; a slider that starts at its maximum also
+   cannot enlarge anything. Full scale is now twice the old default: Animated Title 240 px font (16x9; 192 in 9x16), Corner Logo
+   360 px, Glint and Glint Set 280 px. Default 50 in all four. Glint previews converted: 170 → 61, 130 → 46, 150 → 54, 110 → 39,
+   140 → 50, 80 → 29, 220 → 79. The expressions read `Size * normal / 50`.
+2. **Route Leg's Curve was out of range too** (the inset example used -15; a 0–100 slider cannot go below 0). Curve is now
+   50 = straight, 70 = a 20 % bow (the old default of 20), 35 = a 15 % bow the other way (the inset example). Route Leg 2.0.0 → 2.1.0.
+3. **Box Wipe's Max Width defaults are 57.3 (16x9) and 83.3 (9x16)**, not 57 and 83: whole numbers moved the layout by about 6 px
+   and the OCR in its test then misread the wrapped line. 57.3 % of 1920 is 1100 px and 83.3 % of 1080 is 900 px, as before.
+4. **Credits was already 1.2.0**, so it went to 1.3.0, not 1.1.0.
+5. **Max Width reads `thisComp.width`** inside each expression instead of the build's Python `w`: the expressions are module-level
+   constants shared by both variants, and this gives the same result in both.
+
+### Findings
+
+- The plan's table of line numbers had drifted; every control was found by searching instead. Nine templates changed as listed,
+  plus Route Leg.
+- No other control was out of range. Margin, Heart Size, Spread, Glow, Opacity, Shadow and the rest all sit inside 0–100.
+- MoneyPrinterTurbo and the repo's own tools and demos pass none of Size, Max Width or Curve, so step 5 needed no caller changes.
+- Locator and Route Leg tests need Natural Earth data (`python3 tools/maps.py fetch`, about 52 MB, public domain, in the
+  gitignored `data/`). It was fetched on this machine.
+- `catalog.py` leaves a template out of the README table (and the page) while its style sheet is stale, so the table must be
+  rewritten only after the sheets are remade. verify.py and catalog.py rewrite README.md and index.html on every run: restore
+  them (`git checkout README.md index.html`) before committing a half-finished state.
+- `verify.py --all` on 0.13.0 and 0.14.0: every template passes (Title 41/41, Animated Title 35/35, Credits 39/39, Sign-off 32/32,
+  Typewriter 15/15, Box Wipe 17/17, Corner Logo 25/25, Glint 13/13, Glint Set 28/28, Route Leg 20/20, Locator 10/10).
+- Tests that carried pixel values were converted: Glint and Corner Logo compute pixels from the percent; Animated Title's Size
+  test uses 25 against the default 50 (ratio 0.5).
+
+### Done
+
+- Step 1 (Title) shown in the 0.14 app and approved by the user. Step 2: `catalog.py --check` fails any number control whose
+  default or example/preview value is outside 0–100 (`tools/tests/test_sliders.py`, 6/6). Steps 3 and 4 as above.
+- Step 6 sheets remade for Animated Title, Title, Typewriter, Box Wipe, Glint, Glint Set, Route Leg and Credits; `catalog.py`
+  rewrote the README table and page; `catalog.py --check` passes.
+- **Left:** remake and check the reels (`verify.py --all --footage … --music …`, running), commit the sheets, README and page, PLAN.md
+  entry (step 7), and the release only after the user's go-ahead (step 8).
