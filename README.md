@@ -54,7 +54,12 @@ Check out the [catalogue page](https://gkirkendall.github.io/pixies-craft-templa
    in the Essential Graphics panel. **Or start a new project from it:** copy the `.ectemplate` file into EffectCraft's
    `Templates` folder (create it if it isn't there): `~/Library/Application Support/EffectCraft/Templates` on macOS,
    `%APPDATA%\EffectCraft\Templates` on Windows, `~/.config/effectcraft/Templates` on Linux. It then shows on the Home screen
-   under **Templates ▸ New from Template**, marked "My Templates", and opening it makes an untitled copy.
+   under **Templates ▸ New from Template**, marked "My Templates", and opening it makes an untitled copy. To reach the folder:
+   on macOS, Finder ▸ Go ▸ Go to Folder… (Shift-Command-G) and paste the path; on Windows, paste the path into File
+   Explorer's address bar.
+
+   ![EffectCraft's Home screen, Templates ▸ New from Template: the Title template listed as "Title 16x9" under My Templates](docs/effectcraft-gallery.jpg)
+
 5. **From a script** (for tools that make videos): `tools/render.py`, below.
 
 ## Using a template

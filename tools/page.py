@@ -43,7 +43,8 @@ INSTALL = [
     "fonts and timing in the Essential Graphics panel. <strong>Or start a new project from it:</strong> copy the .ectemplate file into "
     "EffectCraft's Templates folder (create it if it isn't there): <code>~/Library/Application Support/EffectCraft/Templates</code> on macOS, "
     "<code>%APPDATA%\\EffectCraft\\Templates</code> on Windows, <code>~/.config/effectcraft/Templates</code> on Linux. It then shows on "
-    "the Home screen under <em>Templates ▸ New from Template</em>, marked \"My Templates\".",
+    "the Home screen under <em>Templates ▸ New from Template</em>, marked \"My Templates\". To reach the folder on macOS: Finder ▸ Go ▸ "
+    "Go to Folder… (Shift-Command-G), paste the path; on Windows, paste it into File Explorer's address bar.",
     f'<strong>From a script</strong> (for tools that make videos): <code>tools/render.py</code>; see <a href="{REPO}#using-a-template">'
     "Using a template</a> in the README.",
 ]
