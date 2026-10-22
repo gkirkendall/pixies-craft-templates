@@ -1073,3 +1073,21 @@ file name (`file.relinkFootage`), and `file.replaceFootage` swaps a picture.
 5. Commit, tag, push; open the project folder and the page for Pixie.
 
 RELEASE1 is separate; the two can be approved together or apart.
+
+**RECIPE1 step 4, headless part done 2026-10-21 (effectcraft-cli 0.13.0, scratchpad prototype).** A two-shot kit was built
+entirely by `effectcraft-cli run … --empty --save-as` / `--save` (one process per stage, ids carried between them):
+`comp.new`, `file.import` (`"sequence": false`, or Photo_1/Photo_2 import as one image sequence), `essential.importTemplate`
+with `addToComp: false` once per template, then `layer.addItem` of that template comp once per shot (one comp shared by every
+shot that uses it; each layer keeps its own values), `essential.set` (text, Duration, `Media` → the photo item), `layer.timing`,
+opacity keys for the crossfade. Findings:
+- **Absolute paths.** The project stores every footage path absolute, including each template's sample picture, which
+  `importTemplate` leaves in the repository's `templates/<name> Media/` folder. The builder copies those into the kit's
+  `Template Media/` and `footage.relink`s them, so every path is inside the kit.
+- **Moving the kit works:** copied elsewhere with the original deleted, `footage.check` relinks all 3 files from the
+  project's new folder (the app runs that check after File ▸ Open; the command-line tool does not, so tests run it), and the
+  shots render correctly.
+- **Replacing a photo: use File ▸ Replace Footage.** It reads the new picture's size, and Fill the Frame shows a photo of any
+  shape and name whole. Overwriting `Photo_2.jpg` with a picture of another shape keeps the old size (also after Reload
+  Footage), so the photo is cropped; dropping in a same-named file is only right for the same shape. The kit's README says
+  Replace Footage. (EffectCraft could re-read the size on reload; worth reporting to its maintainers.)
+- Still for Pixie (the one unknown): open the kit in the EffectCraft app.
