@@ -19,6 +19,8 @@ Every reel opens on a title page (the template, its version and the EffectCraft 
 credits and links. The demo videos show Gregory Kirkendall's own photos
 and are not under the templates' licence (see [CREDITS.md](CREDITS.md)).
 
+**Make your own trip video:** download [the trip video project](https://github.com/gkirkendall/pixies-craft-templates/releases/latest/download/pixies-trip-video-template.zip) (a ready-made EffectCraft project, 16x9 and 9x16, with placeholder photos), open it, swap in your own photos and text, add music and export; its `README.txt` has the steps, and `Make Maps/` makes map pictures for your own places. [Preview](project_templates/trip_video/preview.mp4).
+
 Check out the [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/)! It shows a demo reel and screen shots of every template.
 
 ## Templates

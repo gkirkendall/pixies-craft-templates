@@ -5,7 +5,7 @@
 
 Checks: the zip holds every current template file and nothing else in templates/; every font a template lists, each with its
 licence text; the README, licences and credits; and nothing outside that list (no reels, photos, music or Pixie picture). The
-fonts zip holds the same fonts; each template file is also on its own; building twice gives the same zips.
+fonts zip holds the same fonts; the trip video zip holds the kit (no preview files); each template file is also on its own; building twice gives the same zips.
 """
 import hashlib
 import pathlib
@@ -41,6 +41,14 @@ def main():
     check("fonts zip holds the same fonts", fz == sorted(n for n in names if n.startswith("fonts/")), f"{len(fz)} files")
     alone = sorted(p.name for p in files if p.suffix == ".ectemplate")
     check("each template file on its own", alone == want, f"{len(alone)} files")
+    trip = zipfile.ZipFile(release.DIST / page.TRIP_ZIP).namelist()
+    needed = ["Trip Video/Trip Video 16x9.ecproj", "Trip Video/Trip Video 9x16.ecproj", "Trip Video/README.txt", "Trip Video/Logo/Logo.png",
+              "Trip Video/Music/README.txt", "Trip Video/Make Maps/maps.py", "Trip Video/Make Maps/README.txt",
+              "Trip Video/Make Maps/my.stops.json", *[f"Trip Video/Photos/Photo_{i}.jpg" for i in range(1, 9)]]
+    bad = [n for n in trip if "preview" in n or "/data/" in n or "/maps/" in n or ".DS_Store" in n or "__pycache__" in n]
+    check("trip video zip holds the kit, without the preview reel or maps data",
+          not [n for n in needed if n not in trip] and not bad and any(n.startswith("Trip Video/Template Media/") for n in trip),
+          f"{len(trip)} files; missing {[n for n in needed if n not in trip]}; unwanted {bad}")
     first = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in files if p.suffix == ".zip"}
     release.build()
     again = {p.name: hashlib.sha256((release.DIST / p.name).read_bytes()).hexdigest() for p in files if p.suffix == ".zip"}

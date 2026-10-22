@@ -1127,6 +1127,19 @@ over Fill the Frame's blur. Findings, each with its fix (changes to step 1 of th
    number control or example/preview value outside 0-100 (`tools/tests/test_sliders.py`, 6/6). Verified on EffectCraft 0.13.0 and
    0.14.0 (every template passes); style sheets and the ten reels remade from footage; reels match the committed demos;
    `test_pages` 8/8, `test_page` 15/15, `test_release` 6/6. Pixie approved step 1 in the 0.14 app. Release waits for Pixie's "go ahead".
+   **KIT1 built 2026-10-22 (v0.6.32 onward; KIT1.md).** `project_templates/trip_video/`: `Trip Video 16x9.ecproj` and `9x16`, built by
+   `tools/project.py` (flags `--effectcraft-cli`, `--out`) from `demo/australia_trip/demo.json`: 11 shots, 60 s, the demo's overlays
+   and timing, generic text ("Your Trip Title", "Place Name · Day N", "Stop 1" to "Stop 6", "Thanks for watching"), one Corner Logo
+   layer over the whole video (same look as the demo's per-shot logos, one logo to replace), the 8 Pixabay photos, a placeholder
+   `Logo/Logo.png`, `Music/README.txt`, `Template Media/` (sample pictures and the example maps) and `Make Maps/` (`maps.py`, set to run
+   from that folder alone, `my.stops.json`, `README.txt`). Pixie opened the 16x9 project in the 0.14 app, played it and approved it.
+   `tools/tests/test_project.py` 16/16 (both sizes; the kit moved to a new place: no footage missing; every Photo_N used once; generic
+   text; every overlay of the demo where the demo has it; Make Maps runs on its own). Maps are the live map templates (Pixie's choice
+   (b)): names, pin colour and credit are typeable in Essential Graphics; the picture and pin positions come from `Make Maps/`.
+   `CREDITS.md` has the photo sources. Preview reel `preview.mp4` (3.7 MB, 60 s) and poster; web page and README link the project;
+   `release.py` builds `pixies-trip-video-template.zip` (`test_release` 7/7). Deviations from KIT1.md: stop names "Stop 1" to "Stop 6"
+   (one stops file drives five legs) instead of "Start / Next Stop"; example map pictures live in `Template Media/` (no `Maps/` folder).
+   GEOCODE.md (stops from photo locations) is a separate plan awaiting Pixie's approval. The release waits for Pixie's "go ahead".
 5. **Report to EffectCraft's maintainers** (Pixie decides; outward-facing): (a) Replace Footage on a still brings a numbered
    run as a sequence without asking, unlike Import; (b) the Essential Graphics slider clamps values outside its slider
    range (dropped: see ECPATCH1's outcome); (c) Reload Footage keeps the old picture size. **Posted 2026-10-21** (Pixie: "post the bug reports"): (a) as

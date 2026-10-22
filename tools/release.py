@@ -8,6 +8,8 @@ dist/ then holds:
   pixies-craft-templates.zip         templates/ (every current .ectemplate, flat), fonts/ (only the fonts the templates list, each
                                      folder with its licence text), README.txt, LICENSE-MIT, LICENSE-APACHE, CREDITS.md
   pixies-craft-templates-fonts.zip   the same fonts/ alone (the web page's "Fonts:" links)
+  pixies-trip-video-template.zip     the trip-video project: project_templates/trip_video/ as "Trip Video/" (both .ecproj, Photos,
+                                     Logo, Template Media, Music, Make Maps, README.txt), without the preview reel or poster
   <template>_<size>.ectemplate       each template file on its own (the web page's "Download:" links)
 The asset names carry no version, so ASSETS + name (…/releases/latest/download/<name>) always fetches the newest release. The zips
 are written with fixed dates, so the same files make the same zips. No reels, photos, footage, music or Pixie picture go in.
@@ -24,7 +26,9 @@ import page
 
 ROOT = page.ROOT
 DIST = ROOT / "dist"
-ZIP, FONTS_ZIP, ASSETS = page.ZIP, page.FONTS_ZIP, page.ASSETS
+ZIP, FONTS_ZIP, TRIP_ZIP, ASSETS = page.ZIP, page.FONTS_ZIP, page.TRIP_ZIP, page.ASSETS
+TRIP = ROOT / "project_templates" / "trip_video"
+TRIP_SKIP = {"preview.mp4", "preview_poster.jpg", ".DS_Store"}   # the preview reel is for the web page; "Make Maps/data" and "maps" are made by the user
 STAMP = (2026, 1, 1, 0, 0, 0)
 
 
@@ -78,11 +82,24 @@ def zip_entries():
             + [(n, ROOT / n) for n in ("LICENSE-MIT", "LICENSE-APACHE", "CREDITS.md")])
 
 
+def trip_entries():
+    """What pixies-trip-video-template.zip holds: the kit folder as "Trip Video/", sorted, without the preview files or anything
+    a person's own run of Make Maps leaves (its data and maps folders) or Python's caches."""
+    entries = []
+    for p in sorted(TRIP.rglob("*")):
+        rel = p.relative_to(TRIP)
+        if p.is_file() and p.name not in TRIP_SKIP and rel.parts[:2] not in (("Make Maps", "data"), ("Make Maps", "maps")) \
+                and "__pycache__" not in rel.parts:
+            entries.append((f"Trip Video/{rel.as_posix()}", p))
+    return entries
+
+
 def build():
     shutil.rmtree(DIST, ignore_errors=True)
     DIST.mkdir()
     write_zip(DIST / ZIP, zip_entries())
     write_zip(DIST / FONTS_ZIP, fonts())
+    write_zip(DIST / TRIP_ZIP, trip_entries())
     for n, p in templates():
         shutil.copyfile(p, DIST / n)
     return sorted(DIST.iterdir())
@@ -94,10 +111,11 @@ def main():
     a = ap.parse_args()
     files = build()
     print(f"wrote {len(files)} files in {DIST.relative_to(ROOT)}/: {ZIP} ({(DIST / ZIP).stat().st_size / 1e6:.1f} MB), {FONTS_ZIP}, "
-          f"{len(files) - 2} templates")
+          f"{TRIP_ZIP}, {len(files) - 3} templates")
     if a.publish:
         notes = (f"Every template in one download: **{ZIP}** (the templates, their fonts and a README with the install steps). "
-                 f"Or one template at a time: each `.ectemplate` below, with **{FONTS_ZIP}** for the fonts.\n\n"
+                 f"Or one template at a time: each `.ectemplate` below, with **{FONTS_ZIP}** for the fonts. "
+                 f"**{TRIP_ZIP}** is the trip video project: open it in EffectCraft, swap in your own photos and text.\n\n"
                  "Install the fonts, then in EffectCraft: **File ▸ Import ▸ Essential Graphics Template…**. "
                  "See every template at work: https://gkirkendall.github.io/pixies-craft-templates/")
         r = subprocess.run(["gh", "release", "create", a.publish, "--repo", page.REPO.removeprefix("https://github.com/"),
