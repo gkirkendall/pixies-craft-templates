@@ -156,6 +156,16 @@ def test_make_maps(check):
             r = subprocess.run([sys.executable, "-I", "maps.py", args[0], "--stops", "my.stops.json", "--variant", "16x9", *args[1:]],
                                cwd=folder, capture_output=True, text=True)
             said.append(r.returncode)
+        from PIL import Image as _I
+        photos = folder / "photos"
+        photos.mkdir()
+        exif = _I.Exif()
+        exif[0x8825] = {1: "N", 2: (12.0, 20.0, 42.0), 3: "E", 4: (67.0, 53.0, 24.0)}
+        _I.new("RGB", (32, 32)).save(photos / "p.jpg", exif=exif)
+        r = subprocess.run([sys.executable, "-I", "maps.py", "stops-from-photos", "--photos", "photos", "--out", "mine.stops.json"],
+                           cwd=folder, capture_output=True, text=True)
+        check("Make Maps: stops-from-photos runs from the kit folder", r.returncode == 0 and len(json.loads((folder / "mine.stops.json").read_text())) == 1,
+              r.stdout + r.stderr)
         pictures = sorted((folder / "maps").glob("map_*.png"))
         values = sorted((folder / "maps").glob("*.values.json"))
         sizes = {Image.open(p).size for p in pictures}

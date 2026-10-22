@@ -1139,7 +1139,7 @@ over Fill the Frame's blur. Findings, each with its fix (changes to step 1 of th
    `CREDITS.md` has the photo sources. Preview reel `preview.mp4` (3.7 MB, 60 s) and poster; web page and README link the project;
    `release.py` builds `pixies-trip-video-template.zip` (`test_release` 7/7). Deviations from KIT1.md: stop names "Stop 1" to "Stop 6"
    (one stops file drives five legs) instead of "Start / Next Stop"; example map pictures live in `Template Media/` (no `Maps/` folder).
-   The preview reel and the Australia trip demo now have a title page and the end page like every reel (Pixie: "every demo clip and video should have title page and end page"); `tools/kit_preview.py` makes the preview (render, title and end page, the demo's music), `demo.py` takes a `title_page` object and `credit_photos`, and `test_pages` checks every reel and both videos (11/11). GEOCODE.md (stops from photo locations) is a separate plan awaiting Pixie's approval. The release waits for Pixie's "go ahead".
+   The preview reel and the Australia trip demo now have a title page and the end page like every reel (Pixie: "every demo clip and video should have title page and end page"); `tools/kit_preview.py` makes the preview (render, title and end page, the demo's music), `demo.py` takes a `title_page` object and `credit_photos`, and `test_pages` checks every reel and both videos (11/11). GEOCODE.md (stops from photo locations): approved 2026-10-22 and built, see below. The release waits for Pixie's "go ahead".
    **Released 2026-10-22 as v0.6.36** (Pixie: "Publish KIT1", "Publish SLIDER1 as well"): one release holds the SLIDER1 templates and `pixies-trip-video-template.zip`. Checked live: the three download links answer 200, the live zip's Title template is the repo's v1.1.0 build, the page is up.
 5. **Report to EffectCraft's maintainers** (Pixie decides; outward-facing): (a) Replace Footage on a still brings a numbered
    run as a sequence without asking, unlike Import; (b) the Essential Graphics slider clamps values outside its slider
@@ -1192,3 +1192,13 @@ fix only reaches users in a later EffectCraft release.
 left alone as not a small fix). In the build, moving the slider still writes 0–100, as expected. Pixie: "fix the template and
 it will work as designed. That is not a bug": the 0–100 slider is meant as a percent, and the pixels are our templates'
 choice. So the fix is SLIDER1 alone, next.
+
+## GEOCODE: map stops from photo locations (GEOCODE.md). APPROVED 2026-10-22 ("GEOCODE.md approved"); built 2026-10-22
+
+`python3 tools/maps.py stops-from-photos --photos DIR --out my.stops.json [--merge-km 1]` reads each photo's GPS and camera time (EXIF;
+HEIC with ExifRead), writes the stops in the order taken as "Stop N", merges photos within 1 km and a day, lists photos without a location
+and skips them. No place names are looked up and nothing leaves the computer. Differences from the plan: one located photo writes a
+one-stop file (the locator needs one) with a note that a route needs two; only a folder with none stops. The kit's `Make Maps/maps.py`
+and `README.txt` (a new "take the places from your own photos" section) are rebuilt from `tools/maps.py`; SKILL.md "Map templates" has a
+line. `tools/tests/test_geocode.py` 9/9 (generated photos with made-up locations), `test_project.py` 17/17 (the kit's own copy runs the
+command). Not released yet: the released kit (v0.6.36) lacks the command until the next release.

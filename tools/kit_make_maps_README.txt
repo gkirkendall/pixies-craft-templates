@@ -27,6 +27,19 @@ west are negative numbers):
 
        {"name": "Stop 1", "subtitle": "", "lat": -38.618, "lon": 142.915}
 
+Or: take the places from your own photos
+----------------------------------------
+Phone and camera photos usually remember where they were taken. Put copies of your original photos in a folder (messaging apps
+and social sites often strip the location, so use the files straight from the camera or phone), then:
+
+       python3 maps.py stops-from-photos --photos "C:\Users\you\Pictures\Trip" --out my.stops.json
+
+(use the path of your own folder; on Mac it looks like /Users/you/Pictures/Trip). It reads each photo's location and the time it was
+taken, puts the places in the order you went, counts photos taken within 1 km and a day of each other as one stop, and writes
+my.stops.json with the places named "Stop 1", "Stop 2", ... (you type the real names in the app). A photo with no location is
+listed and skipped. HEIC photos from an iPhone need one more package:  python3 -m pip install exifread
+The locations are read on your computer only; nothing is sent anywhere. Then make the map pictures as below.
+
 Make the map pictures
 ---------------------
 Full-screen route cards, one per leg (stop 1 to 2, 2 to 3, ...), for 16x9 (or 9x16 for the tall video):

@@ -69,7 +69,10 @@ The Route Leg and Locator templates need a map picture drawn for the places, by 
 
 1. Once: `python3 tools/maps.py fetch` (Natural Earth data, about 52 MB, into `data/`).
 2. A stops file: a JSON list in travel order, each `{"name": …, "subtitle": …, "lat": …, "lon": …}` (example:
-   `effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json`).
+   `effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json`). From a folder of photos that carry locations
+   (original phone or camera files): `python3 tools/maps.py stops-from-photos --photos DIR --out my.stops.json` writes the file, with the
+   places named "Stop 1", "Stop 2", ... in the order taken (photos within 1 km and a day are one stop, `--merge-km` changes it; photos
+   without a location are listed and skipped; HEIC needs `pip install exifread`). Nothing is looked up or sent anywhere.
 3. Draw, and optionally render in the same step:
 
    ```

@@ -1,9 +1,9 @@
-# GEOCODE: make map stops from a folder of photos (plan; waits for Pixie's approval)
+# GEOCODE: make map stops from a folder of photos (plan; approved 2026-10-22, built: see PLAN.md)
 
 Pixie, 2026-10-22: "If it had location data, we could try the dynamic map generation." The kit's Pixabay photos carry no GPS
 (checked with exiftool and Pillow: no GPS, XMP or IPTC fields), so the kit's maps stay fixed example places. Pixie's own photos
 (phone and camera files) usually do. This adds a way to turn them into a stops file, which `maps.py`'s `route-legs` and
-`locator` already turn into map pictures. No code is written until this plan is approved.
+`locator` already turn into map pictures. Approved by Pixie on 2026-10-22.
 
 ## What changes
 

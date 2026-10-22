@@ -2,6 +2,7 @@
 """Map pictures for the map templates, and their fill: from a list of stops to rendered map cards.
 
   python3 tools/maps.py fetch                                     download the Natural Earth data once (about 52 MB, into data/)
+  python3 tools/maps.py stops-from-photos --photos DIR --out my.stops.json [--merge-km 1]
   python3 tools/maps.py route-legs --stops stops.json --out DIR --variant 16x9 [--render]
   python3 tools/maps.py locator --stops stops.json --stop 0 --out DIR --variant 16x9 [--render]
 
@@ -13,6 +14,7 @@ Map data: Natural Earth 1:10m (public domain), and on legs shorter than --osm-km
 from an Overpass server (© OpenStreetMap contributors, ODbL); see PLAN.md, "MAP1".
 """
 import argparse
+import datetime
 import hashlib
 import http.client
 import json
@@ -280,6 +282,79 @@ def draw_map(view, osm=None):
     return img.resize(view.size, Image.LANCZOS)
 
 
+PHOTO_SUFFIXES = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".heic", ".heif"}
+
+
+def dms(gps, value, ref, negative):
+    """Degrees, minutes, seconds from an EXIF GPS block as decimal degrees (None when absent)."""
+    if not gps or value not in gps:
+        return None
+    d, m, sec = (float(v) for v in gps[value])
+    deg = d + m / 60 + sec / 3600
+    return -deg if gps.get(ref) == negative else deg
+
+
+def photo_location(photo):
+    """(lat, lon, taken) from a photo's own EXIF; None for what it lacks. `taken` is the camera's local clock time (DateTimeOriginal),
+    never converted through this computer's time zone. HEIC/HEIF needs ExifRead (pip install exifread); raises ImportError without it."""
+    if photo.suffix.lower() in (".heic", ".heif"):
+        import exifread
+        with open(photo, "rb") as f:
+            t = exifread.process_file(f, details=False)
+        gps = {n: [float(r) for r in t[k].values] for n, k in ((2, "GPS GPSLatitude"), (4, "GPS GPSLongitude")) if k in t}
+        gps.update({n: str(t[k]) for n, k in ((1, "GPS GPSLatitudeRef"), (3, "GPS GPSLongitudeRef")) if k in t})
+        when = str(t["EXIF DateTimeOriginal"]) if "EXIF DateTimeOriginal" in t else None
+    else:
+        try:
+            exif = Image.open(photo).getexif()
+            gps, when = exif.get_ifd(0x8825), exif.get_ifd(0x8769).get(36867)
+        except OSError:
+            gps = when = None
+    taken = None
+    if when:
+        try:
+            taken = datetime.datetime.strptime(when.strip(), "%Y:%m:%d %H:%M:%S")
+        except ValueError:
+            pass
+    return dms(gps, 2, 1, "S"), dms(gps, 4, 3, "W"), taken
+
+
+def stops_from_photos(a):
+    """The stops file for a folder of photos: the located photos in the order they were taken; photos within --merge-km of the
+    stop before them and within a day of it share that stop. Names are "Stop N": the place names are typed in the app."""
+    folder = pathlib.Path(a.photos)
+    photos = sorted(p for p in folder.iterdir() if p.is_file() and p.suffix.lower() in PHOTO_SUFFIXES and not p.name.startswith("."))
+    if not photos:
+        sys.exit(f"{folder}: no photos found (jpg, png, tif, heic)")
+    located = []
+    for photo in photos:
+        try:
+            lat, lon, taken = photo_location(photo)
+        except ImportError:
+            print(f"{photo.name}: skipped (HEIC needs ExifRead: python3 -m pip install exifread)")
+            continue
+        if lat is None or lon is None:
+            print(f"{photo.name}: no location, skipped (messaging apps and social sites often strip it: use the original file)")
+            continue
+        located.append((taken or datetime.datetime.max, photo.name, {"lat": lat, "lon": lon}))
+    if not located:
+        sys.exit(f"none of the {len(photos)} photos has a location: use the original files from the camera or phone")
+    stops, last_taken = [], None
+    for taken, _name, pos in sorted(located, key=lambda x: x[:2]):
+        near = stops and haversine_km(stops[-1], pos) <= a.merge_km and (taken == datetime.datetime.max or last_taken is None
+                                                                        or abs((taken - last_taken).total_seconds()) <= 86400)
+        if not near:
+            stops.append({"name": f"Stop {len(stops) + 1}", "subtitle": "", "lat": round(pos["lat"], 3), "lon": round(pos["lon"], 3)})
+        last_taken = taken
+    out = pathlib.Path(a.out)
+    out.write_text(json.dumps(stops, indent=2, ensure_ascii=False) + "\n")
+    print(f"{len(located)} of {len(photos)} photos have a location: {len(stops)} stop{'s' if len(stops) != 1 else ''} written to {out}")
+    for st in stops:
+        print(f"  {st['name']}: {st['lat']}, {st['lon']}")
+    print("Next: python3 maps.py route-legs --stops", out, "--out maps --variant 16x9" if len(stops) > 1
+          else "(a route needs two stops; for one place use locator)", "\n      python3 maps.py locator --stops", out, "--stop 0 --out maps --variant 16x9")
+
+
 def read_stops(path):
     stops = json.loads(pathlib.Path(path).read_text())
     for i, st in enumerate(stops):
@@ -392,6 +467,10 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     sub = ap.add_subparsers(dest="command", required=True)
     sub.add_parser("fetch", help="download the Natural Earth data into data/naturalearth/")
+    p = sub.add_parser("stops-from-photos", help="a stops file from the locations in a folder of photos")
+    p.add_argument("--photos", required=True, help="folder of photos (not its subfolders)")
+    p.add_argument("--out", required=True, help="the stops file to write, e.g. my.stops.json")
+    p.add_argument("--merge-km", type=float, default=1, help="photos this close, within a day, are one stop (default 1)")
     for name, helptext in (("route-legs", "a route card for each leg between consecutive stops"),
                            ("locator", "a locator card for one stop")):
         p = sub.add_parser(name, help=helptext)
@@ -409,7 +488,7 @@ def main():
         else:
             p.add_argument("--stop", type=int, default=0, help="which stop (0 = the first)")
     a = ap.parse_args()
-    {"fetch": fetch, "route-legs": route_legs, "locator": locator}[a.command](a)
+    {"fetch": fetch, "route-legs": route_legs, "locator": locator, "stops-from-photos": stops_from_photos}[a.command](a)
 
 
 if __name__ == "__main__":
