@@ -22,8 +22,8 @@ Pixie, 2026-10-22: "If it had location data, we could try the dynamic map genera
    (the kit's map templates take typed names). So no coordinate leaves the computer, and the kit needs no extra network service
    beyond the map-data download it already has. (MoneyPrinterTurbo's own `tests/s1/geo.py` does the lookups through OpenStreetMap
    Nominatim for MPT's captions; that stays in MPT and is not copied here.)
-3. **Code reused, not rewritten:** `dms()`, `exif()` and `exif_heic()` from `mpt-local-motion/tests/s1/geo.py` (the user's own
-   code, about 40 lines), trimmed to what is needed: latitude, longitude, taken, no offset logic.
+3. **Code reused, not rewritten:** `dms()`, `exif()` and `exif_heic()` from the author's MoneyPrinterTurbo photo-input code (about 40 lines),
+   trimmed to what is needed: latitude, longitude and taken time, with no time-zone offset logic.
 4. **Optional HEIC:** needs `pip install exifread` (BSD-3-Clause, pure Python, no dependencies). Without it, a HEIC photo is listed
    as skipped with the install command in the message. JPEG and PNG need only Pillow, which `maps.py` already requires.
 5. **The kit's `Make Maps/`** gets the same function in its copy of `maps.py` (KIT1.md), and `README.txt` gets one step:

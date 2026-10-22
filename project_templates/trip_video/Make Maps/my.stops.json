@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Stop 1",
+    "subtitle": "",
+    "lat": -38.618,
+    "lon": 142.915
+  },
+  {
+    "name": "Stop 2",
+    "subtitle": "",
+    "lat": -38.402,
+    "lon": 142.509
+  },
+  {
+    "name": "Stop 3",
+    "subtitle": "",
+    "lat": -24.164,
+    "lon": 133.503
+  },
+  {
+    "name": "Stop 4",
+    "subtitle": "",
+    "lat": -23.778,
+    "lon": 133.074
+  },
+  {
+    "name": "Stop 5",
+    "subtitle": "",
+    "lat": -33.857,
+    "lon": 151.21
+  },
+  {
+    "name": "Stop 6",
+    "subtitle": "",
+    "lat": -33.731,
+    "lon": 150.297
+  }
+]
