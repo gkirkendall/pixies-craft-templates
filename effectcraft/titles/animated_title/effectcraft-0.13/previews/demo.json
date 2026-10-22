@@ -9,23 +9,23 @@
   "segments": [
     {
       "footage": "port_campbell",
-      "seconds": 4,
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
             "Text": "Coast to *centre*",
             "Style": "Fade Up",
-            "Duration": 4
+            "Duration": 5
           },
           "at": 0
         }
       ],
-      "caption": "Style: Fade Up · By: Letters"
+      "caption": "Style: Fade Up \u00b7 By: Letters"
     },
     {
       "footage": "point_ritchie",
-      "seconds": 4,
+      "seconds": 5,
       "overlays": [
         {
           "template": "effectcraft/titles/animated_title",
@@ -34,39 +34,23 @@
             "Style": "Bounce",
             "By": "Words",
             "Stagger": 0.15,
-            "Duration": 4
+            "Duration": 5
           },
           "at": 0
         }
       ],
-      "caption": "Style: Bounce · By: Words"
-    },
-    {
-      "footage": "mushroom_rock",
-      "seconds": 4,
-      "overlays": [
-        {
-          "template": "effectcraft/titles/animated_title",
-          "values": {
-            "Text": "Into the *red* centre",
-            "Style": "Blur",
-            "Duration": 4
-          },
-          "at": 0
-        }
-      ],
-      "caption": "Style: Blur · By: Letters"
+      "caption": "Style: Bounce \u00b7 By: Words"
     },
     {
       "footage": "tjoritja",
-      "seconds": 4,
+      "seconds": 5.5,
       "overlays": [
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
             "Text": "TJORITJA",
             "Style": "Spread In",
-            "Duration": 4
+            "Duration": 5.5
           },
           "at": 0
         }
