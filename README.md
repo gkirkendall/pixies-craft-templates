@@ -9,15 +9,15 @@ lower thirds and more, each with named controls you can edit in the app or fill 
 
 This is an independent project; it is not made or endorsed by the EffectCraft or ArtCraft teams.
 
-[![Showreel: the templates at work](demo/showreel_poster.jpg)](demo/showreel.mp4)
+[![Showreel: the templates at work](demo/showreel_poster.jpg)](https://gkirkendall.github.io/pixies-craft-templates/demo/showreel.mp4)
 
-**[Watch the showreel](demo/showreel.mp4)** (77 s), or the [Australia trip demo](demo/australia_trip/demo.mp4) (64 s), which uses
+**[Watch the showreel](https://gkirkendall.github.io/pixies-craft-templates/demo/showreel.mp4)** (77 s), or the [Australia trip demo](https://gkirkendall.github.io/pixies-craft-templates/demo/australia_trip/demo.mp4) (64 s), which uses
 the templates together, from the opening title and map to a Sign-off. Each template's folder has its own short demo in `previews/`.
 Every reel opens on a title page (the template, its version and the EffectCraft versions it was tested with) and ends on the
 credits and links. The demo videos show the owner's own photos
 and are not under the templates' licence (see [CREDITS.md](CREDITS.md)).
 
-The [catalogue page](index.html) shows every template in a row: one picture of all its styles, and its demo reel with the
+The [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/) shows every template in a row: one picture of all its styles, and its demo reel with the
 feature on screen named in the corner.
 
 ## Templates
@@ -43,7 +43,7 @@ feature on screen named in the corner.
 ## How to install
 
 1. **Get EffectCraft** 0.13 or later: [getartcraft.com/apps/effectcraft](https://getartcraft.com/apps/effectcraft).
-2. **Download a template:** the [catalogue page](index.html) has a download link per template and size (16x9, 9x16); or get them
+2. **Download a template:** the [catalogue page](https://gkirkendall.github.io/pixies-craft-templates/) has a download link per template and size (16x9, 9x16); or get them
    all with GitHub's **Code ▸ Download ZIP**. The files are in each template's `effectcraft-0.13/templates/` folder.
 3. **Install its fonts:** each template names its fonts (the catalogue page and the template's README), all in [`fonts/`](fonts);
    double-click a font file to install it (on Linux, copy it to `~/.local/share/fonts`). All are free (SIL Open Font License).

@@ -7,14 +7,18 @@ Checks: the page is what tools/page.py writes now; every template has a row with
 file the page links to exists; it makes no outside requests (no outside src, poster, script or stylesheet; outside links are
 fine); every video loads nothing until played (preload="none") and has a poster; the showreel and the trip demo are at the top;
 the PixBack sponsor line sits under the title, linking to getpixback.com, with Pixie beside them;
-the how-to-install steps; a download link per template size; every font a template lists has its folder in fonts/; .nojekyll is present and the page sits at the root.
+the how-to-install steps; a download link per template size; every font a template lists has its folder in fonts/; the README's
+video and page links go to the live site (github.com doesn't play a repository video); .nojekyll is present and the page sits at
+the root.
 """
 import json
 import pathlib
+import re
 import sys
 from html.parser import HTMLParser
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+SITE = "https://gkirkendall.github.io/pixies-craft-templates/"
 sys.path.insert(0, str(ROOT / "tools"))
 import page  # noqa: E402
 
@@ -91,6 +95,11 @@ def main():
     fonts = sorted({n for i in ids for n in page.current(i).manifest.get("fonts", [])})
     gone = [n for n in fonts if not page.font_folder(n).is_dir()]
     check("every listed font has its folder", not gone, f"{len(fonts)} fonts" + (f"; no folder: {gone}" if gone else ""))
+    # github.com shows a repository video or page as a file instead of playing or rendering it, so the README links to the live site
+    readme = re.findall(r"\]\(([^)]+)\)", (ROOT / "README.md").read_text())
+    stuck = [u for u in readme if u.endswith((".mp4", ".html")) and not u.startswith(SITE)]
+    check("README videos and page link to the live site", not stuck and any(u.endswith(".mp4") for u in readme),
+          f"links that won't play on github.com: {stuck}" if stuck else f"{sum(u.startswith(SITE) for u in readme)} links")
     up = [u for u in local if u.startswith("../")]
     check("served from the root", page.PAGE == ROOT / "index.html" and (ROOT / ".nojekyll").is_file() and not up,
           f".nojekyll {'present' if (ROOT / '.nojekyll').is_file() else 'missing'}; links leaving the root: {up}")

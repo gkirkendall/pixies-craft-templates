@@ -967,3 +967,17 @@ The handle matches `pixback_launch/LINKS.md`.
 - **Name and brand: "Pixies Craft Templates"**, using Pixie from the PixBack ad. The owner means to tie media creation (these
   templates) in with media backup (PixBack). The templates stay free. Nothing is renamed or rebranded until this is discussed.
   Points to settle then: the repo and README name, whether Pixie appears in demos or the showreel, and how PixBack is linked.
+
+## README1: the README's video links play. APPROVED 2026-10-21 ("approved"); DONE (v0.6.2)
+
+Owner, 2026-10-21: "The links in the README are not playing the video". **Cause:** the README links to the videos by relative
+paths (`demo/showreel.mp4`). On github.com a relative link opens the file's repository page, which shows "View raw" and no
+player, because GitHub doesn't play videos stored in a repository. **Fix:** point the README's three video links (the poster
+picture, "Watch the showreel" and the Australia trip demo, `README.md` lines 12 and 14, the only video links in any Markdown
+file) at the same files on the Pages site, `https://gkirkendall.github.io/pixies-craft-templates/demo/…`, which the browser
+plays (served as `video/mp4`). Add a line pointing to the catalogue page, where every reel plays. Add a check to
+`tools/tests/test_page.py` that no README link to a video is relative. Commit, tag, push; then open the README on github.com
+and click each link to confirm it plays.
+**Built:** the three video links and both "catalogue page" links (which pointed at `index.html`, shown on github.com as HTML
+source) now go to the live site; no extra line was needed. `test_page.py` gained the check (14 of 14 pass; it fails on the old
+README, naming all 5 links).
