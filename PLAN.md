@@ -1140,7 +1140,7 @@ Photo 2, those were my picks"). Full kit: Claude's recommendations ("for the ful
 Downloaded at the standard API's largest size (1280 px wide), then (scratchpad `label.py`) scaled to 1920 wide with a small
 "Photo N" label in the top-left corner; in Photo_6 (Hong Kong harbour) four readable brand signs (an insurer's name, a bank's
 logo and two lit signs) are softly blurred. Avoided: candidates with people, a hotel logo, the Sydney Opera House. Pixie also
-has their own Twelve Apostles photos; the kit stays all-Pixabay (Pixie: "Lets keep rolling", on the recommendation to keep
+has his own Twelve Apostles photos; the kit stays all-Pixabay (Pixie: "Lets keep rolling", on the recommendation to keep
 Pixie's photos out of the downloadable kit). The test kit was rebuilt with fixes 1–2 (later shot on top: the crossfade now
 shows; layers "Shot 1 · Photo_1", "Shot 2 · Photo_2"; Project panel folders "Photos – replace these" and "Templates (no need to
 edit)", by `layer.rename`, `project.newFolder`, `project.move`).
