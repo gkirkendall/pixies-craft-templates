@@ -3,8 +3,8 @@
 
   python3 tools/tests/test_versions.py
 
-A stand-in effectcraft-cli reports a chosen version. Checks, on the real Fill the Frame template (tested with 0.13.0): 0.13.0 uses
-effectcraft-0.13 without a warning, 0.14.0 uses it with the warning, and 0.12.0 is refused. Then a rehearsal in a scratch copy:
+A stand-in effectcraft-cli reports a chosen version. Checks, on the real Fill the Frame template (tested with 0.13.0-0.14.0): 0.13.0 and 0.14.0
+use effectcraft-0.13 without a warning, 0.15.0 uses it with the warning, and 0.12.0 is refused. Then a rehearsal in a scratch copy:
 effectcraft-0.13 frozen beside a new effectcraft-0.14, where each version must get the right folder, and verify --list must run
 only the right ones.
 """
@@ -39,7 +39,8 @@ def main():
         print(("PASS " if ok else "FAIL ") + name + ": " + detail.strip().replace("\n", " | "))
 
     with tempfile.TemporaryDirectory() as tmp:
-        for version, folder, warns in (("0.13.0", "effectcraft-0.13", False), ("0.14.0", "effectcraft-0.13", True)):
+        for version, folder, warns in (("0.13.0", "effectcraft-0.13", False), ("0.14.0", "effectcraft-0.13", False),
+                                       ("0.15.0", "effectcraft-0.13", True)):
             code, out, err = run("render.py", TEMPLATE, "--which", "--effectcraft-cli", stand_in(tmp, version))
             ok = code == 0 and out.split()[0].endswith(folder) and ("warning" in err) == warns
             check(f"render on {version}", ok, f"{out}{err}")
