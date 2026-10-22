@@ -1,0 +1,104 @@
+{
+  "footage": "australia",
+  "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
+  "crossfade": 0.5,
+  "size": "9x16",
+  "poster_at": 3.5,
+  "prepare": [
+    [
+      "maps.py",
+      "route-legs",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--out",
+      "{work}/legs",
+      "--variant",
+      "9x16",
+      "--inset"
+    ],
+    [
+      "maps.py",
+      "route-legs",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--out",
+      "{work}/full",
+      "--variant",
+      "9x16"
+    ]
+  ],
+  "end_page": true,
+  "segments": [
+    {
+      "footage": "sydney_cove",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Free motion templates for *EffectCraft*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 24,
+            "Position": [
+              540,
+              1450
+            ],
+            "Start": 0,
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Route Leg Template",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 45,
+            "Position": [
+              540,
+              1550
+            ],
+            "Start": 0.2,
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg05_9x16.values.json",
+          "at": 0.3
+        }
+      ],
+      "caption": "Short leg \u00b7 roads and towns \u00b7 9x16",
+      "caption_at": "top"
+    },
+    {
+      "card": "effectcraft/maps/route_leg",
+      "values": {
+        "file": "{work}/full/leg02_9x16.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame \u00b7 9x16"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg04_9x16.values.json",
+          "at": 0.3
+        }
+      ],
+      "caption": "Long leg \u00b7 9x16",
+      "caption_at": "top"
+    }
+  ]
+}
