@@ -21,8 +21,8 @@ TEMPLATE = HERE.parent
 ROOT = next(p for p in TEMPLATE.parents if (p / "tools" / "render.py").is_file())
 OUT = HERE / "out"
 FRAMES = {"16x9": (1920, 1080), "9x16": (1080, 1920)}
-CASES = {"16x9": [{"Position": [480, 300], "Start": 0.5, "Size": 140}, {"Position": [1500, 760], "Start": 1.25, "Size": 220}],
-         "9x16": [{"Position": [300, 500], "Start": 0.5, "Size": 140}, {"Position": [800, 1400], "Start": 1.0, "Size": 200}]}
+CASES = {"16x9": [{"Position": [480, 300], "Start": 0.5, "Size": 50}, {"Position": [1500, 760], "Start": 1.25, "Size": 79}],
+         "9x16": [{"Position": [300, 500], "Start": 0.5, "Size": 50}, {"Position": [800, 1400], "Start": 1.0, "Size": 71}]}
 
 
 def run(cmd):
@@ -55,7 +55,7 @@ def main():
         W, H = FRAMES[variant]
         for n, v in enumerate(cases):
             tag = f"{variant}_{n}"
-            s, (px, py), size = v["Start"], v["Position"], v["Size"]
+            s, (px, py), size = v["Start"], v["Position"], v["Size"] * 2.8   # Size is a percent of 280 px
             before = frame(variant, v, s - 1 / 24, f"{tag}_before").getbbox()
             after = frame(variant, v, s + 1 / 24, f"{tag}_after").getbbox()
             check(f"{tag} starts at {s} s", before is None and after is not None, f"one frame before: {before}; one frame after: {after}")

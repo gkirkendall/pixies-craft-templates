@@ -19,8 +19,8 @@ from ecbuild import Project, find_cli, hex_colour  # noqa: E402
 
 COMP = "Box Wipe Lower Third"
 FPS, DURATION = 24, 60   # tools/render.py renders up to the Duration value
-# Per variant: frame size, title and subtitle font sizes, default Position (the box's bottom-left corner) and Max Width.
-VARIANTS = {"16x9": ((1920, 1080), 84, 44, [110, 960], 1100), "9x16": ((1080, 1920), 72, 40, [70, 1640], 900)}
+# Per variant: frame size, title and subtitle font sizes, default Position (the box's bottom-left corner) and Max Width (% of the frame width).
+VARIANTS = {"16x9": ((1920, 1080), 84, 44, [110, 960], 57.3), "9x16": ((1080, 1920), 72, 40, [70, 1640], 83.3)}
 TITLE, SUBTITLE, FONT = "Port Campbell", "Victoria, Australia", "Caveat Brush"
 BOX, BOX_OPACITY, LINE, TEXT = "#123047", 70, "#ffd166", "#ffffff"
 CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
@@ -30,7 +30,7 @@ CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 LAYOUT = (f'var P = {CONTROL.format("Position", "Point")}; var tl = thisComp.layer("Title"), sl = thisComp.layer("Subtitle"); '
           'var r0 = tl.sourceRectAtTime(time, false), r1 = sl.sourceRectAtTime(time, false); var hasSub = r1.width >= 1; '
           'var ts = tl.text.sourceText.style.fontSize; var pad = 0.4 * ts, uh = Math.max(2, 0.05 * ts), ug = 0.08 * ts, gap = 0.18 * ts; '
-          f'var mw = {CONTROL.format("Max Width", "Slider")} - 2 * pad; var f = Math.min(1, mw / Math.max(r0.width, 1)), '
+          f'var mw = thisComp.width * {CONTROL.format("Max Width", "Slider")} / 100 - 2 * pad; var f = Math.min(1, mw / Math.max(r0.width, 1)), '
           'g = Math.min(1, mw / Math.max(r1.width, 1)); '
           'var tr = {left: r0.left * f, top: r0.top * f, width: r0.width * f, height: r0.height * f}; '
           'var sr = {left: r1.left * g, top: r1.top * g, width: r1.width * g, height: r1.height * g}; '
@@ -67,7 +67,7 @@ def build(cli, variant, workdir):
     # The title as shown: Title Text in its font, broken at the space nearest the middle when wider than Max Width less padding.
     p.expression("Title", "text/sourceText",
                  'var raw = thisComp.layer("Title Text"); var s = String(raw.text.sourceText); '
-                 f'var mw = {CONTROL.format("Max Width", "Slider")} - 0.8 * raw.text.sourceText.style.fontSize; '
+                 f'var mw = thisComp.width * {CONTROL.format("Max Width", "Slider")} / 100 - 0.8 * raw.text.sourceText.style.fontSize; '
                  'if (raw.sourceRectAtTime(time, false).width > mw) { var b = -1; for (var i = 0; i < s.length; i++) '
                  'if (s.charAt(i) == " " && (b < 0 || Math.abs(i - s.length / 2) < Math.abs(b - s.length / 2))) b = i; '
                  'if (b > 0) s = s.slice(0, b) + "\\r" + s.slice(b + 1); } raw.text.sourceText.style.setText(s)')

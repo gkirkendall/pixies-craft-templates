@@ -43,11 +43,11 @@ def build(cli, variant, workdir):
         layers += [("layer.newShape", {"kind": "star", "name": f"Glow {i + 1}", "size": [200, 200], "fill": COLOUR}),
                    ("layer.newShape", {"kind": "star", "name": f"Star {i + 1}", "size": [200, 200], "fill": COLOUR})]
     p.run(*layers, ("layer.newNull", {"name": "Controls"}))
-    p.add_controls("Controls", [("Spread", "Slider Control", 100), ("Size", "Slider Control", SIZE),
+    p.add_controls("Controls", [("Spread", "Slider Control", 100), ("Size", "Slider Control", 50),
                                 ("Colour", "Color Control", hex_colour(COLOUR)), ("Glow", "Slider Control", GLOW),
                                 ("Duration", "Slider Control", 3.5)])
     p.run(("effect.apply", {"effect": "ec.blur.gaussian", "layers": [f"Glow {i + 1}" for i in range(len(GLINTS))]}))
-    size = CONTROL.format("Size", "Slider")
+    size = f'({CONTROL.format("Size", "Slider")} * {SIZE} / 50)'
     for i, (gx, gy, start, rel) in enumerate(GLINTS):
         dx, dy = where(variant, gx, gy)
         life = (f'var t = time - {start}; '

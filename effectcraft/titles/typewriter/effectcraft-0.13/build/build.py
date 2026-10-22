@@ -36,7 +36,7 @@ TYPED = (f'var full = thisComp.layer("Full").text.sourceText; var s = String(ful
          'full.style.setText(s.slice(0, n) + (on ? c : ""))')
 # Measured on Full (the whole line), so the typed text never moves: its left edge where the finished line's is, centred on
 # Position, shrunk to Max Width.
-PLACE = (f'var P = {CONTROL.format("Position", "Point")}; var mw = {CONTROL.format("Max Width", "Slider")}; '
+PLACE = (f'var P = {CONTROL.format("Position", "Point")}; var mw = thisComp.width * {CONTROL.format("Max Width", "Slider")} / 100; '
          'var fr = thisComp.layer("Full").sourceRectAtTime(time, false); var f = fr.width > mw ? mw / fr.width : 1; ')
 
 
@@ -52,7 +52,7 @@ def build(cli, variant, workdir):
                                        ("Cursor", "Dropdown Menu Control", (CURSORS, CURSORS[0])),
                                        ("Erase", "Checkbox Control", False),
                                        ("Position", "Point Control", [w / 2, h / 2]),
-                                       ("Max Width", "Slider Control", round(w * 0.86)),
+                                       ("Max Width", "Slider Control", 86),
                                        ("Colour", "Color Control", hex_colour(COLOUR)), ("Shadow", "Slider Control", SHADOW),
                                        ("Start", "Slider Control", START), ("Duration", "Slider Control", 5)])
     p.expression("Typed", "text/sourceText", TYPED)

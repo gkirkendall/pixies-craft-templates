@@ -68,9 +68,11 @@ HIGHLIGHTED = ('var w = String(thisComp.layer("Raw").text.sourceText).split(/\\s
                'hit = on ? 100 : 0; if (w[j].length > 1 && w[j].charAt(w[j].length - 1) == "*") on = false; '
                'else if (w[j] == "*" && j > 0) on = false; } [hit, hit, hit]')
 # Size scales the layer from FONT_SIZE; the whole title shrinks further to fit Max Width; its middle sits on Position.
-FIT = (f'var P = {CONTROL.format("Position", "Point")}; var mw = {CONTROL.format("Max Width", "Slider")}; '
-       f'var r = sourceRectAtTime(time, false); var s = {CONTROL.format("Size", "Slider")} / {FONT_SIZE}; '
-       'var f = r.width * s > mw ? mw / r.width : s; ')
+def fit(size):
+    """FIT for a variant whose normal size is `size`: Size (50 = normal size, 100 = double) and Max Width (a percent of the frame width)."""
+    return (f'var P = {CONTROL.format("Position", "Point")}; var mw = thisComp.width * {CONTROL.format("Max Width", "Slider")} / 100; '
+            f'var r = sourceRectAtTime(time, false); var s = {CONTROL.format("Size", "Slider")} * {size} / 50 / {FONT_SIZE}; '
+            'var f = r.width * s > mw ? mw / r.width : s; ')
 
 
 def build(cli, variant, workdir):
@@ -84,8 +86,8 @@ def build(cli, variant, workdir):
                                        ("By", "Dropdown Menu Control", (BY, BY[0])),
                                        ("Stagger", "Slider Control", 0.05), ("Ease", "Slider Control", 50),
                                        ("Fade", "Dropdown Menu Control", (FADES, FADES[0])),
-                                       ("Position", "Point Control", [w / 2, h / 2]), ("Size", "Slider Control", size),
-                                       ("Max Width", "Slider Control", round(w * 0.86)),
+                                       ("Position", "Point Control", [w / 2, h / 2]), ("Size", "Slider Control", 50),
+                                       ("Max Width", "Slider Control", 86),
                                        ("Colour", "Color Control", hex_colour(COLOUR)),
                                        ("Highlight Colour", "Color Control", hex_colour(HIGHLIGHT)),
                                        ("Shadow", "Slider Control", SHADOW), ("Start", "Slider Control", START),
@@ -111,8 +113,8 @@ def build(cli, variant, workdir):
         p.set(name, f"{anim(3)}/selectors/expressionSelector/basedOn", based)
         p.expression(name, f"{anim(3)}/selectors/expressionSelector/amount", SELECTOR + "[v, v, v]")
         p.expression(name, "transform/opacity", f'{CONTROL.format("By", "Menu")} == {k} ? 100 : 0')   # By shows one layer
-        p.expression(name, "transform/scale", FIT + "[f * 100, f * 100, 100]")
-        p.expression(name, "transform/position", FIT + "[P[0] - (r.left + r.width / 2) * f, P[1] - (r.top + r.height / 2) * f, 0]")
+        p.expression(name, "transform/scale", fit(size) + "[f * 100, f * 100, 100]")
+        p.expression(name, "transform/position", fit(size) + "[P[0] - (r.left + r.width / 2) * f, P[1] - (r.top + r.height / 2) * f, 0]")
         p.run(("effect.apply", {"effect": "ec.perspective.dropshadow", "layers": [name]}))
         p.set(name, "effects/#1/distance", 3)
         p.set(name, "effects/#1/softness", 14)

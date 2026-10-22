@@ -26,7 +26,7 @@ FADES = ["Fade In and Out", "Fade In", "Steady", "Fade Out"]
 CORNER, SIZE, MARGIN, OPACITY, START, FADE, RISE = "Bottom Right", 180, 60, 90, 0.3, 0.5, 24
 CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 # The box's centre: Size square, Margin from the chosen corner's two edges (the menu reads 1-4, in CORNERS order).
-BOX = (f'var c = {CONTROL.format("Corner", "Menu")}; var sz = {CONTROL.format("Size", "Slider")}; '
+BOX = (f'var c = {CONTROL.format("Corner", "Menu")}; var sz = {CONTROL.format("Size", "Slider")} * {SIZE} / 50; '
        f'var mg = {CONTROL.format("Margin", "Slider")}; var right = c == 2 || c == 3; var bottom = c == 3 || c == 4; '
        'var bx = right ? thisComp.width - mg - sz / 2 : mg + sz / 2; var by = bottom ? thisComp.height - mg - sz / 2 : mg + sz / 2; ')
 # In: from Start over FADE, eased out; out: over the last FADE before Duration, eased in. Fade (menu 1-4, in FADES order) leaves
@@ -45,14 +45,14 @@ def build(cli, variant, workdir):
     p.run(("layer.addItem", {"item": logo.name}), ("layer.rename", {"layer": logo.name, "name": "Logo"}),
           ("layer.newNull", {"name": "Controls"}))
     path = p.add_controls("Controls", [("Corner", "Dropdown Menu Control", (CORNERS, CORNER)),
-                                       ("Size", "Slider Control", SIZE), ("Margin", "Slider Control", MARGIN),
+                                       ("Size", "Slider Control", 50), ("Margin", "Slider Control", MARGIN),
                                        ("Opacity", "Slider Control", OPACITY), ("Fade", "Dropdown Menu Control", (FADES, FADES[0])),
                                        ("Start", "Slider Control", START),
                                        ("Duration", "Slider Control", 5)])
     # Fitted inside the box whatever the picture's shape, centred in it; the anchor follows a swapped-in picture's own size.
     p.expression("Logo", "transform/anchor", "[width / 2, height / 2, 0]")
-    p.expression("Logo", "transform/scale", f'var b = Math.min({CONTROL.format("Size", "Slider")} / width, '
-                                             f'{CONTROL.format("Size", "Slider")} / height); [b * 100, b * 100, 100]')
+    p.expression("Logo", "transform/scale", f'var b = Math.min({CONTROL.format("Size", "Slider")} * {SIZE} / 50 / width, '
+                                             f'{CONTROL.format("Size", "Slider")} * {SIZE} / 50 / height); [b * 100, b * 100, 100]')
     p.expression("Logo", "transform/position", BOX + EASE + f"[bx, by + {RISE} * (1 - a), 0]")
     p.expression("Logo", "transform/opacity", EASE + f'{CONTROL.format("Opacity", "Slider")} * a * z')
     p.run(("essential.setPrimary", {"comp": COMP}),

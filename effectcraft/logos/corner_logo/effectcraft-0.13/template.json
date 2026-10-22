@@ -8,7 +8,13 @@
   "tested": [
     {
       "version": "0.13.0",
-      "date": "2026-10-21",
+      "date": "2026-10-22",
+      "result": "pass",
+      "checks": "25/25"
+    },
+    {
+      "version": "0.14.0",
+      "date": "2026-10-22",
       "result": "pass",
       "checks": "25/25"
     }
@@ -59,8 +65,8 @@
     {
       "name": "Size",
       "type": "number",
-      "default": 180,
-      "description": "Side of the square box the logo fits inside, in pixels."
+      "default": 50,
+      "description": "Side of the square box the logo fits inside: 50 is the normal 180 px, 100 is double."
     },
     {
       "name": "Margin",

@@ -34,20 +34,20 @@ def build(cli, variant, workdir):
           ("layer.newShape", {"kind": "star", "name": "Star", "size": [200, 200], "fill": COLOUR}),
           ("layer.newNull", {"name": "Controls"}))
     p.add_controls("Controls", [("Position", "Point Control", [w * 0.62, h * 0.38]), ("Start", "Slider Control", START),
-                                ("Size", "Slider Control", SIZE), ("Colour", "Color Control", hex_colour(COLOUR)),
+                                ("Size", "Slider Control", 50), ("Colour", "Color Control", hex_colour(COLOUR)),
                                 ("Glow", "Slider Control", GLOW), ("Duration", "Slider Control", 2)])
     p.run(("effect.apply", {"effect": "ec.blur.gaussian", "layers": ["Glow"]}))
     for layer, spread in (("Star", 1.0), ("Glow", 1.25)):
         p.set(layer, f"{STAR}/points", 4)
-        p.expression(layer, f"{STAR}/outerRadius", f'{CONTROL.format("Size", "Slider")} / 2 * {spread}')
-        p.expression(layer, f"{STAR}/innerRadius", f'{CONTROL.format("Size", "Slider")} / 2 * {0.11 * spread}')
+        p.expression(layer, f"{STAR}/outerRadius", f'{CONTROL.format("Size", "Slider")} * {SIZE} / 50 / 2 * {spread}')
+        p.expression(layer, f"{STAR}/innerRadius", f'{CONTROL.format("Size", "Slider")} * {SIZE} / 50 / 2 * {0.11 * spread}')
         p.set(layer, f"{STAR}/innerRoundness", 60)
         p.expression(layer, "contents/group/contents/fill/color", CONTROL.format("Colour", "Color"))
         p.expression(layer, "transform/position", f'var q = {CONTROL.format("Position", "Point")}; [q[0], q[1], 0]')
         p.expression(layer, "transform/scale", LIFE + "[100 * k, 100 * k, 100]")
         p.expression(layer, "transform/rotation", f'(time - {CONTROL.format("Start", "Slider")}) * 60')
     p.expression("Glow", "transform/opacity", CONTROL.format("Glow", "Slider"))
-    p.expression("Glow", "effects/#1/blurriness", f'{CONTROL.format("Size", "Slider")} / 8')
+    p.expression("Glow", "effects/#1/blurriness", f'{CONTROL.format("Size", "Slider")} * {SIZE} / 50 / 8')
     path = {g["name"]: g["children"][0]["path"] for g in p._effects("Controls")}
     p.run(("essential.setPrimary", {"comp": COMP}),
           *[("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path[n], "name": n})

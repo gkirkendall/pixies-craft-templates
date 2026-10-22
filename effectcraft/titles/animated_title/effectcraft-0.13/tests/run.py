@@ -171,10 +171,10 @@ def main():
         box = frame(variant, {"Text": long}, REST, f"{variant}_long").getbbox()
         check(f"{variant} long title fits Max Width", MAX_WIDTH[variant] - 40 <= box[2] - box[0] <= MAX_WIDTH[variant] + 4,
               f"width {box[2] - box[0]} of {MAX_WIDTH[variant]}")
-    small = frame("16x9", {"Size": 60}, REST, "size60").getbbox()
+    small = frame("16x9", {"Size": 25}, REST, "size60").getbbox()
     base = rest_box[("16x9", "Fade Up")]
     ratio = (small[2] - small[0]) / (base[2] - base[0])
-    check("Size scales it", abs(ratio - 0.5) <= 0.03, f"Size 60 is {ratio:.3f} of Size 120's width")
+    check("Size scales it", abs(ratio - 0.5) <= 0.03, f"Size 25 is {ratio:.3f} of Size 50's width")
     other = frame("16x9", {"Font": "Montserrat Bold"}, REST, "font").getbbox()
     check("Font changes the font", abs((other[2] - other[0]) - (base[2] - base[0])) > 20,
           f"Montserrat Bold {other[2] - other[0]} px wide vs Inter Bold {base[2] - base[0]} px")

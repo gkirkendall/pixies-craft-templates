@@ -11,7 +11,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Control | What it does |
 |---|---|
 | Spread | How far apart the glints sit, in % about the frame's centre (100 by default); fit it to the title. |
-| Size | Width of the biggest glint, in pixels (140 by default); the others are 0.55 to 0.9 of it. |
+| Size | Width of the biggest glint: 50 is the normal 140 px (the default), 100 is double; the others are 0.55 to 0.9 of it. |
 | Colour | The glints' colour (warm white `#fff6dc` by default). |
 | Glow | Strength of the soft glow, 0 to 100 (60 by default). |
 | Duration | Length of the rendered clip in seconds (3.5 by default; the last glint is gone at 2.8 s). |

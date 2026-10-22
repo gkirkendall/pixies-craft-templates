@@ -32,7 +32,7 @@ NAMES = ["Title"] + [f"Line {i + 1}" for i in range(LINES)]
 # The layout, the same in every layer's expressions: each name's fit (f), its glyph box (r) and whether it is empty; the title,
 # then each non-empty line LINE_PITCH × its font size below the last; the whole block centred on Position. An empty title is
 # left out (no quotes) and the lines move up.
-LAYOUT = (f'var P = {CONTROL.format("Position", "Point")}; var mw = {CONTROL.format("Max Width", "Slider")}; '
+LAYOUT = (f'var P = {CONTROL.format("Position", "Point")}; var mw = thisComp.width * {CONTROL.format("Max Width", "Slider")} / 100; '
           'var L = {}; var names = ' + str(NAMES).replace("'", '"') + '; '
           'for (var i = 0; i < names.length; i++) { var l = thisComp.layer(names[i]); var r = l.sourceRectAtTime(time, false); '
           'L[names[i]] = {r: r, f: r.width > mw ? mw / r.width : 1, empty: r.width < 1, size: l.text.sourceText.style.fontSize}; } '
@@ -55,14 +55,14 @@ def build(cli, variant, workdir):
           *[("layer.newText", {"text": CREDITS[i] or " ", "name": f"Line {i + 1}", "font": "Montserrat", "style": "Medium",
                                "size": line_size, "fill": COLOUR, "justify": "center"}) for i in range(LINES)],
           ("layer.newNull", {"name": "Controls"}))
-    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", round(w * 0.86)),
+    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", 86),
                                        ("Colour", "Color Control", hex_colour(COLOUR)), ("Shadow", "Slider Control", SHADOW),
                                        ("Start", "Slider Control", START), ("Duration", "Slider Control", 6)])
     # The title is shown in capitals between curly quotes, whatever case it is typed in. A title too long for Max Width breaks at
     # the space nearest its middle (judged by its length: League Gothic capitals average about 0.37 of the font size); a title
     # still too wide then shrinks to fit, like every line.
     p.expression("Title", "text/sourceText",
-                 f'var s = String(value).toUpperCase(); var mw = {CONTROL.format("Max Width", "Slider")}; '
+                 f'var s = String(value).toUpperCase(); var mw = thisComp.width * {CONTROL.format("Max Width", "Slider")} / 100; '
                  f'if (s.length * {TITLE_WIDTH} * {title_size} > mw) {{ var b = -1; for (var i = 0; i < s.length; i++) '
                  'if (s.charAt(i) == " " && (b < 0 || Math.abs(i - s.length / 2) < Math.abs(b - s.length / 2))) b = i; '
                  'if (b > 0) s = s.slice(0, b) + "\\r" + s.slice(b + 1); } '

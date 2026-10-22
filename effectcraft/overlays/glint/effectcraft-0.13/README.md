@@ -13,7 +13,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 |---|---|
 | Position | Where the glint's centre is, in frame pixels. |
 | Start | When it appears, in seconds; it is gone 1 s later (0.5 by default). |
-| Size | Width of the star at its biggest, in pixels (140 by default). |
+| Size | Width of the star at its biggest: 50 is the normal 140 px (the default), 100 is double. |
 | Colour | The star's and glow's colour (warm white `#fff6dc` by default). |
 | Glow | Strength of the soft glow behind the star, 0 to 100 (60 by default). |
 | Duration | Length of the rendered clip in seconds (2 by default). Make it at least Start + 1. |
@@ -24,7 +24,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 python3 tools/render.py effectcraft/overlays/glint --variant 16x9 --values glint.values.json --out glint.mov
 ```
 
-with, for example, `glint.values.json`: `{"Position": [690, 142], "Start": 0.4, "Size": 170}`. For several glints, render one clip
+with, for example, `glint.values.json`: `{"Position": [690, 142], "Start": 0.4, "Size": 61}`. For several glints, render one clip
 per glint and lay them over each other, as `previews/demo.json` does over the Opera House. For a ready-made set of six, see
 [Glint Set](../../glint_set/README.md).
 

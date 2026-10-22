@@ -67,6 +67,40 @@ def font_folder(family):
     return ROOT / "fonts" / re.sub(r"[^a-z0-9]+", "_", family.lower()).strip("_")
 
 
+def slider_values(node, name):
+    """Every number given for the control `name` anywhere in a parsed JSON file (a values file, or a demo's or sheet's nested ones)."""
+    if isinstance(node, dict):
+        for k, v in node.items():
+            if k == name and isinstance(v, (int, float)) and not isinstance(v, bool):
+                yield v
+            else:
+                yield from slider_values(v, name)
+    elif isinstance(node, list):
+        for v in node:
+            yield from slider_values(v, name)
+
+
+def check_sliders(m, folder, rel):
+    """SLIDER1: a number control is drawn as a slider over 0-100, which EffectCraft's Essential Graphics panel clamps to, so its
+    default and every example or preview value must sit inside 0-100 (a size or width is a percent, not pixels)."""
+    errors = []
+    numbers = [c["name"] for c in m["controls"] if c["type"] == "number"]
+    for c in m["controls"]:
+        if c["type"] == "number" and not 0 <= c.get("default", 0) <= 100:
+            errors.append(f"{rel}: control {c['name']}: default {c['default']} is outside the slider's 0-100 (make it a percent)")
+    files = sorted((folder / "examples").glob("*.json")) + sorted((folder / "previews").glob("*.json"))
+    for f in files:
+        try:
+            data = json.loads(f.read_text())
+        except json.JSONDecodeError:
+            continue
+        for name in numbers:
+            for v in slider_values(data, name):
+                if not 0 <= v <= 100:
+                    errors.append(f"{rel}: {f.relative_to(folder).as_posix()}: {name} {v} is outside the slider's 0-100 (make it a percent)")
+    return errors
+
+
 def check_template(manifest_path, schema):
     folder = manifest_path.parent
     rel = folder.relative_to(ROOT).as_posix()
@@ -82,6 +116,7 @@ def check_template(manifest_path, schema):
             errors.append(f"{rel}: control {c['name']}: options go with a dropdown and only a dropdown")
         elif c["type"] == "dropdown" and "default" in c and c["default"] not in c["options"]:
             errors.append(f"{rel}: control {c['name']}: default {c['default']!r} is not one of its options")
+    errors += check_sliders(m, folder, rel)
     if m.get("id") != folder.parent.relative_to(ROOT).as_posix():
         errors.append(f"{rel}: id {m.get('id')!r} does not match the template folder")
     if folder.name != versions.folder_name(m["app"], m["built_with"]):

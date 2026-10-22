@@ -17,7 +17,7 @@ too wide shrinks to fit. With no subtitle the box closes up. Over transparency.
 | Title Font | Any installed font (Caveat Brush by default). |
 | Subtitle Font | Any installed font (Caveat Brush by default). |
 | Position | The box's bottom-left corner, in frame pixels ([110, 960] in 16x9, [70, 1640] in 9x16). |
-| Max Width | Widest the box may be, in pixels (1100 or 900). |
+| Max Width | Widest the box may be, in % of the frame width (57.3 in 16x9, 83.3 in 9x16: 1100 px or 900). |
 | Box Colour | Deep blue (`#123047`) by default. |
 | Box Opacity | How solid the box is, 0 to 100 (70 by default). |
 | Line Colour | The line along the top and the underline (`#ffd166`). |

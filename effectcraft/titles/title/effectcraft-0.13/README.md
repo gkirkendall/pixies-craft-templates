@@ -18,7 +18,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Label Font | Inter SemiBold by default. |
 | Place | Centre (default), Bottom Centre, Bottom Left, Bottom Right, Top Left or Top Right. |
 | Margin | Distance from the frame's edges for every Place but Centre, in pixels (96 in 16x9, 80 in 9x16). |
-| Max Width | Widest either line may be, in pixels (86 % of the frame width: 1651 or 929). |
+| Max Width | Widest either line may be, in % of the frame width (default 86: 1651 px on 1920 wide, 929 on 1080). |
 | Colour | The text's colour (white by default). |
 | Shadow | Strength of the soft shadow under the text, 0 to 100 (50 by default). |
 | Fade | Fade In and Out (default), Fade In (then full to the end), Steady (full throughout) or Fade Out (full from the first frame, then fades out). |

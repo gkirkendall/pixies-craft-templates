@@ -15,7 +15,7 @@ Two sizes: `16x9` (1920×1080) and `9x16` (1080×1920). Both render as ProRes 44
 | From Position, To Position | The pins, in the map picture's pixels. `maps.py` works these out from the places' coordinates. |
 | From Name, To Name | The place names. A name sits on the side of its pin away from the line and is kept inside the map. |
 | Line Colour, Pin Colour | Colours of the line and the pins. |
-| Curve | How far the line bows, as a percentage of its length: 0 is straight, and a negative value bows it the other way. |
+| Curve | How far the line bows: 50 is straight; each point above 50 bows it 1 % of its length (70 is the default, a 20 % bow), and each point below bows it the other way (35 is 15 % the other way). |
 | Corner Inset | Off: the map fills the frame. On: the map becomes a bordered card in the top-right corner, with transparency around it. |
 | Map Credit | Small text in the map's bottom-right corner. Leave it empty for Natural Earth maps; `maps.py` fills it with "© OpenStreetMap" when a map has OpenStreetMap detail. |
 | Texture | Optional paper or grain picture laid over the map in Multiply mode. White changes nothing. |

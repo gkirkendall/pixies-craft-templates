@@ -5,7 +5,7 @@
 
 One title line (Inter Bold) with an optional small label over it (Inter SemiBold, capitals, spaced out), placed by a Place menu
 (centre, bottom centre or a corner) Margin from the frame's edges, over transparency. Each line shrinks on its own to fit Max
-Width; an empty label closes up. It fades and rises in at Start and fades out by Duration; the Fade menu can leave out either, to
+Width (a percent of the frame width); an empty label closes up. It fades and rises in at Start and fades out by Duration; the Fade menu can leave out either, to
 hold a title across several clips, as Corner Logo does.
 """
 import argparse
@@ -30,7 +30,7 @@ CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 # The layout, the same in both layers' expressions: each layer's glyph box (r), fit to Max Width (f) and whether it is empty;
 # the label over the title with a gap of 0.3 × the title's font size; the block placed by Place (menu 1-6, in PLACES order).
 LAYOUT = (f'var W = thisComp.width, H = thisComp.height; var pl = {CONTROL.format("Place", "Menu")}; '
-          f'var mg = {CONTROL.format("Margin", "Slider")}; var mw = {CONTROL.format("Max Width", "Slider")}; '
+          f'var mg = {CONTROL.format("Margin", "Slider")}; var mw = W * {CONTROL.format("Max Width", "Slider")} / 100; '
           'function m(n) { var l = thisComp.layer(n); var r = l.sourceRectAtTime(time, false); '
           'return {r: r, f: r.width > mw ? mw / r.width : 1, e: r.width < 1, size: l.text.sourceText.style.fontSize}; } '
           'var L = m("Label"), T = m("Title"); var lh = L.e ? 0 : L.r.height * L.f; var gap = L.e ? 0 : 0.3 * T.size * T.f; '
@@ -56,7 +56,7 @@ def build(cli, variant, workdir):
                              "justify": "center"}),
           ("layer.newNull", {"name": "Controls"}))
     path = p.add_controls("Controls", [("Place", "Dropdown Menu Control", (PLACES, PLACES[0])), ("Margin", "Slider Control", margin),
-                                       ("Max Width", "Slider Control", round(w * 0.86)),
+                                       ("Max Width", "Slider Control", 86),
                                        ("Colour", "Color Control", hex_colour(COLOUR)), ("Shadow", "Slider Control", SHADOW),
                                        ("Fade", "Dropdown Menu Control", (FADES, FADES[0])), ("Start", "Slider Control", START),
                                        ("Duration", "Slider Control", 5)])

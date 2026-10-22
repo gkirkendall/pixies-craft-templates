@@ -14,7 +14,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 |---|---|
 | Logo | The logo picture, any shape (a PNG with transparency works best), fitted inside the Size box and centred. Default: a sample mark. An empty (transparent) picture shows nothing. |
 | Corner | Top Left, Top Right, Bottom Right (default) or Bottom Left. |
-| Size | Side of the square box the logo fits inside, in pixels (180 by default). |
+| Size | Side of the square box the logo fits inside: 50 is the normal 180 px (the default), 100 is double. |
 | Margin | Distance from the box to the frame's two edges, in pixels (60 by default). |
 | Opacity | How solid the logo is once it has faded in, 0 to 100 (90 by default). |
 | Fade | Fade In and Out (default), Fade In (fades in, then full to the end), Steady (full from the first frame to the last) or Fade Out (full from the first frame, then fades out). |
@@ -42,7 +42,7 @@ No credits are needed.
 ## How it works
 
 One Logo layer whose anchor is its own centre (so a swapped-in picture of any size stays centred), scaled by
-min(Size / width, Size / height), and placed at the centre of a Size square Margin from the chosen corner's two edges. Its opacity
+min(box / width, box / height), and placed at the centre of a box-sized square Margin from the chosen corner's two edges. Its opacity
 and a 24-pixel rise follow one eased fade in and one eased fade out, which Fade can switch off. Corner and Fade are Dropdown Menu Controls on the "Controls" null.
 
 ## Files

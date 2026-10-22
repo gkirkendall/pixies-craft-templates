@@ -77,7 +77,7 @@ def main():
     def fits(tag, variant, values, shape):
         """The drawn logo is the shape (w, h as fractions of the box) centred in its box, within 2 px."""
         alpha = frame(variant, values, PEAK, tag)
-        size, margin = values.get("Size", SIZE), values.get("Margin", MARGIN)
+        size, margin = values["Size"] * 3.6 if "Size" in values else SIZE, values.get("Margin", MARGIN)   # Size is a percent of 360 px
         x0, y0, x1, y1 = box(variant, values.get("Corner", "Bottom Right"), size, margin)
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
         want = (cx - size * shape[0] / 2, cy - size * shape[1] / 2, cx + size * shape[0] / 2, cy + size * shape[1] / 2)
@@ -94,7 +94,7 @@ def main():
                 img = Image.open(OUT / f"{tag}.png").convert("RGBA")
                 sheet.append(img)
         fits(f"{variant}_tall", variant, {"Logo": "tall.png", "Corner": "Top Left"}, (1 / 3, 1))
-    fits("16x9_size300_margin20", "16x9", {"Logo": "wide.png", "Corner": "Top Right", "Size": 300, "Margin": 20}, (1, 1 / 3))
+    fits("16x9_size300_margin20", "16x9", {"Logo": "wide.png", "Corner": "Top Right", "Size": 83.3, "Margin": 20}, (1, 1 / 3))
 
     v = {"Logo": "wide.png"}
     before = frame("16x9", v, START - 1 / 24, "fade_before").getbbox()

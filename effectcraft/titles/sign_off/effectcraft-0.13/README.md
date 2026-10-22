@@ -16,7 +16,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Text | The line (one line). |
 | Font | Montserrat Medium by default. |
 | Position | Centre of the row, in frame pixels: [960, 790] in 16x9, [540, 1160] in 9x16. |
-| Max Width | Widest the row, hearts included, may be, in pixels (86 % of the frame width: 1651 or 929). |
+| Max Width | Widest the row, hearts included, may be, in % of the frame width (default 86: 1651 px on 1920 wide, 929 on 1080). |
 | Text Colour | White by default. |
 | Heart Colour | Red `#e5484d` by default. |
 | Heart Size | Width of each heart in % of the font size (70 by default). |

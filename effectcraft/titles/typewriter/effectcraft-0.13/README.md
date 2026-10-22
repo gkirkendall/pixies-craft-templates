@@ -18,7 +18,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Cursor | Bar (default), Underscore or None. |
 | Erase | Off by default. On: the text deletes itself again before Duration. |
 | Position | Centre of the finished line, in frame pixels ([960, 540] in 16x9, [540, 960] in 9x16). |
-| Max Width | Widest the line may be, in pixels (86 % of the frame width: 1651 or 929). |
+| Max Width | Widest the line may be, in % of the frame width (default 86: 1651 px on 1920 wide, 929 on 1080). |
 | Colour | The text's colour (white by default). |
 | Shadow | Strength of the soft shadow under the text, 0 to 100 (40 by default). |
 | Start | When the first letter is typed, in seconds (0.5 by default). |

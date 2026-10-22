@@ -25,7 +25,7 @@ VARIANTS = {"16x9": ((1920, 1080), 0.36, 0.6), "9x16": ((1080, 1920), 0.5, 0.7)}
 MARGIN = 48       # inset card distance from the frame edge
 BORDER = 8        # inset card's white border
 INK, HALO = "#1b2a3a", "#ffffff"
-LINE_COLOUR, PIN_COLOUR, CURVE = "#d9482b", "#d9482b", 20
+LINE_COLOUR, PIN_COLOUR, CURVE = "#d9482b", "#d9482b", 70
 # Timing (seconds): From pin and name, line draw-on, To pin and name.
 FROM_IN, LINE_START, LINE_END, TO_IN, POP = 0.3, 0.6, 2.2, 2.1, 0.3
 
@@ -101,7 +101,7 @@ def build(cli, variant, workdir):
     p.set("Line", "transform/position", [0, 0, 0])
     p.expression("Line", "contents/path/path", H + (
         'var a = P(c.effect("From Position")("Point")); var b = P(c.effect("To Position")("Point")); '
-        'var d = [b[0] - a[0], b[1] - a[1]]; var cv = c.effect("Curve")("Slider") / 100; '
+        'var d = [b[0] - a[0], b[1] - a[1]]; var cv = (c.effect("Curve")("Slider") - 50) / 100; '
         'var q = [(a[0] + b[0]) / 2 + d[1] * cv, (a[1] + b[1]) / 2 - d[0] * cv]; '
         # createPath takes plain [x, y] arrays; property values come out as [0, 0].
         'createPath([a, b], [[0, 0], [(q[0] - b[0]) * 2 / 3, (q[1] - b[1]) * 2 / 3]], '

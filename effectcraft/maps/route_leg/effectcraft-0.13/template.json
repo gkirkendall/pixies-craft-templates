@@ -1,14 +1,20 @@
 {
   "id": "effectcraft/maps/route_leg",
   "name": "Route Leg",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "app": "effectcraft",
   "app_min_version": "0.13.0",
   "built_with": "0.13.0",
   "tested": [
     {
       "version": "0.13.0",
-      "date": "2026-10-21",
+      "date": "2026-10-22",
+      "result": "pass",
+      "checks": "20/20"
+    },
+    {
+      "version": "0.14.0",
+      "date": "2026-10-22",
       "result": "pass",
       "checks": "20/20"
     }
@@ -85,8 +91,8 @@
     {
       "name": "Curve",
       "type": "number",
-      "default": 20,
-      "description": "How far the line bows from straight, as a percentage of its length (0 = straight; negative bows the other way)."
+      "default": 70,
+      "description": "How far the line bows from straight: 50 is straight, 70 bows it by 20 % of its length, 35 by 15 % the other way."
     },
     {
       "name": "Corner Inset",

@@ -8,7 +8,13 @@
   "tested": [
     {
       "version": "0.13.0",
-      "date": "2026-10-21",
+      "date": "2026-10-22",
+      "result": "pass",
+      "checks": "32/32"
+    },
+    {
+      "version": "0.14.0",
+      "date": "2026-10-22",
       "result": "pass",
       "checks": "32/32"
     }
@@ -61,8 +67,8 @@
     {
       "name": "Max Width",
       "type": "number",
-      "default": 1651,
-      "description": "Widest the row (hearts included) may be, in pixels (9x16: 929); a longer one shrinks to fit."
+      "default": 86,
+      "description": "Widest the row (hearts included) may be, in % of the frame width; a longer one shrinks to fit."
     },
     {
       "name": "Text Colour",

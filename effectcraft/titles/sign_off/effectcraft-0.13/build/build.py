@@ -30,7 +30,7 @@ HEART = {"vertices": [[0, 42], [-50, -8], [-25, -44], [0, -26], [25, -44], [50, 
 CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 # The row: the text's glyph box (r), the heart width (hs = Heart Size × the font size), the gap between them (0.45 of the font
 # size), and the fit (f) that keeps text and hearts within Max Width; the text's middle sits on Position.
-ROW = (f'var P = {CONTROL.format("Position", "Point")}; var mw = {CONTROL.format("Max Width", "Slider")}; '
+ROW = (f'var P = {CONTROL.format("Position", "Point")}; var mw = thisComp.width * {CONTROL.format("Max Width", "Slider")} / 100; '
        'var tl = thisComp.layer("Text"); var r = tl.sourceRectAtTime(time, false); var fs = tl.text.sourceText.style.fontSize; '
        f'var hs = {CONTROL.format("Heart Size", "Slider")} / 100 * fs; var gap = 0.45 * fs; '
        'var full = r.width + 2 * (gap + hs); var f = full > mw ? mw / full : 1; ')
@@ -53,7 +53,7 @@ def build(cli, variant, workdir):
     for name in ("Heart Left", "Heart Right"):
         p.run(("shape.newPath", dict(HEART, closed=True, space="layer", fill=HEART_COLOUR, stroke=False, name=name)))
     p.run(("layer.newNull", {"name": "Controls"}))
-    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", round(w * 0.86)),
+    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", 86),
                                        ("Text Colour", "Color Control", hex_colour(COLOUR)),
                                        ("Heart Colour", "Color Control", hex_colour(HEART_COLOUR)),
                                        ("Heart Size", "Slider Control", 70), ("Shadow", "Slider Control", SHADOW),

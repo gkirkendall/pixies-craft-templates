@@ -1,14 +1,20 @@
 {
   "id": "effectcraft/titles/credits",
   "name": "Credits",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "app": "effectcraft",
   "app_min_version": "0.13.0",
   "built_with": "0.13.0",
   "tested": [
     {
       "version": "0.13.0",
-      "date": "2026-10-21",
+      "date": "2026-10-22",
+      "result": "pass",
+      "checks": "39/39"
+    },
+    {
+      "version": "0.14.0",
+      "date": "2026-10-22",
       "result": "pass",
       "checks": "39/39"
     }
@@ -94,8 +100,8 @@
     {
       "name": "Max Width",
       "type": "number",
-      "default": 1651,
-      "description": "Widest any line may be, in pixels (9x16: 929); a wider line shrinks to fit."
+      "default": 86,
+      "description": "Widest any line may be, in % of the frame width; a wider line shrinks to fit."
     },
     {
       "name": "Colour",
