@@ -25,6 +25,13 @@ EffectCraft's command-line tool. Paths below are relative to the repository root
    leave out keeps its default.
    - Text: a string. Colour: `"#rrggbb"`. Number: a number. Checkbox: `true` or `false`. Dropdown: one of the item names its
      README lists (`"Corner": "Top Left"`).
+   - **Number controls are drawn as a slider over 0 to 100** in EffectCraft's Essential Graphics panel, which clamps to it (a value
+     of 1651 would show, and be rewritten, as 100), so every number control's default and example sits inside 0-100 and
+     `tools/catalog.py --check` fails otherwise. Widths and sizes are therefore **percents, not pixels**: Max Width is a percent of
+     the frame width (default 86; Box Wipe 57.3 on 16x9, 83.3 on 9x16), Size is 50 for the template's normal size and 100 for
+     double (Animated Title, Corner Logo, Glint, Glint Set), Route Leg's Curve is 50 for a straight line (70 bows it 20 % of its
+     length, 35 bows it 15 % the other way). Each template's README says what its numbers mean; Margin, Shadow, Opacity and the
+     like were always inside 0-100.
    - Point: `[x, y]` in pixels of the picture it refers to (the map templates' points are in map-picture pixels).
    - Picture: a file path, relative to the values file.
 3. **Check one still first**, then render the clip:
@@ -88,6 +95,31 @@ The Route Leg and Locator templates need a map picture drawn for the places, by 
 - **Credit:** a map with OpenStreetMap detail carries "© OpenStreetMap" in its corner (filled automatically) and the video's
   description or credits must say "Map data © OpenStreetMap contributors, https://www.openstreetmap.org/copyright". Natural Earth
   needs no credit.
+- **`Make Maps/`** (in the all-templates zip and in the trip video kit): a copy of `maps.py` that runs from its own folder
+  (`python3 maps.py fetch`, then the commands above, plus `stops-from-photos`), with `README.txt` for people who don't use the
+  repository, and an example `my.stops.json`. It is built from `tools/maps.py` by `tools/project.py`; edit `tools/maps.py`, never the copy.
+
+### Trip video kit
+
+`project_templates/trip_video/` is an EffectCraft **project** anyone can open, swap their photos and text into, add music to and export
+(no scripts): `Trip Video 16x9.ecproj` and `9x16`, the 8 Pixabay photos (`Photos/Photo_1.jpg` ...), `Logo/Logo.png`, `Template Media/`,
+`Music/README.txt`, `Make Maps/` and a plain `README.txt`. It is the Australia trip demo's 11 shots (same lengths and overlay timing,
+60 s) with generic text.
+- **Build:** `python3 tools/project.py --effectcraft-cli PATH --out project_templates/trip_video [--variant 16x9|9x16|both]`. It
+  reads `demo/australia_trip/demo.json`, draws example maps with `tools/maps.py` (needs `maps.py fetch` and a network for the short
+  legs), and builds in stages (each an `effectcraft-cli run ... --save`): `comp.new`, `file.import` (with `"sequence": false`),
+  `essential.importTemplate` once per template, `layer.addItem` per shot and overlay, `essential.set` (a dropdown by its 0-based
+  number), `layer.timing`, opacity keys for the 0.5 s crossfades, `layer.rename`, `project.newFolder` and `project.move`. Every path in
+  the project is made to lie inside the kit folder (`Template Media/`), so it can be moved; Check Footage relinks by file name.
+- **One Corner Logo layer** covers the whole video (the same look as the demo's per-shot logos, with one logo to replace); each overlay
+  fades out with its shot. In the app: pick a photo in a shot layer's **Media** (don't use Replace Footage: a numbered camera file can
+  come in as an image sequence), type text in Window > Essential Graphics.
+- **Test:** `python3 tools/tests/test_project.py --effectcraft-cli PATH` (both sizes: the moved kit has no missing footage, every
+  Photo_N used once, generic text, every overlay where the demo has it, a still at each shot, Make Maps runs alone).
+- **Preview and release:** `python3 tools/kit_preview.py --effectcraft-cli PATH --music DIR` makes `preview.mp4` (the project rendered
+  with a title page, the end page and the demo's music; the project itself has no music). `release.py` zips the folder (without the
+  preview files) as `pixies-trip-video-template.zip`. Every reel and video, including this preview and the trip demo, has a title page
+  and the end page (`tests/test_pages.py` checks them).
 
 ## Making a new template
 
