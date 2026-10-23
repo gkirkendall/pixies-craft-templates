@@ -34,6 +34,7 @@ this repository uses it under OFL-1.1.
 | `fonts/open_sans/` | 38 | Copyright 2020 The Open Sans Project Authors (https://github.com/googlefonts/opensans) | OFL-1.1 (`OFL.txt`) |
 | `fonts/pacifico/` | 1 | Copyright 2018 The Pacifico Project Authors (https://github.com/googlefonts/Pacifico) | OFL-1.1 (`OFL.txt`) |
 | `fonts/poppins/` | 18 | Copyright 2020 The Poppins Project Authors (https://github.com/itfoundry/Poppins) | OFL-1.1 (`OFL.txt`) |
+| `fonts/raleway/` | 20 | Copyright 2010 The Raleway Project Authors (impallari@gmail.com), with Reserved Font Name "Raleway"; from the Google Fonts download, 2026-10-23 | OFL-1.1 (`OFL.txt`) |
 | `fonts/pt_mono/` | 1 | Copyright (c) 2011, ParaType Ltd., with Reserved Font Names "PT Sans", "PT Serif", "PT Mono" and "ParaType" | OFL-1.1 (`OFL.txt`) |
 | `fonts/rubik/` | 16 | Copyright 2015 The Rubik Project Authors (https://github.com/googlefonts/rubik) | OFL-1.1 (`OFL.txt`) |
 | `fonts/space_mono/` | 4 | Copyright 2016 The Space Mono Project Authors (https://github.com/googlefonts/spacemono) | OFL-1.1 (`OFL.txt`) |

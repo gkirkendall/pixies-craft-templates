@@ -40,7 +40,7 @@ def read(video, at, tmp, box=None):
     g = ImageOps.invert(Image.open(png).convert("L"))
     if box:
         g = g.crop(tuple(round(f * n) for f, n in zip(box, (g.width, g.height, g.width, g.height))))
-    g = g.resize((g.width * 2, g.height * 2))
+    g = g.resize((g.width * 2, g.height * 2), Image.LANCZOS)   # the end page's small text reads reliably only with a good filter
     g.save(png)
     try:
         out = subprocess.run(["tesseract", str(png), "-", "--psm", "6"], capture_output=True, text=True).stdout
@@ -80,12 +80,15 @@ def main():
             check(f"{name} title page", all(w in title for w in want), f"read {title!r}; missing {[w for w in want if w not in title]}")
             end = read(video, -1.5, tmp)
             check(f"{name} ends on the same end page", all(w in end for w in END), f"missing {[w for w in END if w not in end]}")
-    specs = sorted(ROOT.glob("effectcraft/*/*/*/previews/demo*.json")) + [ROOT / "demo" / "showreel.json", ROOT / "demo" / "australia_trip" / "demo.json"]
+    specs = sorted(ROOT.glob("effectcraft/*/*/*/previews/demo*.json")) + [ROOT / "demo" / "showreel.json", ROOT / "demo" / "showreel_9x16.json", ROOT / "demo" / "australia_trip" / "demo.json"]
     def pages_ok(spec):
         d = json.loads(spec.read_text())
         return d.get("end_page") and (d.get("title_page") or d.get("size") == "9x16")
     off = [s.relative_to(ROOT).as_posix() for s in specs if not pages_ok(s)]
     check("every reel has both pages (9x16: the end page)", not off, f"{len(specs)} reels" + (f"; without: {off}" if off else ""))
+    clips = [n for n in ("showreel.json", "showreel_9x16.json")
+             if any("clip" in seg for seg in json.loads((ROOT / "demo" / n).read_text())["segments"])]
+    check("showreels are built from shots, not from finished videos", not clips, f"clip segments in {clips}" if clips else "no clip segments")
     print(f"\n{sum(results)} of {len(results)} checks pass")
     sys.exit(0 if all(results) else 1)
 

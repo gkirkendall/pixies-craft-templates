@@ -3,91 +3,1086 @@
   "footage": "australia",
   "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
   "crossfade": 0.5,
-  "poster_at": 13.0,
+  "poster_at": 10.0,
   "title_page": "collection",
   "end_page": true,
+  "prepare": [
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "0",
+      "--out",
+      "{work}/a",
+      "--variant",
+      "16x9",
+      "--inset"
+    ],
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "4",
+      "--out",
+      "{work}/b",
+      "--variant",
+      "16x9"
+    ],
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "2",
+      "--out",
+      "{work}/c",
+      "--variant",
+      "16x9",
+      "--inset"
+    ],
+    [
+      "maps.py",
+      "route-legs",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--out",
+      "{work}/legs",
+      "--variant",
+      "16x9",
+      "--inset"
+    ],
+    [
+      "maps.py",
+      "route-legs",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--out",
+      "{work}/full",
+      "--variant",
+      "16x9"
+    ],
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "4",
+      "--out",
+      "{work}/loc",
+      "--variant",
+      "16x9"
+    ]
+  ],
   "segments": [
     {
-      "title": [
-        "Pixie's Craft Templates",
-        "Free motion-graphics templates for EffectCraft"
+      "footage": "port_campbell",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/locator",
+          "values": "{work}/a/locator00_16x9.values.json",
+          "at": 0.9
+        }
       ],
-      "seconds": 3
+      "caption": "Corner Inset",
+      "caption_at": "top",
+      "label": "Locator"
     },
     {
-      "clip": "{root}/effectcraft/maps/locator/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 9.6
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/b/locator04_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame",
+      "label": "Locator"
     },
     {
-      "clip": "{root}/effectcraft/maps/route_leg/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 9.6
+      "footage": "mushroom_rock",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/locator",
+          "values": "{work}/c/locator02_16x9.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Another place",
+      "caption_at": "top",
+      "label": "Locator"
     },
     {
-      "clip": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 4.0
+      "footage": "sydney_cove",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg05_16x9.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Short leg · roads and towns",
+      "caption_at": "top",
+      "label": "Route Leg"
     },
     {
-      "clip": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 4.7
+      "card": "effectcraft/maps/route_leg",
+      "values": {
+        "file": "{work}/full/leg02_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame",
+      "label": "Route Leg"
     },
     {
-      "clip": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 3.0
+      "footage": "tjoritja",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg04_16x9.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Long leg",
+      "caption_at": "top",
+      "label": "Route Leg"
     },
     {
-      "clip": "{root}/effectcraft/overlays/glint/effectcraft-0.13/previews/demo.mp4",
-      "start": 0.2,
-      "seconds": 3.8
+      "footage": "uluru",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/basic",
+          "values": {
+            "Title": "Uluru",
+            "Subtitle": "Northern Territory, Australia"
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "Slides in from the left, holds, fades out",
+      "caption_at": "top",
+      "label": "Basic Lower Third"
     },
     {
-      "clip": "{root}/effectcraft/overlays/glint_set/effectcraft-0.13/previews/demo.mp4",
-      "start": 0.2,
-      "seconds": 3.8
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/basic",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/examples/long.values.json",
+            "set": {
+              "Title Font": "Montserrat Bold",
+              "Subtitle Font": "Montserrat Regular",
+              "Subtitle": "Northern Territory, Australia"
+            }
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "Bar fits the text · Montserrat",
+      "caption_at": "top",
+      "label": "Basic Lower Third"
     },
     {
-      "clip": "{root}/effectcraft/logos/corner_logo/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 3.5
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/loc/locator04_16x9.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/basic",
+          "values": {
+            "Title": "Sydney Cove",
+            "Subtitle": "New South Wales, Australia",
+            "Title Font": "League Gothic Regular",
+            "Subtitle Font": "Caveat Brush"
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "See-through bar · League Gothic and Caveat Brush",
+      "caption_at": "top",
+      "label": "Basic Lower Third"
     },
     {
-      "clip": "{root}/effectcraft/titles/title/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 4.0
+      "footage": "point_ritchie",
+      "seconds": 5.7,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/stops.values.json",
+            "set": {
+              "Duration": 4.8
+            }
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "Default: Caveat Brush",
+      "caption_at": "top",
+      "label": "Box Wipe Lower Third"
     },
     {
-      "clip": "{root}/effectcraft/titles/animated_title/effectcraft-0.13/previews/demo.mp4",
-      "start": 0,
-      "seconds": 8.5
+      "footage": "tjoritja",
+      "seconds": 6.2,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/long.values.json",
+            "set": {
+              "Duration": 5.3,
+              "Title Font": "Montserrat Bold",
+              "Subtitle Font": "Montserrat Regular",
+              "Box Colour": "#6b2d1a",
+              "Line Colour": "#f4a259",
+              "Subtitle": "Northern Territory, Australia"
+            }
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "Long title wraps · Montserrat · Box and Line Colour",
+      "caption_at": "top",
+      "label": "Box Wipe Lower Third"
     },
     {
-      "clip": "{root}/effectcraft/titles/typewriter/effectcraft-0.13/previews/demo.mp4",
-      "start": 0.3,
-      "seconds": 3.7
+      "footage": "uluru",
+      "seconds": 5.7,
+      "overlays": [
+        {
+          "template": "effectcraft/lower_thirds/box_wipe",
+          "values": {
+            "Title": "Uluru, Northern Territory, Australia",
+            "Subtitle": "",
+            "Duration": 4.8
+          },
+          "at": 0.9
+        }
+      ],
+      "caption": "No subtitle: the box closes up",
+      "caption_at": "top",
+      "label": "Box Wipe Lower Third"
     },
     {
-      "clip": "{root}/effectcraft/titles/credits/effectcraft-0.13/previews/demo.mp4",
-      "start": 0.2,
-      "seconds": 4.3
+      "footage": "sydney_cove",
+      "seconds": 4,
+      "caption": "4:3 photo in 16x9 · Blur 60 · Darken 30 (the defaults)",
+      "label": "Fill the Frame"
     },
     {
-      "clip": "{root}/effectcraft/titles/sign_off/effectcraft-0.13/previews/demo.mp4",
-      "start": 0.2,
-      "seconds": 4.3
+      "footage": "mushroom_rock",
+      "seconds": 3,
+      "fill": {
+        "Blur": 10,
+        "Darken": 0
+      },
+      "caption": "Blur 10 · Darken 0",
+      "label": "Fill the Frame"
     },
     {
-      "clip": "{root}/demo/australia_trip/demo.mp4",
-      "start": 25.0,
-      "seconds": 11
+      "footage": "uluru",
+      "seconds": 3,
+      "fill": {
+        "Blur": 100,
+        "Darken": 70
+      },
+      "caption": "Blur 100 · Darken 70",
+      "label": "Fill the Frame"
     },
     {
-      "clip": "{root}/demo/australia_trip/demo.mp4",
-      "start": 55.0,
-      "seconds": 7
+      "footage": "australia",
+      "seconds": 4,
+      "fill": {
+        "Media": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.png",
+        "Darken": 40
+      },
+      "caption": "A portrait photo in 16x9 · nothing cut off",
+      "label": "Fill the Frame"
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              757,
+              241
+            ],
+            "Start": 0.4,
+            "Size": 81,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              961,
+              312
+            ],
+            "Start": 0.9,
+            "Size": 61,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1149,
+              353
+            ],
+            "Start": 1.4,
+            "Size": 72,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1263,
+              415
+            ],
+            "Start": 1.9,
+            "Size": 61,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              720,
+              645
+            ],
+            "Start": 2.4,
+            "Size": 52,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1065,
+              705
+            ],
+            "Start": 2.9,
+            "Size": 67,
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Six glints · Start and Size set for each",
+      "label": "Glint"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              680,
+              340
+            ],
+            "Start": 0.4,
+            "Size": 93,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              987,
+              307
+            ],
+            "Start": 1.0,
+            "Size": 107,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1307,
+              347
+            ],
+            "Start": 1.6,
+            "Size": 93,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              1160,
+              367
+            ],
+            "Start": 2.2,
+            "Size": 73,
+            "Duration": 5,
+            "Colour": "#ffc27a",
+            "Glow": 90
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Colour and Glow 90",
+      "label": "Glint"
+    },
+    {
+      "footage": "port_campbell",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              827,
+              513
+            ],
+            "Start": 0.4,
+            "Size": 73,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              867,
+              627
+            ],
+            "Start": 0.8,
+            "Size": 64,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              933,
+              673
+            ],
+            "Start": 1.2,
+            "Size": 73,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              980,
+              733
+            ],
+            "Start": 1.6,
+            "Size": 59,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              887,
+              707
+            ],
+            "Start": 2.0,
+            "Size": 67,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint",
+          "values": {
+            "Position": [
+              813,
+              580
+            ],
+            "Start": 2.4,
+            "Size": 53,
+            "Duration": 5,
+            "Glow": 45
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Glow 45 · Size 40 to 55",
+      "label": "Glint"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Coast to *centre*",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 50,
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 49,
+            "Duration": 5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 49",
+      "label": "Glint Set"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "TJORITJA",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 50,
+            "Start": 0.2,
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 32,
+            "Colour": "#ffd166",
+            "Glow": 80,
+            "Duration": 5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 32 · Colour · Glow 80",
+      "label": "Glint Set"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Some places are *bigger* than any photo",
+            "Style": "Fade Up",
+            "By": "Words",
+            "Fade": "Fade In",
+            "Size": 40,
+            "Start": 0.2,
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/overlays/glint_set",
+          "values": {
+            "Spread": 85,
+            "Size": 70,
+            "Duration": 5.5
+          },
+          "at": 0.3
+        }
+      ],
+      "caption": "Spread: 85 · Size: 70",
+      "label": "Glint Set"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Corner": "Bottom Right",
+            "Start": 0.9,
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Corner: Bottom Right · Fade In and Out",
+      "caption_at": "top",
+      "label": "Corner Logo"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Corner": "Top Left",
+            "Fade": "Steady",
+            "Duration": 4.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Corner": "Top Right",
+            "Fade": "Steady",
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Corner: Top Left and Top Right · Fade: Steady",
+      "label": "Corner Logo"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Corner": "Bottom Left",
+            "Size": 100,
+            "Opacity": 50,
+            "Fade": "Fade In",
+            "Start": 0.9,
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Corner: Bottom Left · Size 100 · Opacity 50 · Fade In",
+      "caption_at": "top",
+      "label": "Corner Logo"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 4.5,
+      "overlays": [
+        {
+          "template": "effectcraft/logos/corner_logo",
+          "values": {
+            "Corner": "Bottom Right",
+            "Fade": "Fade Out",
+            "Duration": 4.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Fade: Fade Out",
+      "caption_at": "top",
+      "label": "Corner Logo"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Centre",
+      "label": "Title"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Point Ritchie",
+            "Label": "Day two",
+            "Place": "Bottom Centre",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Bottom Centre",
+      "caption_at": "top",
+      "label": "Title"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Start",
+            "Label": "Day one",
+            "Place": "Top Left",
+            "Duration": 5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Finish",
+            "Label": "Day four",
+            "Place": "Top Right",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Top Left and Top Right",
+      "label": "Title"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Uluru",
+            "Label": "Sunrise",
+            "Place": "Bottom Left",
+            "Duration": 5.5
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/title",
+          "values": {
+            "Title": "Kata Tjuta",
+            "Label": "Sunset",
+            "Place": "Bottom Right",
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Place: Bottom Left and Bottom Right",
+      "caption_at": "top",
+      "label": "Title"
+    },
+    {
+      "footage": "port_campbell",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Coast to *centre*",
+            "Style": "Fade Up",
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Fade Up · By: Letters",
+      "label": "Animated Title"
+    },
+    {
+      "footage": "point_ritchie",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "Every *wave* counts",
+            "Style": "Bounce",
+            "By": "Words",
+            "Stagger": 0.15,
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Bounce · By: Words",
+      "label": "Animated Title"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/animated_title",
+          "values": {
+            "Text": "TJORITJA",
+            "Style": "Spread In",
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Style: Spread In",
+      "label": "Animated Title"
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "file": "{root}/effectcraft/titles/typewriter/effectcraft-0.13/examples/travel.values.json",
+            "set": {
+              "Duration": 5,
+              "Position": [
+                960,
+                900
+              ]
+            }
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: Bar",
+      "label": "Typewriter"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "Text": "See you on the next road.",
+            "Cursor": "Underscore",
+            "Erase": true,
+            "Start": 0.3,
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: Underscore · Erase",
+      "label": "Typewriter"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 6.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/typewriter",
+          "values": {
+            "Text": "Some places are bigger than any photo.",
+            "Cursor": "None",
+            "Speed": 9,
+            "Start": 0.3,
+            "Duration": 6.5,
+            "Position": [
+              960,
+              900
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Cursor: None · Speed 9",
+      "label": "Typewriter"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/credits",
+          "values": {
+            "file": "{root}/effectcraft/titles/credits/effectcraft-0.13/examples/australia.values.json",
+            "set": {
+              "Duration": 5.5
+            },
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Title and four lines",
+      "label": "Credits"
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/credits",
+          "values": {
+            "Title": "Opera House at the end of a long summer day",
+            "Line 1": "Photos by Gregory Kirkendall",
+            "Line 2": "Music: Relaxing Flute Tune, Sound Effects Factory",
+            "Duration": 5.5,
+            "Line 3": "",
+            "Line 4": "",
+            "Line 5": "",
+            "Position": [
+              960,
+              790
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "A long title breaks onto two lines",
+      "caption_at": "top",
+      "label": "Credits"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/credits",
+          "values": {
+            "Title": "",
+            "Line 1": "Filmed in the Northern Territory, Australia",
+            "Line 2": "Photos by Gregory Kirkendall",
+            "Colour": "#ffd166",
+            "Duration": 5.5,
+            "Line 3": "",
+            "Line 4": "",
+            "Line 5": "",
+            "Position": [
+              960,
+              900
+            ]
+          },
+          "at": 0
+        }
+      ],
+      "caption": "No title · Colour",
+      "caption_at": "top",
+      "label": "Credits"
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/sign_off",
+          "values": {
+            "Blink": true,
+            "Position": [
+              960,
+              880
+            ],
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Blink on",
+      "label": "Sign-off"
+    },
+    {
+      "footage": "hildas_lookout",
+      "seconds": 5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/sign_off",
+          "values": {
+            "Text": "See you on the road",
+            "Heart Colour": "#f2b134",
+            "Position": [
+              960,
+              860
+            ],
+            "Duration": 5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Your own line · Heart Colour",
+      "label": "Sign-off"
+    },
+    {
+      "footage": "uluru",
+      "seconds": 5.5,
+      "overlays": [
+        {
+          "template": "effectcraft/titles/sign_off",
+          "values": {
+            "Text": "Thanks for watching, see you next week",
+            "Heart Size": 100,
+            "Blink": true,
+            "Beats per Minute": 100,
+            "Position": [
+              960,
+              900
+            ],
+            "Duration": 5.5
+          },
+          "at": 0
+        }
+      ],
+      "caption": "Long line shrinks · Heart Size 100 · 100 beats a minute",
+      "label": "Sign-off"
     }
   ]
 }

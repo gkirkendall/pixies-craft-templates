@@ -36,7 +36,7 @@ demo.json:
               independent-project line, 4 s after the last segment (PLAN.md, DEMO2). A clip of a reel with a title page starts after it.
   A card or footage segment may also have "caption": "Style: Bounce · By: Words", saying which feature is on screen: a small label
   (Inter on a dark pill) at the bottom left, or the top left with "caption_at": "top" (where a template sits bottom left), shown
-  between the crossfades.
+  between the crossfades. "label": "Typewriter" puts the template's name in bold at the start of the same pill (the showreels).
 
 The result is H.264 with no metadata (no creation time, no location), plus poster.jpg beside it. --check tests a finished demo:
 it decodes to the end, is within the size and length limits, and carries no creation time or location.
@@ -67,6 +67,7 @@ EFFECTCRAFT_LINKS = "getartcraft.com/apps/effectcraft · github.com/storytold/ef
 MUSIC_CREDITS = {"Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3": "\u201cRelaxing Flute Tune\u201d by Kerri, Sound Effects Factory"}
 WHITE, LIGHT, LINK, DIM = (255, 255, 255), (200, 212, 224), (140, 196, 236), (130, 144, 158)
 # Under Pixie on the end page (PLAN.md, END2): (text, px at 1080, Inter style, colour)
+SHOWREEL_FONT = "font:raleway/static/Raleway-SemiBold.ttf"   # a style "font:<path in fonts/>" is a static font file, not an Inter style
 UNDER_PIXIE = [("See Pixie on YouTube", 32, "SemiBold", WHITE), ("youtube.com/@PixBack", 30, "Medium", LINK)]
 
 
@@ -162,9 +163,9 @@ class Demo:
                 inputs += ["-itsoffset", str(o.get("at", 0)), "-i", mov]
                 chain.append(f"[{last}][{k + 1}:v]overlay=eof_action=pass[o{k}]")
                 last = f"o{k}"
-            if seg.get("caption"):
+            if seg.get("caption") or seg.get("label"):
                 png = self.work / f"caption{i:02d}.png"
-                caption(seg["caption"], (self.w, self.h), seg.get("caption_at", "bottom"), png)
+                caption(seg.get("caption"), (self.w, self.h), seg.get("caption_at", "bottom"), png, seg.get("label"))
                 n = len(seg.get("overlays", [])) + 1
                 inputs += ["-i", png]
                 xf = self.spec.get("crossfade", 0.5)   # shown between the crossfades, so two captions never overlap
@@ -264,7 +265,8 @@ class Demo:
             m = fs[0].manifest
             head = [(NAME, 34, "SemiBold", LIGHT, 0), (m["name"], 76, "Bold", WHITE, 18),
                     (f"Template version {m['version']}", 36, "Medium", LIGHT, 30)]
-        return head + [(tested, 34, "Regular", LIGHT, 14), (EFFECTCRAFT_LINKS, 30, "Regular", LINK, 34)]
+        tail = [("Showreel", 144, SHOWREEL_FONT, WHITE, 40)] if self.spec["title_page"] == "collection" else []
+        return head + [(tested, 34, "Regular", LIGHT, 14), (EFFECTCRAFT_LINKS, 30, "Regular", LINK, 34)] + tail
 
     def fonts_set(self):
         """Font families this reel's values pick ("Montserrat Bold" → Montserrat), found by their folder in fonts/."""
@@ -292,7 +294,8 @@ class Demo:
             lines.append((f"Music: {MUSIC_CREDITS[track]}", 30, "Regular", LIGHT, 10))
         if any(f.manifest["category"] == "maps" for f in fs):
             lines.append(("Maps: Natural Earth; \u00a9 OpenStreetMap contributors", 30, "Regular", LIGHT, 10))
-        fonts = sorted({font for f in fs for font in f.manifest.get("fonts", [])} | self.fonts_set())
+        fonts = sorted({font for f in fs for font in f.manifest.get("fonts", [])} | self.fonts_set()
+                       | ({"Raleway"} if self.spec.get("title_page") == "collection" else set()))   # "Showreel" on the title page
         if fonts:
             lines.append((f"Font{'s' if len(fonts) > 1 else ''}: {', '.join(fonts)} (SIL Open Font License)", 30, "Regular", LIGHT, 10))
         lines += [("Templates: github.com/gkirkendall/pixies-craft-templates", 30, "Medium", LINK, 34),
@@ -349,7 +352,7 @@ def title_card(lines, size, out):
 
 def page_card(lines, size, out, pixie=True, under=None):
     """A title or end page: centred lines on the dark background, each (text, px at 1080, Inter style, colour, gap above),
-    wrapped at spaces to the text area's width, and scaled down together if they would not fit its height. With pixie, Pixie
+    (a style "font:raleway/static/Raleway-SemiBold.ttf" names a static font file in fonts/), wrapped at spaces to the text area's width, and scaled down together if they would not fit its height. With pixie, Pixie
     (brand/pixie.png; PLAN.md, BRAND1) stands at the left of a wide frame, the text centred to his right, or at the top of a tall
     frame, the text below. under: lines (text, px at 1080, Inter style, colour) centred under Pixie (the end page's YouTube line)."""
     w, h = size
@@ -393,8 +396,14 @@ def page_card(lines, size, out, pixie=True, under=None):
     def lay(scale):
         rows = []
         for text, px, style, colour, gap in lines:
-            f = ImageFont.truetype(font_file, max(8, round(px * scale)))
-            f.set_variation_by_name(style)
+            if style.startswith("font:"):
+                file = ROOT / "fonts" / style[5:]
+                if not file.is_file():   # Pillow would quietly use an installed font of the same file name instead
+                    sys.exit(f"font file {file} not found")
+                f = ImageFont.truetype(str(file), max(8, round(px * scale)))
+            else:
+                f = ImageFont.truetype(font_file, max(8, round(px * scale)))
+                f.set_variation_by_name(style)
             # Too wide: break after " - " or " · " first, so a phrase stays whole; else at spaces.
             mark = next((m for m in (" - ", " · ") if m in text), None)
             if mark and d.textlength(text, font=f) > width:
@@ -438,20 +447,34 @@ def page_card(lines, size, out, pixie=True, under=None):
     im.save(out)
 
 
-def caption(text, size, at, out):
-    """A transparent frame with text in a small dark pill: at the bottom left, or the top left (at="top")."""
+def caption(text, size, at, out, label=None):
+    """A transparent frame with text in a small dark pill: at the bottom left, or the top left (at="top").
+    label: a name in bold white at the start of the pill, then a thin rule, then the caption (the showreels name each template)."""
     w, h = size
     unit = min(w, h) / 1080
     im = Image.new("RGBA", size, (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    f = ImageFont.truetype(str(ROOT / "fonts" / "inter" / "Inter[opsz,wght].ttf"), round(30 * unit))
+    font_file = str(ROOT / "fonts" / "inter" / "Inter[opsz,wght].ttf")
+    f = ImageFont.truetype(font_file, round(30 * unit))
     f.set_variation_by_name("SemiBold")
-    left, top, right, bottom = d.textbbox((0, 0), text, font=f)
-    px, py, margin = round(22 * unit), round(12 * unit), round(36 * unit)
-    bw, bh = right - left + 2 * px, bottom - top + 2 * py
+    fb = ImageFont.truetype(font_file, round(30 * unit))
+    fb.set_variation_by_name("Bold")
+    parts = ([(label, fb, 255)] if label else []) + ([(text, f, 255 if not label else 225)] if text else [])
+    boxes = [d.textbbox((0, 0), t, font=ft) for t, ft, _ in parts]
+    px, py, margin, gap = round(22 * unit), round(12 * unit), round(36 * unit), round(18 * unit)
+    top = min(b[1] for b in boxes)
+    th = max(b[3] for b in boxes) - top
+    tw = sum(b[2] - b[0] for b in boxes) + (2 * gap + round(2 * unit) if len(parts) > 1 else 0)
+    bw, bh = tw + 2 * px, th + 2 * py
     x, y = margin, (margin if at == "top" else h - margin - bh)
     d.rounded_rectangle((x, y, x + bw, y + bh), radius=bh // 2, fill=(0, 0, 0, 150))
-    d.text((x + px - left, y + py - top), text, font=f, fill=(255, 255, 255, 255))
+    cx = x + px
+    for k, ((t, ft, a), b) in enumerate(zip(parts, boxes)):
+        if k:
+            d.rectangle((cx + gap, y + py, cx + gap + round(2 * unit), y + py + th), fill=(255, 255, 255, 120))
+            cx += 2 * gap + round(2 * unit)
+        d.text((cx - b[0], y + py - top), t, font=ft, fill=(255, 255, 255, a))
+        cx += b[2] - b[0]
     im.save(out)
 
 
