@@ -26,7 +26,10 @@ def main():
     ap.add_argument("--effectcraft-cli", required=True)
     ap.add_argument("--music", required=True, type=pathlib.Path, help="the folder holding the track")
     ap.add_argument("--out", type=pathlib.Path, default=KIT / "preview.mp4")
+    ap.add_argument("--full-size", action="store_true", help="1920x1080 instead of 1280x720 (a YouTube upload copy; needs --out)")
     a = ap.parse_args()
+    if a.full_size and a.out == KIT / "preview.mp4":
+        ap.error("--full-size needs --out, so the project's 720p preview is not replaced")
     with tempfile.TemporaryDirectory() as tmp:
         full = pathlib.Path(tmp) / "kit.mp4"
         subprocess.run([a.effectcraft_cli, "render", str(KIT / "Trip Video 16x9.ecproj"), "--comp", "Trip Video", "--out", str(full),
@@ -39,7 +42,8 @@ def main():
             "credit_photos": "Photos: Pixabay (see CREDITS.md)",
             "segments": [{"clip": str(full), "start": 0, "seconds": 60}]}))
         subprocess.run([sys.executable, str(ROOT / "tools" / "demo.py"), str(spec), "--footage", tmp, "--music", str(a.music), "--out", str(a.out),
-                        "--effectcraft-cli", a.effectcraft_cli, "--max-seconds", "75", "--max-mb", "8"], check=True)
+                        "--effectcraft-cli", a.effectcraft_cli, "--max-seconds", "75", "--max-mb", "8"] + (["--full-size"] if a.full_size else []),
+                       check=True)
 
 
 if __name__ == "__main__":

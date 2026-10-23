@@ -4,6 +4,7 @@
   python3 tools/demo.py effectcraft/maps/route_leg/effectcraft-0.13/previews/demo.json --footage DIR [--music DIR] [--out FILE]
   python3 tools/demo.py demo/australia_trip/demo.json --footage DIR --music DIR
   python3 tools/demo.py --check FILE.mp4 [--max-seconds 15] [--max-mb 5]
+  python3 tools/demo.py SPEC --footage DIR --music DIR --full-size --out FILE.mp4   # a YouTube upload copy at the full frame size
 
 The footage stays outside the repository: demo.json names it by key ("port_campbell"), and --footage DIR holds files named by key
 (any extension; links are fine), in the subfolder demo.json names. So does the music: --music DIR holds the track demo.json names
@@ -37,6 +38,10 @@ demo.json:
   A card or footage segment may also have "caption": "Style: Bounce · By: Words", saying which feature is on screen: a small label
   (Inter on a dark pill) at the bottom left, or the top left with "caption_at": "top" (where a template sits bottom left), shown
   between the crossfades. "label": "Typewriter" puts the template's name in bold at the start of the same pill (the showreels).
+
+--full-size writes the video at the frame size (1920x1080, or 1080x1920) instead of 1280x720 (720x1280), for uploading to YouTube,
+which compresses a 720p upload harder than fine text and glints can take. It needs --out, so a reel in the repository, which stays
+720p to keep the web page light, is never replaced; and with --check it skips the size limit (--max-mb).
 
 The result is H.264 with no metadata (no creation time, no location), plus poster.jpg beside it. --check tests a finished demo:
 it decodes to the end, is within the size and length limits, and carries no creation time or location.
@@ -216,7 +221,7 @@ class Demo:
             graph.append(f"[{last}][{k}:v]xfade=transition=fade:duration={xf}:offset={t:.3f}[x{k}]")
             last, t = f"x{k}", t + segs[k]["seconds"]
         total = t
-        ow, oh = OUT_SIZES[self.size]
+        ow, oh = FRAMES[self.size] if self.a.full_size else OUT_SIZES[self.size]
         graph.append(f"[{last}]scale={ow}:{oh}:flags=lanczos,format=yuv420p[v]")
         music = self.music(total)
         if music:
@@ -509,12 +514,16 @@ def main():
     ap.add_argument("--check", type=pathlib.Path, help="check a finished demo instead of making one")
     ap.add_argument("--max-seconds", type=float, default=25)
     ap.add_argument("--max-mb", type=float, default=5)
+    ap.add_argument("--full-size", action="store_true", help="write the full frame size (1920x1080 / 1080x1920), with --out; "
+                    "with --check, skip the size limit")
     ap.add_argument("--effectcraft-cli", default="effectcraft-cli")
     a = ap.parse_args()
     if a.check:
-        sys.exit(0 if check(a.check, a.max_seconds, a.max_mb) else 1)
+        sys.exit(0 if check(a.check, a.max_seconds, float("inf") if a.full_size else a.max_mb) else 1)
     if not a.spec or not a.footage:
         ap.error("give a demo.json and --footage")
+    if a.full_size and not a.out:
+        ap.error("--full-size needs --out, so the repository's 720p reel is not replaced")
     spec_path = a.spec.resolve()
     size = json.loads(spec_path.read_text())["size"]
     out = (a.out or spec_path.with_name("demo.mp4" if size == "16x9" else "demo_9x16.mp4")).resolve()
