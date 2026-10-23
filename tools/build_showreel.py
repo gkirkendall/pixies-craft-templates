@@ -10,7 +10,7 @@ The shots come from each template's previews/demo.json (16x9) or previews/demo_9
 footage, overlays, settings and captions, laid out the way the template's own reel lays them out. Nothing is cut from a finished
 video. Each shot also gets "label": the template's name, shown in the caption's pill. The 9x16 specs' opening header (two Animated
 Title overlays on the first shot that say what the reel is) is kept on the showreel's first shot only, its second line reading
-"Pixie's Craft Templates Showreel", and dropped from every later template's first shot. The " · 9x16" caption suffix is dropped too. The chapters (for the video's description) are printed from the segment lengths and the crossfade.
+"Pixie's Craft Templates Showreel", and dropped from every later template's first shot. The " · 9x16" caption suffix is dropped too. The chapters (for the video's description), one per template, are printed from the segment lengths and the crossfade.
 """
 import argparse
 import json
@@ -21,14 +21,12 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 MUSIC = "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3"
 CROSSFADE, TITLE_SECONDS = 0.5, 3
-# (folder key, template folder) in showreel order, and the chapters: (name, first folder key). Each chapter is at least 10 s.
+# (folder key, template folder) in showreel order. The chapters are one per template (each runs 14 s or more; YouTube wants 10 s).
 ORDER = [("locator", "maps/locator"), ("route_leg", "maps/route_leg"), ("basic", "lower_thirds/basic"),
          ("box_wipe", "lower_thirds/box_wipe"), ("fill_frame", "utility/fill_frame"), ("glint", "overlays/glint"),
          ("glint_set", "overlays/glint_set"), ("corner_logo", "logos/corner_logo"), ("title", "titles/title"),
          ("animated_title", "titles/animated_title"), ("typewriter", "titles/typewriter"), ("credits", "titles/credits"),
          ("sign_off", "titles/sign_off")]
-CHAPTERS = [("Maps", "locator"), ("Lower thirds and Fill the Frame", "basic"), ("Glints and Corner Logo", "glint"),
-            ("Titles", "title")]
 SHOWREEL_LINE = "Pixie's Craft Templates Showreel"   # the 9x16 opening header's second line
 HEADER_SIZES = {24, 45}   # the 9x16 opening header's two Animated Title overlays (Size 24 and 45)
 
@@ -74,7 +72,7 @@ def shots(key, folder, size, opening=False):
 
 def build(size, only):
     chosen = [(k, f) for k, f in ORDER if not only or k in only]
-    segments, prepare, starts = [], [], {}
+    segments, prepare, starts, names = [], [], {}, {}
     t = TITLE_SECONDS - CROSSFADE if size == "16x9" else 0   # where the first shot starts (after the title page)
     outs = {}
     for n, (key, folder) in enumerate(chosen):
@@ -84,7 +82,7 @@ def build(size, only):
             if outs.setdefault(dest, key) != key:
                 sys.exit(f"{key} and {outs[dest]} both write {dest} in the working folder")
         prepare += prep
-        starts[key] = t
+        starts[key], names[key] = t, name
         for seg in segs:
             segments.append(seg)
             t += seg["seconds"] - CROSSFADE
@@ -96,15 +94,16 @@ def build(size, only):
         spec["prepare"] = prepare
     spec["segments"] = segments
     total = t + CROSSFADE + 4 - CROSSFADE   # the end page (4 s) joins with a crossfade
-    return spec, starts, total
+    return spec, [(names[k], starts[k]) for k, _ in chosen], total
 
 
 def chapters(starts):
+    """One line per template: M:SS and its name. The first is 0:00 (the title page, if any, belongs to it); the others are the first
+    whole second with the template's first shot fully on screen."""
     lines = []
-    for n, (name, key) in enumerate(CHAPTERS):
-        if key in starts:
-            s = 0 if not lines else math.ceil(starts[key] + CROSSFADE)   # the first whole second with the new shot fully on screen
-            lines.append(f"{s // 60}:{s % 60:02d} {name}")
+    for name, start in starts:
+        s = 0 if not lines else math.ceil(start + CROSSFADE)
+        lines.append(f"{s // 60}:{s % 60:02d} {name}")
     return lines
 
 
