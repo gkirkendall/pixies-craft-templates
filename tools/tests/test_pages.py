@@ -80,7 +80,12 @@ def main():
             check(f"{name} title page", all(w in title for w in want), f"read {title!r}; missing {[w for w in want if w not in title]}")
             end = read(video, -1.5, tmp)
             check(f"{name} ends on the same end page", all(w in end for w in END), f"missing {[w for w in END if w not in end]}")
-    specs = sorted(ROOT.glob("effectcraft/*/*/*/previews/demo*.json")) + [ROOT / "demo" / "showreel.json", ROOT / "demo" / "showreel_9x16.json", ROOT / "demo" / "australia_trip" / "demo.json"]
+        for name, video in (("trip demo (9x16)", ROOT / "demo" / "australia_trip" / "demo_9x16.mp4"),
+                            ("trip video kit preview (9x16)", ROOT / "project_templates" / "trip_video" / "preview_9x16.mp4")):
+            end = read(video, -1.5, tmp)
+            check(f"{name} ends on the same end page", all(w in end for w in END), f"missing {[w for w in END if w not in end]}")
+    specs = sorted(ROOT.glob("effectcraft/*/*/*/previews/demo*.json")) + [ROOT / "demo" / "showreel.json", ROOT / "demo" / "showreel_9x16.json", ROOT / "demo" / "australia_trip" / "demo.json",
+                                                                         ROOT / "demo" / "australia_trip" / "demo_9x16.json"]
     def pages_ok(spec):
         d = json.loads(spec.read_text())
         return d.get("end_page") and (d.get("title_page") or d.get("size") == "9x16")

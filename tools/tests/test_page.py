@@ -5,7 +5,7 @@
 
 Checks: the page is what tools/page.py writes now; every template has a row with its style sheet and at least one demo reel; every
 file the page links to exists; it makes no outside requests (no outside src, poster, script or stylesheet; outside links are
-fine); every video loads nothing until played (preload="none") and has a poster; the showreel and the trip demo are at the top;
+fine); every video loads nothing until played (preload="none") and has a poster; the showreel, the trip demo and the kit preview are at the top, each in 16x9 then 9x16;
 the PixBack sponsor line sits under the title, linking to getpixback.com, with Pixie beside them;
 the how-to-install steps; a download link per template size, to the file the latest release attaches, and the
 download-all and fonts zips (PLAN.md, RELEASE1); every font a template lists has its folder in fonts/; the README's
@@ -80,8 +80,10 @@ def main():
     videos = [a for t, a in p.tags if t == "video"]
     lazy = all(a.get("preload") == "none" and a.get("poster") for a in videos)
     check("videos load only when played, with a poster", lazy and len(videos) > 2, f"{len(videos)} videos")
-    first = [a["src"] for t, a in p.tags if t == "video"][:2]
-    check("showreel and trip demo first", first == ["demo/showreel.mp4", "demo/australia_trip/demo.mp4"], str(first))
+    first = [a["src"] for t, a in p.tags if t == "video"][:6]
+    want = ["demo/showreel.mp4", "demo/showreel_9x16.mp4", "demo/australia_trip/demo.mp4", "demo/australia_trip/demo_9x16.mp4",
+            "project_templates/trip_video/preview.mp4", "project_templates/trip_video/preview_9x16.mp4"]
+    check("showreel, trip demo and kit preview first, each in 16x9 then 9x16", first == want, str(first))
     top = html[html.index("<h1>"):html.index("<h2>")]
     check("sponsor line under the title", '<h1>Pixie\'s Craft Templates</h1>\n<p class="sponsor"><a href="https://getpixback.com/">'
           'Sponsored By PixBack - Photo and Video Backup to Google Photos</a></p>' in top, top.split("\n")[1])

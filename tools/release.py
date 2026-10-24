@@ -28,7 +28,7 @@ ROOT = page.ROOT
 DIST = ROOT / "dist"
 ZIP, FONTS_ZIP, TRIP_ZIP, ASSETS = page.ZIP, page.FONTS_ZIP, page.TRIP_ZIP, page.ASSETS
 TRIP = ROOT / "project_templates" / "trip_video"
-TRIP_SKIP = {"preview.mp4", "preview_poster.jpg", ".DS_Store"}   # the preview reel is for the web page; "Make Maps/data" and "maps" are made by the user
+TRIP_SKIP = {"preview.mp4", "preview_poster.jpg", "preview_9x16.mp4", "preview_9x16_poster.jpg", ".DS_Store"}   # the preview reel is for the web page; "Make Maps/data" and "maps" are made by the user
 STAMP = (2026, 1, 1, 0, 0, 0)
 
 

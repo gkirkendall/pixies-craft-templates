@@ -8,7 +8,7 @@
 One plain HTML file with its CSS inline: no scripts, no outside fonts or requests; it uses the committed sheets and reels in place
 (GitHub Pages serves the repository root, .nojekyll making it serve every file as it is). At the top, the title and the PixBack
 sponsor line linking to getpixback.com and the "Download all templates (zip)" link to the latest release (PLAN.md, RELEASE1),
-beside Pixie (brand/pixie.png; PLAN.md, BRAND1); then the showreel and the Australia trip demo; then a
+beside Pixie (brand/pixie.png; PLAN.md, BRAND1); then the showreel, the Australia trip demo and the trip video kit's preview, each in 16x9 and 9x16; then a
 heading per category and a row per template: its style sheet (previews/styles.jpg) and its demo reel(s), each labelled
 underneath, then its description, its download links and fonts (from the release), sizes, tested versions and a link to its folder. Videos load nothing until played.
 tools/catalog.py --check also fails when the page is out of date.
@@ -30,6 +30,7 @@ NAME = "Pixie's Craft Templates"
 REPO = "https://github.com/gkirkendall/pixies-craft-templates"
 PIXIE = ROOT / "brand" / "pixie_web.png"
 TRIP_PREVIEW = ROOT / "project_templates" / "trip_video" / "preview.mp4"
+TRIP_PREVIEW_9X16 = TRIP_PREVIEW.with_name("preview_9x16.mp4")
 # The release files tools/release.py builds (PLAN.md, RELEASE1); "latest" always fetches the newest release
 ASSETS = f"{REPO}/releases/latest/download/"
 ZIP, FONTS_ZIP = "pixies-craft-templates.zip", "pixies-craft-templates-fonts.zip"
@@ -134,8 +135,11 @@ def build():
            "of a template's styles in one picture and a demo reel that names the feature on screen.</p></div>", "</header>",
            "<h2>The templates together</h2>", '<div class="media top">',
            video(ROOT / "demo" / "showreel.mp4", "Showreel: every template"),
+           video(ROOT / "demo" / "showreel_9x16.mp4", "Showreel (9x16)"),
            video(ROOT / "demo" / "australia_trip" / "demo.mp4", "Australia trip: the templates in one travel video"),
-           video(TRIP_PREVIEW, "Make your own: the trip video project, with placeholder photos (the preview has music; the project does not)"), "</div>",
+           video(ROOT / "demo" / "australia_trip" / "demo_9x16.mp4", "Australia trip (9x16)"),
+           video(TRIP_PREVIEW, "Make your own: the trip video project, with placeholder photos (the preview has music; the project does not)"),
+           video(TRIP_PREVIEW_9X16, "Make your own: the trip video project (9x16)"), "</div>",
            f'<p class="download"><a href="{ASSETS}{TRIP_ZIP}">Make your own: download the trip video project (zip)</a></p>',
            '<h2 id="install">How to install</h2>', '<ol class="install">'] + [f"<li>{step}</li>" for step in INSTALL] + ["</ol>"]
     by_category = {}
