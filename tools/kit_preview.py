@@ -43,6 +43,8 @@ def main():
         reel = {"size": a.size, "music": a.track, "crossfade": 0.5, "poster_at": 2, "end_page": True,
                 "credit_photos": "Photos: Pixabay (see CREDITS.md)",
                 "segments": [{"clip": str(full), "start": 0, "seconds": 60}]}
+        if a.size == "9x16":   # no title page, no thumbnail: the first frame says what it is (owner, 2026-10-24)
+            reel["heading"] = "Travel Kit Sample"
         if a.size == "16x9":   # a Short opens straight on the picture, as the other Shorts do
             reel["title_page"] = {"name": "Trip Video", "line": "A ready-made project: swap in your photos and text",
                                   "templates": [f"effectcraft/{t}" for t in TEMPLATES]}

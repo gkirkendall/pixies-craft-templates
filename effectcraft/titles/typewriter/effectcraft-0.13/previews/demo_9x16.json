@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Typewriter Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5
           },
           "at": 0

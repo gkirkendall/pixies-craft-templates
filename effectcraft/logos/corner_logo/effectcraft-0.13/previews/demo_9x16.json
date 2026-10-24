@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Corner Logo Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 4.5
           },
           "at": 0
@@ -54,7 +54,7 @@
           "at": 0
         }
       ],
-      "caption": "Corner: Bottom Right \u00b7 Fade In and Out \u00b7 9x16",
+      "caption": "Corner: Bottom Right · Fade In and Out · 9x16",
       "caption_at": "top"
     },
     {
@@ -80,7 +80,7 @@
           "at": 0
         }
       ],
-      "caption": "Corner: Top Left and Top Right \u00b7 Fade: Steady \u00b7 9x16"
+      "caption": "Corner: Top Left and Top Right · Fade: Steady · 9x16"
     },
     {
       "footage": "point_ritchie",
@@ -99,7 +99,7 @@
           "at": 0
         }
       ],
-      "caption": "Corner: Bottom Left \u00b7 Size 100 \u00b7 Opacity 70 \u00b7 Fade In \u00b7 9x16",
+      "caption": "Corner: Bottom Left · Size 100 · Opacity 70 · Fade In · 9x16",
       "caption_at": "top"
     },
     {
@@ -116,7 +116,7 @@
           "at": 0
         }
       ],
-      "caption": "Fade: Fade Out \u00b7 9x16",
+      "caption": "Fade: Fade Out · 9x16",
       "caption_at": "top"
     }
   ]

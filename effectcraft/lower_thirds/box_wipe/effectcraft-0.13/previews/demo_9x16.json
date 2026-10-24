@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Box Wipe Lower Third Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5.7
           },
           "at": 0
@@ -55,7 +55,7 @@
           "at": 0.9
         }
       ],
-      "caption": "Default: Caveat Brush \u00b7 9x16",
+      "caption": "Default: Caveat Brush · 9x16",
       "caption_at": "top"
     },
     {
@@ -78,7 +78,7 @@
           "at": 0.9
         }
       ],
-      "caption": "Long title wraps \u00b7 Montserrat \u00b7 Box and Line Colour \u00b7 9x16",
+      "caption": "Long title wraps · Montserrat · Box and Line Colour · 9x16",
       "caption_at": "top"
     },
     {
@@ -95,7 +95,7 @@
           "at": 0.9
         }
       ],
-      "caption": "No subtitle: the box closes up \u00b7 9x16",
+      "caption": "No subtitle: the box closes up · 9x16",
       "caption_at": "top"
     }
   ]

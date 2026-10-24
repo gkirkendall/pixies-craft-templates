@@ -5,7 +5,20 @@
   "crossfade": 0.5,
   "poster_at": 8.0,
   "end_page": true,
+  "heading": "Showreel",
   "prepare": [
+    [
+      "maps.py",
+      "locator",
+      "--stops",
+      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
+      "--stop",
+      "4",
+      "--out",
+      "{work}/loc",
+      "--variant",
+      "9x16"
+    ],
     [
       "maps.py",
       "locator",
@@ -64,135 +77,9 @@
       "{work}/full",
       "--variant",
       "9x16"
-    ],
-    [
-      "maps.py",
-      "locator",
-      "--stops",
-      "{root}/effectcraft/maps/route_leg/effectcraft-0.13/examples/australia.stops.json",
-      "--stop",
-      "4",
-      "--out",
-      "{work}/loc",
-      "--variant",
-      "9x16"
     ]
   ],
   "segments": [
-    {
-      "footage": "port_campbell",
-      "seconds": 6.1,
-      "overlays": [
-        {
-          "template": "effectcraft/titles/animated_title",
-          "values": {
-            "Text": "Free motion templates for *EffectCraft*",
-            "Style": "Fade Up",
-            "By": "Words",
-            "Fade": "Fade In",
-            "Size": 24,
-            "Position": [
-              540,
-              1450
-            ],
-            "Start": 0,
-            "Duration": 6.1
-          },
-          "at": 0
-        },
-        {
-          "template": "effectcraft/titles/animated_title",
-          "values": {
-            "Text": "Pixie's Craft Templates Showreel",
-            "Style": "Fade Up",
-            "By": "Words",
-            "Fade": "Fade In",
-            "Size": 45,
-            "Position": [
-              540,
-              1550
-            ],
-            "Start": 0.2,
-            "Duration": 6.1
-          },
-          "at": 0
-        },
-        {
-          "template": "effectcraft/maps/locator",
-          "values": "{work}/a/locator00_9x16.values.json",
-          "at": 0.9
-        }
-      ],
-      "caption": "Corner Inset",
-      "caption_at": "top",
-      "label": "Locator"
-    },
-    {
-      "card": "effectcraft/maps/locator",
-      "values": {
-        "file": "{work}/b/locator04_9x16.values.json",
-        "set": {
-          "Corner Inset": false
-        }
-      },
-      "seconds": 5,
-      "caption": "Full frame",
-      "label": "Locator"
-    },
-    {
-      "footage": "mushroom_rock",
-      "seconds": 6.1,
-      "overlays": [
-        {
-          "template": "effectcraft/maps/locator",
-          "values": "{work}/c/locator02_9x16.values.json",
-          "at": 0.9
-        }
-      ],
-      "caption": "Another place",
-      "caption_at": "top",
-      "label": "Locator"
-    },
-    {
-      "footage": "sydney_cove",
-      "seconds": 6.1,
-      "overlays": [
-        {
-          "template": "effectcraft/maps/route_leg",
-          "values": "{work}/legs/leg05_9x16.values.json",
-          "at": 0.9
-        }
-      ],
-      "caption": "Short leg · roads and towns",
-      "caption_at": "top",
-      "label": "Route Leg"
-    },
-    {
-      "card": "effectcraft/maps/route_leg",
-      "values": {
-        "file": "{work}/full/leg02_9x16.values.json",
-        "set": {
-          "Corner Inset": false
-        }
-      },
-      "seconds": 5,
-      "caption": "Full frame",
-      "label": "Route Leg"
-    },
-    {
-      "footage": "tjoritja",
-      "seconds": 6.1,
-      "overlays": [
-        {
-          "template": "effectcraft/maps/route_leg",
-          "values": "{work}/legs/leg04_9x16.values.json",
-          "at": 0.9
-        }
-      ],
-      "caption": "Long leg",
-      "caption_at": "top",
-      "label": "Route Leg"
-    },
     {
       "footage": "uluru",
       "seconds": 5,
@@ -316,6 +203,88 @@
       "caption": "No subtitle: the box closes up",
       "caption_at": "top",
       "label": "Box Wipe Lower Third"
+    },
+    {
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/b/locator04_9x16.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame",
+      "overlays": [],
+      "label": "Locator"
+    },
+    {
+      "footage": "port_campbell",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/locator",
+          "values": "{work}/a/locator00_9x16.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Corner Inset",
+      "caption_at": "top",
+      "label": "Locator"
+    },
+    {
+      "footage": "mushroom_rock",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/locator",
+          "values": "{work}/c/locator02_9x16.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Another place",
+      "caption_at": "top",
+      "label": "Locator"
+    },
+    {
+      "card": "effectcraft/maps/route_leg",
+      "values": {
+        "file": "{work}/full/leg02_9x16.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame",
+      "overlays": [],
+      "label": "Route Leg"
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg05_9x16.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Short leg · roads and towns",
+      "caption_at": "top",
+      "label": "Route Leg"
+    },
+    {
+      "footage": "tjoritja",
+      "seconds": 6.1,
+      "overlays": [
+        {
+          "template": "effectcraft/maps/route_leg",
+          "values": "{work}/legs/leg04_9x16.values.json",
+          "at": 0.9
+        }
+      ],
+      "caption": "Long leg",
+      "caption_at": "top",
+      "label": "Route Leg"
     },
     {
       "footage": "sydney_cove",

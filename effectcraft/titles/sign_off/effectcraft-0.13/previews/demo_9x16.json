@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Sign-off Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5.5
           },
           "at": 0
@@ -57,7 +57,7 @@
           "at": 0
         }
       ],
-      "caption": "Blink on \u00b7 9x16"
+      "caption": "Blink on · 9x16"
     },
     {
       "footage": "hildas_lookout",
@@ -77,7 +77,7 @@
           "at": 0
         }
       ],
-      "caption": "Your own line \u00b7 Heart Colour \u00b7 9x16"
+      "caption": "Your own line · Heart Colour · 9x16"
     },
     {
       "footage": "uluru",
@@ -99,7 +99,7 @@
           "at": 0
         }
       ],
-      "caption": "Long line shrinks \u00b7 Heart Size 100 \u00b7 100 beats a minute \u00b7 9x16"
+      "caption": "Long line shrinks · Heart Size 100 · 100 beats a minute · 9x16"
     }
   ]
 }

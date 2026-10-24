@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Animated Title Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5
           },
           "at": 0
@@ -58,7 +58,7 @@
           "at": 0
         }
       ],
-      "caption": "Style: Fade Up \u00b7 By: Letters \u00b7 9x16"
+      "caption": "Style: Fade Up · By: Letters · 9x16"
     },
     {
       "footage": "point_ritchie",
@@ -80,7 +80,7 @@
           "at": 0
         }
       ],
-      "caption": "Style: Bounce \u00b7 By: Words \u00b7 9x16"
+      "caption": "Style: Bounce · By: Words · 9x16"
     },
     {
       "footage": "tjoritja",
@@ -100,7 +100,7 @@
           "at": 0
         }
       ],
-      "caption": "Style: Spread In \u00b7 9x16"
+      "caption": "Style: Spread In · 9x16"
     }
   ]
 }

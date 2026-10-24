@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Glint Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5
           },
           "at": 0
@@ -123,7 +123,7 @@
           "at": 0
         }
       ],
-      "caption": "Six glints \u00b7 Start and Size set for each \u00b7 9x16"
+      "caption": "Six glints · Start and Size set for each · 9x16"
     },
     {
       "footage": "uluru",
@@ -190,7 +190,7 @@
           "at": 0
         }
       ],
-      "caption": "Colour and Glow 90 \u00b7 9x16"
+      "caption": "Colour and Glow 90 · 9x16"
     },
     {
       "footage": "port_campbell",
@@ -281,7 +281,7 @@
           "at": 0
         }
       ],
-      "caption": "Glow 45 \u00b7 Size 40 to 55 \u00b7 9x16"
+      "caption": "Glow 45 · Size 40 to 55 · 9x16"
     }
   ]
 }

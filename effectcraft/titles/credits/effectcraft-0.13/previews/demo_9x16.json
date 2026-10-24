@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Credits Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5.5
           },
           "at": 0
@@ -60,7 +60,7 @@
           "at": 0
         }
       ],
-      "caption": "Title and four lines \u00b7 9x16"
+      "caption": "Title and four lines · 9x16"
     },
     {
       "footage": "sydney_cove",
@@ -84,7 +84,7 @@
           "at": 0
         }
       ],
-      "caption": "A long title breaks onto two lines \u00b7 9x16"
+      "caption": "A long title breaks onto two lines · 9x16"
     },
     {
       "footage": "uluru",
@@ -109,7 +109,7 @@
           "at": 0
         }
       ],
-      "caption": "No title \u00b7 Colour \u00b7 9x16"
+      "caption": "No title · Colour · 9x16"
     }
   ]
 }

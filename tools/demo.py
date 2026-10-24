@@ -69,6 +69,7 @@ NAME = "Pixie's Craft Templates"
 PIXIE = ROOT / "brand" / "pixie.png"
 TITLE_SECONDS, END_SECONDS = 3, 4
 EFFECTCRAFT_LINKS = "getartcraft.com/apps/effectcraft · github.com/storytold/effectcraft"
+HEADING_SECONDS = 3   # a reel's "heading" (spec key): the top lines shown from frame 0
 MUSIC_CREDITS = {"Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3": "\u201cRelaxing Flute Tune\u201d by Kerri, Sound Effects Factory",
                  "Renaissance - Audionautix.mp3": "\u201cRenaissance\u201d by Audionautix (audionautix.com), CC\u00a0BY\u00a04.0",
                  "u_iwe3yizfhb-emotional-sad-flute-478667.mp3": "\u201cEmotional Sad Flute\u201d by u_iwe3yizfhb, Pixabay",
@@ -228,6 +229,15 @@ class Demo:
             graph.append(f"[{last}][{k}:v]xfade=transition=fade:duration={xf}:offset={t:.3f}[x{k}]")
             last, t = f"x{k}", t + segs[k]["seconds"]
         total = t
+        heading = self.spec.get("heading")
+        if heading:   # a 9:16 reel with no thumbnail names itself from its very first frame (owner, 2026-10-24): no fade in, a fade out at HEADING_SECONDS
+            for k, (text, px, y) in enumerate([("Free Motion Templates for *EffectCraft*", 24, 330), (heading, 45, 430)]):
+                mov = self.render("effectcraft/titles/animated_title", {"Text": text, "Style": "Fade Up", "By": "Words", "Fade": "Fade Out", "Size": px,
+                                  "Position": [self.w // 2, y], "Start": 0, "Duration": HEADING_SECONDS, **self.spec.get("heading_style", {})},
+                                 self.work / f"heading{k}.mov")
+                inputs += ["-i", mov]
+                graph.append(f"[{last}][{len(clips) + k}:v]overlay=eof_action=pass[h{k}]")
+                last = f"h{k}"
         ow, oh = FRAMES[self.size] if self.a.full_size else OUT_SIZES[self.size]
         graph.append(f"[{last}]scale={ow}:{oh}:flags=lanczos,format=yuv420p[v]")
         music = self.music(total)
@@ -235,7 +245,7 @@ class Demo:
             inputs += ["-i", music]
         cmd = ["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(graph), "-map", "[v]"]
         if music:
-            cmd += ["-map", f"{len(clips)}:a", "-c:a", "aac", "-b:a", "128k"]
+            cmd += ["-map", f"{inputs.count('-i') - 1}:a", "-c:a", "aac", "-b:a", "128k"]
         cmd += ["-c:v", "libx264", "-preset", "slow", "-crf", "24", "-r", str(FPS), "-t", f"{total:.3f}", "-map_metadata", "-1",
                 "-map_chapters", "-1", "-fflags", "+bitexact", "-flags:v", "+bitexact", "-movflags", "+faststart", out]
         run(cmd)

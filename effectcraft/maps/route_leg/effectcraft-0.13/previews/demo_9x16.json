@@ -30,23 +30,32 @@
   "end_page": true,
   "segments": [
     {
-      "footage": "sydney_cove",
-      "seconds": 6.1,
+      "card": "effectcraft/maps/route_leg",
+      "values": {
+        "file": "{work}/full/leg02_9x16.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame · 9x16",
       "overlays": [
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
-              1450
+              910
             ],
             "Start": 0,
-            "Duration": 6.1
+            "Duration": 6.1,
+            "Colour": "#14263a",
+            "Highlight Colour": "#b45f00"
           },
           "at": 0
         },
@@ -56,36 +65,33 @@
             "Text": "Route Leg Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
-              1550
+              1010
             ],
-            "Start": 0.2,
-            "Duration": 6.1
+            "Start": 0,
+            "Duration": 6.1,
+            "Colour": "#14263a",
+            "Highlight Colour": "#b45f00"
           },
           "at": 0
-        },
+        }
+      ]
+    },
+    {
+      "footage": "sydney_cove",
+      "seconds": 6.1,
+      "overlays": [
         {
           "template": "effectcraft/maps/route_leg",
           "values": "{work}/legs/leg05_9x16.values.json",
           "at": 0.9
         }
       ],
-      "caption": "Short leg \u00b7 roads and towns \u00b7 9x16",
+      "caption": "Short leg · roads and towns · 9x16",
       "caption_at": "top"
-    },
-    {
-      "card": "effectcraft/maps/route_leg",
-      "values": {
-        "file": "{work}/full/leg02_9x16.values.json",
-        "set": {
-          "Corner Inset": false
-        }
-      },
-      "seconds": 5,
-      "caption": "Full frame \u00b7 9x16"
     },
     {
       "footage": "tjoritja",
@@ -97,7 +103,7 @@
           "at": 0.9
         }
       ],
-      "caption": "Long leg \u00b7 9x16",
+      "caption": "Long leg · 9x16",
       "caption_at": "top"
     }
   ]

@@ -27,10 +27,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -47,13 +47,13 @@
             "Text": "Basic Lower Third Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5
           },
           "at": 0
@@ -67,7 +67,7 @@
           "at": 0.9
         }
       ],
-      "caption": "Slides in from the left, holds, fades out \u00b7 9x16",
+      "caption": "Slides in from the left, holds, fades out · 9x16",
       "caption_at": "top"
     },
     {
@@ -87,7 +87,7 @@
           "at": 0.9
         }
       ],
-      "caption": "Bar fits the text \u00b7 Montserrat \u00b7 9x16",
+      "caption": "Bar fits the text · Montserrat · 9x16",
       "caption_at": "top"
     },
     {
@@ -111,7 +111,7 @@
           "at": 0.9
         }
       ],
-      "caption": "See-through bar \u00b7 League Gothic and Caveat Brush \u00b7 9x16",
+      "caption": "See-through bar · League Gothic and Caveat Brush · 9x16",
       "caption_at": "top"
     }
   ]

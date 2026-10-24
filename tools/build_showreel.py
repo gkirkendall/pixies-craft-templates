@@ -27,7 +27,9 @@ ORDER = [("locator", "maps/locator"), ("route_leg", "maps/route_leg"), ("basic",
          ("glint_set", "overlays/glint_set"), ("corner_logo", "logos/corner_logo"), ("title", "titles/title"),
          ("animated_title", "titles/animated_title"), ("typewriter", "titles/typewriter"), ("credits", "titles/credits"),
          ("sign_off", "titles/sign_off")]
-SHOWREEL_LINE = "Pixie's Craft Templates Showreel"   # the 9x16 opening header's second line
+# The 9x16 showreel opens on the lower thirds (owner, 2026-10-24): the Locator and Route Leg insets would cover its heading
+ORDER_9X16 = [ORDER[2], ORDER[3], ORDER[0], ORDER[1]] + ORDER[4:]
+SHOWREEL_HEADING = "Showreel"   # the 9x16 reel's heading second line (demo.py "heading": shown from the first frame)
 HEADER_SIZES = {24, 45}   # the 9x16 opening header's two Animated Title overlays (Size 24 and 45)
 
 
@@ -35,7 +37,7 @@ def is_header(overlay):
     v = overlay["values"]
     text = v.get("Text", "") if isinstance(v, dict) else ""
     return (overlay["template"] == "effectcraft/titles/animated_title" and v.get("Size") in HEADER_SIZES and overlay.get("at", 0) == 0
-            and (text.startswith("Free motion templates") or text.endswith(" Template")))
+            and (text.lower().startswith("free motion templates") or text.endswith(" Template")))
 
 
 def shots(key, folder, size, opening=False):
@@ -57,12 +59,7 @@ def shots(key, folder, size, opening=False):
             headers = [o for o in seg.get("overlays", []) if is_header(o)]
             if len(headers) != 2:
                 sys.exit(f"{key}: expected the 9x16 opening header (2 overlays) on the first shot, found {len(headers)}")
-            if opening:
-                for o in headers:
-                    if o["values"]["Size"] == 45:
-                        o["values"]["Text"] = SHOWREEL_LINE
-            else:
-                seg["overlays"] = [o for o in seg["overlays"] if not is_header(o)]
+            seg["overlays"] = [o for o in seg["overlays"] if not is_header(o)]   # the reel's own "heading" replaces them
         if seg.get("caption"):
             seg["caption"] = seg["caption"].removesuffix(" · 9x16")
         seg["label"] = name
@@ -71,7 +68,7 @@ def shots(key, folder, size, opening=False):
 
 
 def build(size, only):
-    chosen = [(k, f) for k, f in ORDER if not only or k in only]
+    chosen = [(k, f) for k, f in (ORDER if size == "16x9" else ORDER_9X16) if not only or k in only]
     segments, prepare, starts, names = [], [], {}, {}
     t = TITLE_SECONDS - CROSSFADE if size == "16x9" else 0   # where the first shot starts (after the title page)
     outs = {}
@@ -90,6 +87,8 @@ def build(size, only):
     if size == "16x9":
         spec["title_page"] = "collection"
     spec["end_page"] = True
+    if size == "9x16":
+        spec["heading"] = SHOWREEL_HEADING
     if prepare:
         spec["prepare"] = prepare
     spec["segments"] = segments

@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,19 +33,19 @@
             "Text": "Fill the Frame Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 4
           },
           "at": 0
         }
       ],
-      "caption": "4:3 photo in 9x16 \u00b7 Blur 60 \u00b7 Darken 30 (the defaults) \u00b7 9x16"
+      "caption": "4:3 photo in 9x16 · Blur 60 · Darken 30 (the defaults) · 9x16"
     },
     {
       "footage": "mushroom_rock",
@@ -54,7 +54,7 @@
         "Blur": 10,
         "Darken": 0
       },
-      "caption": "Blur 10 \u00b7 Darken 0 \u00b7 9x16"
+      "caption": "Blur 10 · Darken 0 · 9x16"
     },
     {
       "footage": "uluru",
@@ -63,13 +63,13 @@
         "Blur": 100,
         "Darken": 70
       },
-      "caption": "Blur 100 \u00b7 Darken 70 \u00b7 9x16"
+      "caption": "Blur 100 · Darken 70 · 9x16"
     },
     {
       "footage": "turtle",
       "folder": "stock",
       "seconds": 4.5,
-      "caption": "A video clip in 9x16 \u00b7 plays inside the frame \u00b7 9x16"
+      "caption": "A video clip in 9x16 · plays inside the frame · 9x16"
     },
     {
       "footage": "australia",
@@ -78,7 +78,7 @@
         "Media": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.png",
         "Darken": 40
       },
-      "caption": "A portrait photo in 9x16 \u00b7 nothing cut off \u00b7 9x16"
+      "caption": "A portrait photo in 9x16 · nothing cut off · 9x16"
     }
   ]
 }

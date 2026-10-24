@@ -47,23 +47,32 @@
   "end_page": true,
   "segments": [
     {
-      "footage": "port_campbell",
-      "seconds": 6.1,
+      "card": "effectcraft/maps/locator",
+      "values": {
+        "file": "{work}/b/locator04_9x16.values.json",
+        "set": {
+          "Corner Inset": false
+        }
+      },
+      "seconds": 5,
+      "caption": "Full frame · 9x16",
       "overlays": [
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
-              1450
+              330
             ],
             "Start": 0,
-            "Duration": 6.1
+            "Duration": 6.1,
+            "Colour": "#14263a",
+            "Highlight Colour": "#b45f00"
           },
           "at": 0
         },
@@ -73,36 +82,33 @@
             "Text": "Locator Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
-              1550
+              430
             ],
-            "Start": 0.2,
-            "Duration": 6.1
+            "Start": 0,
+            "Duration": 6.1,
+            "Colour": "#14263a",
+            "Highlight Colour": "#b45f00"
           },
           "at": 0
-        },
+        }
+      ]
+    },
+    {
+      "footage": "port_campbell",
+      "seconds": 6.1,
+      "overlays": [
         {
           "template": "effectcraft/maps/locator",
           "values": "{work}/a/locator00_9x16.values.json",
           "at": 0.9
         }
       ],
-      "caption": "Corner Inset \u00b7 9x16",
+      "caption": "Corner Inset · 9x16",
       "caption_at": "top"
-    },
-    {
-      "card": "effectcraft/maps/locator",
-      "values": {
-        "file": "{work}/b/locator04_9x16.values.json",
-        "set": {
-          "Corner Inset": false
-        }
-      },
-      "seconds": 5,
-      "caption": "Full frame \u00b7 9x16"
     },
     {
       "footage": "mushroom_rock",
@@ -114,7 +120,7 @@
           "at": 0.9
         }
       ],
-      "caption": "Another place \u00b7 9x16",
+      "caption": "Another place · 9x16",
       "caption_at": "top"
     }
   ]

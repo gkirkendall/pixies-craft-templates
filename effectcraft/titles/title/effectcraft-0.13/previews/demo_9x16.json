@@ -13,10 +13,10 @@
         {
           "template": "effectcraft/titles/animated_title",
           "values": {
-            "Text": "Free motion templates for *EffectCraft*",
+            "Text": "Free Motion Templates for *EffectCraft*",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 24,
             "Position": [
               540,
@@ -33,13 +33,13 @@
             "Text": "Title Template",
             "Style": "Fade Up",
             "By": "Words",
-            "Fade": "Fade In",
+            "Fade": "Fade Out",
             "Size": 45,
             "Position": [
               540,
               430
             ],
-            "Start": 0.2,
+            "Start": 0,
             "Duration": 5
           },
           "at": 0
@@ -53,7 +53,7 @@
           "at": 0
         }
       ],
-      "caption": "Place: Centre \u00b7 9x16"
+      "caption": "Place: Centre · 9x16"
     },
     {
       "footage": "point_ritchie",
@@ -70,7 +70,7 @@
           "at": 0
         }
       ],
-      "caption": "Place: Bottom Centre \u00b7 9x16",
+      "caption": "Place: Bottom Centre · 9x16",
       "caption_at": "top"
     },
     {
@@ -98,7 +98,7 @@
           "at": 0
         }
       ],
-      "caption": "Place: Top Left and Top Right \u00b7 9x16"
+      "caption": "Place: Top Left and Top Right · 9x16"
     },
     {
       "footage": "uluru",
@@ -125,7 +125,7 @@
           "at": 0
         }
       ],
-      "caption": "Place: Bottom Left and Bottom Right \u00b7 9x16",
+      "caption": "Place: Bottom Left and Bottom Right · 9x16",
       "caption_at": "top"
     }
   ]
