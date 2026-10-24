@@ -69,7 +69,14 @@ NAME = "Pixie's Craft Templates"
 PIXIE = ROOT / "brand" / "pixie.png"
 TITLE_SECONDS, END_SECONDS = 3, 4
 EFFECTCRAFT_LINKS = "getartcraft.com/apps/effectcraft · github.com/storytold/effectcraft"
-MUSIC_CREDITS = {"Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3": "\u201cRelaxing Flute Tune\u201d by Kerri, Sound Effects Factory"}
+MUSIC_CREDITS = {"Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3": "\u201cRelaxing Flute Tune\u201d by Kerri, Sound Effects Factory",
+                 "Renaissance - Audionautix.mp3": "\u201cRenaissance\u201d by Audionautix (audionautix.com), CC\u00a0BY\u00a04.0",
+                 "u_iwe3yizfhb-emotional-sad-flute-478667.mp3": "\u201cEmotional Sad Flute\u201d by u_iwe3yizfhb, Pixabay",
+                 "u_iwe3yizfhb-emotional-sad-flute-478667-edited-slow.mp3": "\u201cEmotional Sad Flute\u201d by u_iwe3yizfhb, Pixabay"}
+# a hotter master (-11.6 LUFS against -18) is turned down so the mix lands near -32 LUFS (the owner asked for 10 dB lower, 2026-10-23); every other track uses -2 dB
+MUSIC_GAIN_DB = {"Renaissance - Audionautix.mp3": -20,
+                 "u_iwe3yizfhb-emotional-sad-flute-478667.mp3": -17,   # -14.3 LUFS master: lands near the same -32 LUFS
+                 "u_iwe3yizfhb-emotional-sad-flute-478667-edited-slow.mp3": -18}   # -15.5 LUFS, 212.6 s (owner-trimmed, no loop under the showreels); owner approved the result, -33.6 LUFS (2026-10-24)
 WHITE, LIGHT, LINK, DIM = (255, 255, 255), (200, 212, 224), (140, 196, 236), (130, 144, 158)
 # Under Pixie on the end page (PLAN.md, END2): (text, px at 1080, Inter style, colour)
 SHOWREEL_FONT = "font:raleway/static/Raleway-SemiBold.ttf"   # a style "font:<path in fonts/>" is a static font file, not an Inter style
@@ -232,6 +239,8 @@ class Demo:
         cmd += ["-c:v", "libx264", "-preset", "slow", "-crf", "24", "-r", str(FPS), "-t", f"{total:.3f}", "-map_metadata", "-1",
                 "-map_chapters", "-1", "-fflags", "+bitexact", "-flags:v", "+bitexact", "-movflags", "+faststart", out]
         run(cmd)
+        if self.a.save_silent:
+            self.save_silent(out)
         # demo.mp4 → poster.jpg, demo_9x16.mp4 → poster_9x16.jpg, anything else (showreel.mp4) → showreel_poster.jpg
         poster = out.with_name(f"poster{out.stem[4:]}.jpg" if out.stem.startswith("demo") else f"{out.stem}_poster.jpg")
         poster_at = self.spec.get("poster_at", 2) + (TITLE_SECONDS - xf if self.spec.get("title_page") else 0)
@@ -292,7 +301,7 @@ class Demo:
         """The credits, the links, the sponsor and the independent-project line (PLAN.md, DEMO2)."""
         fs = self.templates()
         lines = [("Credits", 60, "Bold", WHITE, 0), (self.spec.get("credit_photos", "Photos and Pixie \u00a9 Gregory Kirkendall"), 30, "Regular", LIGHT, 26)]
-        track = self.spec.get("music")
+        track = self.a.track or self.spec.get("music")
         if track and self.a.music:
             if track not in MUSIC_CREDITS:
                 sys.exit(f"no credit for the music {track!r}: add it to MUSIC_CREDITS in tools/demo.py")
@@ -311,9 +320,18 @@ class Demo:
                   ("An independent project, not made or endorsed by the EffectCraft or ArtCraft teams.", 22, "Regular", DIM, 40)]
         return lines
 
+    def save_silent(self, out):
+        """A video-only copy of the finished reel (a stream copy, no re-render), and the credit its end page shows, so a later
+        sound change is a remux (--silent-in) and only a changed credit needs a full render."""
+        silent = self.a.save_silent
+        silent.parent.mkdir(parents=True, exist_ok=True)
+        run(["ffmpeg", "-v", "error", "-y", "-i", out, "-map", "0:v", "-c:v", "copy", "-an", "-map_metadata", "-1", "-movflags", "+faststart", silent])
+        track = self.a.track or self.spec.get("music")
+        silent.with_suffix(".credit").write_text(MUSIC_CREDITS.get(track, "") if track and self.a.music else "")
+
     def music(self, total):
         """The track looped with 2 s crossfades to the demo's length, faded in over 1 s and out over the last 2 s."""
-        name = self.spec.get("music")
+        name = self.a.track or self.spec.get("music")
         if not name or not self.a.music:
             return None
         src = self.a.music / name
@@ -326,7 +344,7 @@ class Demo:
         for k in range(1, copies):
             graph.append(f"[{last}][{k}:a]acrossfade=d=2[m{k}]")
             last = f"m{k}"
-        graph.append(f"[{last}]atrim=0:{total:.3f},afade=t=in:d=1,afade=t=out:st={max(0, total - 2):.3f}:d=2,volume=-2dB[a]")
+        graph.append(f"[{last}]atrim=0:{total:.3f},afade=t=in:d=1,afade=t=out:st={max(0, total - 2):.3f}:d=2,volume={MUSIC_GAIN_DB.get(name, -2)}dB[a]")
         out = self.work / "music.m4a"
         run(["ffmpeg", "-v", "error", "-y", *inputs, "-filter_complex", ";".join(graph), "-map", "[a]", "-c:a", "aac", "-b:a", "192k", out])
         return out
@@ -504,11 +522,30 @@ def check(path, max_seconds, max_mb):
     return not problems
 
 
+def remux(a, out, work):
+    """Put the track on a silent master (--save-silent) without rendering the video again; warns if the end page names another credit."""
+    name = a.track
+    if not name or not a.music:
+        sys.exit("--silent-in needs --music DIR and --track FILE")
+    total = float(run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=duration", "-of", "csv=p=0", a.silent_in]).strip())
+    stub = Demo.__new__(Demo)
+    stub.a, stub.spec, stub.work = a, {}, work
+    music = stub.music(total)
+    credit = a.silent_in.with_suffix(".credit")
+    if credit.is_file() and credit.read_text() != MUSIC_CREDITS.get(name, ""):
+        print(f"WARNING: the end page of {a.silent_in.name} shows {credit.read_text()!r}, but {name} is credited as {MUSIC_CREDITS.get(name)!r}: "
+              "do a final full render")
+    run(["ffmpeg", "-v", "error", "-y", "-i", a.silent_in, "-i", music, "-map", "0:v", "-map", "1:a", "-c:v", "copy", "-c:a", "aac", "-b:a", "128k",
+         "-t", f"{total:.3f}", "-map_metadata", "-1", "-map_chapters", "-1", "-fflags", "+bitexact", "-movflags", "+faststart", out])
+    return out, total
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("spec", nargs="?", type=pathlib.Path, help="a demo.json")
     ap.add_argument("--footage", type=pathlib.Path, help="folder holding the footage subfolder demo.json names")
     ap.add_argument("--music", type=pathlib.Path, help="folder holding the track demo.json names (omit for a silent demo)")
+    ap.add_argument("--track", help="use this file from --music DIR instead of the track demo.json names")
     ap.add_argument("--out", type=pathlib.Path, help="default: demo.mp4 beside demo.json (demo_9x16.mp4 for a 9x16 demo)")
     ap.add_argument("--keep-work", type=pathlib.Path, help="keep the working files in this folder (for checking)")
     ap.add_argument("--check", type=pathlib.Path, help="check a finished demo instead of making one")
@@ -516,10 +553,19 @@ def main():
     ap.add_argument("--max-mb", type=float, default=5)
     ap.add_argument("--full-size", action="store_true", help="write the full frame size (1920x1080 / 1080x1920), with --out; "
                     "with --check, skip the size limit")
+    ap.add_argument("--save-silent", type=pathlib.Path, help="also keep a video-only copy of the reel here (for --silent-in later)")
+    ap.add_argument("--silent-in", type=pathlib.Path, help="remux: put --track on this silent master with --out, without rendering the video")
     ap.add_argument("--effectcraft-cli", default="effectcraft-cli")
     a = ap.parse_args()
     if a.check:
         sys.exit(0 if check(a.check, a.max_seconds, float("inf") if a.full_size else a.max_mb) else 1)
+    if a.silent_in:
+        if not a.out:
+            ap.error("--silent-in needs --out")
+        with tempfile.TemporaryDirectory() as tmp:
+            out, total = remux(a, a.out.resolve(), pathlib.Path(tmp))
+        print(f"{out} ({total:.1f} s), remuxed from {a.silent_in}")
+        return
     if not a.spec or not a.footage:
         ap.error("give a demo.json and --footage")
     if a.full_size and not a.out:

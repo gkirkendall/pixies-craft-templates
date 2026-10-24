@@ -25,6 +25,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
     ap.add_argument("--effectcraft-cli", required=True)
     ap.add_argument("--music", required=True, type=pathlib.Path, help="the folder holding the track")
+    ap.add_argument("--track", default=TRACK, help="the track's file name in --music DIR")
+    ap.add_argument("--save-silent", type=pathlib.Path, help="also keep a video-only copy here (demo.py --save-silent)")
     ap.add_argument("--out", type=pathlib.Path, default=KIT / "preview.mp4")
     ap.add_argument("--full-size", action="store_true", help="1920x1080 instead of 1280x720 (a YouTube upload copy; needs --out)")
     ap.add_argument("--size", choices=["16x9", "9x16"], default="16x9", help="9x16 renders the vertical project (a YouTube Short; needs --out)")
@@ -38,7 +40,7 @@ def main():
         subprocess.run([a.effectcraft_cli, "render", str(KIT / f"Trip Video {a.size}.ecproj"), "--comp", "Trip Video", "--out", str(full),
                         "--format", "h264", "--quality", "best"], check=True)
         spec = pathlib.Path(tmp) / "preview.json"
-        reel = {"size": a.size, "music": TRACK, "crossfade": 0.5, "poster_at": 2, "end_page": True,
+        reel = {"size": a.size, "music": a.track, "crossfade": 0.5, "poster_at": 2, "end_page": True,
                 "credit_photos": "Photos: Pixabay (see CREDITS.md)",
                 "segments": [{"clip": str(full), "start": 0, "seconds": 60}]}
         if a.size == "16x9":   # a Short opens straight on the picture, as the other Shorts do
@@ -46,7 +48,8 @@ def main():
                                   "templates": [f"effectcraft/{t}" for t in TEMPLATES]}
         spec.write_text(json.dumps(reel))
         subprocess.run([sys.executable, str(ROOT / "tools" / "demo.py"), str(spec), "--footage", tmp, "--music", str(a.music), "--out", str(a.out),
-                        "--effectcraft-cli", a.effectcraft_cli, "--max-seconds", "75", "--max-mb", "8"] + (["--full-size"] if a.full_size else []),
+                        "--effectcraft-cli", a.effectcraft_cli, "--max-seconds", "75", "--max-mb", "8"] + (["--full-size"] if a.full_size else [])
+                       + (["--save-silent", str(a.save_silent)] if a.save_silent else []),
                        check=True)
 
 
