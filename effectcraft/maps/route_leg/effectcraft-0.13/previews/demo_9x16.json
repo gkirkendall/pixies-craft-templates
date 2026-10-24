@@ -24,7 +24,9 @@
       "--out",
       "{work}/full",
       "--variant",
-      "9x16"
+      "9x16",
+      "--margin",
+      "0.34"
     ]
   ],
   "end_page": true,
@@ -50,7 +52,7 @@
             "Size": 24,
             "Position": [
               540,
-              910
+              700
             ],
             "Start": 0,
             "Duration": 6.1,
@@ -69,7 +71,7 @@
             "Size": 45,
             "Position": [
               540,
-              1010
+              800
             ],
             "Start": 0,
             "Duration": 6.1,

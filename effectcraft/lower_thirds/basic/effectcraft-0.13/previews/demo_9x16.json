@@ -79,7 +79,8 @@
           "values": {
             "file": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/examples/long.values.json",
             "set": {
-              "Title Font": "Montserrat Bold",
+              "Title": "Tjoritja National Park",
+        "Title Font": "Montserrat Bold",
               "Subtitle Font": "Montserrat Regular",
               "Subtitle": "Northern Territory, Australia"
             }

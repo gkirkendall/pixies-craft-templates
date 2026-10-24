@@ -368,10 +368,10 @@ def read_stops(path):
     return stops
 
 
-def leg_view(a, b, size):
+def leg_view(a, b, size, margin=0.22):
     """Both stops inside the central part of the frame, at least MIN_SPAN_KM across."""
     (ax, ay), (bx, by) = merc(a["lon"], a["lat"]), merc(b["lon"], b["lat"])
-    view = View.fit([ax, bx], [ay, by], size, margin=0.22)
+    view = View.fit([ax, bx], [ay, by], size, margin=margin)
     lat = math.radians((a["lat"] + b["lat"]) / 2)
     ground_km = view.m_per_px * size[0] * math.cos(lat) / 1000  # Mercator metres shrink by cos(latitude) on the ground
     if ground_km < MIN_SPAN_KM:
@@ -395,7 +395,7 @@ def route_legs(a):
         if km < a.min_leg_km:
             print(f"{stem}: {s0['name']} -> {s1['name']} is {km:.0f} km, under {a.min_leg_km} km: no route card")
             continue
-        view = leg_view(s0, s1, size)
+        view = leg_view(s0, s1, size, a.margin)
         osm = overpass(view, a.overpass_url, out / f"{stem}.overpass.txt") if km < a.osm_km else None
         picture = out / f"map_{stem}.png"
         draw_map(view, osm).save(picture)
@@ -486,6 +486,7 @@ def main():
         p.add_argument("--effectcraft-cli", help="path to effectcraft-cli (default: on the PATH)")
         if name == "route-legs":
             p.add_argument("--min-leg-km", type=float, default=25, help="no card for legs shorter than this")
+            p.add_argument("--margin", type=float, default=0.22, help="fraction of the frame kept free on each side of the two stops")
             p.add_argument("--osm-km", type=float, default=200, help="OpenStreetMap detail on legs shorter than this")
             p.add_argument("--overpass-url", default="https://overpass-api.de/api/interpreter",
                            help="Overpass server; commercial use needs a paid or self-hosted one")

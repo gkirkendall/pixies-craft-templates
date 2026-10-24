@@ -121,6 +121,8 @@ def phone_zones(spec):
                     o["dx"] = PHONE_LEFT[name]
             elif name == "title" and place in ("Centre", ""):   # no Place set: the template's default, the centre
                 o["dy"] = -80   # a centred title spans the width: above the like button, which starts at 49% of the height
+            elif name == "animated_title" and "Position" not in c:   # centred like the Title template: lift it above the like button
+                o["dy"] = -160
             elif name == "box_wipe" and "Position" not in c:
                 c["Position"] = [70, 1540]   # the template's 9x16 default is [70, 1640]
 

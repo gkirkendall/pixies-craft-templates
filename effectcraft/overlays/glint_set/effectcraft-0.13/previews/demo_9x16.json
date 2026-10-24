@@ -109,9 +109,14 @@
             "Style": "Fade Up",
             "By": "Words",
             "Fade": "Fade In",
-            "Size": 40,
+            "Size": 34,
             "Start": 0.2,
-            "Duration": 5.5
+            "Duration": 5.5,
+            "Position": [
+              450,
+              1100
+            ],
+            "Max Width": 70
           },
           "at": 0
         },

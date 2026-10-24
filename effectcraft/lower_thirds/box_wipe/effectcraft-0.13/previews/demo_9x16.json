@@ -67,6 +67,7 @@
           "values": {
             "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/long.values.json",
             "set": {
+              "Title": "West MacDonnell National Park",
               "Duration": 5.3,
               "Title Font": "Montserrat Bold",
               "Subtitle Font": "Montserrat Regular",
