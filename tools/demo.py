@@ -229,6 +229,12 @@ class Demo:
             graph.append(f"[{last}][{k}:v]xfade=transition=fade:duration={xf}:offset={t:.3f}[x{k}]")
             last, t = f"x{k}", t + segs[k]["seconds"]
         total = t
+        for k, c in enumerate(self.spec.get("captions", [])):   # a reel made from one clip names its templates with pills, as the demos do: {"text", "from", "to"} in seconds
+            png = self.work / f"reelcaption{k}.png"
+            caption(c["text"], (self.w, self.h), c.get("at", "top"), png, c.get("label"))
+            inputs += ["-i", png]
+            graph.append(f"[{last}][{inputs.count('-i') - 1}:v]overlay=enable='between(t,{c['from']},{c['to']})'[c{k}]")
+            last = f"c{k}"
         heading = self.spec.get("heading")
         if heading:   # a 9:16 reel with no thumbnail names itself from its very first frame (owner, 2026-10-24): no fade in, a fade out at HEADING_SECONDS
             for k, (text, px, y) in enumerate([("Free Motion Templates for *EffectCraft*", 24, 330), (heading, 45, 430)]):
@@ -236,7 +242,7 @@ class Demo:
                                   "Position": [self.w // 2, y], "Start": 0, "Duration": HEADING_SECONDS, **self.spec.get("heading_style", {})},
                                  self.work / f"heading{k}.mov")
                 inputs += ["-i", mov]
-                graph.append(f"[{last}][{len(clips) + k}:v]overlay=eof_action=pass[h{k}]")
+                graph.append(f"[{last}][{inputs.count('-i') - 1}:v]overlay=eof_action=pass[h{k}]")
                 last = f"h{k}"
         ow, oh = FRAMES[self.size] if self.a.full_size else OUT_SIZES[self.size]
         graph.append(f"[{last}]scale={ow}:{oh}:flags=lanczos,format=yuv420p[v]")

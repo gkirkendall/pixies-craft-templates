@@ -45,6 +45,13 @@ def main():
                 "segments": [{"clip": str(full), "start": 0, "seconds": 60}]}
         if a.size == "9x16":   # no title page, no thumbnail: the first frame says what it is (owner, 2026-10-24)
             reel["heading"] = "Travel Kit Sample"
+            # The kit's 11 shots are the trip demo's, so its pills (which template makes each shot) are the demo's, at the same times
+            demo = json.loads((ROOT / "demo" / "australia_trip" / "demo_9x16.json").read_text())
+            xf, t, caps = demo.get("crossfade", 0.5), 0.0, []
+            for seg in demo["segments"]:
+                caps.append({"text": seg["caption"], "at": seg.get("caption_at", "bottom"), "from": round(t + xf, 3), "to": round(t + seg["seconds"] - xf, 3)})
+                t += seg["seconds"] - xf
+            reel["captions"] = caps
         if a.size == "16x9":   # a Short opens straight on the picture, as the other Shorts do
             reel["title_page"] = {"name": "Trip Video", "line": "A ready-made project: swap in your photos and text",
                                   "templates": [f"effectcraft/{t}" for t in TEMPLATES]}

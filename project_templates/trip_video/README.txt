@@ -23,6 +23,8 @@ Keep this whole folder together: the project finds its pictures next to it.
 
 4. Your logo. Click "Corner Logo (whole video)" and pick your picture in Logo (a PNG with a transparent background works
    best). It shows in the corner for the whole video; Corner, Size and Margin are in the same panel.
+   In the tall (1080x1920) project the logo starts in the lower left and the bottom corners sit above the bottom edge, so YouTube's
+   phone controls (channel name, Subscribe) do not cover it when it plays as a Short.
 
 5. Music. See "Music/README.txt".
 

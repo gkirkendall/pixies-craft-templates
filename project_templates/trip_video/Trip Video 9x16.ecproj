@@ -131,7 +131,7 @@
                       "name": "Corner",
                       "value": {
                         "t": "Enum",
-                        "v": 2
+                        "v": 3
                       },
                       "ui": {
                         "kind": "Popup",
@@ -31428,7 +31428,7 @@
                           "name": "Menu",
                           "value": {
                             "t": "Enum",
-                            "v": 2
+                            "v": 3
                           },
                           "ui": {
                             "kind": "Popup",
@@ -31978,7 +31978,7 @@
                         ]
                       },
                       "expr": {
-                        "text": "var c = thisComp.layer(\"Controls\").effect(\"Corner\")(\"Menu\"); var sz = thisComp.layer(\"Controls\").effect(\"Size\")(\"Slider\") * 180 / 50; var mg = thisComp.layer(\"Controls\").effect(\"Margin\")(\"Slider\"); var right = c == 2 || c == 3; var bottom = c == 3 || c == 4; var bx = right ? thisComp.width - mg - sz / 2 : mg + sz / 2; var by = bottom ? thisComp.height - mg - sz / 2 : mg + sz / 2; var t0 = thisComp.layer(\"Controls\").effect(\"Start\")(\"Slider\"); var d = thisComp.layer(\"Controls\").effect(\"Duration\")(\"Slider\"); var a = Math.min(Math.max((time - t0) / 0.5, 0), 1); a = 1 - Math.pow(1 - a, 2); var z = Math.min(Math.max((d - time) / 0.5, 0), 1); z = 1 - Math.pow(1 - z, 2); var m = thisComp.layer(\"Controls\").effect(\"Fade\")(\"Menu\"); if (m == 3 || m == 4) a = 1; if (m == 2 || m == 3) z = 1; [bx, by + 24 * (1 - a), 0]",
+                        "text": "var c = thisComp.layer(\"Controls\").effect(\"Corner\")(\"Menu\"); var sz = thisComp.layer(\"Controls\").effect(\"Size\")(\"Slider\") * 180 / 50; var mg = thisComp.layer(\"Controls\").effect(\"Margin\")(\"Slider\"); var right = c == 2 || c == 3; var bottom = c == 3 || c == 4; var bx = right ? thisComp.width - mg - sz / 2 : mg + sz / 2; var by = bottom ? thisComp.height - mg - 130 - sz / 2 : mg + sz / 2; var t0 = thisComp.layer(\"Controls\").effect(\"Start\")(\"Slider\"); var d = thisComp.layer(\"Controls\").effect(\"Duration\")(\"Slider\"); var a = Math.min(Math.max((time - t0) / 0.5, 0), 1); a = 1 - Math.pow(1 - a, 2); var z = Math.min(Math.max((d - time) / 0.5, 0), 1); z = 1 - Math.pow(1 - z, 2); var m = thisComp.layer(\"Controls\").effect(\"Fade\")(\"Menu\"); if (m == 3 || m == 4) a = 1; if (m == 2 || m == 3) z = 1; [bx, by + 24 * (1 - a), 0]",
                         "enabled": true
                       },
                       "ui": {
@@ -33012,7 +33012,7 @@
                             "t": "Vec3",
                             "v": [
                               -960.0,
-                              1618.0,
+                              1463.0,
                               0.0
                             ]
                           },
@@ -33068,7 +33068,7 @@
                             "t": "Vec3",
                             "v": [
                               120.0,
-                              1618.0,
+                              1463.0,
                               0.0
                             ]
                           },
@@ -34021,7 +34021,7 @@
                             "t": "Vec3",
                             "v": [
                               -960.0,
-                              1550.0,
+                              1395.0,
                               0.0
                             ]
                           },
@@ -34077,7 +34077,7 @@
                             "t": "Vec3",
                             "v": [
                               120.0,
-                              1550.0,
+                              1395.0,
                               0.0
                             ]
                           },
@@ -35105,7 +35105,7 @@
                             "t": "Vec3",
                             "v": [
                               -1020.0,
-                              1560.0,
+                              1405.0,
                               0.0
                             ]
                           },
@@ -35161,7 +35161,7 @@
                             "t": "Vec3",
                             "v": [
                               60.0,
-                              1560.0,
+                              1405.0,
                               0.0
                             ]
                           },

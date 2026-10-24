@@ -19,7 +19,7 @@ from ecbuild import Project, find_cli  # noqa: E402
 COMP = "Lower Third"
 FPS, DURATION = 24, 4
 # Per variant: frame size, bar position (left edge, centre line) and the text baselines' offsets from it.
-VARIANTS = {"16x9": ((1920, 1080), (150, 900)), "9x16": ((1080, 1920), (60, 1560))}
+VARIANTS = {"16x9": ((1920, 1080), (150, 900)), "9x16": ((1080, 1920), (60, 1405))}
 TITLE, SUBTITLE = "Port Campbell National Park", "Victoria, Australia"
 IN, FADE_START, FADE_END = 0.5, 3.5, 3.95
 PAD = 60   # space between the text and the bar's ends
