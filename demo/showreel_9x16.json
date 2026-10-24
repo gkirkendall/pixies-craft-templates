@@ -706,7 +706,7 @@
           "values": {
             "Corner": "Bottom Right",
             "Start": 0.9,
-            "Duration": 4.5
+            "Duration": 3.5
           },
           "at": 0
         }
@@ -750,7 +750,7 @@
           "values": {
             "Corner": "Bottom Left",
             "Size": 100,
-            "Opacity": 50,
+            "Opacity": 70,
             "Fade": "Fade In",
             "Start": 0.9,
             "Duration": 4.5
@@ -758,7 +758,7 @@
           "at": 0
         }
       ],
-      "caption": "Corner: Bottom Left · Size 100 · Opacity 50 · Fade In",
+      "caption": "Corner: Bottom Left · Size 100 · Opacity 70 · Fade In",
       "caption_at": "top",
       "label": "Corner Logo"
     },
@@ -771,7 +771,7 @@
           "values": {
             "Corner": "Bottom Right",
             "Fade": "Fade Out",
-            "Duration": 4.5
+            "Duration": 3.0
           },
           "at": 0
         }
