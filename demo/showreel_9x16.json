@@ -94,7 +94,7 @@
         }
       ],
       "caption": "Slides in from the left, holds, fades out",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Basic Lower Third"
     },
     {
@@ -115,7 +115,7 @@
         }
       ],
       "caption": "Bar fits the text · Montserrat",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Basic Lower Third"
     },
     {
@@ -140,7 +140,7 @@
         }
       ],
       "caption": "See-through bar · League Gothic and Caveat Brush",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Basic Lower Third"
     },
     {
@@ -159,7 +159,7 @@
         }
       ],
       "caption": "Default: Caveat Brush",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Box Wipe Lower Third"
     },
     {
@@ -183,7 +183,7 @@
         }
       ],
       "caption": "Long title wraps · Montserrat · Box and Line Colour",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Box Wipe Lower Third"
     },
     {
@@ -201,7 +201,7 @@
         }
       ],
       "caption": "No subtitle: the box closes up",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Box Wipe Lower Third"
     },
     {
@@ -215,7 +215,8 @@
       "seconds": 5,
       "caption": "Full frame",
       "overlays": [],
-      "label": "Locator"
+      "label": "Locator",
+      "caption_at": "upper"
     },
     {
       "footage": "port_campbell",
@@ -224,11 +225,12 @@
         {
           "template": "effectcraft/maps/locator",
           "values": "{work}/a/locator00_9x16.values.json",
-          "at": 0.9
+          "at": 0.9,
+          "dy": 110
         }
       ],
       "caption": "Corner Inset",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Locator"
     },
     {
@@ -238,11 +240,12 @@
         {
           "template": "effectcraft/maps/locator",
           "values": "{work}/c/locator02_9x16.values.json",
-          "at": 0.9
+          "at": 0.9,
+          "dy": 110
         }
       ],
       "caption": "Another place",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Locator"
     },
     {
@@ -256,7 +259,8 @@
       "seconds": 5,
       "caption": "Full frame",
       "overlays": [],
-      "label": "Route Leg"
+      "label": "Route Leg",
+      "caption_at": "upper"
     },
     {
       "footage": "sydney_cove",
@@ -265,11 +269,12 @@
         {
           "template": "effectcraft/maps/route_leg",
           "values": "{work}/legs/leg05_9x16.values.json",
-          "at": 0.9
+          "at": 0.9,
+          "dy": 110
         }
       ],
       "caption": "Short leg · roads and towns",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Route Leg"
     },
     {
@@ -279,11 +284,12 @@
         {
           "template": "effectcraft/maps/route_leg",
           "values": "{work}/legs/leg04_9x16.values.json",
-          "at": 0.9
+          "at": 0.9,
+          "dy": 110
         }
       ],
       "caption": "Long leg",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Route Leg"
     },
     {
@@ -291,7 +297,8 @@
       "seconds": 4,
       "overlays": [],
       "caption": "4:3 photo in 9x16 · Blur 60 · Darken 30 (the defaults)",
-      "label": "Fill the Frame"
+      "label": "Fill the Frame",
+      "caption_at": "upper"
     },
     {
       "footage": "mushroom_rock",
@@ -301,7 +308,9 @@
         "Darken": 0
       },
       "caption": "Blur 10 · Darken 0",
-      "label": "Fill the Frame"
+      "label": "Fill the Frame",
+      "overlays": [],
+      "caption_at": "upper"
     },
     {
       "footage": "uluru",
@@ -311,14 +320,18 @@
         "Darken": 70
       },
       "caption": "Blur 100 · Darken 70",
-      "label": "Fill the Frame"
+      "label": "Fill the Frame",
+      "overlays": [],
+      "caption_at": "upper"
     },
     {
       "footage": "turtle",
       "folder": "stock",
       "seconds": 4.5,
       "caption": "A video clip in 9x16 · plays inside the frame",
-      "label": "Fill the Frame"
+      "label": "Fill the Frame",
+      "overlays": [],
+      "caption_at": "upper"
     },
     {
       "footage": "australia",
@@ -327,8 +340,10 @@
         "Media": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.png",
         "Darken": 40
       },
-      "caption": "A portrait photo in 9x16 · nothing cut off",
-      "label": "Fill the Frame"
+      "caption": "A 3:4 portrait photo in 9x16 · nothing cut off",
+      "label": "Fill the Frame",
+      "overlays": [],
+      "caption_at": "upper"
     },
     {
       "footage": "sydney_cove",
@@ -414,7 +429,8 @@
         }
       ],
       "caption": "Six glints · Start and Size set for each",
-      "label": "Glint"
+      "label": "Glint",
+      "caption_at": "upper"
     },
     {
       "footage": "uluru",
@@ -482,7 +498,8 @@
         }
       ],
       "caption": "Colour and Glow 90",
-      "label": "Glint"
+      "label": "Glint",
+      "caption_at": "upper"
     },
     {
       "footage": "port_campbell",
@@ -574,7 +591,8 @@
         }
       ],
       "caption": "Glow 45 · Size 40 to 55",
-      "label": "Glint"
+      "label": "Glint",
+      "caption_at": "upper"
     },
     {
       "footage": "hildas_lookout",
@@ -603,7 +621,8 @@
         }
       ],
       "caption": "Spread: 70",
-      "label": "Glint Set"
+      "label": "Glint Set",
+      "caption_at": "upper"
     },
     {
       "footage": "tjoritja",
@@ -634,7 +653,8 @@
         }
       ],
       "caption": "Spread: 45 · Colour · Glow 80",
-      "label": "Glint Set"
+      "label": "Glint Set",
+      "caption_at": "upper"
     },
     {
       "footage": "uluru",
@@ -664,7 +684,8 @@
         }
       ],
       "caption": "Spread: 100 · Size: 70",
-      "label": "Glint Set"
+      "label": "Glint Set",
+      "caption_at": "upper"
     },
     {
       "footage": "tjoritja",
@@ -677,11 +698,12 @@
             "Start": 0.9,
             "Duration": 3.5
           },
-          "at": 0
+          "at": 0,
+          "dy": -230
         }
       ],
       "caption": "Corner: Bottom Right · Fade In and Out",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Corner Logo"
     },
     {
@@ -695,7 +717,8 @@
             "Fade": "Steady",
             "Duration": 4.5
           },
-          "at": 0
+          "at": 0,
+          "dy": 110
         },
         {
           "template": "effectcraft/logos/corner_logo",
@@ -704,11 +727,13 @@
             "Fade": "Steady",
             "Duration": 4.5
           },
-          "at": 0
+          "at": 0,
+          "dy": 110
         }
       ],
       "caption": "Corner: Top Left and Top Right · Fade: Steady",
-      "label": "Corner Logo"
+      "label": "Corner Logo",
+      "caption_at": "safe"
     },
     {
       "footage": "point_ritchie",
@@ -724,11 +749,12 @@
             "Start": 0.9,
             "Duration": 4.5
           },
-          "at": 0
+          "at": 0,
+          "dy": -230
         }
       ],
       "caption": "Corner: Bottom Left · Size 100 · Opacity 70 · Fade In",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Corner Logo"
     },
     {
@@ -742,11 +768,12 @@
             "Fade": "Fade Out",
             "Duration": 3.0
           },
-          "at": 0
+          "at": 0,
+          "dy": -230
         }
       ],
       "caption": "Fade: Fade Out",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Corner Logo"
     },
     {
@@ -763,7 +790,8 @@
         }
       ],
       "caption": "Place: Centre",
-      "label": "Title"
+      "label": "Title",
+      "caption_at": "upper"
     },
     {
       "footage": "point_ritchie",
@@ -777,11 +805,12 @@
             "Place": "Bottom Centre",
             "Duration": 5
           },
-          "at": 0
+          "at": 0,
+          "dy": -260
         }
       ],
       "caption": "Place: Bottom Centre",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Title"
     },
     {
@@ -796,7 +825,8 @@
             "Place": "Top Left",
             "Duration": 5
           },
-          "at": 0
+          "at": 0,
+          "dy": 110
         },
         {
           "template": "effectcraft/titles/title",
@@ -806,11 +836,13 @@
             "Place": "Top Right",
             "Duration": 5
           },
-          "at": 0
+          "at": 0,
+          "dy": 110
         }
       ],
       "caption": "Place: Top Left and Top Right",
-      "label": "Title"
+      "label": "Title",
+      "caption_at": "safe"
     },
     {
       "footage": "uluru",
@@ -824,7 +856,8 @@
             "Place": "Bottom Left",
             "Duration": 5.5
           },
-          "at": 0
+          "at": 0,
+          "dy": -260
         },
         {
           "template": "effectcraft/titles/title",
@@ -834,11 +867,12 @@
             "Place": "Bottom Right",
             "Duration": 5.5
           },
-          "at": 0
+          "at": 0,
+          "dy": -260
         }
       ],
       "caption": "Place: Bottom Left and Bottom Right",
-      "caption_at": "top",
+      "caption_at": "upper",
       "label": "Title"
     },
     {
@@ -860,7 +894,8 @@
         }
       ],
       "caption": "Style: Fade Up · By: Letters",
-      "label": "Animated Title"
+      "label": "Animated Title",
+      "caption_at": "upper"
     },
     {
       "footage": "point_ritchie",
@@ -883,7 +918,8 @@
         }
       ],
       "caption": "Style: Bounce · By: Words",
-      "label": "Animated Title"
+      "label": "Animated Title",
+      "caption_at": "upper"
     },
     {
       "footage": "tjoritja",
@@ -904,7 +940,8 @@
         }
       ],
       "caption": "Style: Spread In",
-      "label": "Animated Title"
+      "label": "Animated Title",
+      "caption_at": "upper"
     },
     {
       "footage": "sydney_cove",
@@ -926,7 +963,8 @@
         }
       ],
       "caption": "Cursor: Bar",
-      "label": "Typewriter"
+      "label": "Typewriter",
+      "caption_at": "upper"
     },
     {
       "footage": "hildas_lookout",
@@ -945,7 +983,8 @@
         }
       ],
       "caption": "Cursor: Underscore · Erase",
-      "label": "Typewriter"
+      "label": "Typewriter",
+      "caption_at": "upper"
     },
     {
       "footage": "uluru",
@@ -968,7 +1007,8 @@
         }
       ],
       "caption": "Cursor: None · Speed 9",
-      "label": "Typewriter"
+      "label": "Typewriter",
+      "caption_at": "upper"
     },
     {
       "footage": "hildas_lookout",
@@ -991,7 +1031,8 @@
         }
       ],
       "caption": "Title and four lines",
-      "label": "Credits"
+      "label": "Credits",
+      "caption_at": "upper"
     },
     {
       "footage": "sydney_cove",
@@ -1000,7 +1041,7 @@
         {
           "template": "effectcraft/titles/credits",
           "values": {
-            "Title": "Opera House at the end of a long summer day",
+            "Title": "",
             "Line 1": "Photos by Gregory Kirkendall",
             "Line 2": "Music: Relaxing Flute Tune, Sound Effects Factory",
             "Duration": 5.5,
@@ -1009,14 +1050,32 @@
             "Line 5": "",
             "Position": [
               540,
-              1600
+              1480
+            ]
+          },
+          "at": 0
+        },
+        {
+          "template": "effectcraft/titles/credits",
+          "values": {
+            "Title": "Opera House at the end of a long summer day",
+            "Line 1": "",
+            "Line 2": "",
+            "Duration": 5.5,
+            "Line 3": "",
+            "Line 4": "",
+            "Line 5": "",
+            "Position": [
+              540,
+              400
             ]
           },
           "at": 0
         }
       ],
       "caption": "A long title breaks onto two lines",
-      "label": "Credits"
+      "label": "Credits",
+      "caption_at": "upper"
     },
     {
       "footage": "uluru",
@@ -1035,14 +1094,15 @@
             "Line 5": "",
             "Position": [
               540,
-              1600
+              1480
             ]
           },
           "at": 0
         }
       ],
       "caption": "No title · Colour",
-      "label": "Credits"
+      "label": "Credits",
+      "caption_at": "upper"
     },
     {
       "footage": "sydney_cove",
@@ -1062,7 +1122,8 @@
         }
       ],
       "caption": "Blink on",
-      "label": "Sign-off"
+      "label": "Sign-off",
+      "caption_at": "upper"
     },
     {
       "footage": "hildas_lookout",
@@ -1083,7 +1144,8 @@
         }
       ],
       "caption": "Your own line · Heart Colour",
-      "label": "Sign-off"
+      "label": "Sign-off",
+      "caption_at": "upper"
     },
     {
       "footage": "uluru",
@@ -1106,7 +1168,8 @@
         }
       ],
       "caption": "Long line shrinks · Heart Size 100 · 100 beats a minute",
-      "label": "Sign-off"
+      "label": "Sign-off",
+      "caption_at": "upper"
     }
   ]
 }

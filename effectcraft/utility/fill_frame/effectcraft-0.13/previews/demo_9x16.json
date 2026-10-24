@@ -78,7 +78,7 @@
         "Media": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.png",
         "Darken": 40
       },
-      "caption": "A portrait photo in 9x16 · nothing cut off · 9x16"
+      "caption": "A 3:4 portrait photo in 9x16 · nothing cut off · 9x16"
     }
   ]
 }

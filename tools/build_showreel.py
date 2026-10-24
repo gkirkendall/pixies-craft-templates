@@ -40,6 +40,39 @@ def is_header(overlay):
             and (text.lower().startswith("free motion templates") or text.endswith(" Template")))
 
 
+
+WATCH_LIFT = {"title": -260, "corner_logo": -230}   # bottom-placed overlays lifted (px) to end near 82% of the height
+WATCH_DROP = 110                                    # top-placed overlays and map insets lowered (px) to start near 8.5%
+
+
+def watch_page(seg):
+    """The 9x16 showreel is over 3 minutes, so YouTube plays it on the watch page, which cuts the top (about 6%) and everything
+    below about 85% of the height (owner, 2026-10-24): pills go to 8.5% from the top (or just above the 85% line where the top left
+    is busy), bottom-placed overlays are lifted, top-placed overlays and map insets are lowered, and the credits start higher."""
+    top_left, extra = False, []
+    for o in list(seg.get("overlays", [])):
+        v, name = o.get("values"), o["template"].rsplit("/", 1)[-1]
+        if name in ("locator", "route_leg") and "card" not in seg:
+            o["dy"] = WATCH_DROP   # the inset card sits in the top right
+        if not isinstance(v, dict):
+            continue
+        place = str(v.get("Place", v.get("Corner", "")))
+        if name in WATCH_LIFT and place.startswith("Top"):
+            top_left = True
+            o["dy"] = WATCH_DROP
+        if name in WATCH_LIFT and place.startswith("Bottom"):
+            o["dy"] = WATCH_LIFT[name]
+        if name == "credits" and v.get("Position", [0, 0])[1] > 1500:
+            v["Position"] = [v["Position"][0], 1480]
+            if v.get("Title") and v.get("Line 1"):   # too tall for the blur below the photo: the title goes in the blur above it
+                head = json.loads(json.dumps(o))
+                head["values"].update({"Line 1": "", "Line 2": "", "Position": [v["Position"][0], 400]})
+                v["Title"] = ""
+                extra.append(head)
+    seg.setdefault("overlays", []).extend(extra)
+    seg["caption_at"] = "safe" if top_left else "upper"
+
+
 def shots(key, folder, size, opening=False):
     """The template's segments for this size, ready for the showreel, and its prepare commands. opening: the showreel's first
     template, whose first 9x16 shot keeps the Shorts' opening header (it says what the viewer is looking at), its second line
@@ -63,6 +96,8 @@ def shots(key, folder, size, opening=False):
         if seg.get("caption"):
             seg["caption"] = seg["caption"].removesuffix(" · 9x16")
         seg["label"] = name
+        if size == "9x16":
+            watch_page(seg)
         out.append(seg)
     return name, out, spec.get("prepare", [])
 

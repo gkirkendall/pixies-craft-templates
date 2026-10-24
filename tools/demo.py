@@ -174,7 +174,7 @@ class Demo:
             for k, o in enumerate(seg.get("overlays", [])):
                 mov = self.render(o["template"], o["values"], self.work / f"over{i:02d}_{k}.mov")
                 inputs += ["-itsoffset", str(o.get("at", 0)), "-i", mov]
-                chain.append(f"[{last}][{k + 1}:v]overlay=eof_action=pass[o{k}]")
+                chain.append(f"[{last}][{k + 1}:v]overlay=y={o.get('dy', 0)}:eof_action=pass[o{k}]")   # dy: lift the overlay (px)
                 last = f"o{k}"
             if seg.get("caption") or seg.get("label"):
                 png = self.work / f"caption{i:02d}.png"
@@ -487,7 +487,7 @@ def page_card(lines, size, out, pixie=True, under=None):
 
 
 def caption(text, size, at, out, label=None):
-    """A transparent frame with text in a small dark pill: at the bottom left, or the top left (at="top").
+    """A transparent frame with text in a small dark pill: at the bottom left, or the top left (at="top") or "safe" (see below).
     label: a name in bold white at the start of the pill, then a thin rule, then the caption (the showreels name each template)."""
     w, h = size
     unit = min(w, h) / 1080
@@ -505,8 +505,30 @@ def caption(text, size, at, out, label=None):
     th = max(b[3] for b in boxes) - top
     tw = sum(b[2] - b[0] for b in boxes) + (2 * gap + round(2 * unit) if len(parts) > 1 else 0)
     bw, bh = tw + 2 * px, th + 2 * py
-    x, y = margin, (margin if at == "top" else h - margin - bh)
-    d.rounded_rectangle((x, y, x + bw, y + bh), radius=bh // 2, fill=(0, 0, 0, 150))
+    rows = None
+    if bw > w - 2 * margin and label and text:   # too wide for the frame: the label, then the caption wrapped onto lines under it
+        room, words, line, lines = w - 2 * margin - 2 * px, text.split(), "", []
+        for word in words:
+            if line and d.textlength(f"{line} {word}", font=f) > room:
+                lines.append(line)
+                line = word
+            else:
+                line = f"{line} {word}".strip()
+        lines.append(line)
+        rows = [(label, fb, 255)] + [(s, f, 225) for s in lines]
+        lh = th + round(10 * unit)
+        bw = round(max(d.textlength(s, font=ft) for s, ft, _ in rows)) + 2 * px
+        bh = lh * len(rows) - round(10 * unit) + 2 * py
+    # "upper" (from 8.5% of the height) and "safe" (bottom left, just above 85%): a vertical video over 3 minutes plays on the watch page,
+    # which cuts the top (about 6%) and the bottom (about 12%)
+    x, y = margin, (margin if at == "top" else round(h * 0.085) if at == "upper" else round(h * 0.85) - margin - bh if at == "safe"
+                    else h - margin - bh)
+    d.rounded_rectangle((x, y, x + bw, y + bh), radius=min(bh // 2, round(36 * unit)), fill=(0, 0, 0, 150))
+    if rows:
+        for k, (s, ft, a) in enumerate(rows):
+            d.text((x + px - d.textbbox((0, 0), s, font=ft)[0], y + py - top + k * lh), s, font=ft, fill=(255, 255, 255, a))
+        im.save(out)
+        return
     cx = x + px
     for k, ((t, ft, a), b) in enumerate(zip(parts, boxes)):
         if k:
