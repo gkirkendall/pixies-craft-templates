@@ -95,10 +95,40 @@ def fill(text, work):
     return text.replace("{root}", str(ROOT)).replace("{work}", str(work))
 
 
+PHONE_DROP, PHONE_LIFT = 220, {"title": -340, "corner_logo": -160}   # a corner logo ends just above the channel name (about y 1700)
+PHONE_LEFT = {"corner_logo": -140}   # a bottom-right overlay moves left, clear of the like / share buttons   # px: top-placed overlays below the top-right icons; bottom-placed up
+
+
+def phone_zones(spec):
+    """Keep a 9x16 Short's pills and overlays out of YouTube's phone controls (owner, 2026-10-24): the bottom 20% (channel name, title,
+    Subscribe), the right column and the top-right icons. Pills go to the top left; top-placed Corner Logo and Title overlays move down
+    below the pill and the icons; bottom-placed ones and the Box Wipe lower third move up. Applied to the upload copies only, in memory,
+    so the template's own demo spec stays as it is."""
+    for seg in spec.get("segments", []):
+        if seg.get("caption") or seg.get("label"):
+            seg["caption_at"] = "phone"   # below the status bar, left of the icons
+        for o in seg.get("overlays", []):
+            name, v = o["template"].rsplit("/", 1)[-1], o.get("values")
+            if not isinstance(v, dict):
+                continue
+            c = v.get("set", v)
+            place = str(c.get("Place", c.get("Corner", "")))
+            if name in PHONE_LIFT and place.startswith("Top"):
+                o["dy"] = PHONE_DROP
+            elif name in PHONE_LIFT and place.startswith("Bottom"):
+                o["dy"] = PHONE_LIFT[name]
+                if place.endswith("Right") and name in PHONE_LEFT:
+                    o["dx"] = PHONE_LEFT[name]
+            elif name == "box_wipe" and "Position" not in c:
+                c["Position"] = [70, 1540]   # the template's 9x16 default is [70, 1640]
+
+
 class Demo:
     def __init__(self, spec_path, a, work):
         self.spec_path, self.a, self.work = spec_path, a, work
         self.spec = json.loads(spec_path.read_text())
+        if getattr(a, "phone_zones", False):
+            phone_zones(self.spec)
         self.size = self.spec.get("size", "16x9")
         self.w, self.h = FRAMES[self.size]
         self.n = 0
@@ -174,7 +204,7 @@ class Demo:
             for k, o in enumerate(seg.get("overlays", [])):
                 mov = self.render(o["template"], o["values"], self.work / f"over{i:02d}_{k}.mov")
                 inputs += ["-itsoffset", str(o.get("at", 0)), "-i", mov]
-                chain.append(f"[{last}][{k + 1}:v]overlay=y={o.get('dy', 0)}:eof_action=pass[o{k}]")   # dy: lift the overlay (px)
+                chain.append(f"[{last}][{k + 1}:v]overlay=x={o.get('dx', 0)}:y={o.get('dy', 0)}:eof_action=pass[o{k}]")   # dx, dy: shift the overlay (px)
                 last = f"o{k}"
             if seg.get("caption") or seg.get("label"):
                 png = self.work / f"caption{i:02d}.png"
@@ -506,8 +536,9 @@ def caption(text, size, at, out, label=None):
     tw = sum(b[2] - b[0] for b in boxes) + (2 * gap + round(2 * unit) if len(parts) > 1 else 0)
     bw, bh = tw + 2 * px, th + 2 * py
     rows = None
-    if bw > w - 2 * margin and label and text:   # too wide for the frame: the label, then the caption wrapped onto lines under it
-        room, words, line, lines = w - 2 * margin - 2 * px, text.split(), "", []
+    right = round(w * 0.65) if at in ("top", "phone") else w - margin   # a pill at the top left stops short of a phone's top-right icons
+    if margin + bw > right and text:   # too wide: the label (if any), then the caption wrapped onto lines under it
+        room, words, line, lines = right - margin - 2 * px, text.split(), "", []
         for word in words:
             if line and d.textlength(f"{line} {word}", font=f) > room:
                 lines.append(line)
@@ -515,13 +546,13 @@ def caption(text, size, at, out, label=None):
             else:
                 line = f"{line} {word}".strip()
         lines.append(line)
-        rows = [(label, fb, 255)] + [(s, f, 225) for s in lines]
+        rows = ([(label, fb, 255)] if label else []) + [(s, f, 225 if label else 255) for s in lines]
         lh = th + round(10 * unit)
         bw = round(max(d.textlength(s, font=ft) for s, ft, _ in rows)) + 2 * px
         bh = lh * len(rows) - round(10 * unit) + 2 * py
-    # "upper" (from 8.5% of the height) and "safe" (bottom left, just above 85%): a vertical video over 3 minutes plays on the watch page,
+    # "upper" / "phone" (from 8.5% of the height; "phone" also stops at 65% of the width) and "safe" (bottom left, just above 85%): a vertical video over 3 minutes plays on the watch page,
     # which cuts the top (about 6%) and the bottom (about 12%)
-    x, y = margin, (margin if at == "top" else round(h * 0.085) if at == "upper" else round(h * 0.85) - margin - bh if at == "safe"
+    x, y = margin, (margin if at == "top" else round(h * 0.085) if at in ("upper", "phone") else round(h * 0.85) - margin - bh if at == "safe"
                     else h - margin - bh)
     d.rounded_rectangle((x, y, x + bw, y + bh), radius=min(bh // 2, round(36 * unit)), fill=(0, 0, 0, 150))
     if rows:
@@ -593,6 +624,7 @@ def main():
                     "with --check, skip the size limit")
     ap.add_argument("--save-silent", type=pathlib.Path, help="also keep a video-only copy of the reel here (for --silent-in later)")
     ap.add_argument("--silent-in", type=pathlib.Path, help="remux: put --track on this silent master with --out, without rendering the video")
+    ap.add_argument("--phone-zones", action="store_true", help="a 9x16 Short for YouTube: keep pills and overlays out of the phone controls")
     ap.add_argument("--effectcraft-cli", default="effectcraft-cli")
     a = ap.parse_args()
     if a.check:
