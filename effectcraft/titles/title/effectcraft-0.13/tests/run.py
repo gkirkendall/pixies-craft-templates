@@ -5,7 +5,7 @@
 
 Renders single transparent frames, with the shadow off, in both sizes. Checks: for every Place, the text reads back (OCR) as
 supplied (the label in capitals; spaces are not compared, as the label is spaced out), there are two bands of text (label, title),
-and the block sits Margin from the edges that Place names (within 12 px: the font's side bearings) or centred (within 1 %); an
+and the block sits Margin from the edges that Place names (within 12 px: the font's side bearings; a bottom block's baseline is on Margin, so a descender may hang below it) or centred (within 1 %); an
 empty label closes up (one band, still Margin from the bottom); a long title shrinks to Max Width. Then: nothing before Start;
 half-way through the fade in it is fainter and lower; each Fade item shows the title (none, full, faded) at the first, middle and
 last frame as it should, and where Fade In, Steady and Fade Out clips meet it is identical; Colour colours the text; Shadow 50
@@ -32,6 +32,7 @@ FRAMES = {"16x9": (1920, 1080), "9x16": (1080, 1920)}
 MARGIN = {"16x9": 96, "9x16": 80}
 MAX_WIDTH = {"16x9": 1651, "9x16": 929}
 PEAK, SIDE = 2.0, 12
+DESCENDER = 40   # a bottom block ends at the title's baseline, so a descender may hang this far below Margin
 
 
 def run(cmd, check=True):
@@ -103,7 +104,7 @@ def main():
         cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
         horiz = (abs(box[0] - m) <= SIDE if "Left" in place else abs(W - m - box[2]) <= SIDE if "Right" in place
                  else abs(cx - W / 2) <= W * 0.01)
-        vert = (abs(box[1] - m) <= SIDE if "Top" in place else abs(H - m - box[3]) <= SIDE if "Bottom" in place
+        vert = (abs(box[1] - m) <= SIDE if "Top" in place else -SIDE <= box[3] - (H - m) <= DESCENDER if "Bottom" in place
                 else abs(cy - H / 2) <= H * 0.01)
         return horiz and vert
 

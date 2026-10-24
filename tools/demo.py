@@ -95,8 +95,8 @@ def fill(text, work):
     return text.replace("{root}", str(ROOT)).replace("{work}", str(work))
 
 
-PHONE_DROP, PHONE_LIFT = 220, {"title": -340, "corner_logo": -160}   # a corner logo ends just above the channel name (about y 1700)
-PHONE_LEFT = {"corner_logo": -140}   # a bottom-right overlay moves left, clear of the like / share buttons   # px: top-placed overlays below the top-right icons; bottom-placed up
+PHONE_DROP, PHONE_LIFT = 220, {"title": -160, "corner_logo": -160}   # a corner logo ends just above the channel name (about y 1700)
+PHONE_LEFT = {"title": -140, "corner_logo": -140}   # a bottom-right overlay moves left, clear of the like / share buttons   # px: top-placed overlays below the top-right icons; bottom-placed up
 
 
 def phone_zones(spec):
@@ -119,6 +119,8 @@ def phone_zones(spec):
                 o["dy"] = PHONE_LIFT[name]
                 if place.endswith("Right") and name in PHONE_LEFT:
                     o["dx"] = PHONE_LEFT[name]
+            elif name == "title" and place in ("Centre", ""):   # no Place set: the template's default, the centre
+                o["dy"] = -80   # a centred title spans the width: above the like button, which starts at 49% of the height
             elif name == "box_wipe" and "Position" not in c:
                 c["Position"] = [70, 1540]   # the template's 9x16 default is [70, 1640]
 

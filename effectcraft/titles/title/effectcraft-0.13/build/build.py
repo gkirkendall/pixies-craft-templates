@@ -28,13 +28,14 @@ TITLE, LABEL = "Our Road Trip", "Australia"
 COLOUR, SHADOW, START, FADE, RISE, TRACKING = "#ffffff", 50, 0.3, 0.6, 24, 240
 CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 # The layout, the same in both layers' expressions: each layer's glyph box (r), fit to Max Width (f) and whether it is empty;
-# the label over the title with a gap of 0.3 × the title's font size; the block placed by Place (menu 1-6, in PLACES order).
+# the label over the title with a gap of 0.3 × the title's font size; the block placed by Place (menu 1-6, in PLACES order). The block
+# ends at the title's baseline, not at its glyph box, so a descender (the j in Tjuta) never lifts a bottom title above the others.
 LAYOUT = (f'var W = thisComp.width, H = thisComp.height; var pl = {CONTROL.format("Place", "Menu")}; '
           f'var mg = {CONTROL.format("Margin", "Slider")}; var mw = W * {CONTROL.format("Max Width", "Slider")} / 100; '
           'function m(n) { var l = thisComp.layer(n); var r = l.sourceRectAtTime(time, false); '
           'return {r: r, f: r.width > mw ? mw / r.width : 1, e: r.width < 1, size: l.text.sourceText.style.fontSize}; } '
           'var L = m("Label"), T = m("Title"); var lh = L.e ? 0 : L.r.height * L.f; var gap = L.e ? 0 : 0.3 * T.size * T.f; '
-          'var bh = lh + gap + T.r.height * T.f; var y0 = pl == 1 ? (H - bh) / 2 : pl <= 4 ? H - mg - bh : mg; '
+          'var bh = lh + gap + T.r.height * T.f, bb = lh + gap + (T.e ? 0 : -T.r.top * T.f); var y0 = pl == 1 ? (H - bh) / 2 : pl <= 4 ? H - mg - bb : mg; '
           'var left = pl == 3 || pl == 5, right = pl == 4 || pl == 6; '
           'function x(o) { return left ? mg - o.r.left * o.f : right ? W - mg - (o.r.left + o.r.width) * o.f '
           ': W / 2 - (o.r.left + o.r.width / 2) * o.f; } ')
