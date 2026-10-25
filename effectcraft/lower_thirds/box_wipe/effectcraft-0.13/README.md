@@ -16,7 +16,7 @@ too wide shrinks to fit. With no subtitle the box closes up. Over transparency.
 | Subtitle | The smaller second line; leave it empty for none. |
 | Title Font | Any installed font (Caveat Brush by default). |
 | Subtitle Font | Any installed font (Caveat Brush by default). |
-| Position | The box's bottom-left corner, in frame pixels ([110, 960] in 16x9, [70, 1540] in 9x16, clear of a phone's Shorts controls). |
+| Position | The box's bottom-left corner, in frame pixels ([110, 960] in 16x9, [70, 1640] in 9x16, in the lower gradient and clear of a phone's Shorts controls). |
 | Max Width | Widest the box may be, in % of the frame width (57.3 in 16x9, 75 in 9x16: 1100 px or 810, so the box ends left of the Shorts buttons). |
 | Box Colour | Deep blue (`#123047`) by default. |
 | Box Opacity | How solid the box is, 0 to 100 (70 by default). |

@@ -49,12 +49,7 @@
           "values": {
             "Text": "Coast to *centre*",
             "Style": "Fade Up",
-            "Duration": 5,
-            "Position": [
-              540,
-              1500
-            ],
-            "Max Width": 64
+            "Duration": 5
           },
           "at": 0
         }
@@ -73,12 +68,7 @@
             "Style": "Bounce",
             "By": "Words",
             "Stagger": 0.15,
-            "Duration": 5,
-            "Position": [
-              540,
-              1500
-            ],
-            "Max Width": 64
+            "Duration": 5
           },
           "at": 0
         }
@@ -95,12 +85,7 @@
           "values": {
             "Text": "TJORITJA",
             "Style": "Spread In",
-            "Duration": 5.5,
-            "Position": [
-              540,
-              1500
-            ],
-            "Max Width": 64
+            "Duration": 5.5
           },
           "at": 0
         }
