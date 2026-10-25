@@ -16,7 +16,11 @@
           "values": {
             "file": "{root}/effectcraft/titles/credits/effectcraft-0.13/examples/australia.values.json",
             "set": {
-              "Duration": 5.5
+              "Duration": 5.5,
+              "Position": [
+                960,
+                610
+              ]
             },
             "Duration": 5.5
           },
@@ -73,7 +77,7 @@
           "at": 0
         }
       ],
-      "caption": "No title \u00b7 Colour",
+      "caption": "No title · Colour",
       "caption_at": "top"
     }
   ]
