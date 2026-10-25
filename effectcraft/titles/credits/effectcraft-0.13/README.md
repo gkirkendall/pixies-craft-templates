@@ -18,7 +18,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Title Font | League Gothic Regular by default. |
 | Line Font | Montserrat Medium by default; all five lines follow it. |
 | Position | Centre of the whole block, in frame pixels: [960, 470] in 16x9, [540, 800] in 9x16 (above the middle, leaving room for a Sign-off below). |
-| Max Width | Widest any line may be, in % of the frame width (default 86: 1651 px on 1920 wide, 929 on 1080). |
+| Max Width | Widest any line may be, in % of the frame width (default 86 in 16x9: 1651 px; 64 in 9x16: 691 px, so a line stays left of a phone's Shorts buttons). |
 | Colour | The text's colour (white by default). |
 | Shadow | Strength of the soft shadow under the text, 0 to 100 (50 by default). |
 | Start | When it starts to fade and rise in, in seconds (0.3 by default; fully in 0.6 s later). |

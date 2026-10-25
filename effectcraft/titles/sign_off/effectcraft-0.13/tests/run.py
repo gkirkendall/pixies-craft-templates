@@ -32,7 +32,7 @@ FONT_SIZE = {"16x9": 64, "9x16": 56}
 POSITION = {"16x9": [960, 790], "9x16": [540, 1160]}
 MAX_WIDTH = {"16x9": 1651, "9x16": 929}
 CASES = {"default": {}, "short": {"Text": "Bye!"},
-         "long": {"Text": "Thanks for watching, and see you on the next long road trip around the country"},
+         "long": {"Text": "Thanks for watching, and see you on the next long road trip around the country", "Max Width": 86},
          "moved": {"Position": "moved"}}
 START, PEAK = 0.6, 2.0
 

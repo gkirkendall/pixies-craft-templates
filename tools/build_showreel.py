@@ -45,10 +45,30 @@ WATCH_LIFT = {"title": -260, "corner_logo": -230}   # bottom-placed overlays lif
 WATCH_DROP = 110                                    # top-placed overlays and map insets lowered (px) to start near 8.5%
 
 
+def pin_defaults(seg):
+    """The watch page has its own safe band (8% to 85%), not the Shorts one the 9x16 templates default to: state the plain 16x9-style
+    geometry in the spec (no extra margins, the older Box Wipe, Animated Title and line widths), then watch_page lifts and lowers from it."""
+    for o in seg.get("overlays", []):
+        v, name = o.get("values"), o["template"].rsplit("/", 1)[-1]
+        if not isinstance(v, dict):
+            continue
+        c = v.get("set", v)
+        if name in ("corner_logo", "title"):
+            c["Extra Vertical"], c["Extra Right"] = 0, 0
+        elif name == "box_wipe":
+            c.setdefault("Position", [70, 1640])
+            c["Max Width"] = 83.3
+        elif name == "animated_title":
+            c.setdefault("Position", [540, 960])
+        elif name in ("sign_off", "typewriter", "credits"):
+            c["Max Width"] = 86
+
+
 def watch_page(seg):
     """The 9x16 showreel is over 3 minutes, so YouTube plays it on the watch page, which cuts the top (about 6%) and everything
     below about 85% of the height (owner, 2026-10-24): pills go to 8.5% from the top (or just above the 85% line where the top left
     is busy), bottom-placed overlays are lifted, top-placed overlays and map insets are lowered, and the credits start higher."""
+    pin_defaults(seg)
     top_left, extra = False, []
     for o in list(seg.get("overlays", [])):
         v, name = o.get("values"), o["template"].rsplit("/", 1)[-1]

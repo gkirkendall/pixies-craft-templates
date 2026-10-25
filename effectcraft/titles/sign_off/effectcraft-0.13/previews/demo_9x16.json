@@ -52,13 +52,13 @@
               540,
               1500
             ],
-            "Duration": 5.5,
-            "Max Width": 64
+            "Duration": 5.5
           },
           "at": 0
         }
       ],
-      "caption": "Blink on · 9x16"
+      "caption": "Blink on · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "hildas_lookout",
@@ -73,13 +73,13 @@
               540,
               1500
             ],
-            "Duration": 5,
-            "Max Width": 64
+            "Duration": 5
           },
           "at": 0
         }
       ],
-      "caption": "Your own line · Heart Colour · 9x16"
+      "caption": "Your own line · Heart Colour · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -96,13 +96,13 @@
               540,
               1500
             ],
-            "Duration": 5.5,
-            "Max Width": 64
+            "Duration": 5.5
           },
           "at": 0
         }
       ],
-      "caption": "Long line shrinks · Heart Size 100 · 100 beats a minute · 9x16"
+      "caption": "Long line shrinks · Heart Size 100 · 100 beats a minute · 9x16",
+      "caption_at": "phone"
     }
   ]
 }

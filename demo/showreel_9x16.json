@@ -152,7 +152,12 @@
           "values": {
             "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/stops.values.json",
             "set": {
-              "Duration": 4.8
+              "Duration": 4.8,
+              "Position": [
+                70,
+                1640
+              ],
+              "Max Width": 83.3
             }
           },
           "at": 0.9
@@ -176,7 +181,12 @@
               "Subtitle Font": "Montserrat Regular",
               "Box Colour": "#6b2d1a",
               "Line Colour": "#f4a259",
-              "Subtitle": "Northern Territory, Australia"
+              "Subtitle": "Northern Territory, Australia",
+              "Position": [
+                70,
+                1640
+              ],
+              "Max Width": 83.3
             }
           },
           "at": 0.9
@@ -195,7 +205,12 @@
           "values": {
             "Title": "Uluru, Northern Territory, Australia",
             "Subtitle": "",
-            "Duration": 4.8
+            "Duration": 4.8,
+            "Position": [
+              70,
+              1640
+            ],
+            "Max Width": 83.3
           },
           "at": 0.9
         }
@@ -607,7 +622,11 @@
             "Fade": "Fade In",
             "Size": 50,
             "Start": 0.2,
-            "Duration": 5
+            "Duration": 5,
+            "Position": [
+              540,
+              960
+            ]
           },
           "at": 0
         },
@@ -637,7 +656,11 @@
             "Fade": "Fade In",
             "Size": 50,
             "Start": 0.2,
-            "Duration": 5
+            "Duration": 5,
+            "Position": [
+              540,
+              960
+            ]
           },
           "at": 0
         },
@@ -669,7 +692,11 @@
             "Fade": "Fade In",
             "Size": 40,
             "Start": 0.2,
-            "Duration": 5.5
+            "Duration": 5.5,
+            "Position": [
+              540,
+              960
+            ]
           },
           "at": 0
         },
@@ -696,7 +723,9 @@
           "values": {
             "Corner": "Bottom Right",
             "Start": 0.9,
-            "Duration": 3.5
+            "Duration": 3.5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": -230
@@ -715,7 +744,9 @@
           "values": {
             "Corner": "Top Left",
             "Fade": "Steady",
-            "Duration": 4.5
+            "Duration": 4.5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": 110
@@ -725,7 +756,9 @@
           "values": {
             "Corner": "Top Right",
             "Fade": "Steady",
-            "Duration": 4.5
+            "Duration": 4.5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": 110
@@ -747,7 +780,9 @@
             "Opacity": 70,
             "Fade": "Fade In",
             "Start": 0.9,
-            "Duration": 4.5
+            "Duration": 4.5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": -230
@@ -766,7 +801,9 @@
           "values": {
             "Corner": "Bottom Right",
             "Fade": "Fade Out",
-            "Duration": 3.0
+            "Duration": 3.0,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": -230
@@ -784,7 +821,9 @@
           "template": "effectcraft/titles/title",
           "values": {
             "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
-            "Duration": 5
+            "Duration": 5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -803,7 +842,9 @@
             "Title": "Point Ritchie",
             "Label": "Day two",
             "Place": "Bottom Centre",
-            "Duration": 5
+            "Duration": 5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": -260
@@ -823,7 +864,9 @@
             "Title": "Start",
             "Label": "Day one",
             "Place": "Top Left",
-            "Duration": 5
+            "Duration": 5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": 110
@@ -834,7 +877,9 @@
             "Title": "Finish",
             "Label": "Day four",
             "Place": "Top Right",
-            "Duration": 5
+            "Duration": 5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": 110
@@ -854,7 +899,9 @@
             "Title": "Uluru",
             "Label": "Sunrise",
             "Place": "Bottom Left",
-            "Duration": 5.5
+            "Duration": 5.5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": -260
@@ -865,7 +912,9 @@
             "Title": "Kata Tjuta",
             "Label": "Sunset",
             "Place": "Bottom Right",
-            "Duration": 5.5
+            "Duration": 5.5,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0,
           "dy": -260
@@ -956,7 +1005,8 @@
               "Position": [
                 540,
                 1150
-              ]
+              ],
+              "Max Width": 86
             }
           },
           "at": 0
@@ -977,7 +1027,8 @@
             "Cursor": "Underscore",
             "Erase": true,
             "Start": 0.3,
-            "Duration": 5
+            "Duration": 5,
+            "Max Width": 86
           },
           "at": 0
         }
@@ -1001,7 +1052,8 @@
             "Position": [
               540,
               1500
-            ]
+            ],
+            "Max Width": 86
           },
           "at": 0
         }
@@ -1023,7 +1075,8 @@
               "Position": [
                 540,
                 860
-              ]
+              ],
+              "Max Width": 86
             },
             "Duration": 5.5
           },
@@ -1051,7 +1104,8 @@
             "Position": [
               540,
               1480
-            ]
+            ],
+            "Max Width": 86
           },
           "at": 0
         },
@@ -1068,7 +1122,8 @@
             "Position": [
               540,
               400
-            ]
+            ],
+            "Max Width": 86
           },
           "at": 0
         }
@@ -1095,7 +1150,8 @@
             "Position": [
               540,
               1480
-            ]
+            ],
+            "Max Width": 86
           },
           "at": 0
         }
@@ -1116,7 +1172,8 @@
               540,
               1500
             ],
-            "Duration": 5.5
+            "Duration": 5.5,
+            "Max Width": 86
           },
           "at": 0
         }
@@ -1138,7 +1195,8 @@
               540,
               1500
             ],
-            "Duration": 5
+            "Duration": 5,
+            "Max Width": 86
           },
           "at": 0
         }
@@ -1162,7 +1220,8 @@
               540,
               1500
             ],
-            "Duration": 5.5
+            "Duration": 5.5,
+            "Max Width": 86
           },
           "at": 0
         }

@@ -45,7 +45,8 @@
           "at": 0
         }
       ],
-      "caption": "4:3 photo in 9x16 · Blur 60 · Darken 30 (the defaults) · 9x16"
+      "caption": "4:3 photo in 9x16 · Blur 60 · Darken 30 (the defaults) · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "mushroom_rock",
@@ -54,7 +55,8 @@
         "Blur": 10,
         "Darken": 0
       },
-      "caption": "Blur 10 · Darken 0 · 9x16"
+      "caption": "Blur 10 · Darken 0 · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -63,13 +65,15 @@
         "Blur": 100,
         "Darken": 70
       },
-      "caption": "Blur 100 · Darken 70 · 9x16"
+      "caption": "Blur 100 · Darken 70 · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "turtle",
       "folder": "stock",
       "seconds": 4.5,
-      "caption": "A video clip in 9x16 · plays inside the frame · 9x16"
+      "caption": "A video clip in 9x16 · plays inside the frame · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "australia",
@@ -78,7 +82,8 @@
         "Media": "{root}/effectcraft/utility/fill_frame/effectcraft-0.13/examples/portrait.png",
         "Darken": 40
       },
-      "caption": "A 3:4 portrait photo in 9x16 · nothing cut off · 9x16"
+      "caption": "A 3:4 portrait photo in 9x16 · nothing cut off · 9x16",
+      "caption_at": "phone"
     }
   ]
 }

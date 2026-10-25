@@ -20,7 +20,7 @@ from ecbuild import Project, find_cli, hex_colour  # noqa: E402
 COMP = "Box Wipe Lower Third"
 FPS, DURATION = 24, 60   # tools/render.py renders up to the Duration value
 # Per variant: frame size, title and subtitle font sizes, default Position (the box's bottom-left corner) and Max Width (% of the frame width).
-VARIANTS = {"16x9": ((1920, 1080), 84, 44, [110, 960], 57.3), "9x16": ((1080, 1920), 72, 40, [70, 1640], 83.3)}
+VARIANTS = {"16x9": ((1920, 1080), 84, 44, [110, 960], 57.3), "9x16": ((1080, 1920), 72, 40, [70, 1540], 75)}   # 9x16: clear of the Shorts buttons and channel row
 TITLE, SUBTITLE, FONT = "Port Campbell", "Victoria, Australia", "Caveat Brush"
 BOX, BOX_OPACITY, LINE, TEXT = "#123047", 70, "#ffd166", "#ffffff"
 CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'

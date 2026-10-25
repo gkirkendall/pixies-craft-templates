@@ -32,6 +32,7 @@ FRAMES = {"16x9": (1920, 1080), "9x16": (1080, 1920)}
 MARGIN = {"16x9": 96, "9x16": 80}
 MAX_WIDTH = {"16x9": 1651, "9x16": 929}
 PEAK, SIDE = 2.0, 12
+EXTRA = {"16x9": (0, 0), "9x16": (1920 * 0.083, 1080 * 0.13)}   # Extra Vertical, Extra Right in pixels: 8.3 % of the height, 13 % of the width
 DESCENDER = 40   # a bottom block ends at the title's baseline, so a descender may hang this far below Margin
 
 
@@ -101,11 +102,12 @@ def main():
         """Whether box sits where Place puts it: Margin from the named edges, else centred."""
         W, H = FRAMES[variant]
         m = MARGIN[variant]
+        ev, er = EXTRA[variant]   # the 9x16 defaults keep a title clear of a phone's controls
         cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
-        horiz = (abs(box[0] - m) <= SIDE if "Left" in place else abs(W - m - box[2]) <= SIDE if "Right" in place
+        horiz = (abs(box[0] - m) <= SIDE if "Left" in place else abs(W - m - er - box[2]) <= SIDE if "Right" in place
                  else abs(cx - W / 2) <= W * 0.01)
-        vert = (abs(box[1] - m) <= SIDE if "Top" in place else -SIDE <= box[3] - (H - m) <= DESCENDER if "Bottom" in place
-                else abs(cy - H / 2) <= H * 0.01)
+        vert = (abs(box[1] - m - ev) <= SIDE if "Top" in place else -SIDE <= box[3] - (H - m - ev) <= DESCENDER if "Bottom" in place
+                else abs(cy - (H - ev) / 2) <= H * 0.01)
         return horiz and vert
 
     squash = lambda s: "".join(s.split())

@@ -18,6 +18,8 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Label Font | Inter SemiBold by default. |
 | Place | Centre (default), Bottom Centre, Bottom Left, Bottom Right, Top Left or Top Right. |
 | Margin | Distance from the frame's edges for every Place but Centre, in pixels (96 in 16x9, 80 in 9x16). |
+| Extra Vertical | Added to Margin at the top and bottom; half of it lifts a Centre title (a percent of the frame height: 0 in 16x9, 8.3 in 9x16, which is 160 px, so a title clears a phone's status bar, channel row and like button). |
+| Extra Right | Added to Margin at the right edge (a percent of the frame width: 0 in 16x9, 13 in 9x16, which is 140 px, so a title clears the Shorts buttons). Set both to 0 for the plain Margin. |
 | Max Width | Widest either line may be, in % of the frame width (default 86: 1651 px on 1920 wide, 929 on 1080). |
 | Colour | The text's colour (white by default). |
 | Shadow | Strength of the soft shadow under the text, 0 to 100 (50 by default). |

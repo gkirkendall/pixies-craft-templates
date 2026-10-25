@@ -46,11 +46,15 @@ def logos():
     Image.new("RGBA", (8, 8), (0, 0, 0, 0)).save(OUT / "empty.png")
 
 
+EXTRA = {"16x9": (0, 0), "9x16": (1920 * 0.083, 1080 * 0.13)}   # Extra Vertical, Extra Right in pixels: 8.3 % of the height, 13 % of the width
+
+
 def box(variant, corner, size=SIZE, margin=MARGIN):
     W, H = FRAMES[variant]
     right, bottom = corner in ("Top Right", "Bottom Right"), corner in ("Bottom Right", "Bottom Left")
-    x0 = W - margin - size if right else margin
-    y0 = H - margin - size if bottom else margin
+    ev, er = EXTRA[variant]   # the 9x16 defaults keep a logo clear of a phone's controls
+    x0 = W - margin - er - size if right else margin
+    y0 = H - margin - ev - size if bottom else margin + ev
     return x0, y0, x0 + size, y0 + size
 
 

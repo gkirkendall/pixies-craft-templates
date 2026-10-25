@@ -95,44 +95,10 @@ def fill(text, work):
     return text.replace("{root}", str(ROOT)).replace("{work}", str(work))
 
 
-PHONE_DROP, PHONE_LIFT = 220, {"title": -160, "corner_logo": -160}   # a corner logo ends just above the channel name (about y 1700)
-PHONE_LEFT = {"title": -140, "corner_logo": -140}   # a bottom-right overlay moves left, clear of the like / share buttons   # px: top-placed overlays below the top-right icons; bottom-placed up
-
-
-def phone_zones(spec):
-    """Keep a 9x16 Short's pills and overlays out of YouTube's phone controls (owner, 2026-10-24): the bottom 20% (channel name, title,
-    Subscribe), the right column and the top-right icons. Pills go to the top left; top-placed Corner Logo and Title overlays move down
-    below the pill and the icons; bottom-placed ones and the Box Wipe lower third move up. Applied to the upload copies only, in memory,
-    so the template's own demo spec stays as it is."""
-    for seg in spec.get("segments", []):
-        if seg.get("caption") or seg.get("label"):
-            seg["caption_at"] = "phone"   # below the status bar, left of the icons
-        for o in seg.get("overlays", []):
-            name, v = o["template"].rsplit("/", 1)[-1], o.get("values")
-            if not isinstance(v, dict):
-                continue
-            c = v.get("set", v)
-            place = str(c.get("Place", c.get("Corner", "")))
-            if name in PHONE_LIFT and place.startswith("Top"):
-                o["dy"] = PHONE_DROP
-            elif name in PHONE_LIFT and place.startswith("Bottom"):
-                o["dy"] = PHONE_LIFT[name]
-                if place.endswith("Right") and name in PHONE_LEFT:
-                    o["dx"] = PHONE_LEFT[name]
-            elif name == "title" and place in ("Centre", ""):   # no Place set: the template's default, the centre
-                o["dy"] = -80   # a centred title spans the width: above the like button, which starts at 49% of the height
-            elif name == "animated_title" and "Position" not in c:   # centred like the Title template: lift it above the like button
-                o["dy"] = -160
-            elif name == "box_wipe" and "Position" not in c:
-                c["Position"] = [70, 1540]   # the template's 9x16 default is [70, 1640]
-
-
 class Demo:
     def __init__(self, spec_path, a, work):
         self.spec_path, self.a, self.work = spec_path, a, work
         self.spec = json.loads(spec_path.read_text())
-        if getattr(a, "phone_zones", False):
-            phone_zones(self.spec)
         self.size = self.spec.get("size", "16x9")
         self.w, self.h = FRAMES[self.size]
         self.n = 0
@@ -628,7 +594,6 @@ def main():
                     "with --check, skip the size limit")
     ap.add_argument("--save-silent", type=pathlib.Path, help="also keep a video-only copy of the reel here (for --silent-in later)")
     ap.add_argument("--silent-in", type=pathlib.Path, help="remux: put --track on this silent master with --out, without rendering the video")
-    ap.add_argument("--phone-zones", action="store_true", help="a 9x16 Short for YouTube: keep pills and overlays out of the phone controls")
     ap.add_argument("--effectcraft-cli", default="effectcraft-cli")
     a = ap.parse_args()
     if a.check:

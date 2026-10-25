@@ -95,7 +95,8 @@
           },
           "at": 0
         }
-      ]
+      ],
+      "caption_at": "phone"
     },
     {
       "footage": "port_campbell",
@@ -108,7 +109,7 @@
         }
       ],
       "caption": "Corner Inset · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "mushroom_rock",
@@ -121,7 +122,7 @@
         }
       ],
       "caption": "Another place · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     }
   ]
 }

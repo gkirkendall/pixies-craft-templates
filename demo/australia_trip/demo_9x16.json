@@ -42,7 +42,11 @@
             "file": "{root}/effectcraft/titles/animated_title/effectcraft-0.13/examples/australia.values.json",
             "set": {
               "Fade": "Fade In and Out",
-              "Duration": 4
+              "Duration": 4,
+              "Position": [
+                540,
+                960
+              ]
             }
           },
           "at": 0
@@ -53,7 +57,9 @@
             "Fade": "Fade In",
             "Duration": 4,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -72,7 +78,9 @@
             "Fade": "Steady",
             "Duration": 5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -103,7 +111,9 @@
             "Fade": "Steady",
             "Duration": 9,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -129,7 +139,9 @@
             "Fade": "Steady",
             "Duration": 4.5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -153,7 +165,9 @@
             "Fade": "Steady",
             "Duration": 5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -184,7 +198,9 @@
             "Fade": "Steady",
             "Duration": 9,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -210,7 +226,9 @@
             "Fade": "Steady",
             "Duration": 4.5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -234,7 +252,9 @@
             "Fade": "Steady",
             "Duration": 5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -260,7 +280,9 @@
             "Fade": "Steady",
             "Duration": 4.5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -291,7 +313,9 @@
             "Fade": "Steady",
             "Duration": 9.5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }
@@ -307,7 +331,8 @@
           "template": "effectcraft/titles/sign_off",
           "values": {
             "Duration": 5,
-            "Blink": true
+            "Blink": true,
+            "Max Width": 86
           },
           "at": 0
         },
@@ -317,7 +342,9 @@
             "Fade": "Fade Out",
             "Duration": 5,
             "Corner": "Top Left",
-            "Margin": 130
+            "Margin": 130,
+            "Extra Vertical": 0,
+            "Extra Right": 0
           },
           "at": 0
         }

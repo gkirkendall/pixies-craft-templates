@@ -20,7 +20,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Stagger | Seconds between one letter, word or line starting and the next (0.05 by default). For a long text it is shortened so the move in takes at most a third of Duration. Spread In moves every letter together. |
 | Ease | 0 (even speed) to 100 (a fast start that settles slowly); 50 by default. Scale Pop, Wave and Bounce keep their own curves. |
 | Fade | Fade In and Out (default: in and out), Fade In (in only), Steady (neither: still from the first frame to the last) or Fade Out (out only). |
-| Position | Centre of the title, in frame pixels ([960, 540] in 16x9, [540, 960] in 9x16). |
+| Position | Centre of the title, in frame pixels ([960, 540] in 16x9, [540, 800] in 9x16, above the like button on a phone). |
 | Size | How big the title is: 50 is the normal size (a 120 px font in 16x9, 96 in 9x16), 100 is double. |
 | Max Width | Widest the title may be, in % of the frame width (default 86: 1651 px on 1920 wide, 929 on 1080). |
 | Colour | The text's colour (white by default). |

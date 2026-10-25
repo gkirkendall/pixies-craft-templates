@@ -66,7 +66,8 @@
           "at": 0.3
         }
       ],
-      "caption": "Spread: 70 · 9x16"
+      "caption": "Spread: 70 · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "tjoritja",
@@ -96,7 +97,8 @@
           "at": 0.3
         }
       ],
-      "caption": "Spread: 45 · Colour · Glow 80 · 9x16"
+      "caption": "Spread: 45 · Colour · Glow 80 · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -130,7 +132,8 @@
           "at": 0.3
         }
       ],
-      "caption": "Spread: 100 · Size: 70 · 9x16"
+      "caption": "Spread: 100 · Size: 70 · 9x16",
+      "caption_at": "phone"
     }
   ]
 }

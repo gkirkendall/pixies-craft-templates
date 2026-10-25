@@ -53,14 +53,14 @@
               "Position": [
                 540,
                 1150
-              ],
-              "Max Width": 64
+              ]
             }
           },
           "at": 0
         }
       ],
-      "caption": "Cursor: Bar · 9x16"
+      "caption": "Cursor: Bar · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "hildas_lookout",
@@ -73,13 +73,13 @@
             "Cursor": "Underscore",
             "Erase": true,
             "Start": 0.3,
-            "Duration": 5,
-            "Max Width": 64
+            "Duration": 5
           },
           "at": 0
         }
       ],
-      "caption": "Cursor: Underscore · Erase · 9x16"
+      "caption": "Cursor: Underscore · Erase · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -96,13 +96,13 @@
             "Position": [
               540,
               1500
-            ],
-            "Max Width": 64
+            ]
           },
           "at": 0
         }
       ],
-      "caption": "Cursor: None · Speed 9 · 9x16"
+      "caption": "Cursor: None · Speed 9 · 9x16",
+      "caption_at": "phone"
     }
   ]
 }

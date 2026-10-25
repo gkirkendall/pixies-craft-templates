@@ -63,7 +63,8 @@
           "at": 0
         }
       ],
-      "caption": "Title and four lines · 9x16"
+      "caption": "Title and four lines · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "sydney_cove",
@@ -87,7 +88,8 @@
           "at": 0
         }
       ],
-      "caption": "A long title breaks onto two lines · 9x16"
+      "caption": "A long title breaks onto two lines · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -112,7 +114,8 @@
           "at": 0
         }
       ],
-      "caption": "No title · Colour · 9x16"
+      "caption": "No title · Colour · 9x16",
+      "caption_at": "phone"
     }
   ]
 }

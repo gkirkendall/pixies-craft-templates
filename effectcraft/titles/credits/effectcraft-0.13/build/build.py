@@ -21,6 +21,8 @@ from ecbuild import Project, find_cli, hex_colour  # noqa: E402
 COMP = "Credits"
 FPS, DURATION = 24, 60   # tools/render.py renders up to the Duration value
 # Per variant: frame size, title and line font sizes, and the default Position (the block's centre).
+# Max Width in percent of the frame width: 64 in 9x16 keeps a line left of a phone's Shorts buttons (x < 83%).
+MAX_WIDTH = {"16x9": 86, "9x16": 64}
 VARIANTS = {"16x9": ((1920, 1080), 150, 46, [960, 470]), "9x16": ((1080, 1920), 120, 40, [540, 800])}
 LINES = 5
 TITLE_WIDTH = 0.37
@@ -55,7 +57,7 @@ def build(cli, variant, workdir):
           *[("layer.newText", {"text": CREDITS[i] or " ", "name": f"Line {i + 1}", "font": "Montserrat", "style": "Medium",
                                "size": line_size, "fill": COLOUR, "justify": "center"}) for i in range(LINES)],
           ("layer.newNull", {"name": "Controls"}))
-    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", 86),
+    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", MAX_WIDTH[variant]),
                                        ("Colour", "Color Control", hex_colour(COLOUR)), ("Shadow", "Slider Control", SHADOW),
                                        ("Start", "Slider Control", START), ("Duration", "Slider Control", 6)])
     # The title is shown in capitals between curly quotes, whatever case it is typed in. A title too long for Max Width breaks at

@@ -55,7 +55,7 @@
         }
       ],
       "caption": "Corner: Bottom Right · Fade In and Out · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "hildas_lookout",
@@ -66,7 +66,8 @@
           "values": {
             "Corner": "Top Left",
             "Fade": "Steady",
-            "Duration": 4.5
+            "Duration": 4.5,
+            "Extra Vertical": 11.5
           },
           "at": 0
         },
@@ -75,12 +76,14 @@
           "values": {
             "Corner": "Top Right",
             "Fade": "Steady",
-            "Duration": 4.5
+            "Duration": 4.5,
+            "Extra Vertical": 11.5
           },
           "at": 0
         }
       ],
-      "caption": "Corner: Top Left and Top Right · Fade: Steady · 9x16"
+      "caption": "Corner: Top Left and Top Right · Fade: Steady · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "point_ritchie",
@@ -100,7 +103,7 @@
         }
       ],
       "caption": "Corner: Bottom Left · Size 100 · Opacity 70 · Fade In · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -117,7 +120,7 @@
         }
       ],
       "caption": "Fade: Fade Out · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     }
   ]
 }

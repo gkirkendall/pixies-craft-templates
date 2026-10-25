@@ -53,12 +53,14 @@
             "Position": [
               540,
               1500
-            ]
+            ],
+            "Max Width": 64
           },
           "at": 0
         }
       ],
-      "caption": "Style: Fade Up · By: Letters · 9x16"
+      "caption": "Style: Fade Up · By: Letters · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "point_ritchie",
@@ -75,12 +77,14 @@
             "Position": [
               540,
               1500
-            ]
+            ],
+            "Max Width": 64
           },
           "at": 0
         }
       ],
-      "caption": "Style: Bounce · By: Words · 9x16"
+      "caption": "Style: Bounce · By: Words · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "tjoritja",
@@ -95,12 +99,14 @@
             "Position": [
               540,
               1500
-            ]
+            ],
+            "Max Width": 64
           },
           "at": 0
         }
       ],
-      "caption": "Style: Spread In · 9x16"
+      "caption": "Style: Spread In · 9x16",
+      "caption_at": "phone"
     }
   ]
 }

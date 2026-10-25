@@ -68,7 +68,7 @@
         }
       ],
       "caption": "Slides in from the left, holds, fades out · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "tjoritja",
@@ -80,7 +80,7 @@
             "file": "{root}/effectcraft/lower_thirds/basic/effectcraft-0.13/examples/long.values.json",
             "set": {
               "Title": "Tjoritja National Park",
-        "Title Font": "Montserrat Bold",
+              "Title Font": "Montserrat Bold",
               "Subtitle Font": "Montserrat Regular",
               "Subtitle": "Northern Territory, Australia"
             }
@@ -89,7 +89,7 @@
         }
       ],
       "caption": "Bar fits the text · Montserrat · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "card": "effectcraft/maps/locator",
@@ -113,7 +113,7 @@
         }
       ],
       "caption": "See-through bar · League Gothic and Caveat Brush · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     }
   ]
 }

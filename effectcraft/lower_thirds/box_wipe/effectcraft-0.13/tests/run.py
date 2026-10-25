@@ -25,7 +25,7 @@ ROOT = next(p for p in TEMPLATE.parents if (p / "tools" / "render.py").is_file()
 OUT = HERE / "out"
 MANIFEST = json.loads((TEMPLATE / "template.json").read_text())
 DEFAULTS = {c["name"]: c.get("default") for c in MANIFEST["controls"]}
-FRAMES = {"16x9": ((1920, 1080), [110, 960], 1100), "9x16": ((1080, 1920), [70, 1640], 900)}
+FRAMES = {"16x9": ((1920, 1080), [110, 960], 1100), "9x16": ((1080, 1920), [70, 1540], 810)}
 REST, DURATION = 2.0, DEFAULTS["Duration"]
 
 

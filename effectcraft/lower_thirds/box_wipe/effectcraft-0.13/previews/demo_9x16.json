@@ -56,7 +56,7 @@
         }
       ],
       "caption": "Default: Caveat Brush · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "tjoritja",
@@ -67,7 +67,6 @@
           "values": {
             "file": "{root}/effectcraft/lower_thirds/box_wipe/effectcraft-0.13/examples/long.values.json",
             "set": {
-              "Title": "West MacDonnell National Park",
               "Duration": 5.3,
               "Title Font": "Montserrat Bold",
               "Subtitle Font": "Montserrat Regular",
@@ -80,7 +79,7 @@
         }
       ],
       "caption": "Long title wraps · Montserrat · Box and Line Colour · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -97,7 +96,7 @@
         }
       ],
       "caption": "No subtitle: the box closes up · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     }
   ]
 }

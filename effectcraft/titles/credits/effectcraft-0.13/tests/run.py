@@ -32,7 +32,7 @@ MAX_WIDTH = {"16x9": 1651, "9x16": 929}
 LONG_TITLE = "The very long road from Port Campbell all the way around to Sydney Cove"
 CASES = {"default": {}, "four_lines": {"Line 4": "Natural Earth"},
          "five_lines": {"Line 4": "Natural Earth", "Line 5": "Made with craft-templates · github.com/example/craft-templates"}, "no_line1": {"Line 1": ""}, "no_line2": {"Line 2": ""},
-         "long": {"Title": LONG_TITLE, "Line 1": "Photos and video by someone with a rather long name, and a long line it is"},
+         "long": {"Title": LONG_TITLE, "Line 1": "Photos and video by someone with a rather long name, and a long line it is", "Max Width": 86},
          "moved": {"Title": "Short", "Position": "moved"}, "no_title": {"Title": ""}}
 PEAK = 2.0
 QUOTES = str.maketrans({"\u201c": '"', "\u201d": '"', "\u00b7": "-"})   # OCR reads · as -

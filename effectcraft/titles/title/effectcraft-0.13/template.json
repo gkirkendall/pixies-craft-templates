@@ -86,6 +86,18 @@
       "description": "Distance from the frame's edges for every Place but Centre, in pixels (9x16: 80)."
     },
     {
+      "name": "Extra Vertical",
+      "type": "number",
+      "default": 0,
+      "description": "Added to Margin at the top and bottom, and half of it lifts a Centre title, as a percent of the frame height (0 in 16x9, 8.3 in 9x16, 160 px: clear of a phone's status bar, channel row and like button)."
+    },
+    {
+      "name": "Extra Right",
+      "type": "number",
+      "default": 0,
+      "description": "Added to Margin at the right edge, as a percent of the frame width (0 in 16x9, 13 in 9x16, 140 px: clear of a phone's Shorts buttons)."
+    },
+    {
       "name": "Max Width",
       "type": "number",
       "default": 86,

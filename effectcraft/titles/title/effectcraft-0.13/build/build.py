@@ -20,8 +20,10 @@ from ecbuild import Project, find_cli, hex_colour  # noqa: E402
 
 COMP = "Title"
 FPS, DURATION = 24, 60   # tools/render.py renders up to the Duration value
-# Per variant: frame size, title and label font sizes, and Margin.
-VARIANTS = {"16x9": ((1920, 1080), 110, 32, 96), "9x16": ((1080, 1920), 92, 30, 80)}
+# Per variant: frame size, title and label font sizes, Margin, Extra Vertical (percent of the height) and Extra Right (percent of the width). The 9x16 extras keep a title clear of a
+# phone's controls (YouTube Shorts: status bar on top, channel row at the bottom, buttons on the right, the like button from 49% of the
+# height); set both to 0 for the plain Margin.
+VARIANTS = {"16x9": ((1920, 1080), 110, 32, 96, 0, 0), "9x16": ((1080, 1920), 92, 30, 80, 8.3, 13)}
 PLACES = ["Centre", "Bottom Centre", "Bottom Left", "Bottom Right", "Top Left", "Top Right"]
 FADES = ["Fade In and Out", "Fade In", "Steady", "Fade Out"]
 TITLE, LABEL = "Our Road Trip", "Australia"
@@ -31,13 +33,13 @@ CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 # the label over the title with a gap of 0.3 × the title's font size; the block placed by Place (menu 1-6, in PLACES order). The block
 # ends at the title's baseline, not at its glyph box, so a descender (the j in Tjuta) never lifts a bottom title above the others.
 LAYOUT = (f'var W = thisComp.width, H = thisComp.height; var pl = {CONTROL.format("Place", "Menu")}; '
-          f'var mg = {CONTROL.format("Margin", "Slider")}; var mw = W * {CONTROL.format("Max Width", "Slider")} / 100; '
+          f'var mg = {CONTROL.format("Margin", "Slider")}; var ev = {CONTROL.format("Extra Vertical", "Slider")} / 100 * H, er = {CONTROL.format("Extra Right", "Slider")} / 100 * W; var mw = W * {CONTROL.format("Max Width", "Slider")} / 100; '
           'function m(n) { var l = thisComp.layer(n); var r = l.sourceRectAtTime(time, false); '
           'return {r: r, f: r.width > mw ? mw / r.width : 1, e: r.width < 1, size: l.text.sourceText.style.fontSize}; } '
           'var L = m("Label"), T = m("Title"); var lh = L.e ? 0 : L.r.height * L.f; var gap = L.e ? 0 : 0.3 * T.size * T.f; '
-          'var bh = lh + gap + T.r.height * T.f, bb = lh + gap + (T.e ? 0 : -T.r.top * T.f); var y0 = pl == 1 ? (H - bh) / 2 : pl <= 4 ? H - mg - bb : mg; '
+          'var bh = lh + gap + T.r.height * T.f, bb = lh + gap + (T.e ? 0 : -T.r.top * T.f); var y0 = pl == 1 ? (H - bh) / 2 - ev / 2 : pl <= 4 ? H - mg - ev - bb : mg + ev; '
           'var left = pl == 3 || pl == 5, right = pl == 4 || pl == 6; '
-          'function x(o) { return left ? mg - o.r.left * o.f : right ? W - mg - (o.r.left + o.r.width) * o.f '
+          'function x(o) { return left ? mg - o.r.left * o.f : right ? W - mg - er - (o.r.left + o.r.width) * o.f '
           ': W / 2 - (o.r.left + o.r.width / 2) * o.f; } ')
 # In: from Start over FADE, eased out; out: over the last 0.5 s before Duration, eased in. Fade (menu 1-4, in FADES order) leaves
 # out the fade in (Steady, Fade Out: full and in place from the first frame) or the fade out (Fade In, Steady: full to the end).
@@ -49,7 +51,7 @@ POSITION = {"Label": "[x(L), y0 - L.r.top * L.f + {rise}, 0]", "Title": "[x(T), 
 
 
 def build(cli, variant, workdir):
-    (w, h), title_size, label_size, margin = VARIANTS[variant]
+    (w, h), title_size, label_size, margin, extra_v, extra_r = VARIANTS[variant]
     p = Project(cli, workdir / f"title_{variant}.ecproj", COMP, w, h, FPS, DURATION)
     p.run(("layer.newText", {"text": LABEL, "name": "Label", "font": "Inter", "style": "SemiBold", "size": label_size,
                              "fill": COLOUR, "justify": "center"}),
@@ -57,6 +59,7 @@ def build(cli, variant, workdir):
                              "justify": "center"}),
           ("layer.newNull", {"name": "Controls"}))
     path = p.add_controls("Controls", [("Place", "Dropdown Menu Control", (PLACES, PLACES[0])), ("Margin", "Slider Control", margin),
+                                       ("Extra Vertical", "Slider Control", extra_v), ("Extra Right", "Slider Control", extra_r),
                                        ("Max Width", "Slider Control", 86),
                                        ("Colour", "Color Control", hex_colour(COLOUR)), ("Shadow", "Slider Control", SHADOW),
                                        ("Fade", "Dropdown Menu Control", (FADES, FADES[0])), ("Start", "Slider Control", START),
@@ -82,7 +85,7 @@ def build(cli, variant, workdir):
           ("essential.addProperty", {"comp": COMP, "layer": "Label", "path": "text/sourceText", "name": "Label Font", "as": "font"}),
           ("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path["Place"], "name": "Place", "as": "dropdown"}),
           *[("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path[n], "name": n})
-            for n in ("Margin", "Max Width", "Colour", "Shadow")],
+            for n in ("Margin", "Extra Vertical", "Extra Right", "Max Width", "Colour", "Shadow")],
           ("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path["Fade"], "name": "Fade", "as": "dropdown"}),
           *[("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path[n], "name": n}) for n in ("Start", "Duration")])
     out = p.export(HERE / "templates" / f"title_{variant}.ectemplate", f"Title {variant}")

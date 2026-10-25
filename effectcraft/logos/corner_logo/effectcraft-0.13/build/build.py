@@ -19,7 +19,9 @@ from ecbuild import Project, find_cli  # noqa: E402
 
 COMP = "Corner Logo"
 FPS, DURATION = 24, 60   # tools/render.py renders up to the Duration value
-VARIANTS = {"16x9": (1920, 1080), "9x16": (1080, 1920)}
+# Per variant: frame size, Extra Vertical (percent of the height) and Extra Right (percent of the width), which add to Margin. The 9x16 extras keep a logo clear of a phone's controls
+# (YouTube Shorts: status bar on top, channel row at the bottom, buttons on the right); set both to 0 for the plain Margin.
+VARIANTS = {"16x9": ((1920, 1080), 0, 0), "9x16": ((1080, 1920), 8.3, 13)}
 CORNERS = ["Top Left", "Top Right", "Bottom Right", "Bottom Left"]
 # Fade, per clip, so a logo can run across a whole video: fade in on the first photo, Steady between, fade out on the last.
 FADES = ["Fade In and Out", "Fade In", "Steady", "Fade Out"]
@@ -27,8 +29,9 @@ CORNER, SIZE, MARGIN, OPACITY, START, FADE, RISE = "Bottom Right", 180, 60, 90, 
 CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 # The box's centre: Size square, Margin from the chosen corner's two edges (the menu reads 1-4, in CORNERS order).
 BOX = (f'var c = {CONTROL.format("Corner", "Menu")}; var sz = {CONTROL.format("Size", "Slider")} * {SIZE} / 50; '
-       f'var mg = {CONTROL.format("Margin", "Slider")}; var right = c == 2 || c == 3; var bottom = c == 3 || c == 4; '
-       'var bx = right ? thisComp.width - mg - sz / 2 : mg + sz / 2; var by = bottom ? thisComp.height - mg - sz / 2 : mg + sz / 2; ')
+       f'var mg = {CONTROL.format("Margin", "Slider")}; var ev = {CONTROL.format("Extra Vertical", "Slider")} / 100 * thisComp.height; var er = {CONTROL.format("Extra Right", "Slider")} / 100 * thisComp.width; '
+       'var right = c == 2 || c == 3; var bottom = c == 3 || c == 4; '
+       'var bx = right ? thisComp.width - mg - er - sz / 2 : mg + sz / 2; var by = bottom ? thisComp.height - mg - ev - sz / 2 : mg + ev + sz / 2; ')
 # In: from Start over FADE, eased out; out: over the last FADE before Duration, eased in. Fade (menu 1-4, in FADES order) leaves
 # out the fade in (Steady, Fade Out: full and in place from the first frame) or the fade out (Fade In, Steady: full to the end).
 EASE = (f'var t0 = {CONTROL.format("Start", "Slider")}; var d = {CONTROL.format("Duration", "Slider")}; '
@@ -38,7 +41,7 @@ EASE = (f'var t0 = {CONTROL.format("Start", "Slider")}; var d = {CONTROL.format(
 
 
 def build(cli, variant, workdir):
-    w, h = VARIANTS[variant]
+    (w, h), extra_v, extra_r = VARIANTS[variant]
     p = Project(cli, workdir / f"corner_logo_{variant}.ecproj", COMP, w, h, FPS, DURATION)
     logo = HERE / "assets" / "sample_logo.png"
     p.import_files(logo)
@@ -46,6 +49,7 @@ def build(cli, variant, workdir):
           ("layer.newNull", {"name": "Controls"}))
     path = p.add_controls("Controls", [("Corner", "Dropdown Menu Control", (CORNERS, CORNER)),
                                        ("Size", "Slider Control", 50), ("Margin", "Slider Control", MARGIN),
+                                       ("Extra Vertical", "Slider Control", extra_v), ("Extra Right", "Slider Control", extra_r),
                                        ("Opacity", "Slider Control", OPACITY), ("Fade", "Dropdown Menu Control", (FADES, FADES[0])),
                                        ("Start", "Slider Control", START),
                                        ("Duration", "Slider Control", 5)])
@@ -60,7 +64,7 @@ def build(cli, variant, workdir):
           ("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path["Corner"], "name": "Corner", "as": "dropdown"}),
           ("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path["Fade"], "name": "Fade", "as": "dropdown"}),
           *[("essential.addProperty", {"comp": COMP, "layer": "Controls", "path": path[n], "name": n})
-            for n in ("Size", "Margin", "Opacity", "Start", "Duration")])
+            for n in ("Size", "Margin", "Extra Vertical", "Extra Right", "Opacity", "Start", "Duration")])
     out = p.export(HERE / "templates" / f"corner_logo_{variant}.ectemplate", f"Corner Logo {variant}")
     print(f"built {out.relative_to(ROOT)}")
 

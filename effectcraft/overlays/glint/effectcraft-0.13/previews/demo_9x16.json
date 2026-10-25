@@ -123,7 +123,8 @@
           "at": 0
         }
       ],
-      "caption": "Six glints · Start and Size set for each · 9x16"
+      "caption": "Six glints · Start and Size set for each · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -190,7 +191,8 @@
           "at": 0
         }
       ],
-      "caption": "Colour and Glow 90 · 9x16"
+      "caption": "Colour and Glow 90 · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "port_campbell",
@@ -281,7 +283,8 @@
           "at": 0
         }
       ],
-      "caption": "Glow 45 · Size 40 to 55 · 9x16"
+      "caption": "Glow 45 · Size 40 to 55 · 9x16",
+      "caption_at": "phone"
     }
   ]
 }

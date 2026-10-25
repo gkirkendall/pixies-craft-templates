@@ -21,6 +21,8 @@ from ecbuild import Project, find_cli, hex_colour  # noqa: E402
 COMP = "Sign-off"
 FPS, DURATION = 24, 60   # tools/render.py renders up to the Duration value
 # Per variant: frame size, font size and the default Position (the row's centre).
+# Max Width in percent of the frame width: 64 in 9x16 keeps a line left of a phone's Shorts buttons (x < 83%).
+MAX_WIDTH = {"16x9": 86, "9x16": 64}
 VARIANTS = {"16x9": ((1920, 1080), 64, [960, 790]), "9x16": ((1080, 1920), 56, [540, 1160])}
 TEXT, COLOUR, HEART_COLOUR, SHADOW, START, FADE, RISE = "Thank you for watching", "#ffffff", "#e5484d", 50, 0.6, 0.6, 24
 # A heart 100 px wide (layer space, centred on 0, 0): from the tip round the left lobe, the dip, the right lobe, back to the tip.
@@ -53,7 +55,7 @@ def build(cli, variant, workdir):
     for name in ("Heart Left", "Heart Right"):
         p.run(("shape.newPath", dict(HEART, closed=True, space="layer", fill=HEART_COLOUR, stroke=False, name=name)))
     p.run(("layer.newNull", {"name": "Controls"}))
-    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", 86),
+    path = p.add_controls("Controls", [("Position", "Point Control", position), ("Max Width", "Slider Control", MAX_WIDTH[variant]),
                                        ("Text Colour", "Color Control", hex_colour(COLOUR)),
                                        ("Heart Colour", "Color Control", hex_colour(HEART_COLOUR)),
                                        ("Heart Size", "Slider Control", 70), ("Shadow", "Slider Control", SHADOW),

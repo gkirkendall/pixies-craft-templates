@@ -53,7 +53,8 @@
           "at": 0
         }
       ],
-      "caption": "Place: Centre · 9x16"
+      "caption": "Place: Centre · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "point_ritchie",
@@ -71,7 +72,7 @@
         }
       ],
       "caption": "Place: Bottom Centre · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "tjoritja",
@@ -83,7 +84,8 @@
             "Title": "Start",
             "Label": "Day one",
             "Place": "Top Left",
-            "Duration": 5
+            "Duration": 5,
+            "Extra Vertical": 11.5
           },
           "at": 0
         },
@@ -93,12 +95,14 @@
             "Title": "Finish",
             "Label": "Day four",
             "Place": "Top Right",
-            "Duration": 5
+            "Duration": 5,
+            "Extra Vertical": 11.5
           },
           "at": 0
         }
       ],
-      "caption": "Place: Top Left and Top Right · 9x16"
+      "caption": "Place: Top Left and Top Right · 9x16",
+      "caption_at": "phone"
     },
     {
       "footage": "uluru",
@@ -126,7 +130,7 @@
         }
       ],
       "caption": "Place: Bottom Left and Bottom Right · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     }
   ]
 }

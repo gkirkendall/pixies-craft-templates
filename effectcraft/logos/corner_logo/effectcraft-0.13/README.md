@@ -16,6 +16,8 @@ render as ProRes 4444 with transparency, to lay over footage.
 | Corner | Top Left, Top Right, Bottom Right (default) or Bottom Left. |
 | Size | Side of the square box the logo fits inside: 50 is the normal 180 px (the default), 100 is double. |
 | Margin | Distance from the box to the frame's two edges, in pixels (60 by default). |
+| Extra Vertical | Added to Margin at the top and bottom (a percent of the frame height: 0 in 16x9, 8.3 in 9x16, which is 160 px, so a logo clears a phone's status bar and the channel row). |
+| Extra Right | Added to Margin at the right edge (a percent of the frame width: 0 in 16x9, 13 in 9x16, which is 140 px, so a logo clears the Shorts buttons). Set both to 0 for the plain Margin. |
 | Opacity | How solid the logo is once it has faded in, 0 to 100 (90 by default). |
 | Fade | Fade In and Out (default), Fade In (fades in, then full to the end), Steady (full from the first frame to the last) or Fade Out (full from the first frame, then fades out). |
 | Start | When it starts to fade and rise in, in seconds (0.3 by default; fully in 0.5 s later); not used by Steady and Fade Out. |

@@ -80,7 +80,8 @@
           },
           "at": 0
         }
-      ]
+      ],
+      "caption_at": "phone"
     },
     {
       "footage": "sydney_cove",
@@ -93,7 +94,7 @@
         }
       ],
       "caption": "Short leg · roads and towns · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     },
     {
       "footage": "tjoritja",
@@ -106,7 +107,7 @@
         }
       ],
       "caption": "Long leg · 9x16",
-      "caption_at": "top"
+      "caption_at": "phone"
     }
   ]
 }

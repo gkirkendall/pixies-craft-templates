@@ -20,8 +20,9 @@ from ecbuild import Project, find_cli, hex_colour  # noqa: E402
 COMP = "Animated Title"
 FPS, DURATION = 24, 60   # tools/render.py renders up to the Duration value
 FONT_SIZE = 120          # the text layer's own size; the Size control scales from it
-# Per variant: frame size and default Size.
-VARIANTS = {"16x9": ((1920, 1080), 120), "9x16": ((1080, 1920), 96)}
+# Per variant: frame size, default Size and default Position. The 9x16 title sits at 800 px, above 49% of the height, where a phone's
+# Shorts like button starts.
+VARIANTS = {"16x9": ((1920, 1080), 120, [960, 540]), "9x16": ((1080, 1920), 96, [540, 800])}
 STYLES = ["Fade Up", "Slide", "Scale Pop", "Turn", "Blur", "Spread In", "Wave", "Bounce"]
 BY = ["Letters", "Words", "Lines"]
 # One title layer per By item, as a selector's Based On and a layer's Anchor Point Grouping can be set only as values (an
@@ -76,7 +77,7 @@ def fit(size):
 
 
 def build(cli, variant, workdir):
-    (w, h), size = VARIANTS[variant]
+    (w, h), size, position = VARIANTS[variant]
     p = Project(cli, workdir / f"animated_title_{variant}.ecproj", COMP, w, h, FPS, DURATION)
     p.run(("layer.newText", {"text": TEXT, "name": "Raw", "font": "Inter", "style": "Bold", "size": FONT_SIZE, "fill": COLOUR,
                              "justify": "center"}),
@@ -86,7 +87,7 @@ def build(cli, variant, workdir):
                                        ("By", "Dropdown Menu Control", (BY, BY[0])),
                                        ("Stagger", "Slider Control", 0.05), ("Ease", "Slider Control", 50),
                                        ("Fade", "Dropdown Menu Control", (FADES, FADES[0])),
-                                       ("Position", "Point Control", [w / 2, h / 2]), ("Size", "Slider Control", 50),
+                                       ("Position", "Point Control", position), ("Size", "Slider Control", 50),
                                        ("Max Width", "Slider Control", 86),
                                        ("Colour", "Color Control", hex_colour(COLOUR)),
                                        ("Highlight Colour", "Color Control", hex_colour(HIGHLIGHT)),

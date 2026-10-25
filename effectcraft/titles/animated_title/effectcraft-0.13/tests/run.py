@@ -27,6 +27,7 @@ MANIFEST = json.loads((TEMPLATE / "template.json").read_text())
 DEFAULTS = {c["name"]: c.get("default") for c in MANIFEST["controls"]}
 STYLES = next(c["options"] for c in MANIFEST["controls"] if c["name"] == "Style")
 FRAMES = {"16x9": (1920, 1080), "9x16": (1080, 1920)}
+CY = {"16x9": 540, "9x16": 800}   # the default Position's height
 MAX_WIDTH = {"16x9": 1651, "9x16": 929}
 REST, START = 2.0, 0.3
 
@@ -95,8 +96,8 @@ def main():
             got = " ".join(ocr(OUT / f"{tag}.png").split())
             box = alpha.getbbox()
             cx, cy = (box[0] + box[2]) / 2, (box[1] + box[3]) / 2
-            ok = got == want and abs(cx - W / 2) <= W * 0.01 and abs(cy - H / 2) <= H * 0.01
-            check(f"{tag} at rest", ok, f"read {got!r}; centre ({cx:.0f}, {cy:.0f}) vs ({W / 2:.0f}, {H / 2:.0f})")
+            ok = got == want and abs(cx - W / 2) <= W * 0.01 and abs(cy - CY[variant]) <= H * 0.01
+            check(f"{tag} at rest", ok, f"read {got!r}; centre ({cx:.0f}, {cy:.0f}) vs ({W / 2:.0f}, {CY[variant]})")
             rest_box[(variant, style)] = box
             if style in ("Fade Up", "Bounce") or variant == "16x9" and style == "Scale Pop":
                 thumb(tag, W, H)

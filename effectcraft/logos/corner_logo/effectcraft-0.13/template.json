@@ -75,6 +75,18 @@
       "description": "Distance from the box to the frame's two edges, in pixels."
     },
     {
+      "name": "Extra Vertical",
+      "type": "number",
+      "default": 0,
+      "description": "Added to Margin at the top and bottom, as a percent of the frame height (0 in 16x9, 8.3 in 9x16, 160 px: clear of a phone's status bar and channel row)."
+    },
+    {
+      "name": "Extra Right",
+      "type": "number",
+      "default": 0,
+      "description": "Added to Margin at the right edge, as a percent of the frame width (0 in 16x9, 13 in 9x16, 140 px: clear of a phone's Shorts buttons)."
+    },
+    {
       "name": "Opacity",
       "type": "number",
       "default": 90,
