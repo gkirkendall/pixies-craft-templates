@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Make brand/pixie.png, the Pixie picture of the page, README and reel pages (PLAN.md, BRAND1).
 
-  python3 tools/brand/make_pixie.py --source ~/projects/pixback_launch/video/dinosaur_ad/review/pixie_candidates/pixie_C.png
+  python3 tools/brand/make_pixie.py --source ~/projects/pixback/pixback_launch/video/dinosaur_ad/review/pixie_candidates/pixie_C.png
 
 The source is the PixBack ad's candidate C (turquoise costume; kept outside this repository). Its turquoise fur is recoloured to the
 final costume's peach (hue 27, saturation scaled 114/173, measured on the ad's peach still), the blue fringes where purple spots
