@@ -1251,7 +1251,14 @@ comes from 0.25.1: the large ones (the 9:16 Route Leg and Locator demos, 137 and
 reordered in the 2026-10-24 phone-safe review after their videos were made; Credits' (18.5) is its example's music line, edited
 since; the rest (3–11) are small encoding differences. The committed demo videos are left as they are, apart from glint's.
 
-## SKILLPRIV: the agent skill leaves the public repo. APPROVED 2026-11-24 (owner: "yes")
+## SKILLPRIV: the agent skill leaves the public repo. CANCELLED 2026-11-25 (owner), nothing was changed
+
+**Cancelled (Pixie, 2026-11-25):** "The pixie templates are public and should remain public. I can have a private copy as well
+with more features." So `SKILL.md` stays here, public, with its history and tags; no history rewrite. The private copy with
+more features lives in `gkirkendall/craft-templates-skill` (private), started from this file and its history on 2026-11-25.
+The text below is kept as it was proposed.
+
+### As proposed (not done)
 
 **Why:** the owner's rule is that skill files are kept in private repos (2026-10-29), but `SKILL.md` has been public here
 since SKILL1 (6 commits). Checked 2026-11-24: the release zips don't contain it, but every clone does (22 clones from 18
