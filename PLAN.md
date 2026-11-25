@@ -1250,3 +1250,25 @@ it was built with (the new title folder's first demo stopped there). Every demo 
 comes from 0.25.1: the large ones (the 9:16 Route Leg and Locator demos, 137 and 143 of 255) are because those specs were
 reordered in the 2026-10-24 phone-safe review after their videos were made; Credits' (18.5) is its example's music line, edited
 since; the rest (3–11) are small encoding differences. The committed demo videos are left as they are, apart from glint's.
+
+## SKILLPRIV: the agent skill leaves the public repo. APPROVED 2026-11-24 (owner: "yes")
+
+**Why:** the owner's rule is that skill files are kept in private repos (2026-10-29), but `SKILL.md` has been public here
+since SKILL1 (6 commits). Checked 2026-11-24: the release zips don't contain it, but every clone does (22 clones from 18
+sources in the last 14 days, GitHub traffic), and anyone could read it on GitHub. People do use the templates (the
+all-templates zip 26 downloads, the trip kit 13; views mostly from YouTube; the owner announced it only on EffectCraft's
+Discord), so the templates, the web page and the releases stay public.
+
+**Steps:**
+1. A new private repo, `gkirkendall/craft-templates-skill`, holding `SKILL.md` with its own history (extracted with
+   `git filter-repo --path SKILL.md`), a `version:` and a changelog, per the skill-file rule.
+2. Here: `SKILL.md` removed; the README's "With an AI agent" lines say the agent skill isn't published; the plan files that
+   mention `SKILL.md` keep their history but say where it went.
+3. This repo's history rewritten so no commit holds `SKILL.md` (`git filter-repo --invert-paths --path SKILL.md`), then
+   `main` and all 95 tags force-pushed. The releases stay attached (GitHub ties them to the tag name). Nobody has forked or
+   starred the repo, so no one else's copy breaks; clones already made keep the file and can't be recalled.
+4. Vatrium's `vatrium-creator-studio/VERSIONS.lock` pins a commit of this repo, which the rewrite replaces: it moves to the
+   rewritten commit and `install.sh` runs. GitHub may keep the old commits reachable by their ids until it cleans up;
+   GitHub Support can remove them on request (offered to the owner, not done unasked).
+
+*Stop:* no `SKILL.md` in any commit of the public repo; the skill in the private repo; the web page and releases still work.
