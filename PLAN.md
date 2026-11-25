@@ -1204,3 +1204,35 @@ line. `tools/tests/test_geocode.py` 9/9 (generated photos with made-up locations
 command). Pixie asked that it support photos with and without a location: a mixed folder skips the unlocated ones (listed, with a note to add their places by hand); a folder with none stops and points to writing the stops file by hand (README "Your places", which works for any photo); the two ways mix freely. Not released yet: the released kit (v0.6.36) lacks the command until the next release.
 
 **Make Maps in the all-templates zip (Pixie: "yes", 2026-10-22).** v0.6.39 released the trip video kit with the photo command. `release.py` now also puts `Make Maps/` (`maps.py`, `README.txt`, `my.stops.json`, the kit's copy that runs from that folder alone) into `pixies-craft-templates.zip`, and the zip's README lists it, so anyone using the two map templates gets the tool. `test_release` 8/8. Not released yet.
+
+## VER2: the templates on EffectCraft 0.25.1. PROPOSED 2026-11-24, waiting for approval
+
+**Why:** Vatrium's Creator Studio installs EffectCraft 0.25.1 and this repo at a pinned commit
+(`vatrium-creator-studio/VERSIONS.lock`; `vatrium/PLAN_cloud_infra.md` part 2, step 3). `tools/verify.py --all` on 0.25.1, run
+in the studio's own copy on 2026-11-24: **9 of 13 templates pass** (basic, box_wipe, locator, glint_set, animated_title,
+credits, sign_off, typewriter, fill_frame; demo reels not checked, no `--footage`). Four problems, each with its fix:
+
+1. **title: the label is spaced about ten times wider** (29/41 checks; the 12 failures are its text read back). EffectCraft
+   changed the unit of a text animator's Tracking Amount to pixels, "as After Effects" (commit `8ea87691`, after 0.14.0).
+   The build still sets `TRACKING = 240`, which 0.25.1 draws as 240 px between letters: "A U S T R A L I A" across the whole
+   frame, where 0.13 drew it as in `previews/poster.jpg`. **Fix:** this is a release breaking a template, so by VER1 a new
+   folder `effectcraft-0.25` (copy of 0.13, built with 0.25.1) with the tracking given in pixels, sized so the label's width
+   matches the 0.13 render (`tests/out/*.ocr0.png` from 0.13 are the reference, within 2 %). `effectcraft-0.13` is frozen
+   at 0.13.0–0.14.0. The template's version gets a minor bump (the controls don't change).
+2. **corner_logo: a test bug that 0.25.1 now catches** (0/0 checks, the run stopped). The "no logo draws nothing" check uses
+   a blank picture `tests/out/empty.png` as the logo and renders its frame to the same `empty.png`; 0.25.1 refuses to write
+   over a project's footage. **Fix:** the blank logo becomes `tests/out/blank_logo.png`. Test only; no new folder.
+3. **route_leg: the test depends on a live OpenStreetMap server** (0/0 checks). `tools/maps.py` asks Overpass for roads and
+   towns and keeps the answers in `data/osm/`, which is gitignored, so a fresh checkout asks again; on 2026-11-24 Overpass
+   answered 502 five times. **Fix:** commit the Overpass answers that the examples and tests use (`data/osm/<hash>.json`,
+   about 8 files, un-ignored by name pattern), credited in `CREDITS.md` ("© OpenStreetMap contributors, ODbL 1.0"). The test
+   then runs offline and gives the same result every time; new maps still fetch and cache as now.
+4. **glint: its demo breaks the 0-100 rule** (`previews/demo.json` line 122, `"Size": 107`; the slider is a percent).
+   **Fix:** 100, and remake the demo reel with `--footage`.
+5. **Small, same change:** the title test calls Pillow's `getdata`, which Pillow 14 removes (2027-10-15); use
+   `get_flattened_data` (Pillow 12.3.0 has it) wherever the tests use it.
+
+**Then:** `verify.py --all --effectcraft-cli <studio's 0.25.1> --footage … --music …` in this repo, all 13 pass, the tool
+writes the tested records, commit, tag, push; then `VERSIONS.lock` moves `CRAFT_COMMIT` to that commit and `install.sh` runs.
+
+*Stop:* 13 of 13 pass on 0.25.1, and the frozen title folder still passes on 0.14.0.
