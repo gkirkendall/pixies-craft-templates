@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Test for Title. Free: no GPU; reads the text back with tesseract (brew install tesseract).
 
-  python3 effectcraft/titles/title/effectcraft-0.13/tests/run.py --effectcraft-cli PATH
+  python3 effectcraft/titles/title/effectcraft-0.25.1/tests/run.py --effectcraft-cli PATH
 
 Renders single transparent frames, with the shadow off, in both sizes. Checks: for every Place, the text reads back (OCR) as
 supplied (the label in capitals; spaces are not compared, as the label is spaced out), there are two bands of text (label, title),
@@ -160,12 +160,12 @@ def main():
         check(f"no jump: {x[5:]} to {y[5:]}", worst <= 2, f"largest difference {worst} of 255")
     frame("16x9", dict(v, Colour="#ffcc00"), PEAK, "colour")
     im = Image.open(OUT / "colour.png").convert("RGBA")
-    solid = [p[:3] for p in im.getdata() if p[3] == 255]
+    solid = [p[:3] for p in im.get_flattened_data() if p[3] == 255]
     mean = [sum(c[i] for c in solid) / len(solid) for i in range(3)] if solid else [0, 0, 0]
     check("Colour colours the text", all(abs(m - w) <= 6 for m, w in zip(mean, (255, 204, 0))), f"solid pixels average {[round(m) for m in mean]}")
     frame("16x9", {}, PEAK, "shadow")
     im = Image.open(OUT / "shadow.png").convert("RGBA")
-    dark = sum(1 for p in im.getdata() if 0 < p[3] and max(p[:3]) < 60)
+    dark = sum(1 for p in im.get_flattened_data() if 0 < p[3] and max(p[:3]) < 60)
     check("Shadow 50 draws a shadow", dark > 1000, f"{dark} dark pixels")
     def still(values, tag):
         frame("16x9", values, PEAK, tag)

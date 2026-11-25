@@ -1,5 +1,6 @@
 ---
 name: craft-templates
+version: 1.0.1
 description: Use and make motion-graphics templates for EffectCraft from the craft-templates repository — map cards (a route between two places, a locator that zooms to a place), lower thirds, titles (plain, animated letter by letter, typewriter), glints, a corner logo, end-card credits and sign-off, and a fill-the-frame background, filled from a values file or a list of stops and rendered from the command line. Use when someone wants a map, caption, logo, sparkle, title or end-card graphic for a video, wants to fill or render one of these templates, or wants to build a new template for this repository.
 ---
 
@@ -11,7 +12,7 @@ EffectCraft's command-line tool. Paths below are relative to the repository root
 
 ## What you need
 
-- Python 3 with Pillow (`pip install pillow`).
+- Python 3 with Pillow 12.1 or later (`pip install 'pillow>=12.1'`; the tests use `get_flattened_data`).
 - EffectCraft's command-line tool, `effectcraft-cli` (on the PATH, or give its path with `--effectcraft-cli`). The templates need
   EffectCraft 0.13.0 or later.
 - ffmpeg, only to lay a rendered overlay onto a clip.
@@ -241,3 +242,7 @@ Found while building the templates here; `tools/ecbuild.py` already handles the 
 - Fonts that ship with EffectCraft include Inter (styles "Regular", "Medium", "SemiBold", "Bold"); `effectcraft-cli exec text.fonts`
   lists every family and its exact style names.
 - tesseract misses small, spaced-out text read together with large text: read each band of text on its own (`--psm 7`, enlarged).
+
+## Changelog
+
+- 1.0.1 (2026-11-24): Pillow 12.1 or later (VER2). Version and changelog added; earlier changes are in git history.

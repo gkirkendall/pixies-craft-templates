@@ -134,12 +134,12 @@ def main():
     check("faded out by Duration", end < 0.2 * 255, f"one frame before Duration 4: alpha {end}")
     frame("16x9", dict(v, Colour="#ffcc00"), PEAK, "colour")
     im = Image.open(OUT / "colour.png").convert("RGBA")
-    solid = [p[:3] for p in im.getdata() if p[3] == 255]
+    solid = [p[:3] for p in im.get_flattened_data() if p[3] == 255]
     mean = [sum(c[i] for c in solid) / len(solid) for i in range(3)] if solid else [0, 0, 0]
     check("Colour colours the text", all(abs(m - w) <= 6 for m, w in zip(mean, (255, 204, 0))), f"solid pixels average {[round(m) for m in mean]}")
     shadow = frame("16x9", {}, PEAK, "shadow")
     im = Image.open(OUT / "shadow.png").convert("RGBA")
-    dark = sum(1 for p in im.getdata() if 0 < p[3] and max(p[:3]) < 60)
+    dark = sum(1 for p in im.get_flattened_data() if 0 < p[3] and max(p[:3]) < 60)
     check("Shadow 50 draws a shadow", dark > 1000 and shadow.getbbox()[3] > peak.getbbox()[3], f"{dark} dark pixels; "
           f"bottom {shadow.getbbox()[3]} vs {peak.getbbox()[3]} without")
     def still(values, tag):

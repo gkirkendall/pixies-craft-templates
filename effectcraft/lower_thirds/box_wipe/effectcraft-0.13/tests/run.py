@@ -143,7 +143,7 @@ def main():
     im = frame("16x9", {"Title": long, "Title Font": "Inter Bold"}, REST, "long")   # a plain font, for OCR to read both lines
     lbox, lunder, ltext = measure(im)
     white = im.crop((lbox[0], lbox[1], lbox[2], lunder[0])).convert("L").point(lambda v: 255 if v > 200 else 0)
-    rows = [sum(white.crop((0, y, white.width, y + 1)).getdata()) for y in range(white.height)]
+    rows = [sum(white.crop((0, y, white.width, y + 1)).get_flattened_data()) for y in range(white.height)]
     third = white.height // 3
     mid = lbox[1] + min(range(third, 2 * third), key=lambda y: rows[y])   # the emptiest row between the lines (descenders above it)
     lines = [ocr(im, (lbox[0], lbox[1], lbox[2], mid)), ocr(im, (lbox[0], mid, lbox[2], lunder[0] - 2))]

@@ -2,8 +2,9 @@
   "footage": "australia",
   "music": "Relaxing Flute Tune-(SoundEffectsFactory.com)_.mp3",
   "crossfade": 0.5,
-  "size": "9x16",
+  "size": "16x9",
   "poster_at": 2.0,
+  "title_page": "template",
   "end_page": true,
   "segments": [
     {
@@ -11,50 +12,15 @@
       "seconds": 5,
       "overlays": [
         {
-          "template": "effectcraft/titles/animated_title",
-          "values": {
-            "Text": "Free Motion Templates for *EffectCraft*",
-            "Style": "Fade Up",
-            "By": "Words",
-            "Fade": "Fade Out",
-            "Size": 24,
-            "Position": [
-              540,
-              330
-            ],
-            "Start": 0,
-            "Duration": 5
-          },
-          "at": 0
-        },
-        {
-          "template": "effectcraft/titles/animated_title",
-          "values": {
-            "Text": "Title Template",
-            "Style": "Fade Up",
-            "By": "Words",
-            "Fade": "Fade Out",
-            "Size": 45,
-            "Position": [
-              540,
-              430
-            ],
-            "Start": 0,
-            "Duration": 5
-          },
-          "at": 0
-        },
-        {
           "template": "effectcraft/titles/title",
           "values": {
-            "file": "{root}/effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json",
+            "file": "{root}/effectcraft/titles/title/effectcraft-0.25.1/examples/australia.values.json",
             "Duration": 5
           },
           "at": 0
         }
       ],
-      "caption": "Place: Centre · 9x16",
-      "caption_at": "phone"
+      "caption": "Place: Centre"
     },
     {
       "footage": "point_ritchie",
@@ -71,8 +37,8 @@
           "at": 0
         }
       ],
-      "caption": "Place: Bottom Centre · 9x16",
-      "caption_at": "phone"
+      "caption": "Place: Bottom Centre",
+      "caption_at": "top"
     },
     {
       "footage": "tjoritja",
@@ -84,8 +50,7 @@
             "Title": "Start",
             "Label": "Day one",
             "Place": "Top Left",
-            "Duration": 5,
-            "Extra Vertical": 11.5
+            "Duration": 5
           },
           "at": 0
         },
@@ -95,14 +60,12 @@
             "Title": "Finish",
             "Label": "Day four",
             "Place": "Top Right",
-            "Duration": 5,
-            "Extra Vertical": 11.5
+            "Duration": 5
           },
           "at": 0
         }
       ],
-      "caption": "Place: Top Left and Top Right · 9x16",
-      "caption_at": "phone"
+      "caption": "Place: Top Left and Top Right"
     },
     {
       "footage": "uluru",
@@ -129,8 +92,8 @@
           "at": 0
         }
       ],
-      "caption": "Place: Bottom Left and Bottom Right · 9x16",
-      "caption_at": "phone"
+      "caption": "Place: Bottom Left and Bottom Right",
+      "caption_at": "top"
     }
   ]
 }

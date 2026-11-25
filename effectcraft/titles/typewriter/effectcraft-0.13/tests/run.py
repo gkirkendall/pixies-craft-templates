@@ -126,7 +126,7 @@ def main():
           f"width {lb[2] - lb[0]} of {MAX_WIDTH['16x9']}")
     frame("16x9", dict(none, Colour="#ffcc00"), DONE, "colour")
     im = Image.open(OUT / "colour.png").convert("RGBA")
-    solid = [p[:3] for p in im.getdata() if p[3] == 255]
+    solid = [p[:3] for p in im.get_flattened_data() if p[3] == 255]
     mean = [sum(c[i] for c in solid) / len(solid) for i in range(3)] if solid else [0, 0, 0]
     check("Colour colours the text", all(abs(m - w) <= 6 for m, w in zip(mean, (255, 204, 0))), f"solid pixels average {[round(m) for m in mean]}")
     def still(values, tag):

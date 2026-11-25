@@ -15,6 +15,7 @@ from an Overpass server (© OpenStreetMap contributors, ODbL); see PLAN.md, "MAP
 """
 import argparse
 import datetime
+import gzip
 import hashlib
 import http.client
 import json
@@ -190,6 +191,8 @@ def overpass(view, url, out_txt):
     cache = DATA / "osm" / (hashlib.sha256(query.encode()).hexdigest()[:20] + ".json")
     if cache.is_file():
         return json.loads(cache.read_text())["elements"]
+    if cache.with_suffix(".json.gz").is_file():  # the answers the examples and tests use are committed, compressed (VER2)
+        return json.loads(gzip.decompress(cache.with_suffix(".json.gz").read_bytes()))["elements"]
     cache.parent.mkdir(parents=True, exist_ok=True)
     tries = 5
     for attempt in range(tries):  # the policy: one query at a time; after a 429 or 406 (or an overloaded 502-504), wait at least 30 s

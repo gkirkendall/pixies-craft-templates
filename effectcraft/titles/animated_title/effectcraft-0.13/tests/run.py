@@ -58,7 +58,7 @@ def ocr(png):
 def ink(alpha, box):
     """Sum of alpha within box, as a fraction of the box full."""
     region = alpha.crop(box)
-    return sum(region.getdata()) / (255 * region.width * region.height)
+    return sum(region.get_flattened_data()) / (255 * region.width * region.height)
 
 
 def main():

@@ -56,7 +56,8 @@ in this repository.
   Kirkendall, all rights reserved, **not** under the templates' licence. Made from a picture generated for the PixBack ad,
   recoloured and cut out by `tools/brand/make_pixie.py`; never inside a template file.
 - **Maps:** Natural Earth (public domain); map data © OpenStreetMap contributors, https://www.openstreetmap.org/copyright, on
-  the short legs.
+  the short legs. `data/osm/*.json.gz` are the Overpass answers the examples and tests use, kept so the tests run offline:
+  © OpenStreetMap contributors, available under the Open Database License (ODbL 1.0), https://opendatacommons.org/licenses/odbl/.
 
 ## Trip video kit photos (Pixabay)
 

@@ -2,7 +2,7 @@
 
 **Pass: 41 of 41 checks.**
 
-Run: `python3 effectcraft/titles/title/effectcraft-0.13/tests/run.py --effectcraft-cli <path>` (EffectCraft 0.13.0; no GPU;
+Run: `python3 effectcraft/titles/title/effectcraft-0.25.1/tests/run.py --effectcraft-cli <path>` (EffectCraft 0.13.0; no GPU;
 tesseract reads the text back). It renders single transparent frames with the shadow off and writes `tests/out/` (frames,
 `sheet.png`; not committed).
 
@@ -35,3 +35,5 @@ Written by `tools/verify.py`; newest last.
 | 2026-10-22 | 0.13.0 | pass | 41/41 |
 | 2026-10-22 | 0.14.0 | pass | 41/41 |
 | 2026-10-22 | 0.13.0 | pass | 41/41 |
+| 2026-11-24 | 0.25.1 | FAIL | 41/41 |
+| 2026-11-24 | 0.25.1 | pass | 41/41 |

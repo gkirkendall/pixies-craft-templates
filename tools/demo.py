@@ -283,7 +283,8 @@ class Demo:
     def title_page(self):
         """The reel's title page: the template (or collection), its version, the EffectCraft versions tested and their links."""
         fs = self.templates()
-        ranges = [f.tested_range() for f in fs if f.tested_range()]
+        # A folder that has no pass yet (a new one, while verify makes its first demo) counts from the version it was built with.
+        ranges = [f.tested_range() or (f.built_with, f.built_with) for f in fs]
         low, high = min((r[0] for r in ranges), key=versions.parse), max((r[1] for r in ranges), key=versions.parse)
         tested = f"For EffectCraft {low if low == high else f'{low}–{high}'} (tested)"
         if isinstance(self.spec["title_page"], dict):

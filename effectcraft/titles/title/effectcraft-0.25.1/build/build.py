@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the Title templates (templates/title_<variant>.ectemplate) with EffectCraft's command-line tool.
 
-  python3 effectcraft/titles/title/effectcraft-0.13/build/build.py [--variant 16x9] [--effectcraft-cli PATH]
+  python3 effectcraft/titles/title/effectcraft-0.25.1/build/build.py [--variant 16x9] [--effectcraft-cli PATH]
 
 One title line (Inter Bold) with an optional small label over it (Inter SemiBold, capitals, spaced out), placed by a Place menu
 (centre, bottom centre or a corner) Margin from the frame's edges, over transparency. Each line shrinks on its own to fit Max
@@ -13,7 +13,7 @@ import pathlib
 import sys
 import tempfile
 
-HERE = pathlib.Path(__file__).resolve().parents[1]   # this version folder, e.g. <template>/effectcraft-0.13
+HERE = pathlib.Path(__file__).resolve().parents[1]   # this version folder, e.g. <template>/effectcraft-0.25.1
 ROOT = next(p for p in HERE.parents if (p / "tools" / "ecbuild.py").is_file())
 sys.path.insert(0, str(ROOT / "tools"))
 from ecbuild import Project, find_cli, hex_colour  # noqa: E402
@@ -27,7 +27,10 @@ VARIANTS = {"16x9": ((1920, 1080), 110, 32, 96, 0, 0), "9x16": ((1080, 1920), 92
 PLACES = ["Centre", "Bottom Centre", "Bottom Left", "Bottom Right", "Top Left", "Top Right"]
 FADES = ["Fade In and Out", "Fade In", "Steady", "Fade Out"]
 TITLE, LABEL = "Our Road Trip", "Australia"
-COLOUR, SHADOW, START, FADE, RISE, TRACKING = "#ffffff", 50, 0.3, 0.6, 24, 240
+COLOUR, SHADOW, START, FADE, RISE = "#ffffff", 50, 0.3, 0.6, 24
+# The label's letter spacing, as a share of its font size (0.24 em). EffectCraft 0.25 reads a Tracking animator's amount in
+# pixels, as After Effects does (it was 1/1000 em before, set as 240), so the build gives it in pixels for each variant.
+TRACKING_EM = 0.24
 CONTROL = 'thisComp.layer("Controls").effect("{}")("{}")'
 # The layout, the same in both layers' expressions: each layer's glyph box (r), fit to Max Width (f) and whether it is empty;
 # the label over the title with a gap of 0.3 × the title's font size; the block placed by Place (menu 1-6, in PLACES order). The block
@@ -67,7 +70,7 @@ def build(cli, variant, workdir):
     # The label in capitals, spaced out by a Tracking animator over all of it.
     p.expression("Label", "text/sourceText", "String(value).toUpperCase()")
     p.run(("layer.addTextAnimator", {"layer": "Label", "properties": ["tracking"]}))
-    p.set("Label", "text/animators/animator/properties/tracking", TRACKING)
+    p.set("Label", "text/animators/animator/properties/tracking", round(label_size * TRACKING_EM, 2))
     p.run(("effect.apply", {"effect": "ec.generate.fill", "layers": ["Label", "Title"]}),
           ("effect.apply", {"effect": "ec.perspective.dropshadow", "layers": ["Label", "Title"]}))
     for name in ("Label", "Title"):

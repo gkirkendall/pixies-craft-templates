@@ -17,6 +17,12 @@
       "date": "2026-10-22",
       "result": "pass",
       "checks": "35/35"
+    },
+    {
+      "version": "0.25.1",
+      "date": "2026-11-24",
+      "result": "pass",
+      "checks": "35/35"
     }
   ],
   "kind": "motion",

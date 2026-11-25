@@ -43,7 +43,7 @@ def logos():
     ImageDraw.Draw(wide).rectangle((0, 0, 599, 199), outline=(255, 255, 255, 255), width=8)
     wide.save(OUT / "wide.png")
     wide.rotate(90, expand=True).save(OUT / "tall.png")
-    Image.new("RGBA", (8, 8), (0, 0, 0, 0)).save(OUT / "empty.png")
+    Image.new("RGBA", (8, 8), (0, 0, 0, 0)).save(OUT / "blank_logo.png")   # not empty.png: that name is the "empty" frame's output, and EffectCraft never writes over footage
 
 
 EXTRA = {"16x9": (0, 0), "9x16": (1920 * 0.083, 1080 * 0.13)}   # Extra Vertical, Extra Right in pixels: 8.3 % of the height, 13 % of the width
@@ -112,7 +112,7 @@ def main():
     check("Opacity 50", abs(half - 128) <= 3, f"alpha {half} (expected 128)")
     end = frame("16x9", dict(v, Duration=4), 4 - 1 / 24, "fade_end").getextrema()[1]
     check("faded out by Duration", end < 0.2 * peak_a, f"one frame before Duration 4: alpha {end}")
-    empty = frame("16x9", {"Logo": "empty.png"}, PEAK, "empty").getbbox()
+    empty = frame("16x9", {"Logo": "blank_logo.png"}, PEAK, "empty").getbbox()
     check("no logo draws nothing", empty is None, f"drawn: {empty}")
 
     # Fade: the logo's strength at the first, middle and last frame of a 4 s clip, and the frames either side of each cut.

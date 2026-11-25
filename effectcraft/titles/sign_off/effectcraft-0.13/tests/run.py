@@ -151,13 +151,13 @@ def main():
     end = Image.open(frame("16x9", dict(v, Duration=4), 4 - 1 / 24, "end")).getchannel("A").getextrema()[1]
     check("faded out by Duration", end < 0.2 * 255, f"one frame before Duration 4: alpha {end}")
     im = Image.open(frame("16x9", dict(v, **{"Text Colour": "#ffcc00", "Heart Colour": "#33aaff"}), PEAK, "colours")).convert("RGBA")
-    solid = [p[:3] for p in im.getdata() if p[3] == 255]
+    solid = [p[:3] for p in im.get_flattened_data() if p[3] == 255]
     yellow = sum(1 for p in solid if p[0] > 230 and 190 < p[1] < 215 and p[2] < 20)
     blue = sum(1 for p in solid if p[0] < 70 and 150 < p[1] < 185 and p[2] > 235)
     check("Text Colour and Heart Colour", yellow > 2000 and blue > 1000 and yellow + blue >= 0.97 * len(solid),
           f"{yellow} yellow and {blue} blue of {len(solid)} solid pixels")
     im = Image.open(frame("16x9", {}, PEAK, "shadow")).convert("RGBA")
-    dark = sum(1 for p in im.getdata() if 0 < p[3] and max(p[:3]) < 60)
+    dark = sum(1 for p in im.get_flattened_data() if 0 < p[3] and max(p[:3]) < 60)
     check("Shadow 50 draws a shadow", dark > 1000, f"{dark} dark pixels")
     # Blink at 60 beats a minute: beats from Start + 0.7 = 1.3 s, on for 0.6 s of each. 2.6 s is 0.3 into a beat (on), 3.1 s 0.8 (off).
     b = dict(v, Blink=True, **{"Beats per Minute": 60})

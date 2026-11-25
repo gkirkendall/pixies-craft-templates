@@ -1,7 +1,11 @@
 .DS_Store
 __pycache__/
-# downloaded map data (tools/maps.py --fetch)
-data/
+# downloaded map data (tools/maps.py --fetch) and cached Overpass answers, except the compressed answers the
+# examples and tests use, committed so the tests run offline (PLAN.md, VER2)
+data/*
+!data/osm/
+data/osm/*
+!data/osm/*.json.gz
 # test renders; each test's RESULT.md and script are kept
 **/tests/out/
 # media folders EffectCraft unpacks beside a .ectemplate when rendering it directly (the zip already carries them)

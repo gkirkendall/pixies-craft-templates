@@ -30,7 +30,7 @@ render as ProRes 4444 with transparency, to lay over footage.
 ## Using it
 
 ```
-python3 tools/render.py effectcraft/titles/title --variant 16x9 --values effectcraft/titles/title/effectcraft-0.13/examples/australia.values.json --out title.mov
+python3 tools/render.py effectcraft/titles/title --variant 16x9 --values effectcraft/titles/title/effectcraft-0.25.1/examples/australia.values.json --out title.mov
 ```
 
 In a values file Place and Fade are the item's name (`"Place": "Bottom Left"`); `tools/render.py` refuses any other.
@@ -48,7 +48,7 @@ it. Place and Fade are Dropdown Menu Controls.
 
 ## Files
 
-- `templates/`: the built templates. Rebuild them with `python3 effectcraft/titles/title/effectcraft-0.13/build/build.py`.
+- `templates/`: the built templates. Rebuild them with `python3 effectcraft/titles/title/effectcraft-0.25.1/build/build.py`.
 - `examples/`: the values for the Australia trip's opening title.
 - `previews/`: the demo reel and the `demo.json` it is made from.
 - `tests/`: the test script and its result.
