@@ -1251,6 +1251,10 @@ comes from 0.25.1: the large ones (the 9:16 Route Leg and Locator demos, 137 and
 reordered in the 2026-10-24 phone-safe review after their videos were made; Credits' (18.5) is its example's music line, edited
 since; the rest (3–11) are small encoding differences. The committed demo videos are left as they are, apart from glint's.
 
+**Old releases (Pixie, 2026-11-25: "fix the template release now"):** v0.6.41, v0.6.39, v0.6.36 and v0.6.5 keep their files
+and download counts; each now opens with a note: outdated, use v0.6.95 or later, the Title template's letters spread too
+wide in EffectCraft 0.25 and later.
+
 ## SKILLPRIV: the agent skill leaves the public repo. CANCELLED 2026-11-25 (owner), nothing was changed
 
 **Cancelled (Pixie, 2026-11-25):** "The pixie templates are public and should remain public. I can have a private copy as well
