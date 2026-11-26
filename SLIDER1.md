@@ -82,7 +82,7 @@ example value is outside 0–100, it gets the same treatment. The new check (ste
 3. **The other 8 templates**, one at a time, the same as step 1 (code, template.json, README, examples, tests, previews'
    `demo.json`/`styles.json` for glint and glint_set), each to 1.1.0, rebuilt, verified with the 0.13 CLI. Commit after each
    template passes (or in one commit at the end; either way tag and push).
-4. **Verify on 0.14 too.** The 0.14 CLI is `~/projects/effectcraft-fork/target/release/effectcraft-cli` (check
+4. **Verify on 0.14 too.** The 0.14 CLI is `~/projects/storytold/effectcraft/target/release/effectcraft-cli` (check
    `--version` says 0.14.0). Run `caffeinate -i -s python3 tools/verify.py --all --effectcraft-cli <that path>`.
 5. **Callers.** `grep -rn "Max Width\|\"Size\"" ~/projects/MoneyPrinterTurbo demo` (and `tools/`): any values passed to these
    controls become percents. MoneyPrinterTurbo is a separate repo: commit there too (tag and push per its own scheme).
